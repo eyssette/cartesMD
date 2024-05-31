@@ -212,11 +212,12 @@ function createCards(cardsArray) {
 	cardsArray.forEach(card => {
 		const footer = card.footer == '' ? ''  : `<footer>${markdownToHTML(card.footer, true)}</footer>`;
 		const contentUp = card.contentUp.startsWith('![') ? markdownToHTML(card.contentUp, true) : markdownToHTML(card.contentUp);
+		const title = (card.title.includes('<br') && card.title.includes('<aside')) ? markdownToHTML(card.title.replace('<aside', '<aside style="float:none; position:absolute; width:200px; margin-top:-30px"'),true) : markdownToHTML(card.title, true);
 
 		cardsHTML = cardsHTML + `
 		<div class="cardBackAndFront ${card.backImageAlt}">
 			<section class="card cardFront">
-				<h2 class="cardTitle"><span>${markdownToHTML(card.title, true)}</span></h2>
+				<h2 class="cardTitle"><span>${title}</span></h2>
 				<div class="cardContentUp">${contentUp}</div>
 				<h3 class="cardSubtitle">${markdownToHTML(card.subtitle, true)}</h3>
 				<div class="cardContentDown">${markdownToHTML(card.contentDown)}</div>
