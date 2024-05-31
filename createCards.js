@@ -211,7 +211,7 @@ function createCards(cardsArray) {
 	cardsHTML = '';
 	cardsArray.forEach(card => {
 		const footer = card.footer == '' ? ''  : `<footer>${markdownToHTML(card.footer, true)}</footer>`;
-		const contentUp = card.contentUp.startsWith('![') ? markdownToHTML(card.contentUp, true) : markdownToHTML(card.contentUp);
+		const contentUp = (card.contentUp.startsWith('![')) ? markdownToHTML(card.contentUp, true) : markdownToHTML(card.contentUp);
 		const title = (card.title.includes('<br') && card.title.includes('<aside')) ? markdownToHTML(card.title.replace('<aside', '<aside style="float:none; position:absolute; width:200px; margin-top:-30px"'),true) : markdownToHTML(card.title, true);
 
 		cardsHTML = cardsHTML + `
@@ -231,4 +231,9 @@ function createCards(cardsArray) {
 	});
 
 	contentElement.innerHTML = cardsHTML;
+
+	let imagesToReposition = document.querySelectorAll('img')
+	for (const image of imagesToReposition) {
+		image.style.cssText += image.alt;
+	}
 }
