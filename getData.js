@@ -1,56 +1,105 @@
-const defaultMD = `# Mes cartes à jouer
+const defaultMD = `# CartesMD
 
-## Titre carte 1 <aside>précisions</aside>
-- ![Image du fond](back.jpg)
+CartesMD est un outil libre et gratuit : vous pouvez éditer le texte ci-dessous pour changer les cartes.
+Vous pouvez ensuite les imprimer facilement : il suffira alors de les découper, de plier et de coller le recto sur le verso.
 
-Contenu en haut
+Pour créer ses cartes, il faut respecter la syntaxe ci-dessous :
 
-### Sous-titre
+## Cartes MD
+- ![](back.png)
 
-Contenu en bas
+CartesMD permet de créer des cartes à jouer en Markdown !
 
-#### Footer
+### Un outil libre & gratuit !
 
----
+On peut écrire son texte directement dans l'interface.
 
-## Titre carte 2
-- ![Image du fond](back.jpg)
-
-Contenu en haut
-
-### Sous-titre
-
-Contenu en bas
-
-#### Footer
-
+- Créé par [Cédric Eyssette](https://eyssette.forge.apps.education.fr/)
+- Disponible sur [LaForgeÉdu](https://forge.apps.education.fr/)
 
 ---
 
-## Titre carte 3
-- ![Image du fond](back.jpg)
 
-Contenu en haut
+## Thème <br>& image de fond
+- ![bleu](back.png)
 
-### Sous-titre
+On peut choisir la couleur de la carte en l'indiquant dans le texte “alt” de l'image de fond
 
-Contenu en bas
+### Personnalisation possible !
 
-#### Footer
+On peut changer l'image de fond en mettant l'URL d'une autre image
+
+#### 1
 
 
 ---
 
-## Titre carte 4
-- ![Image du fond](back.jpg)
+## Le Markdown
+- ![violet](back.png)
 
-Contenu en haut
+On peut utiliser **toute**
+la syntaxe _Markdown_
 
-### Sous-titre
+### Pratique & efficace !
 
-Contenu en bas
+On peut ==surligner==, ++souligner++
 
-#### Footer
+- Faire des listes
+
+1.  C'est facile
+2. Ça marche bien !
+
+#### :mag:
+
+
+---
+
+## 🖨️ &nbsp;Imprimer
+- ![vert](back.png)
+
+On lance simplement l'impression de cette page pour imprimer les cartes
+
+### Balises HTML & Latex
+
+<div style="margin-bottom:7px">On peut aussi utiliser éventuellement du HTML si on veut un contrôle plus fin de l'affichage !</div>
+
+Pour le $Latex$, on ajoute dans le yaml  : \`maths: true\`
+
+---
+
+## Emojis & précisions<aside> :+1:</aside>
+- ![orange](back.png)
+
+🧪  **Les emojis :**
+On les copie-colle ou bien on met le code texte  :+1:
+
+### Autres ajouts possibles<aside> :fire:</aside>
+
+On peut ajouter des précisions dans les titres avec “aside”.
+
+On peut utiliser ou non le “footer” en bas pour mettre le numéro de carte, la classe, un emoji …
+
+
+#### :books:
+
+---
+
+## Platon <aside>428-348</aside>
+- ![rouge](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Plato_Pio-Clemetino_Inv305.jpg/395px-Plato_Pio-Clemetino_Inv305.jpg)
+
+![object-position: 0 -20px](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Danaides_Waterhouse_1903.jpg/423px-Danaides_Waterhouse_1903.jpg)
+
+
+### Philosophie antique <aside>Athènes</aside>
+
+On peut ajouter une image dans le cadre du haut et la repositionner en CSS en utilisant le “alt” de l'image.
+
+
+#### Term.
+
+
+
+
 
 `;
 
