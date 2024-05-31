@@ -210,7 +210,7 @@ function createCards(cardsArray) {
 	
 	cardsHTML = '';
 	cardsArray.forEach(card => {
-		const footer = card.footer == '' ? ''  : `<footer>${card.footer}</footer>`;
+		const footer = card.footer == '' ? ''  : `<footer>${markdownToHTML(card.footer, true)}</footer>`;
 		const contentUp = card.contentUp.startsWith('![') ? markdownToHTML(card.contentUp, true) : markdownToHTML(card.contentUp);
 
 		cardsHTML = cardsHTML + `
