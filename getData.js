@@ -15,8 +15,8 @@ CartesMD permet de créer des cartes à jouer en Markdown !
 On peut écrire son texte directement dans l'interface.
 
 - Créé par [Cédric Eyssette](https://eyssette.forge.apps.education.fr/)
-- Disponible sur [LaForgeÉdu](https://forge.apps.education.fr/)
-- Inspiré par [CréaCarte](https://lmdbt.forge.apps.education.fr/creacarte/) de [Cyril Iaconelli](https://lmdbt.forge.apps.education.fr/)
+- Sources sur [LaForgeÉdu](https://forge.apps.education.fr/cartesmd/cartesMD.forge.apps.education.fr)
+- Inspiré par [CréaCarte](https://lmdbt.forge.apps.education.fr/creacarte/) <br>de [Cyril Iaconelli](https://lmdbt.forge.apps.education.fr/)
 
 <!-- On sépare chaque carte par trois tirets du milieu qui se suivent  --> 
 
