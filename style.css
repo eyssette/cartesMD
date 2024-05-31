@@ -152,28 +152,77 @@ img[alt~="contain"]{
 	margin-top:-24px;
 }
 
-.red .card {
-	background-color:  #b84d4d8f;
-	border-color: red;
-}
-.red .cardBackImage{
-	
-}
-
-.red footer {
-	border-left-color: red;
-	border-top-color: red;
-}
-
 .cardBack {
+	background-color: #eee!important;
 }
 
 .cardBackImage {
 	object-fit: cover;
 	width: 100%;
-    height: 100%;
+	height: 100%;
+	filter: brightness(1.15) grayscale(0.5);
 }
 
+
+.red .card, .rouge .card {
+	background-color:  #ca98989e;
+	border-color: #834b4b;
+}
+.red .cardBackImage, .rouge .cardBackImage{
+	filter: hue-rotate(125deg);
+}
+.red footer, .rouge footer {
+	border-left-color: #ca98989e;
+	border-top-color: #ca98989e;
+}
+
+.orange .card {
+	background-color: #ffd68a;
+	border-color: #d09a38;
+}
+.orange .cardBackImage {
+	filter: hue-rotate(160deg);
+}
+.orange footer {
+	border-left-color: #ffd68a;
+	border-top-color: #ffd68a;
+}
+
+.violet .card {
+	background-color: #cfb6e7;
+	border-color: #8565a4;
+}
+.violet .cardBackImage {
+	filter: hue-rotate(50deg);
+}
+.violet footer {
+	border-left-color: #cfb6e7;
+	border-top-color: #cfb6e7;
+}
+
+.green .card, .vert .card {
+	background-color: #bad0ba;
+	border-color: #4b7d4b;
+}
+.green .cardBackImage, .vert .cardBackImage {
+	filter: hue-rotate(215deg);
+}
+.green footer, .vert footer {
+	border-left-color: #bad0ba;
+	border-top-color: #bad0ba;
+}
+
+.blue .card, .bleu .card {
+	background-color: #cce1f3;
+	border-color: #88a2b8;
+}
+.blue .cardBackImage, .bleu .cardBackImage {
+	filter: grayscale(0);
+}
+.blue footer, .bleu footer {
+	border-left-color: #cce1f3;
+	border-top-color: #cce1f3;
+}
 
 .markdownTitles {
 	font-size: 1.1em;
@@ -222,7 +271,7 @@ img[alt~="contain"]{
 }
 
 .markdownHTMLcomment {
-	color:#444;
+	color:#666;
 }
 
 @media print {
