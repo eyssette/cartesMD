@@ -1,6 +1,6 @@
 const defaultMD = `# CartesMD
 
-CartesMD est un outil libre et gratuit : vous pouvez éditer le texte ci-dessous pour changer les cartes.
+_CartesMD_ est un outil **libre** et **gratuit** : vous pouvez éditer le texte ci-dessous pour changer les cartes.
 Vous pouvez ensuite les imprimer facilement : il suffira alors de les découper, de plier et de coller le recto sur le verso.
 
 Pour créer ses cartes, il faut respecter la syntaxe ci-dessous :
@@ -16,6 +16,9 @@ On peut écrire son texte directement dans l'interface.
 
 - Créé par [Cédric Eyssette](https://eyssette.forge.apps.education.fr/)
 - Disponible sur [LaForgeÉdu](https://forge.apps.education.fr/)
+- Inspiré par [CréaCarte](https://lmdbt.forge.apps.education.fr/creacarte/) de [Cyril Iaconelli](https://lmdbt.forge.apps.education.fr/)
+
+<!-- On sépare chaque carte par trois tirets du milieu qui se suivent  --> 
 
 ---
 
@@ -23,11 +26,11 @@ On peut écrire son texte directement dans l'interface.
 ## Thème <br>& image de fond
 - ![bleu](back.png)
 
-On peut choisir la couleur de la carte en l'indiquant dans le texte “alt” de l'image de fond
+On peut choisir la couleur de la carte en l'indiquant dans le texte “_alt_” de l'image de fond.
 
 ### Personnalisation possible !
 
-On peut changer l'image de fond en mettant l'URL d'une autre image
+On peut changer l'image de fond en mettant l'URL d'une autre image.
 
 #### 1
 
@@ -63,7 +66,9 @@ On lance simplement l'impression de cette page pour imprimer les cartes
 
 <div style="margin-bottom:7px">On peut aussi utiliser éventuellement du HTML si on veut un contrôle plus fin de l'affichage !</div>
 
-Pour le $Latex$, on ajoute dans le yaml  : \`maths: true\`
+Pour le $Latex$, on ajoute dans l'en-tête _yaml_  : \`maths: true\`
+
+<!-- On peut aussi utiliser l'en-tête _yaml_ pour ajouter des styles CSS. Par exemple, avec : \`style: p{color:red}\`  -->
 
 ---
 
@@ -75,9 +80,9 @@ On les copie-colle ou bien on met le code texte  :+1:
 
 ### Autres ajouts possibles<aside> :fire:</aside>
 
-On peut ajouter des précisions dans les titres avec “aside”.
+On peut ajouter des précisions dans les titres avec “_aside_”.
 
-On peut utiliser ou non le “footer” en bas pour mettre le numéro de carte, la classe, un emoji …
+On peut utiliser ou non le dernier titre, de niveau 4, pour mettre le numéro de carte, la classe, un emoji …
 
 
 #### :books:
@@ -92,14 +97,13 @@ On peut utiliser ou non le “footer” en bas pour mettre le numéro de carte, 
 
 ### Philosophie antique <aside>Athènes</aside>
 
-On peut ajouter une image dans le cadre du haut et la repositionner en CSS en utilisant le “alt” de l'image.
+On peut ajouter une image dans le cadre du haut et la repositionner en CSS en utilisant le “_alt_” de l'image.
 
 
 #### Term.
 
 
-
-
+<!-- On peut aussi utiliser CodiMD pour conserver la source de ses cartes : on pourra alors afficher ses cartes ainsi : https://cartesmd.forge.apps.education.fr/#URL (en remplaçant URL par l'URL du fichier CodiMD)-->
 
 `;
 
