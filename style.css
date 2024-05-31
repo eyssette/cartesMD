@@ -58,7 +58,6 @@ main {
 	border: 3px solid #777589;
 	border-radius: 10px;
 	overflow: hidden;
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 	background-color:  var(--cardFrontBackgroundColor);
 }
 
@@ -101,7 +100,7 @@ main {
 	padding: 2px;
 }
 
-.card div {
+.card>div {
 	margin:10px;
 	background-color: white;
 	overflow: hidden;
@@ -124,6 +123,10 @@ main {
 	object-fit: cover;
 }
 
+.cardContentUp p {
+	padding:10px;
+}
+
 img[alt~="contain"]{
 	object-fit:contain!important
 }
@@ -132,13 +135,19 @@ img[alt~="contain"]{
 	margin: auto!important;
 	width: 210px;
 	height: 130px;
-	font-size:12px;
-	align-items: left;
+	font-size:14px;
 	border-radius: 7px;
 }
 
 .cardContentDown p {
 	padding-left: 10px;
+	padding-right: 2px;
+	margin-top:0;
+}
+
+.cardContentDown ul, .cardContentDown ol {
+	margin-top:0;
+	padding-left: 25px;
 }
 
 .card footer {
@@ -277,7 +286,7 @@ img[alt~="contain"]{
 @media print {
 	@page {
 		size: A4 landscape;
-		margin: 0;
+		margin: 20px;
 	}
 	body {
 		width: 100%;
