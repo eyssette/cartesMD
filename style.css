@@ -194,16 +194,18 @@ img[alt~="contain"]{
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
-	filter: brightness(1.15) grayscale(0.5);
 	background-color: #eee!important;
 }
 
+.cardBackImage[src="back.png"] {
+	filter: brightness(1.15) grayscale(0.5);
+}
 
 .red .card, .rouge .card {
 	background-color:  #ca98989e;
 	border-color: #834b4b;
 }
-.red .cardBackImage, .rouge .cardBackImage{
+.red .cardBackImage[src="back.png"], .rouge .cardBackImage[src="back.png"]{
 	filter: hue-rotate(125deg);
 }
 .red footer, .rouge footer {
@@ -215,7 +217,7 @@ img[alt~="contain"]{
 	background-color: #ffd68a;
 	border-color: #d09a38;
 }
-.orange .cardBackImage {
+.orange .cardBackImage[src="back.png"] {
 	filter: hue-rotate(160deg);
 }
 .orange footer {
@@ -227,7 +229,7 @@ img[alt~="contain"]{
 	background-color: #cfb6e7;
 	border-color: #8565a4;
 }
-.violet .cardBackImage {
+.violet .cardBackImage[src="back.png"] {
 	filter: hue-rotate(50deg);
 }
 .violet footer {
@@ -239,7 +241,7 @@ img[alt~="contain"]{
 	background-color: #bad0ba;
 	border-color: #4b7d4b;
 }
-.green .cardBackImage, .vert .cardBackImage {
+.green .cardBackImage[src="back.png"], .vert .cardBackImage[src="back.png"] {
 	filter: hue-rotate(215deg);
 }
 .green footer, .vert footer {
@@ -251,7 +253,7 @@ img[alt~="contain"]{
 	background-color: #cce1f3;
 	border-color: #88a2b8;
 }
-.blue .cardBackImage, .bleu .cardBackImage {
+.blue .cardBackImage[src="back.png"], .bleu .cardBackImage[src="back.png"] {
 	filter: grayscale(0);
 }
 .blue footer, .bleu footer {
