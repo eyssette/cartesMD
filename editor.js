@@ -117,7 +117,7 @@ function showOrHideEditor() {
 	} else {
 		toggleEditorElement.textContent = "✒️";
 		editorElement.style.display = "none";
-		contentElement.style.width="120%";
+		contentElement.style.width= window.innerWidth > 1500 ? "100%" : "120%";
 		contentElement.style.marginLeft = "10px";
 		contentElement.style.paddingTop = "60px";
 		headerElement.style.cssText = "background-color: white;;border: 2px solid black;"
