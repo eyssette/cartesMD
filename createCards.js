@@ -232,8 +232,18 @@ function createCards(cardsArray) {
 
 	contentElement.innerHTML = cardsHTML;
 
+	colorWords = ["blue","bleu","violet","vert","green","orange","rouge","red"];
+
+	function removeWords(string, wordsToRemove) {
+		return string
+			.split(' ')
+			.filter(word => !wordsToRemove.includes(word))
+			.join(' ');
+	}
+
 	let imagesToReposition = document.querySelectorAll('img')
 	for (const image of imagesToReposition) {
-		image.style.cssText += image.alt;
+		const newStyle = removeWords(image.alt,colorWords);
+		image.style.cssText += newStyle;
 	}
 }
