@@ -98,3 +98,35 @@ document.body.addEventListener("keyup", () => {
 	const parsedMD = parseMarkdown(editorElement.textContent);
 	createCards(parsedMD);
 });
+
+const printButtonElement = document.getElementById('printButton')
+printButtonElement.addEventListener('click',() =>{
+	window.print();
+})
+const headerElement = document.getElementById('header')
+const toggleEditorElement = document.getElementById('toggleEditor')
+let showEditor = window.innerWidth > 500 ? true : false;
+function showOrHideEditor() {
+	if(showEditor) {
+		toggleEditorElement.textContent = "👓";
+		editorElement.style.display = "block";
+		contentElement.style.width = "50vw";
+		contentElement.style.marginLeft = "42vw";
+		contentElement.style.paddingTop = "0px";
+		headerElement.style.cssText = "";
+	} else {
+		toggleEditorElement.textContent = "✒️";
+		editorElement.style.display = "none";
+		contentElement.style.width="120%";
+		contentElement.style.marginLeft = "10px";
+		contentElement.style.paddingTop = "60px";
+		headerElement.style.cssText = "background-color: white;;border: 2px solid black;"
+	}
+}
+showOrHideEditor();
+
+toggleEditorElement.addEventListener('click',(event) => {
+	event.preventDefault();
+	showEditor = showEditor ? false : true;
+	showOrHideEditor();
+})
