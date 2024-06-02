@@ -213,7 +213,9 @@ function createCards(cardsArray) {
 		const footer = card.footer == '' ? ''  : `<footer>${markdownToHTML(card.footer, true)}</footer>`;
 		const contentUp = (card.contentUp.startsWith('![')) ? markdownToHTML(card.contentUp, true) : markdownToHTML(card.contentUp);
 		const title = (card.title.includes('<br') && card.title.includes('<aside')) ? markdownToHTML(card.title.replace('<aside', '<aside style="float:none; position:absolute; width:200px; margin-top:-30px"'),true) : markdownToHTML(card.title, true);
+		const cardBack = card.backImageURL.length > 0 ?  `<section class="card cardBack"><img class="cardBackImage" alt="${card.backImageAlt}" src="${card.backImageURL}" /></section>` : `<section class="card cardBack" alt="${card.backImageAlt}"></section>`;
 
+		// TEMPLATE pour chaque carte
 		cardsHTML = cardsHTML + `
 		<div class="cardBackAndFront ${card.backImageAlt}">
 			<section class="card cardFront">
@@ -223,9 +225,7 @@ function createCards(cardsArray) {
 				<div class="cardContentDown">${markdownToHTML(card.contentDown)}</div>
 				${footer}
 			</section>
-			<section class="card cardBack">
-				<img class="cardBackImage" alt="${card.backImageAlt}" src="${card.backImageURL}" />
-			</section>
+			${cardBack}
 		</div>
 		`;
 	});
@@ -241,9 +241,9 @@ function createCards(cardsArray) {
 			.join(' ');
 	}
 
-	let imagesToReposition = document.querySelectorAll('img')
-	for (const image of imagesToReposition) {
-		const newStyle = removeWords(image.alt,colorWords);
-		image.style.cssText += newStyle;
+	let elementsToStyle = document.querySelectorAll('[alt]')
+	for (const elementToStyle of elementsToStyle) {
+		const newStyle = elementToStyle.getAttribute('alt') ? removeWords(elementToStyle.getAttribute('alt'),colorWords) : '';
+		elementToStyle.style.cssText = elementToStyle.style.cssText ? elementToStyle.style.cssText + newStyle : newStyle;
 	}
 }
