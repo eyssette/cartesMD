@@ -106,6 +106,13 @@ printButtonElement.addEventListener('click',() =>{
 const headerElement = document.getElementById('header')
 const toggleEditorElement = document.getElementById('toggleEditor')
 let showEditor = window.innerWidth > 500 ? true : false;
+const params = new URLSearchParams(document.location.search);
+const viewParam = parseInt(params.get("v"))
+		? parseInt(params.get("v"))
+		: 0;
+if(viewParam == 1) {
+	showEditor = false
+}
 function showOrHideEditor() {
 	if(showEditor) {
 		toggleEditorElement.textContent = "👓";
