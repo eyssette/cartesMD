@@ -52,6 +52,15 @@ function convertLatexExpressions(string) {
 let yamlMaths;
 
 function parseMarkdown(string) {
+	const styleCardElement = document.getElementById('styleCard');
+	const styleZ1element = document.getElementById('styleZ1');
+	const styleZ2element = document.getElementById('styleZ2');
+	const styleZ3element = document.getElementById('styleZ3');
+	const styleZ4element = document.getElementById('styleZ4');
+	const styleBackElement = document.getElementById('styleBack');
+	const styleBackImageElement = document.getElementById('styleBackImage');
+	const styleOtherElement = document.getElementById('styleOther');
+
 	let cardsArray = [];
 	string = string.replace(/^# (.*)/,'')
 	stringSplit = string.split('---');
@@ -73,11 +82,29 @@ function parseMarkdown(string) {
 					}
 				}
 				// Gestion des styles personnalisés
-				if (property == "style") {
-					yamlStyle = yamlData[property];
-					const styleElement = document.createElement("style");
-					styleElement.innerHTML = yamlStyle.replaceAll("\\","");
-					document.body.appendChild(styleElement);
+				if (property == 'card') {
+					styleCardElement.textContent = '.card{'+yamlData[property].replaceAll("\\","")+'}';
+				}
+				if (property == 'z1') {
+					styleZ1element.textContent = 'h2{'+yamlData[property].replaceAll("\\","")+'}';
+				}
+				if (property == 'z2') {
+					styleZ2element.textContent = '.cardContentUp{'+yamlData[property].replaceAll("\\","")+'}'
+				}
+				if (property == 'z3') {
+					styleZ3element.textContent = 'h3{'+yamlData[property].replaceAll("\\","")+'}'
+				}
+				if (property == 'z4') {
+					styleZ4element.textContent = '.cardContentDown{'+yamlData[property].replaceAll("\\","")+'}'
+				}
+				if (property == 'back') {
+					styleBackElement.textContent = '.cardBack{' + yamlData[property].replaceAll("\\","") +'}';
+				}
+				if (property == 'backImage') {
+					styleBackImageElement.textContent = '.cardBackImage{' + yamlData[property].replaceAll("\\","") +'}';
+				}
+				if (property == 'style') {
+					styleOtherElement.textContent = yamlData[property].replaceAll("\\","");
 				}
 			}
 		} catch (e) {}
