@@ -172,7 +172,16 @@ img[alt~="contain"]{
 	padding-left: 10px;
 	padding-right: 2px;
 	margin-top:0;
+	margin-bottom:5px;
 }
+
+.cardContentDown pre {
+	font-size: 0.8em;
+	margin-top:0;
+	margin-left:10px;
+	white-space: pre-line;
+}
+
 
 .cardContentDown ul, .cardContentDown ol {
 	margin-top:0;
@@ -258,6 +267,10 @@ img[alt~="contain"]{
 .blue footer, .bleu footer {
 	border-left-color: #cce1f3;
 	border-top-color: #cce1f3;
+}
+
+a {
+	word-break: break-all;
 }
 
 .markdownTitles {
