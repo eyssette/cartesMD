@@ -53,7 +53,7 @@ let yamlMaths;
 
 function parseMarkdown(string) {
 	let cardsArray = [];
-	string = string.replace(/# (.*)/,'')
+	string = string.replace(/^# (.*)/,'')
 	stringSplit = string.split('---');
 	if(string.startsWith('---') && stringSplit.length > 2) {
 		try {
