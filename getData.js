@@ -105,7 +105,39 @@ On peut ajouter une image dans le cadre du haut et la repositionner en CSS en ut
 #### Term.
 
 
-<!-- On peut aussi utiliser CodiMD pour conserver la source de ses cartes : on pourra alors afficher ses cartes ainsi : https://cartesmd.forge.apps.education.fr/#URL (en remplaçant URL par l'URL du fichier CodiMD)-->
+---
+
+## Utiliser CodiMD
+- ![blue background: linear-gradient(white, lightblue);]()
+
+<!-- On peut ne pas mettre d'image de fond -->
+
+On peut aussi utiliser CodiMD pour conserver la source de ses cartes
+
+### Gestion plus facile !
+
+On pourra alors facilement conserver ses cartes, et les partager à l'adresse suivante :
+https://cartesmd.forge.apps.education.fr/#URL
+(en remplaçant URL <br>par l'URL du fichier CodiMD)
+
+
+---
+
+## Usage plus avancé
+- ![violet background: linear-gradient(#EEE, darkviolet);]()
+
+On peut aussi utiliser l'en-tête _YAML_ pour ajouter des styles en CSS
+
+### Tout peut être changé !
+
+<span style="font-size:0.85em; display:block; margin-top:15px;">_card_ pour chaque carte ; _z1_ … _z4_ pour les zones d'écriture ; _back_ pour le verso et _backImage_ pour l'image de fond ; _style_ pour tout le reste. <br>Par exemple : </span>
+
+\`\`\`
+-​-​-
+z1: height:300px
+-​-​-
+\`\`\`
+
 
 `;
 
