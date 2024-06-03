@@ -93,12 +93,6 @@ function autoComplete(search, replace) {
 }
 
 
-document.body.addEventListener("keyup", () => {
-	// autoComplete("## Acq", "## Acquisition");
-	const parsedMD = parseMarkdown(editorElement.textContent);
-	createCards(parsedMD);
-});
-
 const printButtonElement = document.getElementById('printButton')
 printButtonElement.addEventListener('click',(event) =>{
 	event.preventDefault();
@@ -138,3 +132,21 @@ toggleEditorElement.addEventListener('click',(event) => {
 	showEditor = showEditor ? false : true;
 	showOrHideEditor();
 })
+
+
+document.body.addEventListener("keyup", (event) => {
+	// autoComplete("## Acq", "## Acquisition");
+	if(showEditor && event.key === "Escape") {
+		showEditor = showEditor ? false : true;
+		showOrHideEditor();
+	} else {
+		if(!showEditor && event.key === "e") {
+			showEditor = showEditor ? false : true;
+			showOrHideEditor();
+			editorElement.focus();
+		} else {
+			const parsedMD = parseMarkdown(editorElement.textContent);
+			createCards(parsedMD);
+		}
+	}
+});
