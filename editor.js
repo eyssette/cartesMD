@@ -100,7 +100,8 @@ document.body.addEventListener("keyup", () => {
 });
 
 const printButtonElement = document.getElementById('printButton')
-printButtonElement.addEventListener('click',() =>{
+printButtonElement.addEventListener('click',(event) =>{
+	event.preventDefault();
 	window.print();
 })
 const headerElement = document.getElementById('header')
