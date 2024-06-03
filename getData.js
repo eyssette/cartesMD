@@ -5,6 +5,8 @@ Vous pouvez ensuite les imprimer facilement : il suffira alors de les découper,
 
 Pour créer ses cartes, il faut respecter la syntaxe ci-dessous :
 
+<!-- Les cartes commencent à partir du premier titre de niveau 2, tout ce qui est écrit avant ne compte pas --> 
+
 ## Cartes MD
 - ![](back.png)
 
