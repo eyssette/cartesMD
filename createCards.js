@@ -61,6 +61,9 @@ function parseMarkdown(string) {
 	const styleBackImageElement = document.getElementById('styleBackImage');
 	const styleOtherElement = document.getElementById('styleOther');
 
+	// On permet l'interprétation du Markdown à l'intérieur des balises div
+	string = string.replaceAll(/\<div.*?\>/g, '<div markdown="1">');
+
 	let cardsArray = [];
 	string = string.replace(/^# (.*)/,'')
 	stringSplit = string.split('---');
