@@ -1,11 +1,11 @@
-const defaultMD = `# CartesMD
+const defaultMD = `# Présentation de l'outil
 
 _CartesMD_ est un outil **libre** et **gratuit** : vous pouvez éditer le texte ci-dessous pour changer les cartes.
 Vous pouvez ensuite les imprimer facilement : il suffira alors de les découper, de plier et de coller le recto sur le verso.
 
 Pour créer ses cartes, il faut respecter la syntaxe ci-dessous :
 
-<!-- Les cartes commencent à partir du premier titre de niveau 2, tout ce qui est écrit avant ne compte pas --> 
+<!-- Les cartes commencent ci-dessous, à partir du premier titre de niveau 2, tout ce qui est écrit avant ne compte pas (vous pouvez le supprimer) --> 
 
 ## Cartes MD
 - ![](back.png)
@@ -42,8 +42,9 @@ On peut changer l'image de fond en mettant l'URL d'une autre image.
 ## Le Markdown
 - ![violet](back.png)
 
-On peut utiliser **toute**
-la syntaxe _Markdown_
+On peut utiliser **toute** la syntaxe _Markdown_.
+
+La taille optimale de la police est calculée automatiquement.
 
 ### Pratique & efficace !
 
@@ -53,6 +54,21 @@ On peut ==surligner==, ++souligner++
 
 1.  C'est facile
 2. Ça marche bien !
+
+---
+## Balises HTML
+
+On peut aussi utiliser du <span style="color: darkred;">HTML</span> si on veut un contrôle plus fin de l'affichage !
+
+### Latex
+
+Pour le $Latex$, on ajoute un en-tête _yaml_  au tout début du document, avec :
+
+\`\`\`
+-​-​-
+maths: true
+-​-​-
+\`\`\`
 
 #### :mag:
 
@@ -64,13 +80,9 @@ On peut ==surligner==, ++souligner++
 
 On lance simplement l'impression de cette page pour imprimer les cartes
 
-### Balises HTML & Latex
+### Paramètres d'impression
 
-<div style="margin-bottom:7px">On peut aussi utiliser éventuellement du HTML si on veut un contrôle plus fin de l'affichage !</div>
-
-Pour le $Latex$, on ajoute dans l'en-tête _yaml_  : \`maths: true\`
-
-<!-- On peut aussi utiliser l'en-tête _yaml_ pour ajouter des styles CSS. Par exemple, avec : \`style: p{color:red}\`  -->
+Il faut penser à activer l'impression des arrières-plan et à désactiver les en-têtes et pieds de page.
 
 ---
 
@@ -116,14 +128,14 @@ On peut aussi utiliser CodiMD pour conserver la source de ses cartes
 
 ### Gestion plus facile !
 
-On pourra alors facilement conserver ses cartes, et les partager à l'adresse suivante :
+On pourra alors facilement conserver ses cartes, et les partager à l'adresse suivante&nbsp;:
 https://cartesmd.forge.apps.education.fr/#URL
 (en remplaçant URL <br>par l'URL du fichier CodiMD)
 
 
 ---
 
-## Usage plus avancé
+## Usages plus avancés
 - ![violet background: linear-gradient(#EEE, darkviolet);]()
 
 On peut aussi utiliser l'en-tête _YAML_ pour ajouter des styles en CSS
@@ -137,7 +149,6 @@ On peut aussi utiliser l'en-tête _YAML_ pour ajouter des styles en CSS
 z1: height:300px
 -​-​-
 \`\`\`
-
 
 `;
 
