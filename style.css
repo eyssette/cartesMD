@@ -382,6 +382,15 @@ mark {
 	color:#666;
 }
 
+.markdownSeparator {
+	color: darkred;
+	font-weight: bold;
+}
+.markdownYAML {
+	color:darkgreen;
+	font-weight: bold;
+}
+
 @media print {
 	@page {
 		size: A4 landscape!important;

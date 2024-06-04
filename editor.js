@@ -48,6 +48,12 @@ const highlightCode = (editor) => {
 	// Coloration syntaxique pour les commentaires html
 	code = code.replace(/(&lt;!--.*?--&gt;)/g,'<span class="markdownHTMLcomment">$1</span>')
 
+	// Coloration syntaxique pour les séparations
+	code = code.replaceAll('---','<span class="markdownSeparator">---</span>')
+
+	// Coloration syntaxique pour le yaml
+	code = code.replace(/(card:|z1:|z2:|z3:|z4:|back:|backImage:|style:|maths:)/g,'<span class="markdownYAML">$1</span>')
+
 	editor.innerHTML = code;
 };
 
