@@ -281,7 +281,7 @@ function createCards(cardsArray) {
 	const z3Elements = document.querySelectorAll('h3');
 	const z4Elements = document.querySelectorAll('.cardContentDown');
 	textFit(z1Elements, { multiLine: true, maxFontSize: 18});
-	textFit(z2Elements, { multiLine: true, maxFontSize: 16});
+	textFit(z2Elements, { multiLine: true, maxFontSize: 16, minFontSize: 7.75});
 	textFit(z3Elements, { multiLine: true, maxFontSize: 18});
-	textFit(z4Elements, { multiLine: true, maxFontSize: 16});
+	textFit(z4Elements, { multiLine: true, maxFontSize: 16, minFontSize: 7.75, multiLine: true});
 }
