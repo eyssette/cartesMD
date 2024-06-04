@@ -54,6 +54,7 @@ CartesMD calcule automatique-<br>ment la taille de la police pour rester dans le
 
 ---
 ## Balises HTML
+- ![rouge](back.png)
 
 On peut aussi utiliser du <span style="color: darkred;">HTML</span> si on veut un contrôle plus fin de l'affichage !
 
