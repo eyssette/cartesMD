@@ -44,16 +44,13 @@ On peut changer l'image de fond en mettant l'URL d'une autre image.
 
 On peut utiliser **toute** la syntaxe _Markdown_.
 
-La taille optimale de la police est calculée automatiquement.
-
 ### Pratique & efficace !
 
-On peut ==surligner==, ++souligner++
+On peut notamment :
+- ==surligner==, ++souligner++
+- faire des listes …
 
-- Faire des listes
-
-1.  C'est facile
-2. Ça marche bien !
+CartesMD calcule automatique-<br>ment la taille de la police pour rester dans le cadre.
 
 ---
 ## Balises HTML
@@ -82,7 +79,7 @@ On lance simplement l'impression de cette page pour imprimer les cartes
 
 ### Paramètres d'impression
 
-Il faut penser à activer l'impression des arrières-plan et à désactiver les en-têtes et pieds de page.
+<span style="font-size:0.9em">Il faut penser à activer l'impression des arrières-plan et à désactiver les en-têtes et pieds de page.</span>
 
 ---
 
@@ -142,7 +139,7 @@ On peut aussi utiliser l'en-tête _YAML_ pour ajouter des styles en CSS
 
 ### Tout peut être changé !
 
-<span style="font-size:0.85em; display:block; margin-top:15px;">_card_ pour chaque carte ; _z1_ … _z4_ pour les zones d'écriture ; _back_ pour le verso et _backImage_ pour l'image de fond ; _style_ pour tout le reste. <br>Par exemple : </span>
+_card_ pour chaque carte ; _z1_ … _z4_ pour les zones d'écriture ; _back_ pour le verso et _backImage_ pour l'image de fond ; _style_ pour tout le reste. <br>Par exemple :
 
 \`\`\`
 -​-​-
