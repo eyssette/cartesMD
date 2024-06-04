@@ -273,4 +273,12 @@ function createCards(cardsArray) {
 		const newStyle = elementToStyle.getAttribute('alt') ? removeWords(elementToStyle.getAttribute('alt'),colorWords) : '';
 		elementToStyle.style.cssText = elementToStyle.style.cssText ? elementToStyle.style.cssText + newStyle : newStyle;
 	}
+	const z1Elements = document.querySelectorAll('h2');
+	const z2Elements = document.querySelectorAll('.cardContentUp');
+	const z3Elements = document.querySelectorAll('h3');
+	const z4Elements = document.querySelectorAll('.cardContentDown');
+	textFit(z1Elements, { multiLine: true, maxFontSize: 18});
+	textFit(z2Elements, { multiLine: true, maxFontSize: 16});
+	textFit(z3Elements, { multiLine: true, maxFontSize: 18});
+	textFit(z4Elements, { multiLine: true, maxFontSize: 16});
 }

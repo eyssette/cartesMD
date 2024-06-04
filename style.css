@@ -92,7 +92,7 @@ nav a {
 
 
 
-.card h2, .card h3, .card div {
+.card h2, .card h3 {
 	margin:0;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -136,7 +136,6 @@ nav a {
 	display:flex;
 	flex-direction: column;
     justify-content: center;
-	padding: 0!important;
 }
 
 .cardContentUp {
@@ -153,7 +152,7 @@ nav a {
 }
 
 .cardContentUp p {
-	padding:10px;
+	padding:0 10px;
 }
 
 img[alt~="contain"]{
@@ -169,9 +168,9 @@ img[alt~="contain"]{
 }
 
 .cardContentDown p {
-	padding-left: 10px;
-	padding-right: 2px;
-	margin-top:0;
+	padding-left: 8px;
+	padding-right: 3px;
+	margin-top:8px;
 	margin-bottom:5px;
 }
 
