@@ -116,7 +116,7 @@ nav a {
 	height: 28px;
 }
 
-.card h2 span {
+.card h2 div {
 	width:100%;
 }
 
@@ -127,6 +127,7 @@ nav a {
 	font-weight: normal;
 	vertical-align: middle;
 	padding: 2px;
+	margin-left:1em;
 }
 
 .card>div {
@@ -183,8 +184,9 @@ img[alt~="contain"]{
 
 
 .cardContentDown ul, .cardContentDown ol {
-	margin-top:0;
+	margin-top:0.45em;
 	padding-left: 25px;
+	margin-bottom:0.25em;
 }
 
 .card footer {
