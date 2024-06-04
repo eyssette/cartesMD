@@ -243,7 +243,7 @@ function createCards(cardsArray) {
 		const footer = card.footer == '' ? ''  : `<footer>${markdownToHTML(card.footer, true)}</footer>`;
 		const contentUp = (card.contentUp.startsWith('![')) ? markdownToHTML(card.contentUp, true) : markdownToHTML(card.contentUp);
 		const title = (card.title.includes('<br') && card.title.includes('<aside')) ? markdownToHTML(card.title.replace('<aside', '<aside style="float:none; position:absolute; width:200px; margin-top:-30px"'),true) : markdownToHTML(card.title, true);
-		const cardBack = card.backImageURL.length > 0 ?  `<section class="card cardBack"><img class="cardBackImage" alt="${card.backImageAlt}" src="${card.backImageURL}" /></section>` : `<section class="card cardBack" alt="${card.backImageAlt}"></section>`;
+		const cardBack = card.backImageURL.length > 0 ?  `<section class="card cardBack"><img class="cardBackImage" alt="${card.backImageAlt}" src="${card.backImageURL}" /></section>` : `<section class="card cardBack" alt="${card.backImageAlt}"><div class="cardBackImage"></div></section>`;
 
 		// TEMPLATE pour chaque carte
 		cardsHTML = cardsHTML + `
