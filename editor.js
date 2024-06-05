@@ -2,16 +2,17 @@ const highlightCode = (editor) => {
 	let code = editor.textContent;
 
 	// On autorise l'utilisation de balises HTML
-	code = code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+	code = code
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;");
 
 	// Coloration syntaxique pour les titres
-	code = code.replace(
-		/^(#{1,6}) +(.*)/gm, 
-		(match, p1, p2) => {
-			let level = p1.length;
-			return `<span class="markdownTitles h${level}">${p1} ${p2}</span>`;
-		}
-	);
+	code = code.replace(/^(#{1,6}) +(.*)/gm, (match, p1, p2) => {
+		let level = p1.length;
+		return `<span class="markdownTitles h${level}">${p1} ${p2}</span>`;
+	});
 
 	// Coloration syntaxique pour le texte en gras
 	code = code.replace(
@@ -43,16 +44,25 @@ const highlightCode = (editor) => {
 	);
 
 	// Coloration syntaxique pour les tags html
-	code = code.replace(/(&lt;aside&gt;)(.*?)(&lt;\/aside&gt;)/g,'<span class="markdownHTMLtag">$1</span><span class="markdownHTMLtagContent">$2</span><span class="markdownHTMLtag">$3</span>')
+	code = code.replace(
+		/(&lt;aside&gt;)(.*?)(&lt;\/aside&gt;)/g,
+		'<span class="markdownHTMLtag">$1</span><span class="markdownHTMLtagContent">$2</span><span class="markdownHTMLtag">$3</span>'
+	);
 
 	// Coloration syntaxique pour les commentaires html
-	code = code.replace(/(&lt;!--.*?--&gt;)/g,'<span class="markdownHTMLcomment">$1</span>')
+	code = code.replace(
+		/(&lt;!--.*?--&gt;)/g,
+		'<span class="markdownHTMLcomment">$1</span>'
+	);
 
 	// Coloration syntaxique pour les séparations
-	code = code.replaceAll('---','<span class="markdownSeparator">---</span>')
+	code = code.replaceAll("---", '<span class="markdownSeparator">---</span>');
 
 	// Coloration syntaxique pour le yaml
-	code = code.replace(/(card:|z1:|z2:|z3:|z4:|back:|backImage:|style:|maths:|theme:)/g,'<span class="markdownYAML">$1</span>')
+	code = code.replace(
+		/(card:|z1:|z2:|z3:|z4:|back:|backImage:|style:|maths:|theme:)/g,
+		'<span class="markdownYAML">$1</span>'
+	);
 
 	editor.innerHTML = code;
 };
@@ -63,32 +73,32 @@ const options = {
 	addClosing: false,
 	spellCheck: true,
 	preserveIdent: false,
-	tab: '\t',
+	tab: "\t",
 };
 
 let jar = CodeJar(editorElement, highlightCode, options);
 
-
 jar.updateCode(defaultMD);
-const firstParsedMD = parseMarkdown(defaultMD)
+const firstParsedMD = parseMarkdown(defaultMD);
 createCards(firstParsedMD);
 
-
-if(window.getMDpromise) {
+if (window.getMDpromise) {
 	window.getMDpromise.then(() => {
 		jar.updateCode(md);
-		if(md.includes('maths: true')) {
-			const splitMD = md.split('---').filter(element => element.length>0);
-			if(splitMD.length>0 && splitMD[0].includes('maths: true')) {
-				window.LatexReady=Promise.all([
+		if (md.includes("maths: true")) {
+			const splitMD = md.split("---").filter((element) => element.length > 0);
+			if (splitMD.length > 0 && splitMD[0].includes("maths: true")) {
+				window.LatexReady = Promise.all([
 					loadScript(
-						"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js","katexScript"
+						"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",
+						"katexScript"
 					),
 					loadCSS(
-						"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css","katexCSS"
+						"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css",
+						"katexCSS"
 					),
-				]).then(()=>{
-					const parsedMD = parseMarkdown(md)
+				]).then(() => {
+					const parsedMD = parseMarkdown(md);
 					createCards(parsedMD);
 					setTimeout(() => {
 						// Fix pour recalculer le textFit pour le Latex
@@ -97,17 +107,17 @@ if(window.getMDpromise) {
 				});
 			}
 		} else {
-			const parsedMD = parseMarkdown(md)
+			const parsedMD = parseMarkdown(md);
 			createCards(parsedMD);
-			if(md.includes('theme: ')) {
+			if (md.includes("theme: ")) {
 				setTimeout(() => {
 					// Fix pour recalculer le textFit en cas d'utilisation d'un thème
 					createCards(parsedMD);
 				}, 300);
 			}
 		}
-	})
-} 
+	});
+}
 
 function autoComplete(search, replace) {
 	const cursorPosition = jar.save();
@@ -125,24 +135,21 @@ function autoComplete(search, replace) {
 	}
 }
 
-
-const printButtonElement = document.getElementById('printButton')
-printButtonElement.addEventListener('click',(event) =>{
+const printButtonElement = document.getElementById("printButton");
+printButtonElement.addEventListener("click", (event) => {
 	event.preventDefault();
 	window.print();
-})
-const headerElement = document.getElementById('header')
-const toggleEditorElement = document.getElementById('toggleEditor')
+});
+const headerElement = document.getElementById("header");
+const toggleEditorElement = document.getElementById("toggleEditor");
 let showEditor = window.innerWidth > 500 ? true : false;
 const params = new URLSearchParams(document.location.search);
-const viewParam = parseInt(params.get("v"))
-		? parseInt(params.get("v"))
-		: 0;
-if(viewParam == 1) {
-	showEditor = false
+const viewParam = parseInt(params.get("v")) ? parseInt(params.get("v")) : 0;
+if (viewParam == 1) {
+	showEditor = false;
 }
 function showOrHideEditor() {
-	if(showEditor) {
+	if (showEditor) {
 		toggleEditorElement.textContent = "👓";
 		editorElement.style.display = "block";
 		contentElement.style.width = "50vw";
@@ -152,33 +159,33 @@ function showOrHideEditor() {
 	} else {
 		toggleEditorElement.textContent = "✒️";
 		editorElement.style.display = "none";
-		contentElement.style.width= window.innerWidth > 1500 ? "100%" : "120%";
+		contentElement.style.width = window.innerWidth > 1500 ? "100%" : "120%";
 		contentElement.style.marginLeft = "10px";
 		contentElement.style.paddingTop = "60px";
-		headerElement.style.cssText = "background-color: white;;border: 2px solid black;"
+		headerElement.style.cssText =
+			"background-color: white;;border: 2px solid black;";
 	}
 }
 showOrHideEditor();
 
-toggleEditorElement.addEventListener('click',(event) => {
+toggleEditorElement.addEventListener("click", (event) => {
 	event.preventDefault();
 	showEditor = showEditor ? false : true;
 	showOrHideEditor();
-})
-
+});
 
 document.body.addEventListener("keyup", (event) => {
 	// autoComplete("## Acq", "## Acquisition");
-	if(showEditor && event.key === "Escape") {
+	if (showEditor && event.key === "Escape") {
 		showEditor = showEditor ? false : true;
 		showOrHideEditor();
 	} else {
-		if(!showEditor && event.key === "e") {
+		if (!showEditor && event.key === "e") {
 			showEditor = showEditor ? false : true;
 			showOrHideEditor();
 			editorElement.focus();
 		} else {
-			if(showEditor) {
+			if (showEditor) {
 				const parsedMD = parseMarkdown(editorElement.textContent);
 				createCards(parsedMD);
 			}

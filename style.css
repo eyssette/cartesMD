@@ -1,5 +1,5 @@
 :root {
-	--cardFrontBackgroundColor: rgba(107,123,146,0.4);
+	--cardFrontBackgroundColor: rgba(107, 123, 146, 0.4);
 }
 
 body {
@@ -8,29 +8,29 @@ body {
 
 header {
 	position: fixed;
-	margin:0;
+	margin: 0;
 	margin-left: 50px;
-	display:flex;
+	display: flex;
 	flex-direction: row;
 	align-items: center;
 	z-index: 1;
-	padding:5px 20px;
+	padding: 5px 20px;
 }
 h1 {
-	margin:0;
+	margin: 0;
 }
 nav {
-	font-size:1.25em;
-	margin-left:70px;
+	font-size: 1.25em;
+	margin-left: 70px;
 }
 nav a {
 	text-decoration: none;
-	margin-left:0.5em;
+	margin-left: 0.5em;
 }
 
 #editor {
 	width: 30vw;
-	margin-top:50px;
+	margin-top: 50px;
 	margin-left: 50px;
 	margin-right: 50px;
 	color: black;
@@ -41,13 +41,13 @@ nav a {
 	font-size: 18px;
 	overflow-y: scroll;
 	height: 75vh;
-	position:fixed;
+	position: fixed;
 }
 #content {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	width: 50vw;
 	margin-left: 42vw;
-	display:flex;
+	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	gap: 20px;
@@ -56,28 +56,27 @@ nav a {
 @media screen and (max-width: 750px) {
 	#editor {
 		width: 85vw;
-		margin-top:20px;
-        margin-left: 5px;
-        margin-right: 5px;
-        margin-bottom: 20px;
-		padding-right:10px;
-		position:relative;
+		margin-top: 20px;
+		margin-left: 5px;
+		margin-right: 5px;
+		margin-bottom: 20px;
+		padding-right: 10px;
+		position: relative;
 	}
 	header {
-		position:relative;
-		margin-left:20px;
+		position: relative;
+		margin-left: 20px;
 	}
 	nav {
-		margin-left:30px;
+		margin-left: 30px;
 	}
 	#content {
-		margin:auto;
+		margin: auto;
 	}
-
 }
 
 .cardBackAndFront {
-	display:flex;
+	display: flex;
 	flex-wrap: wrap;
 }
 
@@ -87,56 +86,57 @@ nav a {
 	border: 3px solid #777589;
 	border-radius: 10px;
 	overflow: hidden;
-	background-color:  var(--cardFrontBackgroundColor);
+	background-color: var(--cardFrontBackgroundColor);
 }
 
-
-
-.card h2, .card h3 {
-	margin:0;
+.card h2,
+.card h3 {
+	margin: 0;
 	padding-left: 10px;
 	padding-right: 10px;
 }
 
-.card h2, .card h3 {
+.card h2,
+.card h3 {
 	text-align: center;
 	font-weight: bold;
 	display: flex;
-    align-items: center;
-    justify-content: center;
+	align-items: center;
+	justify-content: center;
 }
 
 .card h2 {
 	height: 32px;
-	padding-top:5px;
+	padding-top: 5px;
 }
 .card h3 {
 	height: 28px;
 	margin-top: -4px;
-    margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 .card h2 div {
-	width:100%;
+	width: 100%;
 }
 
-.card h2 aside, .card h3 aside {
+.card h2 aside,
+.card h3 aside {
 	float: right;
-	font-size:0.75em;
-	text-align:right;
+	font-size: 0.75em;
+	text-align: right;
 	font-weight: normal;
 	vertical-align: middle;
 	padding: 2px;
-	margin-left:1em;
+	margin-left: 1em;
 }
 
-.card>div {
-	margin:10px;
+.card > div {
+	margin: 10px;
 	background-color: white;
 	overflow: hidden;
-	display:flex;
+	display: flex;
 	flex-direction: column;
-    justify-content: center;
+	justify-content: center;
 }
 
 .cardContentUp {
@@ -147,78 +147,81 @@ nav a {
 }
 
 .cardContentUp img {
-	width:100%;
-	height:100%;
+	width: 100%;
+	height: 100%;
 	object-fit: cover;
 }
 
 .cardContentUp p {
-	padding:0 10px;
+	padding: 0 10px;
 }
 
-img[alt~="contain"]{
-	object-fit:contain!important
+img[alt~="contain"] {
+	object-fit: contain !important;
 }
 
 .cardContentDown {
-	margin: auto!important;
+	margin: auto !important;
 	width: 210px;
 	height: 130px;
-	font-size:14px;
+	font-size: 14px;
 	border-radius: 7px;
 }
 
 .cardContentDown p {
 	padding-left: 8px;
 	padding-right: 3px;
-	margin-top:8px;
-	margin-bottom:5px;
+	margin-top: 8px;
+	margin-bottom: 5px;
 }
 
 .cardContentDown pre {
 	font-size: 0.8em;
-	margin-top:0;
-	margin-left:10px;
+	margin-top: 0;
+	margin-left: 10px;
 	white-space: pre-line;
 }
 
-
-.cardContentDown ul, .cardContentDown ol {
-	margin-top:0.45em;
+.cardContentDown ul,
+.cardContentDown ol {
+	margin-top: 0.45em;
 	padding-left: 25px;
-	margin-bottom:0.25em;
+	margin-bottom: 0.25em;
 }
 
 .card footer {
 	font-size: 10px;
 	margin-right: 5px;
 	border-radius: 10px 0 0 0;
-    border-left: 2px solid var(--cardFrontBackgroundColor);
+	border-left: 2px solid var(--cardFrontBackgroundColor);
 	border-top: 2px solid var(--cardFrontBackgroundColor);
-    padding: 5px;
-    float: right;
-	margin-top:-24px;
+	padding: 5px;
+	float: right;
+	margin-top: -24px;
 }
 
 .cardBackImage {
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
-	background-color: transparent!important;
+	background-color: transparent !important;
 }
 
 .cardBackImage[src="back.png"] {
 	filter: brightness(1.15) grayscale(0.5);
 }
 
-.red .card, .rouge .card {
-	background-color:  #ca98989e;
+.red .card,
+.rouge .card {
+	background-color: #ca98989e;
 	border-color: #834b4b;
 }
-.red .cardBackImage[src="back.png"], .rouge .cardBackImage[src="back.png"]{
+.red .cardBackImage[src="back.png"],
+.rouge .cardBackImage[src="back.png"] {
 	filter: hue-rotate(125deg);
 }
-.red footer, .rouge footer {
+.red footer,
+.rouge footer {
 	border-left-color: #ca98989e;
 	border-top-color: #ca98989e;
 }
@@ -247,26 +250,32 @@ img[alt~="contain"]{
 	border-top-color: #cfb6e7;
 }
 
-.green .card, .vert .card {
+.green .card,
+.vert .card {
 	background-color: #bad0ba;
 	border-color: #4b7d4b;
 }
-.green .cardBackImage[src="back.png"], .vert .cardBackImage[src="back.png"] {
+.green .cardBackImage[src="back.png"],
+.vert .cardBackImage[src="back.png"] {
 	filter: hue-rotate(215deg);
 }
-.green footer, .vert footer {
+.green footer,
+.vert footer {
 	border-left-color: #bad0ba;
 	border-top-color: #bad0ba;
 }
 
-.blue .card, .bleu .card {
+.blue .card,
+.bleu .card {
 	background-color: #cce1f3;
 	border-color: #88a2b8;
 }
-.blue .cardBackImage[src="back.png"], .bleu .cardBackImage[src="back.png"] {
+.blue .cardBackImage[src="back.png"],
+.bleu .cardBackImage[src="back.png"] {
 	filter: grayscale(0);
 }
-.blue footer, .bleu footer {
+.blue footer,
+.bleu footer {
 	border-left-color: #cce1f3;
 	border-top-color: #cce1f3;
 }
@@ -275,62 +284,76 @@ a {
 	word-break: break-all;
 }
 
-
 mark {
 	background-color: #ffff6f;
 }
 
 .admonition {
 	border-radius: 5px;
-	padding:10px!important;
-	background-color: #EEE;
-	margin:10px;
+	padding: 10px !important;
+	background-color: #eee;
+	margin: 10px;
 }
 
-.admonition.info, .admonition.note, .admonition.spoiler {
+.admonition.info,
+.admonition.note,
+.admonition.spoiler {
 	background-color: rgb(194, 225, 235);
 }
-.admonition.tip, .admonition.success {
+.admonition.tip,
+.admonition.success {
 	background-color: rgb(207 235 194);
 }
-.admonition.warning, .admonition.danger, .admonition.bug {
+.admonition.warning,
+.admonition.danger,
+.admonition.bug {
 	background-color: rgb(241 200 200);
 }
 
 .admonitionContent {
-	font-size:0.95em;
+	font-size: 0.95em;
 }
 
 .admonitionTitle {
-	font-weight:bold;
-	font-size:0.9em;
+	font-weight: bold;
+	font-size: 0.9em;
 }
 
 .admonitionTitle:before {
 	font-weight: 300;
 	margin-right: 0.5em;
-	font-size:1.15em;
+	font-size: 1.15em;
 }
 
-.info .admonitionTitle, .note .admonitionTitle, .spoiler .admonitionTitle {
-	color:#0b0258;
+.info .admonitionTitle,
+.note .admonitionTitle,
+.spoiler .admonitionTitle {
+	color: #0b0258;
 }
-.info .admonitionTitle:before, .note .admonitionTitle:before, .spoiler .admonitionTitle:before {
-	content:"ℹ️";
+.info .admonitionTitle:before,
+.note .admonitionTitle:before,
+.spoiler .admonitionTitle:before {
+	content: "ℹ️";
 }
-.warning .admonitionTitle:before, .danger .admonitionTitle:before, .bug .admonitionTitle:before {
+.warning .admonitionTitle:before,
+.danger .admonitionTitle:before,
+.bug .admonitionTitle:before {
 	content: "⚠️";
 }
 
-.tip .admonitionTitle:before, .success .admonitionTitle:before {
+.tip .admonitionTitle:before,
+.success .admonitionTitle:before {
 	content: "💡";
 }
 
-.tip .admonitionTitle, .success .admonitionTitle {
-	color:#012e14;
+.tip .admonitionTitle,
+.success .admonitionTitle {
+	color: #012e14;
 }
-.warning .admonitionTitle, .danger .admonitionTitle, .bug .admonitionTitle {
-	color:#470302;
+.warning .admonitionTitle,
+.danger .admonitionTitle,
+.bug .admonitionTitle {
+	color: #470302;
 }
 
 .markdownTitles {
@@ -339,23 +362,23 @@ mark {
 
 .markdownTitles.h1 {
 	color: darkred;
-	font-size:1.2em;
+	font-size: 1.2em;
 	font-weight: bold;
 }
 .markdownTitles.h2 {
 	color: darkblue;
-	border-bottom:1px solid darkblue;
+	border-bottom: 1px solid darkblue;
 	font-weight: bold;
 }
 
 .markdownTitles.h3 {
 	font-weight: bold;
-	font-size:1em;
+	font-size: 1em;
 }
 
 .markdownTitles.h4 {
 	color: rgb(72, 0, 140);
-	font-size:0.9em;
+	font-size: 0.9em;
 }
 
 .markdownBold {
@@ -373,14 +396,15 @@ mark {
 }
 
 .markdownHTMLtag {
-	color: #377512!important;
+	color: #377512 !important;
 }
-.markdownHTMLtag, .markdownHTMLtagContent {
-	font-weight:normal;
+.markdownHTMLtag,
+.markdownHTMLtagContent {
+	font-weight: normal;
 }
 
 .markdownHTMLcomment {
-	color:#666;
+	color: #666;
 }
 
 .markdownSeparator {
@@ -388,25 +412,28 @@ mark {
 	font-weight: bold;
 }
 .markdownYAML {
-	color:darkgreen;
+	color: darkgreen;
 	font-weight: bold;
 }
 
 @media print {
 	@page {
-		size: A4 landscape!important;
-		margin: 20px!important;
+		size: A4 landscape !important;
+		margin: 20px !important;
 	}
 	body {
-		width: 100%!important;
-		height: 100%!important;
+		width: 100% !important;
+		height: 100% !important;
 	}
 	#content {
-		margin:10px!important;
-		width: 100%!important;
-		padding-top:0!important;
+		margin: 10px !important;
+		width: 100% !important;
+		padding-top: 0 !important;
 	}
-	h1, #editor, header, nav {
-		display:none!important;
+	h1,
+	#editor,
+	header,
+	nav {
+		display: none !important;
 	}
 }

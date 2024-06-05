@@ -1,5 +1,17 @@
 @import url(theme/z2small.css);
 
-.card{background-color:#91afc77a;border:2px solid #537895!important;}
-.cardBack{background:linear-gradient(to top, #083b81 0%, #afbdc8 99%)!important; display:flex; justify-content:center;}
-.cardBackImage{object-fit:contain; width:190px; background:transparent!important;margin-top:-20px}
+.card {
+	background-color: #91afc77a;
+	border: 2px solid #537895 !important;
+}
+.cardBack {
+	background: linear-gradient(to top, #083b81 0%, #afbdc8 99%) !important;
+	display: flex;
+	justify-content: center;
+}
+.cardBackImage {
+	object-fit: contain;
+	width: 190px;
+	background: transparent !important;
+	margin-top: -20px;
+}

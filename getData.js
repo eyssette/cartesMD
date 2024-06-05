@@ -167,17 +167,15 @@ Voici quelques exemples de cartes créées avec cartesMD !
 let md;
 
 // Raccourcis vers des cartes particulières
-const shortcuts = [
-	["shortcut","URL"]
-];
+const shortcuts = [["shortcut", "URL"]];
 
-const corsProxy = "https://corsproxy.io/?"
+const corsProxy = "https://corsproxy.io/?";
 
 function handleURL(url) {
 	if (url !== "") {
 		let addCorsProxy = true;
 		// Vérification de la présence d'un raccourci
-		shortcut = shortcuts.find(element => element[0]==url);
+		shortcut = shortcuts.find((element) => element[0] == url);
 		if (shortcut) {
 			url = shortcut[1];
 		}
@@ -191,20 +189,7 @@ function handleURL(url) {
 			url = url.replace("/blob/", "/");
 		}
 		// Gestion des fichiers hébergés sur codiMD
-		if (
-			url.startsWith("https://codimd") &&
-			url.indexOf("download") === -1
-		) {
-			addCorsProxy = false;
-			url =
-				url.replace("?edit", "").replace("?both", "").replace("?view", "").replace(/#$/,"") +
-				"/download";
-		}
-		// Gestion des fichiers hébergés via Hedgedoc
-		if (
-			url.includes("hedgedoc") &&
-			url.indexOf("download") === -1
-		) {
+		if (url.startsWith("https://codimd") && url.indexOf("download") === -1) {
 			addCorsProxy = false;
 			url =
 				url
@@ -213,18 +198,26 @@ function handleURL(url) {
 					.replace("?view", "")
 					.replace(/#$/, "") + "/download";
 		}
-		url = addCorsProxy ? corsProxy + url: url;
+		// Gestion des fichiers hébergés via Hedgedoc
+		if (url.includes("hedgedoc") && url.indexOf("download") === -1) {
+			addCorsProxy = false;
+			url =
+				url
+					.replace("?edit", "")
+					.replace("?both", "")
+					.replace("?view", "")
+					.replace(/#$/, "") + "/download";
+		}
+		url = addCorsProxy ? corsProxy + url : url;
 	}
 	return url;
 }
-
-
 
 function getMarkdownContent() {
 	// Récupération du markdown externe
 	const url = window.location.hash.substring(1); // Récupère l'URL du hashtag sans le #
 	if (url !== "") {
-		const urlMD = handleURL(url)
+		const urlMD = handleURL(url);
 		// Récupération du contenu du fichier
 		window.getMDpromise = fetch(urlMD)
 			.then((response) => response.text())
@@ -233,7 +226,7 @@ function getMarkdownContent() {
 			})
 			.catch((error) => console.error(error));
 	} else {
-		md = defaultMD
+		md = defaultMD;
 	}
 }
 
