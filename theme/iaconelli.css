@@ -1,0 +1,25 @@
+.cardContentUp {
+	height: 140px;
+	margin-top: 2px !important;
+}
+h3 {
+	margin-top: 10px !important;
+}
+.cardContentDown {
+	height: 114px;
+	text-align: center;
+}
+.cardBackImage {
+	background: url("https://lmdbt.fr/LogoHQ.png");
+	background-size: 140% 100%;
+	background-repeat: no-repeat;
+	margin: 0 !important;
+	background-position-x: -30px !important;
+}
+.katex-display {
+	margin: 0em !important;
+}
+.textFitted {
+	width: 100% !important;
+	height: 100% !important;
+}
