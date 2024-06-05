@@ -99,11 +99,13 @@ function parseMarkdown(string) {
 				// Gestion des styles personnalisés
 				if (property == 'theme') {
 					// Possibilité d'utiliser un thème pour les cartes
-					CSSfile  = yamlData[property]
+					const CSSfile  = yamlData[property]
 					if(themes.includes(CSSfile)) {
 						theme = true;
+						let themeURL = "theme/"+CSSfile;
+						themeURL = window.location.origin == "file://" ? 'https://cartesmd.forge.apps.education.fr/'+themeURL : themeURL;
 						fetch(
-								"theme/"+CSSfile
+								themeURL
 							).then((response) => response.text())
 							.then((data) => {
 								styleTheme.textContent = data
