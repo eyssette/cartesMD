@@ -157,6 +157,8 @@ const shortcuts = [
 	["shortcut","URL"]
 ];
 
+const corsProxy = "https://corsproxy.io/?"
+
 function handleURL(url) {
 	if (url !== "") {
 		let addCorsProxy = true;
