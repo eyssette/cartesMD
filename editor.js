@@ -76,6 +76,7 @@ createCards(firstParsedMD);
 
 if(window.getMDpromise) {
 	window.getMDpromise.then(() => {
+		jar.updateCode(md);
 		if(md.includes('maths: true')) {
 			const splitMD = md.split('---').filter(element => element.length>0);
 			if(splitMD.length>0 && splitMD[0].includes('maths: true')) {
@@ -87,7 +88,6 @@ if(window.getMDpromise) {
 						"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css","katexCSS"
 					),
 				]).then(()=>{
-					jar.updateCode(md);
 					const parsedMD = parseMarkdown(md)
 					createCards(parsedMD);
 					setTimeout(() => {
