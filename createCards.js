@@ -60,6 +60,7 @@ function convertLatexExpressions(string) {
 let yamlMaths;
 
 function parseMarkdown(string) {
+	const styleTheme = document.getElementById('styleTheme');
 	const styleCardElement = document.getElementById('styleCard');
 	const styleZ1element = document.getElementById('styleZ1');
 	const styleZ2element = document.getElementById('styleZ2');
@@ -81,6 +82,7 @@ function parseMarkdown(string) {
 	if(string.startsWith('---') && stringSplit.length > 2) {
 		try {
 			yamlData = jsyaml.load(stringSplit[1]);
+			let theme = false;
 			for (const property in yamlData) {
 				if (property == "maths") {
 					yamlMaths = yamlData[property];
@@ -99,13 +101,19 @@ function parseMarkdown(string) {
 					// Possibilité d'utiliser un thème pour les cartes
 					CSSfile  = yamlData[property]
 					if(themes.includes(CSSfile)) {
+						theme = true;
 						fetch(
 								"theme/"+CSSfile
 							).then((response) => response.text())
 							.then((data) => {
-								styleOtherElement.textContent = styleOtherElement.textContent + '\n' + data
+								styleTheme.textContent = data
 							})
-							.catch((error) => console.error(error));
+							.catch((error) => {
+								styleTheme.textContent = '';
+								console.error(error)}
+							);
+					} else {
+						styleTheme.textContent = '';
 					}
 				}
 				if (property == 'card') {
@@ -132,6 +140,9 @@ function parseMarkdown(string) {
 				if (property == 'style') {
 					styleOtherElement.textContent = yamlData[property].replaceAll("\\","");
 				}
+			}
+			if(!theme) {
+				styleTheme.textContent = '';
 			}
 		} catch (e) {}
 		stringSplit.shift();
