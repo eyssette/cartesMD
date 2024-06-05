@@ -90,6 +90,10 @@ if(window.getMDpromise) {
 					jar.updateCode(md);
 					const parsedMD = parseMarkdown(md)
 					createCards(parsedMD);
+					setTimeout(() => {
+						// Fix pour recalculer le textFit pour le Latex
+						createCards(parsedMD);
+					}, 100);
 				});
 			}
 		} else {
