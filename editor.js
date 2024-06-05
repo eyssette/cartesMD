@@ -81,10 +81,10 @@ if(window.getMDpromise) {
 			if(splitMD.length>0 && splitMD[0].includes('maths: true')) {
 				window.LatexReady=Promise.all([
 					loadScript(
-						"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+						"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js","katexScript"
 					),
 					loadCSS(
-						"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+						"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css","katexCSS"
 					),
 				]).then(()=>{
 					jar.updateCode(md);

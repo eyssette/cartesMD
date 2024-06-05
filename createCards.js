@@ -1,23 +1,31 @@
-function loadScript(src) {
+function loadScript(src,name) {
 	// Fonction pour charger des scripts
-	return new Promise((resolve, reject) => {
-		const script = document.createElement("script");
-		script.src = src;
-		script.onload = resolve;
-		script.onerror = reject;
-		document.head.appendChild(script);
-	});
+	alreadyLoaded = document.querySelector('.'+name)
+	if(!alreadyLoaded) {
+		return new Promise((resolve, reject) => {
+			const script = document.createElement("script");
+			script.src = src;
+			script.className = name;
+			script.onload = resolve;
+			script.onerror = reject;
+			document.head.appendChild(script);
+		});
+	}
 }
-function loadCSS(src) {
+function loadCSS(src,name) {
 	// Fonction pour charger des CSS
-	return new Promise((resolve, reject) => {
-		const styleElement = document.createElement("link");
-		styleElement.href = src;
-		styleElement.rel = "stylesheet";
-		styleElement.onload = resolve;
-		styleElement.onerror = reject;
-		document.head.appendChild(styleElement);
-	});
+	alreadyLoaded = document.querySelector('.'+name)
+	if(!alreadyLoaded) {
+		return new Promise((resolve, reject) => {
+			const styleElement = document.createElement("link");
+			styleElement.href = src;
+			styleElement.className = name;
+			styleElement.rel = "stylesheet";
+			styleElement.onload = resolve;
+			styleElement.onerror = reject;
+			document.head.appendChild(styleElement);
+		});
+	}
 }
 
 function convertLatexExpressions(string) {
@@ -74,6 +82,14 @@ function parseMarkdown(string) {
 				if (property == "maths") {
 					yamlMaths = yamlData[property];
 					// On gère le chargement de la librairie pour gérer Latex dans editor.js
+					Promise.all([
+						loadScript(
+							"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js","katexScript"
+						),
+						loadCSS(
+							"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css","katexCSS"
+						)
+					])
 				}
 				// Gestion des styles personnalisés
 				if (property == 'card') {
