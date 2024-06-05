@@ -59,19 +59,31 @@ function convertLatexExpressions(string) {
 
 let yamlMaths;
 
-function parseMarkdown(string) {
-	const styleTheme = document.getElementById("styleTheme");
-	const customStyles = document.getElementById("customStyles");
+// On vérifie que le nom du fichier correspond bien à l'un des thèmes CSS
+const themes = [
+	"iaconelli.css",
+	"z2small.css",
+	"z2small-bluegradient-withlogo.css",
+];
 
+// On définit des propriétés utilisables dans le yaml pour customiser les styles CSS
+const styleMapping = {
+	card: '.card',
+	z1: 'h2',
+	z2: '.cardContentUp',
+	z3: 'h3',
+	z4: '.cardContentDown',
+	back: '.cardBack',
+	backImage: '.cardBackImage',
+	style: ''
+  };
+
+const styleTheme = document.getElementById("styleTheme");
+const customStyles = document.getElementById("customStyles");
+
+function parseMarkdown(string) {
 	// On permet l'interprétation du Markdown à l'intérieur des balises div
 	string = string.replaceAll(/\<div.*?\>/g, '<div markdown="1">');
-
-	// On vérifie que le nom du fichier correspond bien à l'un des thèmes CSS
-	const themes = [
-		"iaconelli.css",
-		"z2small.css",
-		"z2small-bluegradient-withlogo.css",
-	];
 
 	let cardsArray = [];
 	string = string.replace(/^# (.*)/, "");
@@ -80,15 +92,15 @@ function parseMarkdown(string) {
 	if (string.startsWith("---") && stringSplit.length > 2) {
 		try {
 			yamlData = jsyaml.load(stringSplit[1]);
-			let theme = false;
-			customStylesCSS += yamlData.card ? '.card{'+yamlData.card.replaceAll("\\","")+'}' : '';
-			customStylesCSS +=  yamlData.z1 ? 'h2{'+yamlData.z1.replaceAll("\\","")+'}' : '';
-			customStylesCSS +=  yamlData.z2 ? ".cardContentUp{" + yamlData.z2.replaceAll("\\", "") + "}" : "" ;
-			customStylesCSS +=  yamlData.z3 ? "h3{" + yamlData.z3.replaceAll("\\", "") + "}" : "";
-			customStylesCSS +=  yamlData.z4 ? ".cardContentDown{" + yamlData.z4.replaceAll("\\", "") + "}" : "";
-			customStylesCSS +=  yamlData.back ? ".cardBack{" + yamlData.back.replaceAll("\\", "") + "}" : "";
-			customStylesCSS +=  yamlData.backImage ? ".cardBackImage{" + yamlData.backImage.replaceAll("\\", "") + "}" : "";
-			customStylesCSS +=  yamlData.style ? yamlData.style.replaceAll("\\","") : "";
+			let theme = false;			
+			for (const [key, selector] of Object.entries(styleMapping)) {
+				if (yamlData[key]) {
+					const styleContent = yamlData[key].replaceAll("\\", "");
+					customStylesCSS += selector
+						? `${selector}{${styleContent}}`
+						: styleContent;
+				}
+			}
 
 			if (yamlData.maths) {
 				yamlMaths = yamlData.maths;
@@ -143,6 +155,7 @@ function parseMarkdown(string) {
 		}
 	}
 
+	
 	stringSplit.forEach((stringCard) => {
 		stringCard = yamlMaths ? convertLatexExpressions(stringCard) : stringCard;
 		let cardObject = {};
