@@ -74,7 +74,7 @@ function parseMarkdown(string) {
 	string = string.replaceAll(/\<div.*?\>/g, '<div markdown="1">');
 
 	// On vérifie que le nom du fichier correspond bien à l'un des thèmes CSS
-	const themes = ['iaconelli.css']
+	const themes = ['iaconelli.css','z2small.css']
 
 	let cardsArray = [];
 	string = string.replace(/^# (.*)/,'')
