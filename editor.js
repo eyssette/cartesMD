@@ -76,9 +76,26 @@ createCards(firstParsedMD);
 
 if(window.getMDpromise) {
 	window.getMDpromise.then(() => {
-		jar.updateCode(md);
-		const parsedMD = parseMarkdown(md)
-		createCards(parsedMD);
+		if(md.includes('maths: true')) {
+			const splitMD = md.split('---').filter(element => element.length>0);
+			if(splitMD.length>0 && splitMD[0].includes('maths: true')) {
+				window.LatexReady=Promise.all([
+					loadScript(
+						"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+					),
+					loadCSS(
+						"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+					),
+				]).then(()=>{
+					jar.updateCode(md);
+					const parsedMD = parseMarkdown(md)
+					createCards(parsedMD);
+				});
+			}
+		} else {
+			const parsedMD = parseMarkdown(md)
+			createCards(parsedMD);
+		}
 	})
 } 
 
@@ -151,8 +168,10 @@ document.body.addEventListener("keyup", (event) => {
 			showOrHideEditor();
 			editorElement.focus();
 		} else {
-			const parsedMD = parseMarkdown(editorElement.textContent);
-			createCards(parsedMD);
+			if(showEditor) {
+				const parsedMD = parseMarkdown(editorElement.textContent);
+				createCards(parsedMD);
+			}
 		}
 	}
 });

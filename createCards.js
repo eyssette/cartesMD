@@ -73,16 +73,7 @@ function parseMarkdown(string) {
 			for (const property in yamlData) {
 				if (property == "maths") {
 					yamlMaths = yamlData[property];
-					if (yamlMaths === true) {
-						Promise.all([
-							loadScript(
-								"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
-							),
-							loadCSS(
-								"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
-							),
-						]);
-					}
+					// On gère le chargement de la librairie pour gérer Latex dans editor.js
 				}
 				// Gestion des styles personnalisés
 				if (property == 'card') {
