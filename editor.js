@@ -52,7 +52,7 @@ const highlightCode = (editor) => {
 	code = code.replaceAll('---','<span class="markdownSeparator">---</span>')
 
 	// Coloration syntaxique pour le yaml
-	code = code.replace(/(card:|z1:|z2:|z3:|z4:|back:|backImage:|style:|maths:)/g,'<span class="markdownYAML">$1</span>')
+	code = code.replace(/(card:|z1:|z2:|z3:|z4:|back:|backImage:|style:|maths:|theme:)/g,'<span class="markdownYAML">$1</span>')
 
 	editor.innerHTML = code;
 };
