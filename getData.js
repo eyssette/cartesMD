@@ -104,7 +104,7 @@ On peut utiliser ou non le dernier titre, de niveau 4, pour mettre le numéro de
 ## Platon <aside>428-348</aside>
 - ![rouge](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Plato_Pio-Clemetino_Inv305.jpg/395px-Plato_Pio-Clemetino_Inv305.jpg)
 
-![object-position: 0 -20px](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Danaides_Waterhouse_1903.jpg/423px-Danaides_Waterhouse_1903.jpg)
+![object-position: 0 60px](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Danaides_Waterhouse_1903.jpg/423px-Danaides_Waterhouse_1903.jpg)
 
 
 ### Philosophie antique <aside>Athènes</aside>
