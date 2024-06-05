@@ -72,6 +72,9 @@ function parseMarkdown(string) {
 	// On permet l'interprétation du Markdown à l'intérieur des balises div
 	string = string.replaceAll(/\<div.*?\>/g, '<div markdown="1">');
 
+	// On vérifie que le nom du fichier correspond bien à l'un des thèmes CSS
+	const themes = ['iaconelli.css']
+
 	let cardsArray = [];
 	string = string.replace(/^# (.*)/,'')
 	stringSplit = string.split('---');
@@ -92,6 +95,19 @@ function parseMarkdown(string) {
 					])
 				}
 				// Gestion des styles personnalisés
+				if (property == 'theme') {
+					// Possibilité d'utiliser un thème pour les cartes
+					CSSfile  = yamlData[property]
+					if(themes.includes(CSSfile)) {
+						fetch(
+								"theme/"+CSSfile
+							).then((response) => response.text())
+							.then((data) => {
+								styleOtherElement.textContent = styleOtherElement.textContent + '\n' + data
+							})
+							.catch((error) => console.error(error));
+					}
+				}
 				if (property == 'card') {
 					styleCardElement.textContent = '.card{'+yamlData[property].replaceAll("\\","")+'}';
 				}
