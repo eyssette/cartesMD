@@ -61,14 +61,7 @@ let yamlMaths;
 
 function parseMarkdown(string) {
 	const styleTheme = document.getElementById("styleTheme");
-	const styleCardElement = document.getElementById("styleCard");
-	const styleZ1element = document.getElementById("styleZ1");
-	const styleZ2element = document.getElementById("styleZ2");
-	const styleZ3element = document.getElementById("styleZ3");
-	const styleZ4element = document.getElementById("styleZ4");
-	const styleBackElement = document.getElementById("styleBack");
-	const styleBackImageElement = document.getElementById("styleBackImage");
-	const styleOtherElement = document.getElementById("styleOther");
+	const customStyles = document.getElementById("customStyles");
 
 	// On permet l'interprétation du Markdown à l'intérieur des balises div
 	string = string.replaceAll(/\<div.*?\>/g, '<div markdown="1">');
@@ -83,90 +76,71 @@ function parseMarkdown(string) {
 	let cardsArray = [];
 	string = string.replace(/^# (.*)/, "");
 	stringSplit = string.split("---");
+	let customStylesCSS = "";
 	if (string.startsWith("---") && stringSplit.length > 2) {
 		try {
 			yamlData = jsyaml.load(stringSplit[1]);
 			let theme = false;
-			for (const property in yamlData) {
-				if (property == "maths") {
-					yamlMaths = yamlData[property];
-					// On gère le chargement de la librairie pour gérer Latex dans editor.js
-					Promise.all([
-						loadScript(
-							"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",
-							"katexScript"
-						),
-						loadCSS(
-							"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css",
-							"katexCSS"
-						),
-					]);
-				}
-				// Gestion des styles personnalisés
-				if (property == "theme") {
-					// Possibilité d'utiliser un thème pour les cartes
-					const CSSfile = yamlData[property];
-					if (themes.includes(CSSfile)) {
-						theme = true;
-						let themeURL = "theme/" + CSSfile;
-						themeURL =
-							window.location.origin == "file://"
-								? "https://cartesmd.forge.apps.education.fr/" + themeURL
-								: themeURL;
-						fetch(themeURL)
-							.then((response) => response.text())
-							.then((data) => {
-								styleTheme.textContent = data;
-							})
-							.catch((error) => {
-								styleTheme.textContent = "";
-								console.error(error);
-							});
-					} else {
-						styleTheme.textContent = "";
-					}
-				}
-				if (property == "card") {
-					styleCardElement.textContent =
-						".card{" + yamlData[property].replaceAll("\\", "") + "}";
-				}
-				if (property == "z1") {
-					styleZ1element.textContent =
-						"h2{" + yamlData[property].replaceAll("\\", "") + "}";
-				}
-				if (property == "z2") {
-					styleZ2element.textContent =
-						".cardContentUp{" + yamlData[property].replaceAll("\\", "") + "}";
-				}
-				if (property == "z3") {
-					styleZ3element.textContent =
-						"h3{" + yamlData[property].replaceAll("\\", "") + "}";
-				}
-				if (property == "z4") {
-					styleZ4element.textContent =
-						".cardContentDown{" + yamlData[property].replaceAll("\\", "") + "}";
-				}
-				if (property == "back") {
-					styleBackElement.textContent =
-						".cardBack{" + yamlData[property].replaceAll("\\", "") + "}";
-				}
-				if (property == "backImage") {
-					styleBackImageElement.textContent =
-						".cardBackImage{" + yamlData[property].replaceAll("\\", "") + "}";
-				}
-				if (property == "style") {
-					styleOtherElement.textContent = yamlData[property].replaceAll(
-						"\\",
-						""
-					);
-				}
+			customStylesCSS += yamlData.card ? '.card{'+yamlData.card.replaceAll("\\","")+'}' : '';
+			customStylesCSS +=  yamlData.z1 ? 'h2{'+yamlData.z1.replaceAll("\\","")+'}' : '';
+			customStylesCSS +=  yamlData.z2 ? ".cardContentUp{" + yamlData.z2.replaceAll("\\", "") + "}" : "" ;
+			customStylesCSS +=  yamlData.z3 ? "h3{" + yamlData.z3.replaceAll("\\", "") + "}" : "";
+			customStylesCSS +=  yamlData.z4 ? ".cardContentDown{" + yamlData.z4.replaceAll("\\", "") + "}" : "";
+			customStylesCSS +=  yamlData.back ? ".cardBack{" + yamlData.back.replaceAll("\\", "") + "}" : "";
+			customStylesCSS +=  yamlData.backImage ? ".cardBackImage{" + yamlData.backImage.replaceAll("\\", "") + "}" : "";
+			customStylesCSS +=  yamlData.style ? yamlData.style.replaceAll("\\","") : "";
+
+			if (yamlData.maths) {
+				yamlMaths = yamlData.maths;
+				// On gère le chargement de la librairie pour gérer Latex dans editor.js
+				Promise.all([
+					loadScript(
+						"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",
+						"katexScript"
+					),
+					loadCSS(
+						"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css",
+						"katexCSS"
+					),
+				]);
 			}
-			if (!theme) {
+			// Gestion des styles personnalisés
+			if (yamlData.theme) {
+				// Possibilité d'utiliser un thème pour les cartes
+				const CSSfile = yamlData.theme;
+				if (themes.includes(CSSfile)) {
+					theme = true;
+					let themeURL = "theme/" + CSSfile;
+					themeURL =
+						window.location.origin == "file://"
+							? "https://cartesmd.forge.apps.education.fr/" + themeURL
+							: themeURL;
+					fetch(themeURL)
+						.then((response) => response.text())
+						.then((data) => {
+							styleTheme.textContent = data;
+						})
+						.catch((error) => {
+							styleTheme.textContent = "";
+							console.error(error);
+						});
+				} else {
+					styleTheme.textContent = "";
+				}
+			} else {
 				styleTheme.textContent = "";
 			}
 		} catch (e) {}
+		customStyles.textContent = customStylesCSS;
 		stringSplit.shift();
 		stringSplit.shift();
+	} else {
+		if(styleTheme) {
+			styleTheme.textContent = "";
+		}
+		if(customStyles) {
+			customStyles.textContent="";
+		}
 	}
 
 	stringSplit.forEach((stringCard) => {
