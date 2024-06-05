@@ -99,6 +99,12 @@ if(window.getMDpromise) {
 		} else {
 			const parsedMD = parseMarkdown(md)
 			createCards(parsedMD);
+			if(md.includes('theme: ')) {
+				setTimeout(() => {
+					// Fix pour recalculer le textFit en cas d'utilisation d'un thème
+					createCards(parsedMD);
+				}, 300);
+			}
 		}
 	})
 } 
