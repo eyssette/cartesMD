@@ -15,17 +15,50 @@ header {
 	align-items: center;
 	z-index: 1;
 	padding: 5px 20px;
+	width:fit-content;
 }
 h1 {
 	margin: 0;
 }
 nav {
 	font-size: 1.25em;
-	margin-left: 70px;
+	margin-left: 100px;
+}
+@media screen and (max-width: 1100px) {
+	nav {
+		margin-left:-20px;
+	}
 }
 nav a {
 	text-decoration: none;
 	margin-left: 0.5em;
+}
+nav ul {
+	margin:0;
+	list-style-type: none;
+}
+nav ul li {
+	display:inline-block;
+}
+[data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.7s;
+    visibility: visible;
+}
+[data-title]:after {
+	content: attr(data-title);
+	position: absolute;
+	top: 45px;
+	left: 10vw;
+	color:black;
+	background-color: white;
+	border:1px black solid;
+	padding: 5px 10px;
+	word-break:keep-all;
+	width:165px;
+	height:fit-content;
+	visibility: hidden;
+	opacity:1;
 }
 
 #editor {

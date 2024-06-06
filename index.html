@@ -16,9 +16,19 @@
 
 	<header id="header">
 		<h1>CartesMD</h1>
-		<nav>
-			<a href="" id="toggleEditor">👓</a>
-			<a href="" id="printButton">🖨️</a>
+		<nav aria-label="Menu">
+			<ul>
+				<li>
+					<a href="#" id="toggleEditor" data-title="Raccourci clavier : 'Escape' pour masquer l'éditeur / 'E' pour l'afficher">
+						<span role="img" aria-label="Afficher ou masquer l'éditeur de cartes">👓</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" id="printButton" data-title="Raccourci clavier : 'Ctrl+P'">
+						<span role="img" aria-label="Imprimer les cartes">🖨️</span>
+					</a>
+				</li>
+			</ul>
 		</nav>
 	</header>
 
