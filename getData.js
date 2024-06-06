@@ -188,25 +188,14 @@ function handleURL(url) {
 			);
 			url = url.replace("/blob/", "/");
 		}
-		// Gestion des fichiers hébergés sur codiMD
-		if (url.startsWith("https://codimd") && url.indexOf("download") === -1) {
+		// gestion des fichiers hébergés sur codiMD / hedgedoc / digipage
+		if (
+			(url.startsWith("https://codimd") || url.includes("hedgedoc") || url.includes("digipage") )
+		) {
 			addCorsProxy = false;
 			url =
-				url
-					.replace("?edit", "")
-					.replace("?both", "")
-					.replace("?view", "")
-					.replace(/#$/, "") + "/download";
-		}
-		// Gestion des fichiers hébergés via Hedgedoc
-		if (url.includes("hedgedoc") && url.indexOf("download") === -1) {
-			addCorsProxy = false;
-			url =
-				url
-					.replace("?edit", "")
-					.replace("?both", "")
-					.replace("?view", "")
-					.replace(/#$/, "") + "/download";
+				url.replace("?edit", "").replace("?both", "").replace("?view", "").replace(/#$/,"").replace(/\/$/,'');
+			url = url.indexOf("download") === -1 ? url + "/download" : url;
 		}
 		url = addCorsProxy ? corsProxy + url : url;
 	}
