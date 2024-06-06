@@ -270,7 +270,7 @@ const showdownExtensionHighlight = {
 	replace: "<mark>$1</mark>",
 };
 
-// Gestion du markdown dans les réponses du chatbot
+// Gestion du markdown
 const converter = new showdown.Converter({
 	emoji: true,
 	parseImgDimensions: true,
@@ -291,6 +291,17 @@ function markdownToHTML(text, inline = false) {
 	}
 	return html;
 }
+
+const colorWords = [
+	"blue",
+	"bleu",
+	"violet",
+	"vert",
+	"green",
+	"orange",
+	"rouge",
+	"red",
+];
 
 function createCards(cardsArray) {
 	cardsHTML = "";
@@ -335,17 +346,6 @@ function createCards(cardsArray) {
 	});
 
 	contentElement.innerHTML = cardsHTML;
-
-	colorWords = [
-		"blue",
-		"bleu",
-		"violet",
-		"vert",
-		"green",
-		"orange",
-		"rouge",
-		"red",
-	];
 
 	function removeWords(string, wordsToRemove) {
 		return string
