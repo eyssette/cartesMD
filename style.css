@@ -449,6 +449,14 @@ mark {
 	font-weight: bold;
 }
 
+.hideMenu header {
+	display:none;
+}
+.hideMenu #content {
+	padding-top:10px!important;
+	justify-content: center!important;
+}
+
 @media print {
 	@page {
 		size: A4 landscape !important;

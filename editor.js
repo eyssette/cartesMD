@@ -145,7 +145,12 @@ const toggleEditorElement = document.getElementById("toggleEditor");
 let showEditor = window.innerWidth > 500 ? true : false;
 const params = new URLSearchParams(document.location.search);
 const viewParam = parseInt(params.get("v")) ? parseInt(params.get("v")) : 0;
+const menuParam = parseInt(params.get("m")) ? parseInt(params.get("m")) : 0;
 if (viewParam == 1) {
+	showEditor = false;
+}
+if (menuParam == 0) {
+	document.body.classList.add("hideMenu");
 	showEditor = false;
 }
 function showOrHideEditor() {
@@ -176,6 +181,7 @@ toggleEditorElement.addEventListener("click", (event) => {
 
 document.body.addEventListener("keyup", (event) => {
 	// autoComplete("## Acq", "## Acquisition");
+	document.body.classList.remove("hideMenu");
 	if (showEditor && event.key === "Escape") {
 		showEditor = showEditor ? false : true;
 		showOrHideEditor();
@@ -185,6 +191,9 @@ document.body.addEventListener("keyup", (event) => {
 			showOrHideEditor();
 			editorElement.focus();
 		} else {
+			if (!showEditor && event.key === "m") {
+				document.body.classList.add("hideMenu");
+			}
 			if (showEditor) {
 				const parsedMD = parseMarkdown(editorElement.textContent);
 				createCards(parsedMD);
