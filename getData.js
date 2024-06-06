@@ -134,7 +134,7 @@ https://cartesmd.forge.apps.education.fr/#URL
 ---
 
 ## Usages plus avancés
-- ![violet background: linear-gradient(#EEE, darkviolet);]()
+- ![violet background: linear-gradient(#EEE, darkviolet 180%);]()
 
 On peut aussi utiliser l'en-tête _YAML_ pour ajouter des styles en CSS
 
@@ -162,6 +162,38 @@ Voici quelques exemples de cartes créées avec cartesMD !
 
 <span style="font-size:0.8em">Le paramètre \`?v=1\` dans l'URL permet de cacher l'éditeur pour afficher les cartes en plus grand.</span>
 
+---
+
+## Les thèmes
+- ![green background:linear-gradient(white,green 160%]()
+
+
+Si veut faire plusieurs modifications de style pour ses cartes, cela vaut le coup d'utiliser ou de créer un thème.
+
+### Comment faire ?
+
+Pour utiliser un thème, il faut indiquer son nom dans le _yaml_. Par exemple :
+
+\`\`\`
+theme: iaconelli.css
+\`\`\`
+
+Les thèmes disponibles sont présents dans le [dossier “thème”](https://forge.apps.education.fr/cartesmd/cartesMD.forge.apps.education.fr/-/tree/main/theme) de CartesMD.
+
+N'hésitez pas à m'envoyer vos propositions de thèmes !
+
+---
+
+## Contribuer
+- ![orange background:linear-gradient(white,orange 150%)]()
+
+Vous pouvez m'envoyer vos demandes d'évolution de l'outil, n'hésitez pas !
+
+### Comment faire ?
+
+Vous pouvez me contacter sur les [réseaux sociaux](https://eyssette.forge.apps.education.fr).
+
+De préférence, merci <br>d'utiliser les [“tickets”](https://forge.apps.education.fr/cartesmd/cartesMD.forge.apps.education.fr/-/issues)  sur LaForgeEdu (vous pouvez aussi [envoyer un mail](mailto:forge-apps+guichet+cartesmd-cartesmd-forge-apps-education-fr-1275-issue-@phm.education.gouv.fr))
 `;
 
 let md;
