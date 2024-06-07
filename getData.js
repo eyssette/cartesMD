@@ -119,13 +119,17 @@ On peut ajouter une image dans le cadre du haut et la repositionner en CSS en ut
 
 <!-- On peut ne pas mettre d'image de fond -->
 
-On peut aussi utiliser CodiMD pour conserver la source de ses cartes
+[CodiMD](https://codimd.apps.education.fr/) sur le portail AppsEdu permet de conserver la source de ses cartes et de les partager.
 
-### Gestion plus facile !
+On peut alors modifier la source sans modifier le lien de partage.
 
-On pourra alors facilement conserver ses cartes, et les partager à l'adresse suivante&nbsp;:
-https://cartesmd.forge.apps.education.fr/#URL
-(en remplaçant URL <br>par l'URL du fichier CodiMD)
+### Partager ses cartes
+
+On copie l'URL de son fichier et les cartes seront visibles à l'adresse suivante :
+https://cartesmd.forge.apps.education.fr/#URLduFICHIER
+
+D'autres éditeurs sont pris en charge :
+[Hedgedoc](https://demo.hedgedoc.org/), [Digipage](https://digipage.app/). Les élèves peuvent les utiliser sans créer de comptes.
 
 
 ---
