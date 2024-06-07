@@ -46,7 +46,10 @@ h3 {
 	width: 70vw !important;
 }
 @media print {
+	@page {
+		size: A4 portrait !important;
+	}
 	#content {
-		width: 100%!important;
+		width: 100% !important;
 	}
 }
