@@ -81,6 +81,7 @@ const styleMapping = {
 
 const styleTheme = document.getElementById("styleTheme");
 const customStyles = document.getElementById("customStyles");
+let yamlData
 
 function parseMarkdown(string) {
 	// On permet l'interprétation du Markdown à l'intérieur des balises div
@@ -371,13 +372,11 @@ function createCards(cardsArray) {
 	const z2Elements = document.querySelectorAll(".cardContentUp");
 	const z3Elements = document.querySelectorAll("h3");
 	const z4Elements = document.querySelectorAll(".cardContentDown");
-	textFit(z1Elements, { multiLine: true, maxFontSize: 18 });
-	textFit(z2Elements, { multiLine: true, maxFontSize: 16, minFontSize: 7.75 });
-	textFit(z3Elements, { multiLine: true, maxFontSize: 18 });
+	textFit(z1Elements, { multiLine: true });
+	textFit(z2Elements, { multiLine: true, minFontSize: 7.75 });
+	textFit(z3Elements, { multiLine: true });
 	textFit(z4Elements, {
 		multiLine: true,
-		maxFontSize: 16,
-		minFontSize: 7.75,
-		multiLine: true,
+		minFontSize: 7.75
 	});
 }
