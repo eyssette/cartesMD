@@ -64,6 +64,7 @@ const themes = [
 	"iaconelli.css",
 	"z2small.css",
 	"z2small-bluegradient-withlogo.css",
+	"flashcard.css"
 ];
 
 // On définit des propriétés utilisables dans le yaml pour customiser les styles CSS
