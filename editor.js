@@ -185,6 +185,7 @@ document.body.addEventListener("dblclick", (event) => {
 		selectedCardNumber = selectedCard.id.replace('card-','');
 		markdownSelectedCard = markdownTitles[selectedCardNumber-1];
 		showEditor = true;
+		document.body.classList.remove("hideMenu");
 		showOrHideEditor();
 		markdownSelectedCard.scrollIntoView();
 	};
