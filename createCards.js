@@ -120,7 +120,8 @@ function parseMarkdown(string) {
 			// Gestion des styles personnalisés
 			if (yamlData.theme) {
 				// Possibilité d'utiliser un thème pour les cartes
-				const CSSfile = yamlData.theme;
+				const themeName = yamlData.theme.trim();
+				const CSSfile = themeName.endsWith('.css') ? themeName : themeName+'.css';
 				if (themes.includes(CSSfile)) {
 					theme = true;
 					let themeURL = "theme/" + CSSfile;
