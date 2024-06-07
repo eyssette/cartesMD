@@ -24,33 +24,16 @@ On peut écrire son texte directement dans l'interface.
 
 ---
 
-
-## Thème <br>& image de fond
-- ![bleu](back.png)
-
-On peut choisir la couleur de la carte en l'indiquant dans le texte “_alt_” de l'image de fond.
-
-### Personnalisation possible !
-
-On peut changer l'image de fond en mettant l'URL d'une autre image.
-
-#### 1
-
-
----
-
-## Le Markdown
+## Modifier les cartes
 - ![violet](back.png)
 
-On peut utiliser **toute** la syntaxe _Markdown_.
+==Double-cliquez== sur une carte pour la modifier dans l'éditeur à gauche.
+
+On peut utiliser ++toute++ la syntaxe _Markdown_. 
 
 ### Pratique & efficace !
 
-On peut notamment :
-- ==surligner==, ++souligner++
-- faire des listes …
-
-CartesMD calcule automatique-<br>ment la taille de la police pour rester dans le cadre.
+CartesMD calcule automatiquement la taille de police optimale pour rester dans le cadre !
 
 ---
 ## Balises HTML
@@ -69,6 +52,20 @@ maths: true
 \`\`\`
 
 #### :mag:
+
+---
+
+
+## Thème <br>& image de fond
+- ![bleu](back.png)
+
+On peut choisir la couleur de la carte en l'indiquant dans le texte “_alt_” de l'image de fond.
+
+### Personnalisation possible !
+
+On peut changer l'image de fond en mettant l'URL d'une autre image.
+
+#### 1
 
 
 ---
@@ -160,7 +157,7 @@ Voici quelques exemples de cartes créées avec cartesMD !
 - Des cartes à utiliser en formation <br>sur la méthode [ABC Learning Design](https://cartesmd.forge.apps.education.fr/?v=1#https://codimd.apps.education.fr/i2r_yoH8R_aLcEJhCNAYow)
 - Des cartes pour réviser les <br>[périmètres & aires](https://cartesmd.forge.apps.education.fr/?v=1#https://codimd.apps.education.fr/l-ZZhrUlTMCHpJpm2kJ_AA) en collège <br>(créées par Cyril Iaconelli)
 
-<span style="font-size:0.8em">Le paramètre \`?v=1\` dans l'URL permet de cacher l'éditeur pour afficher les cartes en plus grand.</span>
+<span style="font-size:0.8em">Ajoutez \`?e=0\` dans l'URL pour cacher l'éditeur <br>\`?m=0\` pour cacher le menu</span>
 
 ---
 
