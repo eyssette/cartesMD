@@ -145,11 +145,11 @@ const toggleEditorElement = document.getElementById("toggleEditor");
 let showEditor = window.innerWidth > 500 ? true : false;
 const params = new URLSearchParams(document.location.search);
 const viewParam = parseInt(params.get("v")) ? parseInt(params.get("v")) : 0;
-const menuParam =  typeof(params.get("m")) === "string" && parseInt(params.get("m")) ? parseInt(params.get("m")) : 0;
+const menuParam = params.get("m") == "0" ? 0 : 1;
 if (viewParam == 1) {
 	showEditor = false;
 }
-if (menuParam && menuParam === 0) {
+if (menuParam == 0) {
 	document.body.classList.add("hideMenu");
 	showEditor = false;
 }
