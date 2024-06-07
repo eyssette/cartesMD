@@ -10,26 +10,30 @@ h2 {
 }
 .cardContentUp {
 	width: 310px !important;
-	margin: 20px auto !important;
 	height: 130px !important;
-	border: 1px solid black;
-	border-radius: 0;
+	margin: 20px auto !important;
+	border: none;
+}
+.cardContentUp ul {
+	margin-left: -10px !important;
+	margin-right: 10px;
 }
 h3 {
-	width: 310px;
 	position: absolute;
+	width: 310px;
 	margin-left: 350px !important;
-	z-index: 2;
 	margin-top: -220px !important;
+	z-index: 2;
 }
 .cardContentDown {
-	width: 320px;
 	position: absolute;
+	width: 300px;
+	height: 152px;
 	margin-left: 355px !important;
-	z-index: 1;
 	margin-top: -180px !important;
-	height: 160px;
-	border: 1px black solid;
+	border: none;
+	padding: 9px 10px;
+	z-index: 1;
 }
 .cardBackImage {
 	display: none;
@@ -37,9 +41,9 @@ h3 {
 .card footer {
 	position: absolute;
 	width: 325px;
-	text-align: right !important;
 	margin-top: -212px !important;
 	border: none !important;
+	text-align: right !important;
 	font-size: 0.7em !important;
 }
 #content {
