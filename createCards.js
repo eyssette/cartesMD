@@ -305,6 +305,7 @@ const colorWords = [
 
 function createCards(cardsArray) {
 	cardsHTML = "";
+	let cardNumber = 1;
 	cardsArray.forEach((card) => {
 		const footer =
 			card.footer == ""
@@ -332,7 +333,7 @@ function createCards(cardsArray) {
 		cardsHTML =
 			cardsHTML +
 			`
-		<div class="cardBackAndFront ${card.backImageAlt}">
+		<div class="cardBackAndFront ${card.backImageAlt}" id="card-${cardNumber}">
 			<section class="card cardFront">
 				<h2 class="cardTitle"><span>${title}</span></h2>
 				<div class="cardContentUp">${contentUp}</div>
@@ -343,6 +344,7 @@ function createCards(cardsArray) {
 			${cardBack}
 		</div>
 		`;
+		cardNumber++;
 	});
 
 	contentElement.innerHTML = cardsHTML;

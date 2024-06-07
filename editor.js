@@ -173,6 +173,19 @@ function showOrHideEditor() {
 }
 showOrHideEditor();
 
+
+// Double clic pour focaliser l'éditeur sur la carte sur laquelle on a cliqué
+document.body.addEventListener("dblclick", (event) => {
+	const markdownTitles = document.querySelectorAll(".markdownTitles.h2");
+	let currentElement = event.target;
+	let selectedCard = currentElement.closest('.cardBackAndFront');
+	if(selectedCard) {
+		selectedCardNumber = selectedCard.id.replace('card-','');
+		markdownSelectedCard = markdownTitles[selectedCardNumber-1];
+		markdownSelectedCard.scrollIntoView();
+	};
+})
+
 toggleEditorElement.addEventListener("click", (event) => {
 	event.preventDefault();
 	showEditor = showEditor ? false : true;
