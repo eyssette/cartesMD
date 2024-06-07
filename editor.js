@@ -184,6 +184,8 @@ document.body.addEventListener("dblclick", (event) => {
 	if(selectedCard) {
 		selectedCardNumber = selectedCard.id.replace('card-','');
 		markdownSelectedCard = markdownTitles[selectedCardNumber-1];
+		showEditor = true;
+		showOrHideEditor();
 		markdownSelectedCard.scrollIntoView();
 	};
 })
