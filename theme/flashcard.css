@@ -1,0 +1,52 @@
+.card {
+	width: 340px;
+	height: 220px;
+}
+h2 {
+	color: white !important;
+	background-color: rgba(0, 0, 0, 0.6);
+	margin: 10px 60px !important;
+	padding-bottom: 5px !important;
+}
+.cardContentUp {
+	width: 310px !important;
+	margin: 20px auto !important;
+	height: 130px !important;
+	border: 1px solid black;
+	border-radius: 0;
+}
+h3 {
+	width: 310px;
+	position: absolute;
+	margin-left: 350px !important;
+	z-index: 2;
+	margin-top: -220px !important;
+}
+.cardContentDown {
+	width: 320px;
+	position: absolute;
+	margin-left: 355px !important;
+	z-index: 1;
+	margin-top: -180px !important;
+	height: 160px;
+	border: 1px black solid;
+}
+.cardBackImage {
+	display: none;
+}
+.card footer {
+	position: absolute;
+	width: 325px;
+	text-align: right !important;
+	margin-top: -212px !important;
+	border: none !important;
+	font-size: 0.7em !important;
+}
+#content {
+	width: 70vw !important;
+}
+@media print {
+	#content {
+		width: 100%!important;
+	}
+}
