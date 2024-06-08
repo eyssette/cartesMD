@@ -199,6 +199,7 @@ toggleEditorElement.addEventListener("click", (event) => {
 
 
 // Bouton pour changer l'orientation et créer des cartes ou des flashcards
+let lastTheme = '';
 const orientationButtonElement = document.getElementById("orientationButton");
 orientationButtonElement.addEventListener("click", (event) => {
 	const splittedContent = editorElement.textContent.split('---')
@@ -206,13 +207,18 @@ orientationButtonElement.addEventListener("click", (event) => {
 		const yamlPart = splittedContent[1];
 		if(!yamlPart.includes('theme: flashcard')) {
 			if(yamlPart.includes('theme: ')) {
-				splittedContent[1] = splittedContent[1].replace(/theme: (.*)/, 'theme: flashcard').replaceAll('\n\n','\n')
+				splittedContent[1] = splittedContent[1].replace(/theme: (.*)/, function (match, v1) {
+					if(v1) {
+						lastTheme = v1;
+					}
+					return 'theme: flashcard';
+				}).replaceAll('\n\n','\n')
 			} else {
 				splittedContent[1] = splittedContent[1]+'\ntheme: flashcard\n';
 				splittedContent[1] = splittedContent[1].replaceAll('\n\n','\n');
 			}
 		} else {
-			splittedContent[1] = splittedContent[1].replace('theme: flashcard', '').replaceAll('\n\n','\n')
+			splittedContent[1] = splittedContent[1].replace('theme: flashcard', lastTheme.length>0 ? 'theme: '+lastTheme : '').replaceAll('\n\n','\n')
 		}
 		if (splittedContent[1].trim().length == 0) {
 			splittedContent.shift();
@@ -221,10 +227,18 @@ orientationButtonElement.addEventListener("click", (event) => {
 		jar.updateCode(splittedContent.join('---').trim());
 		const parsedMD = parseMarkdown(editorElement.textContent);
 		createCards(parsedMD);
+		setTimeout(() => {
+			// Fix pour recalculer le textFit
+			createCards(parsedMD);
+		}, 100);
 	} else {
 		jar.updateCode('---\ntheme: flashcard\n---\n\n'+editorElement.textContent);
 		const parsedMD = parseMarkdown(editorElement.textContent);
 		createCards(parsedMD);
+		setTimeout(() => {
+			// Fix pour recalculer le textFit
+			createCards(parsedMD);
+		}, 100);
 	}
 })
 
