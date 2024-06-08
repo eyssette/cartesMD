@@ -28,6 +28,9 @@ nav {
 	nav {
 		margin-left:-20px;
 	}
+	body #content {
+		width:90vw!important;
+	}
 }
 nav a {
 	text-decoration: none;
@@ -103,8 +106,10 @@ nav ul li {
 	nav {
 		margin-left: 30px;
 	}
-	#content {
+	body #content {
 		margin: auto;
+		margin-left:0!important;
+		width: 190vw!important;
 	}
 }
 
