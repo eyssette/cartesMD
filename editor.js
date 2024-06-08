@@ -197,24 +197,59 @@ toggleEditorElement.addEventListener("click", (event) => {
 	showOrHideEditor();
 });
 
-document.body.addEventListener("keyup", (event) => {
-	// autoComplete("## Acq", "## Acquisition");
-	document.body.classList.remove("hideMenu");
-	if (showEditor && event.key === "Escape") {
-		showEditor = showEditor ? false : true;
-		showOrHideEditor();
+
+// Bouton pour changer l'orientation et créer des cartes ou des flashcards
+const orientationButtonElement = document.getElementById("orientationButton");
+orientationButtonElement.addEventListener("click", (event) => {
+	const splittedContent = editorElement.textContent.split('---')
+	if(editorElement.textContent.startsWith('---') && splittedContent.length > 2) {
+		const yamlPart = splittedContent[1];
+		if(!yamlPart.includes('theme: flashcard')) {
+			if(yamlPart.includes('theme: ')) {
+				splittedContent[1] = splittedContent[1].replace(/theme: (.*)/, 'theme: flashcard').replaceAll('\n\n','\n')
+			} else {
+				splittedContent[1] = splittedContent[1]+'\ntheme: flashcard\n';
+				splittedContent[1] = splittedContent[1].replaceAll('\n\n','\n');
+			}
+		} else {
+			splittedContent[1] = splittedContent[1].replace('theme: flashcard', '').replaceAll('\n\n','\n')
+		}
+		if (splittedContent[1].trim().length == 0) {
+			splittedContent.shift();
+			splittedContent.shift();
+		}
+		jar.updateCode(splittedContent.join('---').trim());
+		const parsedMD = parseMarkdown(editorElement.textContent);
+		createCards(parsedMD);
 	} else {
-		if (!showEditor && event.key === "e") {
+		jar.updateCode('---\ntheme: flashcard\n---\n\n'+editorElement.textContent);
+		const parsedMD = parseMarkdown(editorElement.textContent);
+		createCards(parsedMD);
+	}
+})
+
+// Gestion des raccourcis clavier
+document.body.addEventListener("keyup", (event) => {
+	if (event.ctrlKey && event.shiftKey && event.key === 'O') {
+		orientationButtonElement.click();
+	} else {
+		document.body.classList.remove("hideMenu");
+		if (showEditor && event.key === "Escape") {
 			showEditor = showEditor ? false : true;
 			showOrHideEditor();
-			editorElement.focus();
 		} else {
-			if (!showEditor && event.key === "m") {
-				document.body.classList.add("hideMenu");
-			}
-			if (showEditor) {
-				const parsedMD = parseMarkdown(editorElement.textContent);
-				createCards(parsedMD);
+			if (!showEditor && event.key === "e") {
+				showEditor = showEditor ? false : true;
+				showOrHideEditor();
+				editorElement.focus();
+			} else {
+				if (!showEditor && event.key === "m") {
+					document.body.classList.add("hideMenu");
+				}
+				if (showEditor) {
+					const parsedMD = parseMarkdown(editorElement.textContent);
+					createCards(parsedMD);
+				}
 			}
 		}
 	}
