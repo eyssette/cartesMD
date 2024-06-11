@@ -331,12 +331,15 @@ function createCards(cardsArray) {
 			card.backImageURL.length > 0
 				? `<section class="card cardBack"><img class="cardBackImage" alt="${card.backImageAlt}" src="${card.backImageURL}" /></section>`
 				: `<section class="card cardBack" alt="${card.backImageAlt}"><div class="cardBackImage"></div></section>`;
+		const color = card.backImageAlt.split(" ")
+		.filter((word) => colorWords.includes(word))
+		.join(" ");
 
 		// TEMPLATE pour chaque carte
 		cardsHTML =
 			cardsHTML +
 			`
-		<div class="cardBackAndFront ${card.backImageAlt}" id="card-${cardNumber}">
+		<div class="cardBackAndFront${color.length>0 ? ' '+color : ''}" id="card-${cardNumber}">
 			<section class="card cardFront">
 				<h2 class="cardTitle"><span>${title}</span></h2>
 				<div class="cardContentUp">${contentUp}</div>
