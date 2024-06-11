@@ -218,7 +218,7 @@ orientationButtonElement.addEventListener("click", (event) => {
 				splittedContent[1] = splittedContent[1].replaceAll('\n\n','\n');
 			}
 		} else {
-			splittedContent[1] = splittedContent[1].replace('theme: flashcard', lastTheme.length>0 ? 'theme: '+lastTheme : '').replaceAll('\n\n','\n')
+			splittedContent[1] = splittedContent[1].replace(/theme: flashcard.*/, lastTheme.length>0 ? 'theme: '+lastTheme : '').replaceAll('\n\n','\n')
 		}
 		if (splittedContent[1].trim().length == 0) {
 			splittedContent.shift();
