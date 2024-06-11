@@ -127,7 +127,7 @@ function parseMarkdown(string) {
 					theme = true;
 					let themeURL = "theme/" + CSSfile;
 					themeURL =
-						window.location.origin == "file://"
+						window.location.href.includes("file://")
 							? "https://cartesmd.forge.apps.education.fr/" + themeURL
 							: themeURL;
 					fetch(themeURL)
