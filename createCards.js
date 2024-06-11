@@ -81,7 +81,7 @@ const styleMapping = {
 
 const styleTheme = document.getElementById("styleTheme");
 const customStyles = document.getElementById("customStyles");
-let yamlData
+let yamlData;
 
 function parseMarkdown(string) {
 	// On permet l'interprétation du Markdown à l'intérieur des balises div
@@ -134,16 +134,20 @@ function parseMarkdown(string) {
 						.then((response) => response.text())
 						.then((data) => {
 							styleTheme.textContent = data;
+							document.body.className = CSSfile.replace('.css','');
 						})
 						.catch((error) => {
 							styleTheme.textContent = "";
+							document.body.className = "";
 							console.error(error);
 						});
 				} else {
 					styleTheme.textContent = "";
+					document.body.className = "";
 				}
 			} else {
 				styleTheme.textContent = "";
+				document.body.className = "";
 			}
 		} catch (e) {}
 		customStyles.textContent = customStylesCSS;
