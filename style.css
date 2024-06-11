@@ -116,6 +116,7 @@ nav ul li {
 .cardBackAndFront {
 	display: flex;
 	flex-wrap: wrap;
+	position:relative;
 }
 
 .card {
@@ -482,8 +483,14 @@ mark {
 	nav {
 		display: none !important;
 	}
-	.cardBackAndFront, .card{
+	.cardBackAndFront, .card, div, span, p{
 		page-break-inside: avoid!important;
 		break-inside: avoid!important;
+	}
+	.flashcard #content {
+		display:block;
+	}
+	.flashcard .cardBackAndFront {
+		margin:20px;
 	}
 }
