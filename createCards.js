@@ -154,6 +154,7 @@ function parseMarkdown(string) {
 		stringSplit.shift();
 		stringSplit.shift();
 	} else {
+		document.body.className = "";
 		if(styleTheme) {
 			styleTheme.textContent = "";
 		}
