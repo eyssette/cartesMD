@@ -260,11 +260,35 @@ document.body.addEventListener("keyup", (event) => {
 				if (!showEditor && event.key === "m") {
 					document.body.classList.add("hideMenu");
 				}
-				if (showEditor) {
-					const parsedMD = parseMarkdown(editorElement.textContent);
-					createCards(parsedMD);
-				}
 			}
 		}
+	}
+});
+
+// Fonction debounce pour gérer l'update des cards avec un délai
+function debounce(func, wait) {
+	let timeout;
+	return function(...args) {
+		const later = () => {
+			clearTimeout(timeout);
+			func(...args);
+		};
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+	};
+}
+
+// Fonction pour mettre à jour les cartes
+function updateCards() {
+	const parsedMD = parseMarkdown(editorElement.textContent);
+	createCards(parsedMD);
+}
+
+// Utiliser debounce pour appeler updateCards avec un délai afin d'éviter un lag dans le cas d'un document long
+const debouncedUpdateCards = debounce(updateCards, 300);
+
+editorElement.addEventListener("keyup", () => {
+	if (showEditor) {
+		debouncedUpdateCards();
 	}
 });
