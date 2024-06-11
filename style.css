@@ -498,10 +498,10 @@ mark {
 	.cardBackAndFront {
 		margin-bottom: 20px !important;
 	}
-	.flashcard #content {
+	.theme-flashcard #content {
 		columns: 1;
 	}
-	.flashcard .cardBackAndFront {
+	.theme-flashcard .cardBackAndFront {
 		margin: 20px;
 	}
 }

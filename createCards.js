@@ -135,27 +135,27 @@ function parseMarkdown(string) {
 						.then((response) => response.text())
 						.then((data) => {
 							styleTheme.textContent = data;
-							document.body.className = CSSfile.replace('.css','');
+							document.body.className = document.body.className + " theme-"+CSSfile.replace('.css','');
 						})
 						.catch((error) => {
 							styleTheme.textContent = "";
-							document.body.className = "";
+							document.body.className = document.body.className.replace(/theme-.*/,'');
 							console.error(error);
 						});
 				} else {
 					styleTheme.textContent = "";
-					document.body.className = "";
+					document.body.className = document.body.className.replace(/theme-.*/,'');
 				}
 			} else {
 				styleTheme.textContent = "";
-				document.body.className = "";
+				document.body.className = document.body.className.replace(/theme-.*/,'');
 			}
 		} catch (e) {}
 		customStyles.textContent = customStylesCSS;
 		stringSplit.shift();
 		stringSplit.shift();
 	} else {
-		document.body.className = "";
+		document.body.className = document.body.className.replace(/theme-.*/,'');
 		if(styleTheme) {
 			styleTheme.textContent = "";
 		}
