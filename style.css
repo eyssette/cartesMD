@@ -15,7 +15,7 @@ header {
 	align-items: center;
 	z-index: 3;
 	padding: 5px 20px;
-	width:fit-content;
+	width: fit-content;
 }
 h1 {
 	margin: 0;
@@ -26,10 +26,10 @@ nav {
 }
 @media screen and (max-width: 1100px) {
 	nav {
-		margin-left:-20px;
+		margin-left: -20px;
 	}
 	body #content {
-		width:90vw!important;
+		width: 90vw !important;
 	}
 }
 nav a {
@@ -37,31 +37,31 @@ nav a {
 	margin-left: 0.5em;
 }
 nav ul {
-	margin:0;
+	margin: 0;
 	list-style-type: none;
 }
 nav ul li {
-	display:inline-block;
+	display: inline-block;
 }
 [data-title]:hover:after {
-    opacity: 1;
-    transition: all 0.1s ease 0.7s;
-    visibility: visible;
+	opacity: 1;
+	transition: all 0.1s ease 0.7s;
+	visibility: visible;
 }
 [data-title]:after {
 	content: attr(data-title);
 	position: absolute;
 	top: 45px;
 	left: 10vw;
-	color:black;
+	color: black;
 	background-color: white;
-	border:1px black solid;
+	border: 1px black solid;
 	padding: 5px 10px;
-	word-break:keep-all;
-	width:165px;
-	height:fit-content;
+	word-break: keep-all;
+	width: 165px;
+	height: fit-content;
 	visibility: hidden;
-	opacity:1;
+	opacity: 1;
 }
 
 #editor {
@@ -108,15 +108,15 @@ nav ul li {
 	}
 	body #content {
 		margin: auto;
-		margin-left:0!important;
-		width: 190vw!important;
+		margin-left: 0 !important;
+		width: 190vw !important;
 	}
 }
 
 .cardBackAndFront {
 	display: flex;
 	flex-wrap: wrap;
-	position:relative;
+	position: relative;
 }
 
 .card {
@@ -456,11 +456,11 @@ mark {
 }
 
 .hideMenu header {
-	display:none;
+	display: none;
 }
 .hideMenu #content {
-	padding-top:10px!important;
-	justify-content: center!important;
+	padding-top: 10px !important;
+	justify-content: center !important;
 }
 
 @media print {
@@ -483,14 +483,25 @@ mark {
 	nav {
 		display: none !important;
 	}
-	.cardBackAndFront, .card, div, span, p{
-		page-break-inside: avoid!important;
-		break-inside: avoid!important;
+	.cardBackAndFront,
+	.card,
+	div,
+	span,
+	p {
+		page-break-inside: avoid !important;
+		break-inside: avoid !important;
+	}
+	#content {
+		display: block !important;
+		columns: 2;
+	}
+	.cardBackAndFront {
+		margin-bottom: 20px !important;
 	}
 	.flashcard #content {
-		display:block;
+		columns: 1;
 	}
 	.flashcard .cardBackAndFront {
-		margin:20px;
+		margin: 20px;
 	}
 }
