@@ -184,6 +184,18 @@ Les thèmes disponibles sont présents dans le [dossier “thème”](https://fo
 N'hésitez pas à m'envoyer vos propositions de thèmes !
 
 ---
+## Faire des flashcards
+- ![rouge]()
+
+Il suffit de cliquer sur le bouton 🔄 pour activer le thème \`flashcard\`.
+
+### Un modèle encore plus simple
+
+On peut aussi utiliser le thème \`flashcard-simple\` pour utiliser seulement le titre 2 pour la question et la suite pour le contenu.
+
+Voici un exemple de [flashcards en Histoire-Géographie](https://cartesmd.forge.apps.education.fr/#https://codimd.apps.education.fr/eW4UTUncQ3ue56D9ThaZUg) avec ce thème.
+
+---
 
 ## Contribuer
 - ![orange background:linear-gradient(white,orange 150%)]()
