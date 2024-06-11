@@ -158,7 +158,7 @@ Voici quelques exemples de cartes créées avec cartesMD !
 
 ### 😮
 
-- Des cartes à utiliser en formation <br>sur la méthode [ABC Learning Design](https://cartesmd.forge.apps.education.fr/?e=0#https://codimd.apps.education.fr/i2r_yoH8R_aLcEJhCNAYow)
+- Des cartes à utiliser en formation <br>sur la méthode [ABC Learning <br>Design](https://cartesmd.forge.apps.education.fr/?e=0#https://codimd.apps.education.fr/i2r_yoH8R_aLcEJhCNAYow)
 - Des cartes pour réviser les <br>[périmètres & aires](https://cartesmd.forge.apps.education.fr/?e=0#https://codimd.apps.education.fr/l-ZZhrUlTMCHpJpm2kJ_AA) en collège <br>(créées par Cyril Iaconelli)
 
 <span style="font-size:0.8em">Ajoutez \`?e=0\` dans l'URL pour cacher l'éditeur <br>\`?m=0\` pour cacher le menu</span>
@@ -193,7 +193,7 @@ Il suffit de cliquer sur le bouton 🔄 pour activer le thème \`flashcard\`.
 
 On peut aussi utiliser le thème \`flashcard-simple\` pour utiliser seulement le titre 2 pour la question et la suite pour le contenu.
 
-Voici un exemple de [flashcards en Histoire-Géographie](https://cartesmd.forge.apps.education.fr/#https://codimd.apps.education.fr/eW4UTUncQ3ue56D9ThaZUg) avec ce thème.
+Voici un exemple de [flashcards en <br>Histoire-Géographie](https://cartesmd.forge.apps.education.fr/#https://codimd.apps.education.fr/eW4UTUncQ3ue56D9ThaZUg) avec ce thème.
 
 ---
 
