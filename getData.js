@@ -193,7 +193,7 @@ Il suffit de cliquer sur le bouton 🔄 pour activer le thème \`flashcard\`.
 
 On peut aussi utiliser le thème \`flashcard-simple\` pour utiliser seulement le titre 2 pour la question et la suite pour le contenu.
 
-Voici un exemple de [flashcards en <br>Histoire-Géographie](https://cartesmd.forge.apps.education.fr/#https://codimd.apps.education.fr/eW4UTUncQ3ue56D9ThaZUg) avec ce thème.
+Voici un exemple de [flashcards en <br>Histoire-Géographie](https://cartesmd.forge.apps.education.fr/#https://codimd.apps.education.fr/eW4UTUncQ3ue56D9ThaZUg) avec ce thème  (cartes créées par Françoise Vaillant)
 
 ---
 
