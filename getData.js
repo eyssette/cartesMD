@@ -242,8 +242,9 @@ function handleURL(url) {
 				url.replace("?edit", "").replace("?both", "").replace("?view", "").replace(/#$/,"").replace(/\/$/,'');
 			url = url.indexOf("download") === -1 ? url + "/download" : url;
 		}
-		// gestion des fichiers hébergés sur framapad
-		if (url.includes('framapad') && !url.endsWith('/export/txt')) {
+		// gestion des fichiers hébergés sur framapad ou digidoc
+		if ((url.includes("framapad") || url.includes("digidoc")) && !url.endsWith("/export/txt")) {
+			addCorsProxy = false;
 			url = url.replace(/\?.*/,'') + '/export/txt';
 		}
 		url = addCorsProxy ? corsProxy + url : url;
