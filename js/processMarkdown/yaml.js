@@ -1,4 +1,4 @@
-import jsYaml from "../externals/js-yaml.js";
+import { load as loadYAML } from "../externals/js-yaml.js";
 import { loadScript, loadCSS } from "../utils";
 import { CSSthemes } from "../config.js";
 
@@ -23,7 +23,7 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 	let customStylesCSS = "";
 	if (markdownContent.startsWith("---") && markdownContentSplitted.length > 2) {
 		try {
-			yaml = jsYaml.load(markdownContentSplitted[1]);
+			yaml = loadYAML(markdownContentSplitted[1]);
 			// let theme = false;
 			for (const [key, selector] of Object.entries(styleMapping)) {
 				if (yaml[key]) {
