@@ -7,6 +7,7 @@ import { updateEditorContent } from "../ui/editor/updateEditorContent";
 import { initializeMenu } from "../ui/menu/initializeMenu";
 import { handleEvents } from "../ui/events/handleEvents";
 import { params } from "../ui/params";
+import { changeImageFormatIfError } from "../ui/changeImageFormatIfError";
 
 let md = defaultMD;
 
@@ -34,6 +35,7 @@ export function getDataAndStartCreatingCards() {
 				initializeMenu(editorElement);
 				const cardsData = parseMarkdown(md);
 				createCards(cardsData);
+				changeImageFormatIfError();
 				handleEvents(editorElement);
 				params(editorElement);
 				alert(
@@ -47,6 +49,7 @@ export function getDataAndStartCreatingCards() {
 		initializeMenu(editorElement);
 		const cardsData = parseMarkdown(md);
 		createCards(cardsData);
+		changeImageFormatIfError();
 		handleEvents(editorElement);
 		params(editorElement);
 	}

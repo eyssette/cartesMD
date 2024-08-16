@@ -104,9 +104,9 @@ On peut utiliser ou non le dernier titre, de niveau 4, pour mettre le numéro de
 
 ## Platon <aside>428-348</aside>
 
-- ![rouge](img/Platon.jpg)
+- ![rouge](img/Platon.avif)
 
-![object-position: 0 60px](img/danaides.jpg)
+![object-position: 0 60px](img/danaides.avif)
 
 ### Philosophie antique <aside>Athènes</aside>
 
