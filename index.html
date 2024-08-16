@@ -7,8 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description"
 		content="Un outil libre et gratuit pour créer facilement des cartes à jouer et de les imprimer à partir d'un simple texte en Markdown. Outil créé par Cédric Eyssette et disponible sur LaForgeÉdu.">
-	<script src="scripts/codejar.min.js"></script>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/styles.min.css">
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
@@ -19,7 +18,8 @@
 		<nav aria-label="Menu">
 			<ul>
 				<li>
-					<a href="#" id="toggleEditor" data-title="Raccourci clavier : 'Escape' pour masquer l'éditeur / 'E' pour l'afficher">
+					<a href="#" id="toggleEditor"
+						data-title="Raccourci clavier : 'Escape' pour masquer l'éditeur / 'E' pour l'afficher">
 						<span role="img" aria-label="Afficher ou masquer l'éditeur de cartes">👓</span>
 					</a>
 				</li>
@@ -29,7 +29,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#" id="orientationButton" data-title="Raccourci clavier : 'Ctrl + Shift + O'">
+					<a href="#" id="orientationButton" data-title="Raccourci clavier : 'Ctrl + Shift + Alt + O'">
 						<span role="img" aria-label="Changer l'orientation pour créer des cartes ou des flashcards">🔄</span>
 					</a>
 				</li>
@@ -43,12 +43,7 @@
 	</main>
 	<style id="styleTheme"></style>
 	<style id="customStyles"></style>
-	<script src="scripts/js-yaml.min.js"></script>
-	<script src="scripts/showdown.min.js"></script>
-	<script src="scripts/textfit.min.js"></script>
-	<script src="createCards.js"></script>
-	<script src="getData.js" charset="utf-8"></script>
-	<script src="editor.js" charset="utf-8"></script>
+	<script src="script.min.js"></script>
 </body>
 
 </html>

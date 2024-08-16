@@ -58,7 +58,7 @@ nav ul li {
 	border: 1px black solid;
 	padding: 5px 10px;
 	word-break: keep-all;
-	width: 165px;
+	width: 180px;
 	height: fit-content;
 	visibility: hidden;
 	opacity: 1;
@@ -498,10 +498,12 @@ mark {
 	.cardBackAndFront {
 		margin-bottom: 20px !important;
 	}
-	.theme-flashcard #content, .theme-flashcard-simple #content {
+	.theme-flashcard #content,
+	.theme-flashcard-simple #content {
 		columns: 1;
 	}
-	.theme-flashcard .cardBackAndFront, .theme-flashcard-simple .cardBackAndFront {
+	.theme-flashcard .cardBackAndFront,
+	.theme-flashcard-simple .cardBackAndFront {
 		margin: 20px;
 	}
 }
