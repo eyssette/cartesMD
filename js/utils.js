@@ -65,7 +65,7 @@ export function loadScript(src, name) {
 		});
 	}
 }
-export function loadCSS(src, name) {
+export function loadCSS(src, name, inHeader = false) {
 	// Fonction pour charger des CSS
 	const alreadyLoaded = document.querySelector("." + name);
 	if (!alreadyLoaded) {
@@ -76,7 +76,11 @@ export function loadCSS(src, name) {
 			styleElement.rel = "stylesheet";
 			styleElement.onload = resolve;
 			styleElement.onerror = reject;
-			document.head.appendChild(styleElement);
+			if (inHeader) {
+				document.head.appendChild(styleElement);
+			} else {
+				document.body.appendChild(styleElement);
+			}
 		});
 	}
 }
