@@ -1,6 +1,14 @@
+import { loadCSS } from "../utils";
 import { processYAML } from "./yaml";
 
 export function parseMarkdown(markdownContent) {
+	// Chargement des fichiers CSS nécessaires si besoin
+	if (markdownContent.includes(":::")) {
+		loadCSS("css/admonitions.min.css", "admonitions");
+	}
+	if (markdownContent.includes("back.svg")) {
+		loadCSS("css/backImageColors.min.css", "backImageColors");
+	}
 	// On permet l'interprétation du Markdown à l'intérieur des balises div
 	markdownContent = markdownContent.replaceAll(
 		/<div.*?>/g,

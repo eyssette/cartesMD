@@ -26,5 +26,49 @@ export default {
 				}),
 			],
 		}),
+		postcss({
+			extensions: [".css"],
+			include: ["css/admonitions.css"],
+			extract: "css/admonitions.min.css",
+			minimize: true,
+			plugins: [
+				cssnano({
+					preset: "default",
+				}),
+			],
+		}),
+		postcss({
+			extensions: [".css"],
+			include: ["css/editorHighlight.css"],
+			extract: "css/editorHighlight.min.css",
+			minimize: true,
+			plugins: [
+				cssnano({
+					preset: "default",
+				}),
+			],
+		}),
+		postcss({
+			extensions: [".css"],
+			include: ["css/print.css"],
+			extract: "css/print.min.css",
+			minimize: true,
+			plugins: [
+				cssnano({
+					preset: "default",
+				}),
+			],
+		}),
+		postcss({
+			extensions: [".css"],
+			include: ["css/backImageColors.css"],
+			extract: "css/backImageColors.min.css",
+			minimize: true,
+			plugins: [
+				cssnano({
+					preset: "default",
+				}),
+			],
+		}),
 	],
 };

@@ -1,0 +1,44 @@
+@media print {
+	@page {
+		size: A4 landscape;
+		margin: 20px !important;
+	}
+	body {
+		width: 100% !important;
+		height: 100% !important;
+	}
+	#content {
+		margin: 10px !important;
+		width: 100% !important;
+		padding-top: 0 !important;
+	}
+	h1,
+	#editor,
+	header,
+	nav {
+		display: none !important;
+	}
+	.cardBackAndFront,
+	.card,
+	div,
+	span,
+	p {
+		page-break-inside: avoid !important;
+		break-inside: avoid !important;
+	}
+	#content {
+		display: block !important;
+		columns: 2;
+	}
+	.cardBackAndFront {
+		margin-bottom: 20px !important;
+	}
+	.theme-flashcard #content,
+	.theme-flashcard-simple #content {
+		columns: 1;
+	}
+	.theme-flashcard .cardBackAndFront,
+	.theme-flashcard-simple .cardBackAndFront {
+		margin: 20px;
+	}
+}

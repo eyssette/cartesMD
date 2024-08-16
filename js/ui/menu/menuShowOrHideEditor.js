@@ -1,9 +1,12 @@
+import { loadCSS } from "../../utils";
+
 const headerElement = document.getElementById("header");
 const contentElement = document.getElementById("content");
 const toggleEditorElement = document.getElementById("toggleEditor");
 export let shouldShowEditor = window.innerWidth > 500 ? true : false;
 
 export function showEditor(editorElement) {
+	loadCSS("css/editorHighlight.min.css", "editorHighlight");
 	toggleEditorElement.textContent = "👓";
 	editorElement.style.display = "block";
 	contentElement.style.width = "50vw";

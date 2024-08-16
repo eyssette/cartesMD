@@ -4,11 +4,19 @@ import {
 	hideEditor,
 } from "../menu/menuShowOrHideEditor";
 import { orientationButtonElement } from "../menu/menuChangeOrientation";
+import { loadCSS } from "../../utils";
 
 export function eventKeyboardShortcuts(editorElement) {
 	// Gestion des raccourcis clavier
-	document.body.addEventListener("keyup", (event) => {
-		if (event.ctrlKey && event.shiftKey && event.altKey && event.key === "O") {
+	document.body.addEventListener("keydown", (event) => {
+		if (event.ctrlKey && event.key === "p") {
+			event.preventDefault();
+			loadCSS("css/print.min.css", "print").finally(() => {
+				window.print();
+			});
+		}
+		if (event.ctrlKey && event.shiftKey && event.key === "O") {
+			event.preventDefault();
 			orientationButtonElement.click();
 		} else {
 			document.body.classList.remove("hideMenu");

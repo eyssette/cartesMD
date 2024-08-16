@@ -1,0 +1,72 @@
+.cardBackImage[src="img/back.svg"] {
+	filter: grayscale(0.8);
+}
+
+.red .card,
+.rouge .card {
+	background-color: #ca98989e;
+	border-color: #834b4b;
+}
+.red .cardBackImage[src="img/back.svg"],
+.rouge .cardBackImage[src="img/back.svg"] {
+	filter: hue-rotate(145deg);
+}
+.red footer,
+.rouge footer {
+	border-left-color: #ca98989e;
+	border-top-color: #ca98989e;
+}
+
+.orange .card {
+	background-color: #ffd68a;
+	border-color: #d09a38;
+}
+.orange .cardBackImage[src="img/back.svg"] {
+	filter: hue-rotate(160deg);
+}
+.orange footer {
+	border-left-color: #ffd68a;
+	border-top-color: #ffd68a;
+}
+
+.violet .card {
+	background-color: #cfb6e7;
+	border-color: #8565a4;
+}
+.violet .cardBackImage[src="img/back.svg"] {
+	filter: hue-rotate(29deg);
+}
+.violet footer {
+	border-left-color: #cfb6e7;
+	border-top-color: #cfb6e7;
+}
+
+.green .card,
+.vert .card {
+	background-color: #bad0ba;
+	border-color: #4b7d4b;
+}
+.green .cardBackImage[src="img/back.svg"],
+.vert .cardBackImage[src="img/back.svg"] {
+	filter: hue-rotate(215deg);
+}
+.green footer,
+.vert footer {
+	border-left-color: #bad0ba;
+	border-top-color: #bad0ba;
+}
+
+.blue .card,
+.bleu .card {
+	background-color: #cce1f3;
+	border-color: #88a2b8;
+}
+.blue .cardBackImage[src="img/back.svg"],
+.bleu .cardBackImage[src="img/back.svg"] {
+	filter: grayscale(0);
+}
+.blue footer,
+.bleu footer {
+	border-left-color: #cce1f3;
+	border-top-color: #cce1f3;
+}

@@ -1,0 +1,59 @@
+.markdownTitles {
+	font-size: 1.1em;
+}
+
+.markdownTitles.h1 {
+	color: darkred;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.markdownTitles.h2 {
+	color: darkblue;
+	border-bottom: 1px solid darkblue;
+	font-weight: bold;
+}
+
+.markdownTitles.h3 {
+	font-weight: bold;
+	font-size: 1em;
+}
+
+.markdownTitles.h4 {
+	color: rgb(72, 0, 140);
+	font-size: 0.9em;
+}
+
+.markdownBold {
+	font-weight: bold;
+}
+.markdownItalic {
+	font-style: italic;
+}
+.markdownLists {
+	color: darkblue;
+	font-weight: bold;
+}
+.markdownLinksURL {
+	color: blue;
+}
+
+.markdownHTMLtag {
+	color: #377512 !important;
+}
+.markdownHTMLtag,
+.markdownHTMLtagContent {
+	font-weight: normal;
+}
+
+.markdownHTMLcomment {
+	color: #666;
+}
+
+.markdownSeparator {
+	color: darkred;
+	font-weight: bold;
+}
+.markdownYAML {
+	color: darkgreen;
+	font-weight: bold;
+}
