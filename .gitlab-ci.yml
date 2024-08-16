@@ -9,7 +9,7 @@ pages:
     - mkdir -p .public .public/css/theme .public/img
     - cp favicon.svg index.html script.min.js script.min.js.map .public/
     - cp img/* .public/img
-    - cp css/styles.min.css .public/css/
+    - cp css/*.min.css .public/css/
     - cp css/theme/* .public/css/theme/
     - mv .public public
     - for ext in $FILES_TO_COMPRESS; do find public -type f -name "*.$ext" -exec gzip -f -k {} \;; done
