@@ -9,7 +9,7 @@ Pour créer ses cartes, il faut respecter la syntaxe ci-dessous :
 
 ## Cartes MD
 
-- ![](back.png)
+- ![](img/back.svg)
 
 CartesMD permet de créer des cartes à jouer en Markdown !
 
@@ -27,7 +27,7 @@ On peut écrire son texte directement dans l'interface.
 
 ## Modifier les cartes
 
-- ![violet](back.png)
+- ![violet](img/back.svg)
 
 ==Double-cliquez== sur une carte pour la modifier dans l'éditeur à gauche.
 
@@ -41,7 +41,7 @@ CartesMD calcule automatiquement la taille de police optimale pour rester dans l
 
 ## Balises HTML
 
-- ![rouge](back.png)
+- ![rouge](img/back.svg)
 
 On peut aussi utiliser du <span style="color: darkred;">HTML</span> si on veut un contrôle plus fin de l'affichage !
 
@@ -61,7 +61,7 @@ maths: true
 
 ## Thème <br>& image de fond
 
-- ![bleu](back.png)
+- ![bleu](img/back.svg)
 
 On peut choisir la couleur de la carte en l'indiquant dans le texte “_alt_” de l'image de fond.
 
@@ -75,7 +75,7 @@ On peut changer l'image de fond en mettant l'URL d'une autre image.
 
 ## 🖨️ &nbsp;Imprimer
 
-- ![vert](back.png)
+- ![vert](img/back.svg)
 
 On lance simplement l'impression de cette page pour imprimer les cartes
 
@@ -87,7 +87,7 @@ On lance simplement l'impression de cette page pour imprimer les cartes
 
 ## Emojis & précisions<aside> :+1:</aside>
 
-- ![orange](back.png)
+- ![orange](img/back.svg)
 
 🧪 **Les emojis :**
 On les copie-colle ou bien on met le code texte :+1:
@@ -104,9 +104,9 @@ On peut utiliser ou non le dernier titre, de niveau 4, pour mettre le numéro de
 
 ## Platon <aside>428-348</aside>
 
-- ![rouge](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Plato_Pio-Clemetino_Inv305.jpg/395px-Plato_Pio-Clemetino_Inv305.jpg)
+- ![rouge](img/Platon.jpg)
 
-![object-position: 0 60px](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Danaides_Waterhouse_1903.jpg/423px-Danaides_Waterhouse_1903.jpg)
+![object-position: 0 60px](img/danaides.jpg)
 
 ### Philosophie antique <aside>Athènes</aside>
 
