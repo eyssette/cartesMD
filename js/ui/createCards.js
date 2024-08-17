@@ -3,6 +3,7 @@ import { colorWords } from "../config";
 import { yaml } from "../processMarkdown/yaml";
 import { convertLatexExpressions } from "../processMarkdown/convertLatex";
 import { fitElements, fitMathElements } from "./fitElements";
+import { loadScript } from "../utils";
 
 const contentElement = document.getElementById("content");
 
@@ -53,18 +54,24 @@ export function createCards(cardsArray) {
 		`;
 		cardNumber++;
 	});
-
 	if (yaml.maths || yaml.theme) {
-		setTimeout(() => {
-			if (yaml.maths) {
-				contentElement.innerHTML = convertLatexExpressions(cardsHTML);
-				fitElements();
-				fitMathElements();
-			} else {
+		if (yaml.maths) {
+			loadScript(
+				"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",
+				"katex",
+			).then(() => {
+				setTimeout(() => {
+					contentElement.innerHTML = convertLatexExpressions(cardsHTML);
+					fitElements();
+					fitMathElements();
+				}, 100);
+			});
+		} else {
+			setTimeout(() => {
 				contentElement.innerHTML = cardsHTML;
 				fitElements();
-			}
-		}, 100);
+			}, 100);
+		}
 	} else {
 		contentElement.innerHTML = cardsHTML;
 		fitElements();
