@@ -67,15 +67,23 @@ export function createCards(cardsArray) {
 				}, 100);
 			});
 			window.addEventListener("load", () => {
-				contentElement.innerHTML = convertLatexExpressions(cardsHTML);
-				fitElements();
-				fitMathElements();
+				setTimeout(() => {
+					contentElement.innerHTML = convertLatexExpressions(cardsHTML);
+					fitElements();
+					fitMathElements();
+				}, 3000);
 			});
 		} else {
 			setTimeout(() => {
 				contentElement.innerHTML = cardsHTML;
 				fitElements();
 			}, 100);
+			window.addEventListener("load", () => {
+				setTimeout(() => {
+					contentElement.innerHTML = cardsHTML;
+					fitElements();
+				}, 3000);
+			});
 		}
 	} else {
 		contentElement.innerHTML = cardsHTML;
