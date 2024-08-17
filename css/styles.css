@@ -247,7 +247,7 @@ img[alt~="contain"] {
 }
 
 a {
-	word-break: break-all;
+	word-break: break-word;
 }
 
 mark {
