@@ -8,7 +8,7 @@ function removeWords(string, wordsToRemove) {
 		.join(" ");
 }
 
-export function fitElements() {
+function fitElementsMainLogic() {
 	let elementsToStyle = document.querySelectorAll("[alt]");
 	for (const elementToStyle of elementsToStyle) {
 		const newStyle = elementToStyle.getAttribute("alt")
@@ -30,9 +30,25 @@ export function fitElements() {
 		multiLine: true,
 		minFontSize: 7.75,
 	});
+	return true;
+}
+
+export function fitElements() {
+	new Promise((resolve) => {
+		const done = fitElementsMainLogic();
+		resolve(done);
+	});
+}
+
+function fitMathElementsMainLogic() {
+	const mathsElements = document.querySelectorAll(".katex-display");
+	textFit(mathsElements, { multiLine: true });
+	return true;
 }
 
 export function fitMathElements() {
-	const mathsElements = document.querySelectorAll(".katex-display");
-	textFit(mathsElements, { multiLine: true });
+	new Promise((resolve) => {
+		const done = fitMathElementsMainLogic();
+		resolve(done);
+	});
 }
