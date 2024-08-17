@@ -66,6 +66,11 @@ export function createCards(cardsArray) {
 					fitMathElements();
 				}, 100);
 			});
+			window.addEventListener("load", () => {
+				contentElement.innerHTML = convertLatexExpressions(cardsHTML);
+				fitElements();
+				fitMathElements();
+			});
 		} else {
 			setTimeout(() => {
 				contentElement.innerHTML = cardsHTML;
