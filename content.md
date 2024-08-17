@@ -19,7 +19,7 @@ On peut écrire son texte directement dans l'interface.
 
 - Créé par [Cédric Eyssette](https://eyssette.forge.apps.education.fr/)
 - Sources sur [LaForgeÉdu](https://forge.apps.education.fr/cartesmd/cartesMD.forge.apps.education.fr)
-- Inspiré par [CréaCarte](https://lmdbt.forge.apps.education.fr/creacarte/) <br>de [Cyril Iaconelli](https://lmdbt.forge.apps.education.fr/)
+- Inspiré par [CréaCarte](https://lmdbt.forge.apps.education.fr/creacarte/) de [Cyril Iaconelli](https://lmdbt.forge.apps.education.fr/)
 
 <!-- On sépare chaque carte par trois tirets du milieu qui se suivent  -->
 
@@ -162,8 +162,8 @@ Voici quelques exemples de cartes créées avec cartesMD !
 
 ### 😮
 
-- Des cartes à utiliser en formation <br>sur la méthode [ABC Learning <br>Design](https://cartesmd.forge.apps.education.fr/?e=0#https://codimd.apps.education.fr/i2r_yoH8R_aLcEJhCNAYow)
-- Des cartes pour réviser les <br>[périmètres & aires](https://cartesmd.forge.apps.education.fr/?e=0#https://codimd.apps.education.fr/l-ZZhrUlTMCHpJpm2kJ_AA) en collège <br>(créées par Cyril Iaconelli)
+- Des cartes à utiliser en formation sur la méthode [ABC Learning Design](https://cartesmd.forge.apps.education.fr/?e=0#https://codimd.apps.education.fr/i2r_yoH8R_aLcEJhCNAYow)  
+- Des cartes pour réviser les [périmètres & aires](https://cartesmd.forge.apps.education.fr/?e=0#https://codimd.apps.education.fr/l-ZZhrUlTMCHpJpm2kJ_AA) en collège (créées par Cyril Iaconelli)
 
 <span style="font-size:0.8em">Ajoutez `?e=0` dans l'URL pour cacher l'éditeur <br>`?m=0` pour cacher le menu</span>
 
