@@ -24,6 +24,7 @@ export function eventKeyboardShortcuts(editorElement) {
 				hideEditor(editorElement);
 			} else {
 				if (!shouldShowEditor && event.key === "e") {
+					event.preventDefault();
 					showEditor(editorElement);
 					editorElement.focus();
 				} else {
