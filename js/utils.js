@@ -53,12 +53,12 @@ export function handleURL(url) {
 
 export function loadScript(src, name) {
 	// Fonction pour charger des scripts
-	const alreadyLoaded = document.querySelector("." + name);
+	const alreadyLoaded = document.querySelector("#script-" + name);
 	if (!alreadyLoaded) {
 		return new Promise((resolve, reject) => {
 			const script = document.createElement("script");
 			script.src = src;
-			script.className = name;
+			script.id = name;
 			script.onload = resolve;
 			script.onerror = reject;
 			document.head.appendChild(script);
@@ -67,12 +67,12 @@ export function loadScript(src, name) {
 }
 export function loadCSS(src, name, inHeader = false) {
 	// Fonction pour charger des CSS
-	const alreadyLoaded = document.querySelector("." + name);
-	if (!alreadyLoaded) {
+	const cssElement = document.querySelector("#css-" + name);
+	if (!cssElement) {
 		return new Promise((resolve, reject) => {
 			const styleElement = document.createElement("link");
 			styleElement.href = src;
-			styleElement.className = name;
+			styleElement.id = name;
 			styleElement.rel = "stylesheet";
 			styleElement.onload = resolve;
 			styleElement.onerror = reject;

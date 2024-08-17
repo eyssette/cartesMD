@@ -38,11 +38,11 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 				Promise.all([
 					loadScript(
 						"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",
-						"katexScript",
+						"katex",
 					),
 					loadCSS(
 						"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css",
-						"katexCSS",
+						"katex",
 					),
 				]);
 			}
