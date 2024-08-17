@@ -6,6 +6,42 @@ import { fitElements, fitMathElements } from "./fitElements";
 import { loadScript } from "../utils";
 
 const contentElement = document.getElementById("content");
+let isFirstPageLoad = true;
+
+function handleMathsAndThemes(cardsHTML) {
+	if (yaml.maths) {
+		loadScript(
+			"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",
+			"katex",
+		).then(() => {
+			setTimeout(() => {
+				contentElement.innerHTML = convertLatexExpressions(cardsHTML);
+				fitElements();
+				fitMathElements();
+			}, 100);
+		});
+		if (isFirstPageLoad) {
+			setTimeout(() => {
+				contentElement.innerHTML = convertLatexExpressions(cardsHTML);
+				fitElements();
+				fitMathElements();
+			}, 3000);
+			isFirstPageLoad = false;
+		}
+	} else {
+		setTimeout(() => {
+			contentElement.innerHTML = cardsHTML;
+			fitElements();
+		}, 100);
+		if (isFirstPageLoad) {
+			setTimeout(() => {
+				contentElement.innerHTML = cardsHTML;
+				fitElements();
+			}, 3000);
+			isFirstPageLoad = false;
+		}
+	}
+}
 
 export function createCards(cardsArray) {
 	let cardsHTML = "";
@@ -54,37 +90,9 @@ export function createCards(cardsArray) {
 		`;
 		cardNumber++;
 	});
+
 	if (yaml.maths || yaml.theme) {
-		if (yaml.maths) {
-			loadScript(
-				"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",
-				"katex",
-			).then(() => {
-				setTimeout(() => {
-					contentElement.innerHTML = convertLatexExpressions(cardsHTML);
-					fitElements();
-					fitMathElements();
-				}, 100);
-			});
-			window.addEventListener("load", () => {
-				setTimeout(() => {
-					contentElement.innerHTML = convertLatexExpressions(cardsHTML);
-					fitElements();
-					fitMathElements();
-				}, 3000);
-			});
-		} else {
-			setTimeout(() => {
-				contentElement.innerHTML = cardsHTML;
-				fitElements();
-			}, 100);
-			window.addEventListener("load", () => {
-				setTimeout(() => {
-					contentElement.innerHTML = cardsHTML;
-					fitElements();
-				}, 3000);
-			});
-		}
+		handleMathsAndThemes(cardsHTML);
 	} else {
 		contentElement.innerHTML = cardsHTML;
 		fitElements();
