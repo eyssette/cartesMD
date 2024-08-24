@@ -1,4 +1,4 @@
-import { loadCSS } from "../utils";
+import { loadCSS } from "../utils/urls";
 import { processYAML } from "./yaml";
 
 export function parseMarkdown(markdownContent) {

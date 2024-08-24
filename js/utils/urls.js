@@ -1,4 +1,4 @@
-import { corsProxy, shortcuts } from "./config";
+import { corsProxy, shortcuts } from "../config";
 
 export function handleURL(url) {
 	if (url !== "") {
@@ -51,10 +51,8 @@ export function handleURL(url) {
 	return url;
 }
 
-const prefixScript = "script-";
-const prefixCSS = "css-";
-
 export function loadScript(src, name) {
+	const prefixScript = "script-";
 	// Fonction pour charger des scripts
 	const alreadyLoaded = document.querySelector("#" + prefixScript + name);
 	if (!alreadyLoaded) {
@@ -69,6 +67,7 @@ export function loadScript(src, name) {
 	}
 }
 export function loadCSS(src, name) {
+	const prefixCSS = "css-";
 	// Fonction pour charger des CSS
 	const cssElement = document.querySelector("#" + prefixCSS + name);
 	if (!cssElement) {

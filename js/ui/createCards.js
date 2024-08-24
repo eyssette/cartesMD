@@ -3,7 +3,7 @@ import { colorWords } from "../config";
 import { yaml } from "../processMarkdown/yaml";
 import { convertLatexExpressions } from "../processMarkdown/convertLatex";
 import { fitElements, fitMathElements } from "./fitElements";
-import { loadScript } from "../utils";
+import { loadScript } from "../utils/urls";
 
 const contentElement = document.getElementById("content");
 let isFirstPageLoad = true;

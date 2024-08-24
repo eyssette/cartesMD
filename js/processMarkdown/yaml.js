@@ -1,5 +1,5 @@
 import { load as loadYAML } from "../externals/js-yaml.js";
-import { loadScript, loadCSS } from "../utils";
+import { loadScript, loadCSS } from "../utils/urls.js";
 import { CSSthemes } from "../config.js";
 
 export let yaml = {};

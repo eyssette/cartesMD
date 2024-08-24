@@ -1,4 +1,4 @@
-import { loadCSS } from "../../utils";
+import { loadCSS } from "../../utils/urls";
 
 const headerElement = document.getElementById("header");
 const contentElement = document.getElementById("content");
