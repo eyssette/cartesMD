@@ -9,7 +9,7 @@ import { loadCSS } from "../../utils";
 export function eventKeyboardShortcuts(editorElement) {
 	// Gestion des raccourcis clavier
 	document.body.addEventListener("keydown", (event) => {
-		if (event.ctrlKey && event.key === "p") {
+		if ((event.ctrlKey || event.metaKey) && event.key === "p") {
 			event.preventDefault();
 			loadCSS("css/print.min.css", "print").finally(() => {
 				window.print();
