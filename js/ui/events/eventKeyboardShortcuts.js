@@ -4,16 +4,13 @@ import {
 	hideEditor,
 } from "../menu/menuShowOrHideEditor";
 import { orientationButtonElement } from "../menu/menuChangeOrientation";
-import { loadCSS } from "../../utils";
 
 export function eventKeyboardShortcuts(editorElement) {
 	// Gestion des raccourcis clavier
 	document.body.addEventListener("keydown", (event) => {
 		if ((event.ctrlKey || event.metaKey) && event.key === "p") {
 			event.preventDefault();
-			loadCSS("css/print.min.css", "print").finally(() => {
-				window.print();
-			});
+			window.print();
 		}
 		if (event.ctrlKey && event.shiftKey && event.key === "O") {
 			event.preventDefault();
