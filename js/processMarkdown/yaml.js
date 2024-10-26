@@ -19,6 +19,7 @@ const styleMapping = {
 export function processYAML(markdownContent, markdownContentSplitted) {
 	const styleThemeElement = document.getElementById("styleTheme");
 	const customStylesElement = document.getElementById("customStyles");
+	const styleRectoVersoElement = document.getElementById("rectoVerso");
 
 	let customStylesCSS = "";
 	if (markdownContent.startsWith("---") && markdownContentSplitted.length > 2) {
@@ -45,6 +46,20 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 						"katex",
 					),
 				]);
+			}
+			if (yaml.rectoVerso) {
+				const cssRectoVerso = "css/printRectoVerso.min.css";
+				fetch(cssRectoVerso)
+					.then((response) => response.text())
+					.then((data) => {
+						styleRectoVersoElement.textContent = data;
+					})
+					.catch((error) => {
+						styleRectoVersoElement.textContent = "";
+						console.error(error);
+					});
+			} else {
+				styleRectoVersoElement.textContent = "";
 			}
 			// Gestion des styles personnalisés
 			if (yaml.theme) {

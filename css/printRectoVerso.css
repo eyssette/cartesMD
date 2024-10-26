@@ -1,0 +1,9 @@
+@media print {
+	@page {
+		size: 280px 390px!important;
+		margin: 20px !important;
+	}
+	#content {
+		columns: 1;
+	}
+}

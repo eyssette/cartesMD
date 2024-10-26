@@ -61,6 +61,17 @@ export default {
 		}),
 		postcss({
 			extensions: [".css"],
+			include: ["css/printRectoVerso.css"],
+			extract: "css/printRectoVerso.min.css",
+			minimize: true,
+			plugins: [
+				cssnano({
+					preset: "default",
+				}),
+			],
+		}),
+		postcss({
+			extensions: [".css"],
 			include: ["css/backImageColors.css"],
 			extract: "css/backImageColors.min.css",
 			minimize: true,

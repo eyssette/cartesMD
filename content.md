@@ -83,6 +83,8 @@ On lance simplement l'impression de cette page pour imprimer les cartes
 
 <span style="font-size:0.9em">Il faut penser à activer l'impression des arrières-plan et à désactiver les en-têtes et pieds de page.</span>
 
+On peut utiliser `rectoVerso: true` dans l'en-tête YAML pour pouvoir imprimer en recto-verso en utilisant ensuite l'outil [pdfimpose.it](https://www.pdfimpose.it/) pour imprimer les cartes.
+
 ---
 
 ## Emojis & précisions<aside> :+1:</aside>
