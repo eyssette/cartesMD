@@ -1,6 +1,6 @@
 import { load as loadYAML } from "../externals/js-yaml.js";
 import { loadScript, loadCSS } from "../utils/urls.js";
-import { CSSthemes } from "../config.js";
+import { CSSthemes, addOnsDependencies, allowedAddOns } from "../config.js";
 
 export let yaml = {};
 
@@ -103,6 +103,36 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 				);
 			}
 			customStylesElement.textContent = customStylesCSS;
+			// Gestion des add-ons (scripts et css en plus)
+			if (yaml.addOns) {
+				yaml.addOns = yaml.addOns.replace(" ", "").split(",");
+				let addOnsDependenciesArray = [];
+				// On ajoute aussi les dépendances pour chaque add-on
+				for (const [addOn, addOnDependencies] of Object.entries(
+					addOnsDependencies,
+				)) {
+					if (yaml.addOns.includes(addOn)) {
+						for (const addOnDependencie of addOnDependencies) {
+							addOnsDependenciesArray.push(addOnDependencie);
+						}
+					}
+				}
+				yaml.addOns.push(...addOnsDependenciesArray);
+				// Pour chaque add-on, on charge le JS ou le CSS correspondant
+				for (const desiredAddOn of yaml.addOns) {
+					const addOnsPromises = [];
+					const addDesiredAddOn = allowedAddOns[desiredAddOn];
+					if (addDesiredAddOn) {
+						if (addDesiredAddOn.js) {
+							addOnsPromises.push(loadScript(addDesiredAddOn.js, desiredAddOn));
+						}
+						if (addDesiredAddOn.css) {
+							addOnsPromises.push(loadCSS(addDesiredAddOn.css, desiredAddOn));
+						}
+						Promise.all(addOnsPromises);
+					}
+				}
+			}
 			markdownContentSplitted.shift();
 			markdownContentSplitted.shift();
 		} catch (e) {

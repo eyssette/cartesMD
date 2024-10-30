@@ -73,12 +73,22 @@ export function loadCSS(src, name) {
 	const cssElement = document.querySelector("#" + prefixCSS + name);
 	if (!cssElement) {
 		return new Promise((resolve, reject) => {
-			const styleElement = document.createElement("link");
-			styleElement.href = src;
-			styleElement.id = prefixCSS + name;
-			styleElement.rel = "stylesheet";
-			styleElement.onload = resolve;
-			styleElement.onerror = reject;
+			let styleElement;
+			if (src.startsWith("<style>")) {
+				styleElement = document.createElement("style");
+				styleElement.id = prefixCSS + name;
+				styleElement.textContent = src
+					.replace("<style>", "")
+					.replace("</style>", "");
+				resolve();
+			} else {
+				styleElement = document.createElement("link");
+				styleElement.href = src;
+				styleElement.id = prefixCSS + name;
+				styleElement.rel = "stylesheet";
+				styleElement.onload = resolve;
+				styleElement.onerror = reject;
+			}
 			document.head.appendChild(styleElement);
 		});
 	}

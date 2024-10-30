@@ -97,4 +97,10 @@ export function createCards(cardsArray) {
 		contentElement.innerHTML = cardsHTML;
 		fitElements();
 	}
+	// Gestion des add-ons
+	if (yaml.addOns && yaml.addOns.includes("kroki")) {
+		setTimeout(() => {
+			contentElement.innerHTML = window.processKroki(contentElement.innerHTML);
+		}, 200);
+	}
 }
