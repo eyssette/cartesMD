@@ -3,7 +3,7 @@ function changeImageFormat(imageElement) {
 }
 
 export function changeImageFormatIfError() {
-	const images = document.querySelectorAll("img");
+	const images = document.querySelectorAll('img[src$=".avif"]');
 	for (const image of images) {
 		image.addEventListener("error", (error) => {
 			console.log(error);
