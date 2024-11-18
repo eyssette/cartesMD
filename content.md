@@ -1,3 +1,8 @@
+---
+maths: false
+theme: default
+---
+
 # Présentation de l'outil
 
 _CartesMD_ est un outil **libre** et **gratuit** : vous pouvez éditer le texte ci-dessous pour changer les cartes.
@@ -70,6 +75,24 @@ On peut choisir la couleur de la carte en l'indiquant dans le texte “_alt_” 
 On peut changer l'image de fond en mettant l'URL d'une autre image.
 
 #### 1
+
+---
+
+## Dos de la carte
+
+- ![bleu]()
+
+On peut écrire du contenu au dos de la carte
+
+### Comment ?
+
+Pour cela, il faut utiliser la balise HTML `<aside>` dans le dernier bloc d'écriture
+
+<aside>
+Tout le contenu ici apparaît au dos de la carte
+
+On peut écrire du **Markdown** également.
+</aside>
 
 ---
 

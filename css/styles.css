@@ -246,6 +246,18 @@ img[alt~="contain"] {
 	background-color: transparent !important;
 }
 
+.cardBack aside {
+	position: absolute;
+	top: 8px;
+	left: 237px;
+	background: white;
+	width: 195px;
+	height: 320px;
+	padding: 5px;
+	border-radius: 10px;
+	z-index: 10;
+}
+
 a {
 	word-break: break-word;
 }

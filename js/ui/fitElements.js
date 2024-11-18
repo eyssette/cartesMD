@@ -22,11 +22,16 @@ function fitElementsMainLogic() {
 	const z2Elements = document.querySelectorAll(".cardContentUp");
 	const z3Elements = document.querySelectorAll("h3");
 	const z4Elements = document.querySelectorAll(".cardContentDown");
+	const backElements = document.querySelectorAll(".cardBack aside");
 
 	textFit(z1Elements, { multiLine: true });
 	textFit(z2Elements, { multiLine: true, minFontSize: 7.75 });
 	textFit(z3Elements, { multiLine: true });
 	textFit(z4Elements, {
+		multiLine: true,
+		minFontSize: 7.75,
+	});
+	textFit(backElements, {
 		multiLine: true,
 		minFontSize: 7.75,
 	});

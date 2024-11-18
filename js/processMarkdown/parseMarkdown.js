@@ -84,10 +84,18 @@ export function parseMarkdown(markdownContent) {
 		// Ajout du contenu du dessous
 		const subtitleIndex = markdownCard.indexOf("\n### ");
 		const afterSubtitleIndex = subtitleIndex + subtitleLength;
-		const contentDownString =
+		let contentDownString =
 			afterSubtitleIndex > 0
 				? markdownCard.substring(afterSubtitleIndex).trim()
 				: "";
+		// Ajout éventuel du contenu au dos de la carte
+		const backContentIndex = contentDownString.indexOf("\n<aside>");
+		const backContentString =
+			backContentIndex > 0
+				? contentDownString.substring(backContentIndex).trim()
+				: "";
+		contentDownString = contentDownString.replace(backContentString, "");
+		cardObject.backContent = backContentString;
 		// Ajout éventuel du footer
 		const footer = footerMatch ? footerMatch[1].trim() : "";
 		cardObject.footer = footer;

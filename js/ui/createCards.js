@@ -64,10 +64,13 @@ export function createCards(cardsArray) {
 						true,
 					)
 				: markdownToHTML(card.title, true);
+		const backContentHTML = markdownToHTML(
+			card.backContent.replace("<aside", "<aside markdown"),
+		);
 		const cardBack =
 			card.backImageURL.length > 0
-				? `<section class="card cardBack"><img class="cardBackImage" alt="${card.backImageAlt}" src="${card.backImageURL}" /></section>`
-				: `<section class="card cardBack" alt="${card.backImageAlt}"><div class="cardBackImage"></div></section>`;
+				? `<section class="card cardBack"><img class="cardBackImage" alt="${card.backImageAlt}" src="${card.backImageURL}" />${backContentHTML}</section>`
+				: `<section class="card cardBack" alt="${card.backImageAlt}"><div class="cardBackImage"></div>${backContentHTML}</section>`;
 		const color = card.backImageAlt
 			.split(" ")
 			.filter((word) => colorWords.includes(word))
