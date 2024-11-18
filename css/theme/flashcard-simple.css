@@ -29,7 +29,7 @@ h3 {
 .cardContentDown {
 	display:none!important
 }
-.cardBackImage {
+.cardBackImage, .cardBack aside {
 	display: none;
 }
 .card footer {
