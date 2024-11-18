@@ -9,6 +9,7 @@ export const CSSthemes = [
 	"z2small-bluegradient-withlogo.css",
 	"flashcard.css",
 	"flashcard-simple.css",
+	"persona.css",
 ];
 
 export const colorWords = [
