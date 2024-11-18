@@ -1,0 +1,25 @@
+h2 {
+	height: 45px !important;
+}
+h2 img {
+	border-radius: 50%;
+	height: 0.85em;
+	width: 0.85em;
+	object-fit: cover;
+}
+.cardContentUp {
+	height: 40px;
+	align-items: center;
+	margin: 5px auto !important;
+	padding: 0 10px;
+	background: transparent !important;
+}
+.cardContentUp p {
+	margin: 2px 0px !important;
+}
+h3 {
+	margin-top: 5px !important;
+}
+.cardContentDown {
+	height: 200px;
+}
