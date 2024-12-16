@@ -56,16 +56,18 @@ export function loadScript(src, name) {
 	const prefixScript = "script-";
 	// Fonction pour charger des scripts
 	const alreadyLoaded = document.querySelector("#" + prefixScript + name);
-	if (!alreadyLoaded) {
-		return new Promise((resolve, reject) => {
+	return new Promise((resolve, reject) => {
+		if (!alreadyLoaded) {
 			const script = document.createElement("script");
 			script.src = src;
 			script.id = prefixScript + name;
 			script.onload = resolve;
 			script.onerror = reject;
 			document.head.appendChild(script);
-		});
-	}
+		} else {
+			resolve();
+		}
+	});
 }
 export function loadCSS(src, name) {
 	const prefixCSS = "css-";
