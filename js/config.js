@@ -1,7 +1,7 @@
 // Raccourcis vers des cartes particulières
 export const shortcuts = [["shortcut", "URL"]];
 
-export const corsProxy = "https://corsproxy.io/?";
+export const corsProxy = "https://corsproxy.io/?url=";
 
 export const CSSthemes = [
 	"iaconelli.css",
