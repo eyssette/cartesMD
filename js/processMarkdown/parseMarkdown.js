@@ -29,9 +29,7 @@ export function parseMarkdown(markdownContent) {
 	if (markdownContent.includes(":::")) {
 		loadCSS("css/admonitions.min.css", "admonitions");
 	}
-	if (markdownContent.includes("back.svg")) {
-		loadCSS("css/backImageColors.min.css", "backImageColors");
-	}
+	loadCSS("css/backImageColors.min.css", "backImageColors");
 	// On permet l'interprétation du Markdown à l'intérieur des balises div
 	markdownContent = markdownContent.replaceAll(
 		/<div.*?>/g,
