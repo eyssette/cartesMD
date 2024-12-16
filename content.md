@@ -208,7 +208,7 @@ Pour utiliser un thème, il faut indiquer son nom dans le _yaml_. Par exemple :
 theme: iaconelli.css
 ```
 
-Les thèmes disponibles sont présents dans le [dossier “thème”](https://forge.apps.education.fr/cartesmd/cartesMD.forge.apps.education.fr/-/tree/main/theme) de CartesMD.
+Les thèmes disponibles sont présents dans le [dossier “thème”](https://forge.apps.education.fr/cartesmd/cartesMD.forge.apps.education.fr/-/tree/main/css/theme) de CartesMD.
 
 N'hésitez pas à m'envoyer vos propositions de thèmes !
 
