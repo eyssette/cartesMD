@@ -77,7 +77,7 @@ export function createCards(cardsArray) {
 			.join(" ");
 
 		let classZcount = "";
-		if (card.beforeTitle) {
+		if (card.beforeTitle.length > 0) {
 			const match = card.beforeTitle.match(/nombreZones: (\d)/);
 			if (match && match[1] >= 1 && match[1] <= 3) {
 				classZcount = ` zCount${match[1]}`;

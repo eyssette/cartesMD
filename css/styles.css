@@ -267,7 +267,7 @@ mark {
 }
 
 .hideMenu header {
-	display: none;
+	visibility: hidden;
 }
 .hideMenu #content {
 	padding-top: 10px !important;
@@ -275,31 +275,33 @@ mark {
 }
 
 .zCount1 .cardTitle {
-	display: none;
+	visibility: hidden;
+	height: 0px;
+	padding-top: 0;
 }
 .zCount1 .cardContentUp {
 	height: 320px;
 }
 .zCount1 .cardSubtitle {
-	display: none;
+	visibility: hidden;
 }
 .zCount1 .cardContentDown {
-	display: none;
+	visibility: hidden;
 }
 
 .zCount2 .cardContentUp {
 	height: 280px;
 }
 .zCount2 .cardSubtitle {
-	display: none;
+	visibility: hidden;
 }
 .zCount2 .cardContentDown {
-	display: none;
+	visibility: hidden;
 }
 
 .zCount3 .cardTitle {
-	display:none
+	display: none;
 }
 .zCount3 .cardContentDown {
-	height:160px;
+	height: 160px;
 }

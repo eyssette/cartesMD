@@ -20,7 +20,7 @@ function fitElementsMainLogic() {
 	}
 	const z1Elements = document.querySelectorAll("h2");
 	const z2Elements = document.querySelectorAll(".cardContentUp");
-	const z3Elements = document.querySelectorAll("h3");
+	const z3Elements = document.querySelectorAll(".cardSubtitle");
 	const z4Elements = document.querySelectorAll(".cardContentDown");
 	const backElements = document.querySelectorAll(".cardBack aside");
 
