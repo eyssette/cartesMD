@@ -70,3 +70,48 @@
 	border-left-color: #cce1f3;
 	border-top-color: #cce1f3;
 }
+
+.yellow .card,
+.jaune .card {
+	background-color: #f7f1b3;
+	border-color: #e6c300;
+}
+.yellow .cardBackImage[src="img/back.svg"],
+.jaune .cardBackImage[src="img/back.svg"] {
+	filter: hue-rotate(50deg);
+}
+.yellow footer,
+.jaune footer {
+	border-left-color: #f7f1b3;
+	border-top-color: #f7f1b3;
+}
+
+.pink .card,
+.rose .card {
+	background-color: #f8c5cf;
+	border-color: #d18998;
+}
+.pink .cardBackImage[src="img/back.svg"],
+.rose .cardBackImage[src="img/back.svg"] {
+	filter: hue-rotate(300deg);
+}
+.pink footer,
+.rose footer {
+	border-left-color: #f8c5cf;
+	border-top-color: #f8c5cf;
+}
+
+.brown .card,
+.marron .card {
+	background-color: #d1b9a3;
+	border-color: #a3856e;
+}
+.brown .cardBackImage[src="img/back.svg"],
+.marron .cardBackImage[src="img/back.svg"] {
+	filter: sepia(1);
+}
+.brown footer,
+.marron footer {
+	border-left-color: #d1b9a3;
+	border-top-color: #d1b9a3;
+}

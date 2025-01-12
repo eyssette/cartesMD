@@ -21,6 +21,12 @@ export const colorWords = [
 	"orange",
 	"rouge",
 	"red",
+	"jaune",
+	"yellow",
+	"marron",
+	"brown",
+	"rose",
+	"pink",
 ];
 
 // Gestion des add-ons

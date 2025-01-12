@@ -4,6 +4,7 @@ import { yaml } from "../processMarkdown/yaml";
 import { convertLatexExpressions } from "../processMarkdown/convertLatex";
 import { fitElements, fitMathElements } from "./fitElements";
 import { loadScript } from "../utils/urls";
+import { isValidColorNameCSS } from "../utils/css";
 
 const contentElement = document.getElementById("content");
 let isFirstPageLoad = true;
@@ -67,14 +68,18 @@ export function createCards(cardsArray) {
 		const backContentHTML = markdownToHTML(
 			card.backContent.replace("<aside", "<aside markdown"),
 		);
-		const cardBack =
-			card.backImageURL.length > 0
-				? `<section class="card cardBack"><img class="cardBackImage" alt="${card.backImageAlt}" src="${card.backImageURL}" />${backContentHTML}</section>`
-				: `<section class="card cardBack" alt="${card.backImageAlt}"><div class="cardBackImage"></div>${backContentHTML}</section>`;
 		const color = card.backImageAlt
 			.split(" ")
-			.filter((word) => colorWords.includes(word))
+			.filter((word) => colorWords.includes(word) || isValidColorNameCSS(word))
 			.join(" ");
+		let backgroundColorCSS = "";
+		if (!colorWords.includes(color) && isValidColorNameCSS(color)) {
+			backgroundColorCSS = ` style="background: ${color}"`;
+		}
+		const cardBack =
+			card.backImageURL.length > 0
+				? `<section class="card cardBack"${backgroundColorCSS}><img class="cardBackImage" alt="${card.backImageAlt}" src="${card.backImageURL}" />${backContentHTML}</section>`
+				: `<section class="card cardBack" alt="${card.backImageAlt}"><div class="cardBackImage"></div>${backContentHTML}</section>`;
 
 		// Gestion du nombre de zones pour la carte
 		let classZcount = "";
@@ -94,7 +99,7 @@ export function createCards(cardsArray) {
 			cardsHTML +
 			`
 		<div class="cardBackAndFront${color.length > 0 ? " " + color : ""}${classZcount}" id="card-${cardNumber}">
-			<section class="card cardFront">
+			<section class="card cardFront"${backgroundColorCSS}>
 				<h2 class="cardTitle"><span>${title}</span></h2>
 				<div class="cardContentUp">${contentUp}</div>
 				<h3 class="cardSubtitle">${markdownToHTML(card.subtitle, true)}</h3>
