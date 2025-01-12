@@ -274,13 +274,12 @@ mark {
 	justify-content: center !important;
 }
 
-.zCount1 .cardTitle {
+.zCount1 .cardTitle span{
 	visibility: hidden;
-	height: 0px;
-	padding-top: 0;
 }
 .zCount1 .cardContentUp {
 	height: 320px;
+	margin-top:-28px!important;
 }
 .zCount1 .cardSubtitle {
 	visibility: hidden;

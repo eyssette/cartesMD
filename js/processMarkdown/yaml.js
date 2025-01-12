@@ -68,12 +68,6 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 			} else {
 				styleRectoVersoElement.textContent = "";
 			}
-			["zCount1", "zCount2", "zCount3"].forEach((classCSS) =>
-				document.body.classList.remove(classCSS),
-			);
-			if (yaml.nombreZones && yaml.nombreZones >= 1 && yaml.nombreZones <= 3) {
-				document.body.classList.add(`zCount${yaml.nombreZones}`);
-			}
 			// Gestion des styles personnalisés
 			if (yaml.theme) {
 				// Possibilité d'utiliser un thème pour les cartes
