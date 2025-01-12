@@ -298,9 +298,13 @@ mark {
 	visibility: hidden;
 }
 
-.zCount3 .cardTitle {
-	display: none;
+.zCount3 .cardContentUp {
+	height: 100px;
+}
+.zCount3 .cardSubtitle {
+	visibility: hidden;
 }
 .zCount3 .cardContentDown {
-	height: 160px;
+	height: 170px;
+	margin-top:-25px!important
 }
