@@ -1,6 +1,7 @@
 ---
 maths: false
 theme: default
+verso: true
 ---
 
 # Présentation de l'outil
@@ -92,6 +93,11 @@ Pour cela, il faut utiliser la balise HTML `<aside>` dans le dernier bloc d'écr
 Tout le contenu ici apparaît au dos de la carte
 
 On peut écrire du **Markdown** également.
+
+Si on veut supprimer les dos de cartes, on ajoute dans l'en-tête : 
+
+`verso: false`
+
 </aside>
 
 ---

@@ -20,6 +20,7 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 	const styleThemeElement = document.getElementById("styleTheme");
 	const customStylesElement = document.getElementById("customStyles");
 	const styleRectoVersoElement = document.getElementById("rectoVerso");
+	const styleVersoElement = document.getElementById("verso");
 
 	let customStylesCSS = "";
 	if (markdownContent.startsWith("---") && markdownContentSplitted.length > 2) {
@@ -46,6 +47,12 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 						"katex",
 					),
 				]);
+			}
+			if (yaml.verso === false) {
+				styleVersoElement.textContent =
+					".cardBack{display:none!important}#content {column-count:4!important}";
+			} else {
+				styleVersoElement.textContent = "";
 			}
 			if (yaml.rectoVerso) {
 				const cssRectoVerso = "css/printRectoVerso.min.css";
