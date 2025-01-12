@@ -53,10 +53,14 @@ export function parseMarkdown(markdownContent) {
 		const footerMatch = markdownCard.match(/#### (.*)/);
 		// Ajout du titre
 		const titleMatch = markdownCard.match(/## (.*)/);
+		const titleIndex = markdownCard.indexOf("## ");
 		cardObject.title = titleMatch ? titleMatch[1].trim() : "";
+		// Gestion des informations avant le titre (paramètres pour la carte)
+		const beforeTitleContent = markdownCard.substring(0, titleIndex);
+		cardObject.beforeTitle = beforeTitleContent;
 		// Gestion des informations entre le titre et le sous-titre
 		const titleMatchLength = titleMatch ? titleMatch[0].length : 0;
-		const AfterTitleIndex = markdownCard.indexOf("## ") + titleMatchLength;
+		const AfterTitleIndex = titleIndex + titleMatchLength;
 		const subTitleIndex = markdownCard.indexOf("\n### ");
 		const cardObjectFrontString =
 			AfterTitleIndex > 0 && subTitleIndex > 0

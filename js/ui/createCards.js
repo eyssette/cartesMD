@@ -76,11 +76,18 @@ export function createCards(cardsArray) {
 			.filter((word) => colorWords.includes(word))
 			.join(" ");
 
+		let classZcount = "";
+		if (card.beforeTitle) {
+			const match = card.beforeTitle.match(/nombreZones: (\d)/);
+			if (match && match[1] >= 1 && match[1] <= 3) {
+				classZcount = ` zCount${match[1]}`;
+			}
+		}
 		// TEMPLATE pour chaque carte
 		cardsHTML =
 			cardsHTML +
 			`
-		<div class="cardBackAndFront${color.length > 0 ? " " + color : ""}" id="card-${cardNumber}">
+		<div class="cardBackAndFront${color.length > 0 ? " " + color : ""}${classZcount}" id="card-${cardNumber}">
 			<section class="card cardFront">
 				<h2 class="cardTitle"><span>${title}</span></h2>
 				<div class="cardContentUp">${contentUp}</div>

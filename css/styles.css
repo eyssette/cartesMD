@@ -273,3 +273,33 @@ mark {
 	padding-top: 10px !important;
 	justify-content: center !important;
 }
+
+.zCount1 .cardTitle {
+	display: none;
+}
+.zCount1 .cardContentUp {
+	height: 320px;
+}
+.zCount1 .cardSubtitle {
+	display: none;
+}
+.zCount1 .cardContentDown {
+	display: none;
+}
+
+.zCount2 .cardContentUp {
+	height: 280px;
+}
+.zCount2 .cardSubtitle {
+	display: none;
+}
+.zCount2 .cardContentDown {
+	display: none;
+}
+
+.zCount3 .cardTitle {
+	display:none
+}
+.zCount3 .cardContentDown {
+	height:160px;
+}

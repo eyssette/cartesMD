@@ -2,6 +2,7 @@
 maths: false
 theme: default
 verso: true
+nombreZones: 4
 ---
 
 # Présentation de l'outil
@@ -42,6 +43,14 @@ On peut utiliser ++toute++ la syntaxe _Markdown_.
 ### Pratique & efficace !
 
 CartesMD calcule automatiquement la taille de police optimale pour rester dans le cadre !
+
+---
+nombreZones: 2
+## Nombre de Zones
+
+On peut changer le nombre de zones (4 par défaut) avec le paramètre `nombreZones`.
+
+Soit on applique ce paramètre avant le titre d'une carte, soit on le définit dans l'en-tête pour qu'il s'applique à toutes les cartes
 
 ---
 
