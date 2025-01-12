@@ -7,12 +7,10 @@ nombreZones: 4
 
 # Présentation de l'outil
 
-_CartesMD_ est un outil **libre** et **gratuit** : vous pouvez éditer le texte ci-dessous pour changer les cartes.
-Vous pouvez ensuite les imprimer facilement : il suffira alors de les découper, de plier et de coller le recto sur le verso.
+_CartesMD_ est un outil **libre** et **gratuit**.
+Éditez ce contenu, en respectant la syntaxe ci-dessous, pour créer vos cartes et les imprimer.
 
-Pour créer ses cartes, il faut respecter la syntaxe ci-dessous :
-
-<!-- Les cartes commencent ci-dessous, à partir du premier titre de niveau 2, tout ce qui est écrit avant ne compte pas (vous pouvez le supprimer) -->
+<!-- Les cartes commencent à partir du premier titre de niveau 2 : tout ce qui est écrit avant ne compte pas -->
 
 ## Cartes MD
 
