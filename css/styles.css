@@ -195,6 +195,10 @@ nav ul li {
 	padding: 0 10px;
 }
 
+img{
+	max-width: 100%;
+}
+
 img[alt~="contain"] {
 	object-fit: contain !important;
 }
