@@ -10,6 +10,9 @@ h2 {
 	width:280px; margin:15px auto!important;
 	font-weight:normal!important;
 }
+.cardBackAndFront {
+	flex-wrap: nowrap;
+}
 .cardContentUp {
 	width: 310px !important;
 	border: none;
