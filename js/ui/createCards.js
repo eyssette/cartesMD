@@ -10,7 +10,7 @@ const contentElement = document.getElementById("content");
 let isFirstPageLoad = true;
 
 function handleMathsAndThemes(cardsHTML) {
-	if (yaml.maths) {
+	if (yaml && yaml.maths) {
 		loadScript(
 			"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",
 			"katex",
@@ -117,14 +117,14 @@ export function createCards(cardsArray) {
 		cardNumber++;
 	});
 
-	if (yaml.maths || yaml.theme) {
+	if (yaml && (yaml.maths || yaml.theme)) {
 		handleMathsAndThemes(cardsHTML);
 	} else {
 		contentElement.innerHTML = cardsHTML;
 		fitElements();
 	}
 	// Gestion des add-ons
-	if (yaml.addOns && yaml.addOns.includes("kroki")) {
+	if (yaml && yaml.addOns && yaml.addOns.includes("kroki")) {
 		setTimeout(() => {
 			contentElement.innerHTML = window.processKroki(contentElement.innerHTML);
 		}, 200);
