@@ -130,7 +130,7 @@ On peut utiliser `rectoVerso: true` dans l'en-tête YAML pour pouvoir imprimer e
 🧪 **Les emojis :**
 On les copie-colle ou bien on met le code texte :+1:
 
-[Voir la liste des emojis disponibles](https://eyssette.forge.apps.education.fr/dataview/?url=https://eyssette.forge.apps.education.fr/emojis/list.tsv)
+[Voir la liste des emojis disponibles](https://dataview.forge.apps.education.fr/?url=https://eyssette.forge.apps.education.fr/emojis/list.tsv)
 
 ### Autres ajouts possibles<aside> :fire:</aside>
 
