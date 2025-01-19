@@ -1,39 +1,42 @@
+function convertSpecialExpressionsInLatex(math) {
+	return math
+		.replaceAll("&lt;", "\\lt")
+		.replaceAll("&gt;", "\\gt")
+		.replaceAll("align<em>", "align*")
+		.replaceAll("align</em>", "align*")
+		.replaceAll("<em>", "_")
+		.replaceAll("</em>", "_")
+		.replaceAll("&amp;", "&")
+		.replace(/€/g, "\\textrm{€}")
+		.replace(/\\?%/g, "\\%")
+		.replaceAll(" ", "\\ ");
+}
+
 export function convertLatexExpressions(string) {
 	string = string
 		.replace(/\$\$(.*?)\$\$/g, "&#92;[$1&#92;]")
 		.replace(/\$(.*?)\$/g, "&#92;($1&#92;)");
-	let expressionsLatex = string.match(
-		new RegExp(/&#92;\[.*?&#92;\]|&#92;\(.*?&#92;\)/g),
-	);
+
+	const expressionsLatex = string.match(/&#92;\[.*?&#92;\]|&#92;\(.*?&#92;\)/g);
+
 	if (expressionsLatex) {
-		// On n'utilise Katex que s'il y a des expressions en Latex dans le Markdown
 		for (let expressionLatex of expressionsLatex) {
-			// On vérifie si le mode d'affichage de l'expression (inline ou block)
-			const inlineMaths = expressionLatex.includes("&#92;[") ? true : false;
-			// On récupère la formule mathématique
-			let mathInExpressionLatex = expressionLatex
-				.replace("&#92;[", "")
-				.replace("&#92;]", "");
-			mathInExpressionLatex = mathInExpressionLatex
-				.replace("&#92;(", "")
-				.replace("&#92;)", "");
-			mathInExpressionLatex = mathInExpressionLatex
-				.replaceAll("&lt;", "\\lt")
-				.replaceAll("&gt;", "\\gt");
-			mathInExpressionLatex = mathInExpressionLatex
-				.replaceAll("<em>", "")
-				.replaceAll("</em>", "")
-				.replaceAll("&amp;", "&")
-				.replaceAll(" ", "\\ ");
-			// On convertit la formule mathématique en HTML avec Katex
-			const stringWithLatex = window.katex.renderToString(
-				mathInExpressionLatex,
-				{
-					displayMode: inlineMaths,
-				},
+			const inlineMaths = expressionLatex.startsWith("&#92;(");
+			let math = expressionLatex.replace(
+				/^&#92;\[|&#92;\]$|^&#92;\(|&#92;\)$/g,
+				"",
 			);
-			string = string.replace(expressionLatex, stringWithLatex);
+
+			// Applique les remplacements spécifiques
+			math = convertSpecialExpressionsInLatex(math);
+
+			const rendered = window.katex.renderToString(math, {
+				displayMode: !inlineMaths,
+			});
+
+			string = string.replace(expressionLatex, rendered);
 		}
 	}
+
 	return string;
 }
