@@ -66,7 +66,7 @@ export function createCards(cardsArray) {
 					)
 				: markdownToHTML(card.title, true);
 		const backContentHTML = markdownToHTML(
-			card.backContent.replace("<aside", "<aside markdown"),
+			card.backContent.replaceAll("<aside", "<aside markdown"),
 		);
 		const color = card.backImageAlt
 			.split(" ")

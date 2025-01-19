@@ -75,10 +75,23 @@ export function parseMarkdown(markdownContent) {
 		cardObject.backImageURL = backImage;
 		cardObject.backImageAlt = backImageAlt;
 		// Ajout du contenu du dessus
-		const contentUp = backImageMatch
+		let contentUp = backImageMatch
 			? cardObjectFrontString.replace(backImageMatch[0], "").trim()
 			: cardObjectFrontString;
-		cardObject.contentUp = contentUp;
+		// Ajout du contenu de dos de carte présent dans la balise aside du contenu du dessus
+		const backContentInContentUpIndex = contentUp.indexOf("\n<aside>");
+		const backContentInContentUpEndIndex = contentUp.indexOf("</aside>");
+		const backContentInContentUpString =
+			backContentInContentUpIndex > 0
+				? contentUp
+						.substring(
+							backContentInContentUpIndex,
+							backContentInContentUpEndIndex,
+						)
+						.trim()
+				: "";
+		// On supprime le dos de carte dans le contenu du dessus
+		cardObject.contentUp = contentUp.replace(backContentInContentUpString, "");
 		// Ajout du sous-titre
 		const subtitleMatch = markdownCard.match(/\n### (.*)/);
 		const subtitleLength = subtitleMatch ? subtitleMatch[0].length : 0;
@@ -90,13 +103,32 @@ export function parseMarkdown(markdownContent) {
 			afterSubtitleIndex > 0
 				? markdownCard.substring(afterSubtitleIndex).trim()
 				: "";
-		// Ajout éventuel du contenu au dos de la carte
-		const backContentIndex = contentDownString.indexOf("\n<aside>");
-		const backContentString =
-			backContentIndex > 0
-				? contentDownString.substring(backContentIndex).trim()
+		// Ajout du contenu de dos de carte présent dans la balise aside du contenu du dessous
+		const backContentInContentDownIndex =
+			contentDownString.indexOf("\n<aside>");
+		const backContentInContentDownEndIndex =
+			contentDownString.indexOf("</aside>");
+		const backContentInContentDownString =
+			backContentInContentDownIndex > 0
+				? contentDownString
+						.substring(
+							backContentInContentDownIndex,
+							backContentInContentDownEndIndex,
+						)
+						.trim()
 				: "";
-		contentDownString = contentDownString.replace(backContentString, "");
+		// On supprime le dos de carte dans le contenu du dessous
+		contentDownString = contentDownString.replace(
+			backContentInContentDownString,
+			"",
+		);
+		// Constitution du dos de carte à partir des balises aside dans le contenu du dessus et le contenu du dessous
+		let backContentString =
+			backContentInContentUpString + "\n\n" + backContentInContentDownString;
+		backContentString = backContentString.replace(/<(\/)?aside>/g, "").trim();
+		backContentString = backContentString
+			? `<aside>${backContentString}</aside>`
+			: "";
 		cardObject.backContent = backContentString;
 		// Ajout éventuel du footer
 		const footer = footerMatch ? footerMatch[1].trim() : "";
