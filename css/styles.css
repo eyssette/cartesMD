@@ -176,6 +176,7 @@ nav ul li {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: baseline;
 }
 
 .cardContentUp {
@@ -228,7 +229,7 @@ img[alt~="contain"] {
 .cardContentDown ul,
 .cardContentDown ol {
 	margin-top: 0.45em;
-	padding-left: 25px;
+	padding-left: 30px;
 	margin-bottom: 0.25em;
 }
 

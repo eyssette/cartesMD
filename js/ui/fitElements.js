@@ -25,15 +25,17 @@ function fitElementsMainLogic() {
 	const backElements = document.querySelectorAll(".cardBack aside");
 
 	textFit(z1Elements, { multiLine: true });
-	textFit(z2Elements, { multiLine: true, minFontSize: 7.75 });
-	textFit(z3Elements, { multiLine: true });
+	textFit(z2Elements, { multiLine: true, minFontSize: 7.75, maxFontSize: 22 });
+	textFit(z3Elements, { multiLine: true, maxFontSize: 28 });
 	textFit(z4Elements, {
 		multiLine: true,
 		minFontSize: 7.75,
+		maxFontSize: 22,
 	});
 	textFit(backElements, {
 		multiLine: true,
 		minFontSize: 7.75,
+		maxFontSize: 22,
 	});
 	return true;
 }
