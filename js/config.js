@@ -27,6 +27,7 @@ export const colorWords = [
 	"brown",
 	"rose",
 	"pink",
+	"gris",
 ];
 
 // Gestion des add-ons

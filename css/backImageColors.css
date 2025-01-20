@@ -115,3 +115,7 @@
 	border-left-color: #d1b9a3;
 	border-top-color: #d1b9a3;
 }
+
+.gris .card {
+	background-color: lightgrey;
+}

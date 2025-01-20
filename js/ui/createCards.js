@@ -79,7 +79,7 @@ export function createCards(cardsArray) {
 		const cardBack =
 			card.backImageURL.length > 0
 				? `<section class="card cardBack"${backgroundColorCSS}><img class="cardBackImage" alt="${card.backImageAlt}" src="${card.backImageURL}" />${backContentHTML}</section>`
-				: `<section class="card cardBack" alt="${card.backImageAlt}"><div class="cardBackImage"></div>${backContentHTML}</section>`;
+				: `<section class="card cardBack"${backgroundColorCSS} alt="${card.backImageAlt}"><div class="cardBackImage"></div>${backContentHTML}</section>`;
 
 		// Gestion du nombre de zones pour la carte
 		let classZcount = "";
