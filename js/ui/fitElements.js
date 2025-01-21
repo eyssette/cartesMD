@@ -1,5 +1,6 @@
 import { colorWords } from "../config";
 import { textFit } from "../externals/textfit";
+import { yaml } from "../processMarkdown/yaml";
 
 function removeWords(string, wordsToRemove) {
 	return string
@@ -24,18 +25,24 @@ function fitElementsMainLogic() {
 	const z4Elements = document.querySelectorAll(".cardContentDown");
 	const backElements = document.querySelectorAll(".cardBack aside");
 
+	const baseMaxFontSize =
+		yaml && yaml.theme && yaml.theme.includes("flashcard") ? 40 : 22;
 	textFit(z1Elements, { multiLine: true });
-	textFit(z2Elements, { multiLine: true, minFontSize: 7.75, maxFontSize: 22 });
-	textFit(z3Elements, { multiLine: true, maxFontSize: 28 });
+	textFit(z2Elements, {
+		multiLine: true,
+		minFontSize: 7.75,
+		maxFontSize: baseMaxFontSize,
+	});
+	textFit(z3Elements, { multiLine: true, maxFontSize: baseMaxFontSize + 6 });
 	textFit(z4Elements, {
 		multiLine: true,
 		minFontSize: 7.75,
-		maxFontSize: 22,
+		maxFontSize: baseMaxFontSize,
 	});
 	textFit(backElements, {
 		multiLine: true,
 		minFontSize: 7.75,
-		maxFontSize: 22,
+		maxFontSize: baseMaxFontSize,
 	});
 	return true;
 }

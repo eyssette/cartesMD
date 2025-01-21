@@ -20,7 +20,8 @@ h2 {
 	margin-left:360px!important;
 	margin-top:-200px!important;
 	z-index:2;
-	height:180px!important
+	height:180px!important;
+	align-items: center!important;
 }
 .cardContentUp ul {
 	margin-left: -10px !important;

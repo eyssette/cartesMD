@@ -16,6 +16,7 @@ h2 {
 	height: 130px !important;
 	margin: 20px auto !important;
 	border: none;
+	align-items: center!important;
 }
 .cardContentUp ul {
 	margin-left: -10px !important;
