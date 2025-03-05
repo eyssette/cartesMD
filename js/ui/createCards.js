@@ -51,7 +51,7 @@ export function createCards(cardsArray) {
 		const footer =
 			card.footer == ""
 				? ""
-				: `<footer>${markdownToHTML(card.footer, true)}</footer>`;
+				: `<footer class="z5">${markdownToHTML(card.footer, true)}</footer>`;
 		const contentUp = card.contentUp.startsWith("![")
 			? markdownToHTML(card.contentUp, true)
 			: markdownToHTML(card.contentUp);
@@ -105,10 +105,10 @@ export function createCards(cardsArray) {
 			`
 		<div class="cardBackAndFront${color.length > 0 ? " " + color : ""}${classZcount}" id="card-${cardNumber}">
 			<section class="card cardFront"${backgroundColorCSS}>
-				<h2 class="cardTitle"><span>${title}</span></h2>
-				<div class="cardContentUp">${contentUp}</div>
-				<h3 class="cardSubtitle">${markdownToHTML(card.subtitle, true)}</h3>
-				<div class="cardContentDown">${markdownToHTML(card.contentDown)}</div>
+				<h2 class="cardTitle z1"><span>${title}</span></h2>
+				<div class="cardContentUp z2">${contentUp}</div>
+				<h3 class="cardSubtitle z3">${markdownToHTML(card.subtitle, true)}</h3>
+				<div class="cardContentDown z4">${markdownToHTML(card.contentDown)}</div>
 				${footer}
 			</section>
 			${cardBack}

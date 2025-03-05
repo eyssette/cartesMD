@@ -62,7 +62,7 @@ const highlightCode = (editor) => {
 
 	// Coloration syntaxique pour le yaml
 	code = code.replace(
-		/(card:|z1:|z2:|z3:|z4:|back:|backImage:|style:|maths:|theme:|rectoVerso:|verso:|nombreZones:)/g,
+		/(card:|z1:|z2:|z3:|z4:|z5:|back:|backImage:|style:|maths:|theme:|rectoVerso:|verso:|nombreZones:)/g,
 		'<span class="markdownYAML">$1</span>',
 	);
 

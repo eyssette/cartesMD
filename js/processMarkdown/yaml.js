@@ -7,10 +7,11 @@ export let yaml = {};
 // On définit des propriétés utilisables dans le yaml pour customiser les styles CSS
 const styleMapping = {
 	card: ".card",
-	z1: "h2",
-	z2: ".cardContentUp",
-	z3: "h3",
-	z4: ".cardContentDown",
+	z1: ".z1",
+	z2: ".z2",
+	z3: ".z3",
+	z4: ".z4",
+	z5: ".z5",
 	back: ".cardBack",
 	backImage: ".cardBackImage",
 	style: "",

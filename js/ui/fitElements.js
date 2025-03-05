@@ -19,10 +19,10 @@ function fitElementsMainLogic() {
 			? elementToStyle.style.cssText + newStyle
 			: newStyle;
 	}
-	const z1Elements = document.querySelectorAll("h2");
-	const z2Elements = document.querySelectorAll(".cardContentUp");
-	const z3Elements = document.querySelectorAll(".cardSubtitle");
-	const z4Elements = document.querySelectorAll(".cardContentDown");
+	const z1Elements = document.querySelectorAll(".z1");
+	const z2Elements = document.querySelectorAll(".z2");
+	const z3Elements = document.querySelectorAll(".z3");
+	const z4Elements = document.querySelectorAll(".z4");
 	const backElements = document.querySelectorAll(".cardBack aside");
 
 	const baseMaxFontSize =
