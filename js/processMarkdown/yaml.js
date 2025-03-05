@@ -1,5 +1,6 @@
 import { load as loadYAML } from "../externals/js-yaml.js";
 import { loadScript, loadCSS } from "../utils/urls.js";
+import { scopedStyles } from "../utils/css.js";
 import { CSSthemes, addOnsDependencies, allowedAddOns } from "../config.js";
 
 export let yaml = {};
@@ -110,7 +111,10 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 					"",
 				);
 			}
-			customStylesElement.textContent = customStylesCSS;
+			customStylesElement.textContent = scopedStyles(
+				customStylesCSS,
+				"#content",
+			);
 			// Gestion des add-ons (scripts et css en plus)
 			if (yaml.addOns) {
 				yaml.addOns = yaml.addOns.replace(" ", "").split(",");
