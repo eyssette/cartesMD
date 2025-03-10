@@ -1,3 +1,9 @@
+## 1.62.2 (2025-03-10)
+
+### Fix
+
+- **codejar**: bug avec contenteditable plaintext => test si version Firefox >136
+
 ## 1.62.1 (2025-03-05)
 
 ### Fix
