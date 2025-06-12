@@ -80,19 +80,21 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 				if (CSSthemes.includes(CSSfile)) {
 					// theme = true;
 					let themeURL = "css/theme/" + CSSfile;
+					const CSSthemeName = "theme-" + CSSfile.replace(".css", "");
 					fetch(themeURL)
 						.then((response) => response.text())
 						.then((data) => {
 							styleThemeElement.textContent = data;
-							document.body.className =
-								document.body.className +
-								" theme-" +
-								CSSfile.replace(".css", "");
+							document.body.className = document.body.className.replace(
+								/theme-.*/g,
+								"",
+							);
+							document.body.classList.add(CSSthemeName);
 						})
 						.catch((error) => {
 							styleThemeElement.textContent = "";
 							document.body.className = document.body.className.replace(
-								/theme-.*/,
+								/theme-.*/g,
 								"",
 							);
 							console.error(error);
@@ -100,14 +102,14 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 				} else {
 					styleThemeElement.textContent = "";
 					document.body.className = document.body.className.replace(
-						/theme-.*/,
+						/theme-.*/g,
 						"",
 					);
 				}
 			} else {
 				styleThemeElement.textContent = "";
 				document.body.className = document.body.className.replace(
-					/theme-.*/,
+					/theme-.*/g,
 					"",
 				);
 			}
@@ -151,7 +153,7 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 			console.log("erreur processYAML : " + e);
 		}
 	} else {
-		document.body.className = document.body.className.replace(/theme-.*/, "");
+		document.body.className = document.body.className.replace(/theme-.*/g, "");
 		if (styleThemeElement) {
 			styleThemeElement.textContent = "";
 		}
