@@ -5,12 +5,7 @@ verso: true
 nombreZones: 4
 ---
 
-# Présentation de l'outil
-
-_CartesMD_ est un outil **libre** et **gratuit**.
-Éditez ce contenu, en respectant la syntaxe ci-dessous, pour créer vos cartes et les imprimer.
-
-<!-- Les cartes commencent à partir du premier titre de niveau 2 : tout ce qui est écrit avant ne compte pas -->
+<!-- Les cartes commencent à partir du premier titre de niveau 2 : tout ce qui est écrit avant ne compte pas. Éditez ce contenu, en respectant la syntaxe ci-dessous, pour créer vos cartes et les imprimer. -->
 
 ## Cartes MD
 
