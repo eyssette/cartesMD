@@ -3,12 +3,13 @@
 	height: 220px;
 }
 h2 {
-	height:180px!important;
-	text-align:center;
-	background:white;
-	color:black!important;
-	width:280px; margin:15px auto!important;
-	font-weight:normal!important;
+	height: 180px !important;
+	text-align: center;
+	background: white;
+	color: black !important;
+	width: 280px;
+	margin: 15px auto !important;
+	font-weight: normal !important;
 }
 .cardBackAndFront {
 	flex-wrap: nowrap;
@@ -16,28 +17,29 @@ h2 {
 .cardContentUp {
 	width: 310px !important;
 	border: none;
-	position:absolute!important;
-	margin-left:360px!important;
-	margin-top:-200px!important;
-	z-index:2;
-	height:180px!important;
-	align-items: center!important;
+	position: absolute !important;
+	margin-left: 360px !important;
+	margin-top: -200px !important;
+	z-index: 2;
+	height: 180px !important;
+	align-items: center !important;
 }
 .cardContentUp ul {
 	margin-left: -10px !important;
 	margin-right: 10px;
 }
 h3 {
-	display:none!important
+	display: none !important;
 }
 .cardContentDown {
-	display:none!important
+	display: none !important;
 }
-.cardBackImage, .cardBack aside {
+.cardBackImage,
+.cardBack aside {
 	display: none;
 }
 .card footer {
-	display:none!important
+	display: none !important;
 }
 #content {
 	width: 70vw !important;
@@ -49,4 +51,11 @@ h3 {
 	#content {
 		width: 100% !important;
 	}
+}
+
+.zCount1 .cardContentUp {
+	margin-top: -205px !important;
+	margin-left: 10px !important;
+	height: 200px !important;
+	width: 320px !important;
 }
