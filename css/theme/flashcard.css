@@ -18,7 +18,8 @@ h2 {
 	border: none;
 	align-items: center !important;
 }
-.cardContentUp ul {
+.cardContentUp ul,
+.cardContentUp ol {
 	margin-left: -10px !important;
 	margin-right: 10px;
 }
@@ -39,6 +40,12 @@ h3 {
 	padding: 9px 10px;
 	z-index: 1;
 }
+.cardContentDown ul,
+.cardContentDown ol {
+	margin-left: -10px !important;
+	margin-right: 10px;
+}
+
 .cardBackImage,
 .cardBack aside {
 	display: none;
