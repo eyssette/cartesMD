@@ -44,7 +44,13 @@ h3 {
 	display: none;
 }
 .card footer {
-	display: none !important;
+	position: absolute;
+	width: auto;
+	margin-top: 133px !important;
+	text-align: right !important;
+	font-size: 0.7em !important;
+	right: 310px;
+	margin-right: 59px;
 }
 #content {
 	width: 70vw !important;
