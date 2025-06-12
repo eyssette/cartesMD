@@ -11,6 +11,14 @@ h2 {
 	margin: 15px auto !important;
 	font-weight: normal !important;
 }
+h3 {
+	height: 18px !important;
+	visibility: visible !important;
+	margin-top: -195px !important;
+	font-weight: normal !important;
+	justify-content: right !important;
+	width: 300px !important;
+}
 .cardBackAndFront {
 	flex-wrap: nowrap;
 }
@@ -27,9 +35,6 @@ h2 {
 .cardContentUp ul {
 	margin-left: -10px !important;
 	margin-right: 10px;
-}
-h3 {
-	display: none !important;
 }
 .cardContentDown {
 	display: none !important;

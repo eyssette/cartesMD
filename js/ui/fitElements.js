@@ -27,7 +27,7 @@ function fitElementsMainLogic() {
 
 	const baseMaxFontSize =
 		yaml && yaml.theme && yaml.theme.includes("flashcard") ? 40 : 22;
-	textFit(z1Elements, { multiLine: true });
+	textFit(z1Elements, { multiLine: true, maxFontSize: 60 });
 	textFit(z2Elements, {
 		multiLine: true,
 		minFontSize: 7.75,
