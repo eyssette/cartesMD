@@ -3,12 +3,12 @@
 	height: 220px;
 }
 h2 {
-	height: 180px !important;
+	height: 190px !important;
 	text-align: center;
 	background: white;
 	color: black !important;
 	width: 280px;
-	margin: 15px auto !important;
+	margin: 10px auto !important;
 	font-weight: normal !important;
 }
 h3 {
@@ -27,9 +27,9 @@ h3 {
 	border: none;
 	position: absolute !important;
 	margin-left: 360px !important;
-	margin-top: -200px !important;
+	margin-top: -204px !important;
 	z-index: 2;
-	height: 180px !important;
+	height: 196px !important;
 	align-items: center !important;
 }
 .cardContentUp ul {
