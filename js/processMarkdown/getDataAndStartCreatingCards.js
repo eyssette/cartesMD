@@ -1,4 +1,4 @@
-import defaultMD from "../../content.md";
+import defaultMD from "../../index.md";
 import { handleURL } from "../utils/urls";
 import { parseMarkdown } from "./parseMarkdown";
 import { createCards } from "../ui/createCards";
