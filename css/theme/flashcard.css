@@ -78,3 +78,17 @@ h3 {
 	margin-top: 10px !important;
 	width: 320px !important;
 }
+
+.noVerso .z3,
+.noVerso .z4 {
+	display: none !important;
+}
+
+@media print {
+	.noVerso #content {
+		column-count: 2 !important;
+	}
+	.noVerso .cardBackAndFront {
+		margin: 0 0 30px 0 !important;
+	}
+}

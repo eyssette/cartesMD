@@ -53,9 +53,23 @@ h3 {
 	}
 }
 
+.zCount1 .cardTitle span {
+	visibility: visible !important;
+}
+
 .zCount1 .cardContentUp {
-	margin-top: -205px !important;
-	margin-left: 10px !important;
-	height: 200px !important;
-	width: 320px !important;
+	display: none;
+}
+
+.noVerso .z2 {
+	display: none !important;
+}
+
+@media print {
+	.noVerso #content {
+		column-count: 2 !important;
+	}
+	.noVerso .cardBackAndFront {
+		margin: 0 0 30px 0 !important;
+	}
 }
