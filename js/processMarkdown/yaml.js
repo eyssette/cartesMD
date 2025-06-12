@@ -42,6 +42,10 @@ function splitMarkdownByHRIgnoringCodeBlocks(markdownContent) {
 }
 
 export function processYAML(markdownContent) {
+	const isFlashMd =
+		window.location.href.includes("https://flashmd.forge.apps.education.fr") ||
+		window.location.href.includes("?flashmd");
+
 	const styleThemeElement = document.getElementById("styleTheme");
 	const customStylesElement = document.getElementById("customStyles");
 	const styleRectoVersoElement = document.getElementById("rectoVerso");
@@ -49,11 +53,13 @@ export function processYAML(markdownContent) {
 	let markdownContentSplitted =
 		splitMarkdownByHRIgnoringCodeBlocks(markdownContent);
 
+	const hasYaml =
+		markdownContent.startsWith("---") && markdownContentSplitted.length > 2;
+
 	let customStylesCSS = "";
-	if (markdownContent.startsWith("---") && markdownContentSplitted.length > 2) {
+	if (hasYaml || isFlashMd) {
 		try {
 			yaml = loadYAML(markdownContentSplitted[1]);
-			// let theme = false;
 			for (const [key, selector] of Object.entries(styleMapping)) {
 				if (yaml[key]) {
 					const styleContent = yaml[key].replaceAll("\\", "");
@@ -95,14 +101,13 @@ export function processYAML(markdownContent) {
 				styleRectoVersoElement.textContent = "";
 			}
 			// Gestion des styles personnalisés
-			if (yaml.theme) {
+			if (yaml.theme || isFlashMd) {
 				// Possibilité d'utiliser un thème pour les cartes
-				const themeName = yaml.theme.trim();
+				const themeName = isFlashMd ? "flashcard-simple" : yaml.theme.trim();
 				const CSSfile = themeName.endsWith(".css")
 					? themeName
 					: themeName + ".css";
 				if (CSSthemes.includes(CSSfile)) {
-					// theme = true;
 					let themeURL = "css/theme/" + CSSfile;
 					const CSSthemeName = "theme-" + CSSfile.replace(".css", "");
 					fetch(themeURL)
@@ -174,9 +179,13 @@ export function processYAML(markdownContent) {
 		} catch (e) {
 			console.log("erreur processYAML : " + e);
 		}
-		markdownContentSplitted.shift();
-		markdownContentSplitted.shift();
-		return markdownContentSplitted.join("\n");
+		if (hasYaml) {
+			markdownContentSplitted.shift();
+			markdownContentSplitted.shift();
+			return markdownContentSplitted.join("\n");
+		} else {
+			return markdownContent;
+		}
 	} else {
 		document.body.className = document.body.className.replace(/theme-\S*/g, "");
 		if (styleThemeElement) {
