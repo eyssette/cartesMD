@@ -80,11 +80,21 @@ h3 {
 	display: none !important;
 }
 
+.noVerso .card footer {
+	right: -36px;
+}
+
 @media print {
 	.noVerso #content {
 		column-count: 2 !important;
 	}
 	.noVerso .cardBackAndFront {
 		margin: 0 0 30px 0 !important;
+	}
+	.card footer {
+		right: 50.5% !important;
+	}
+	.noVerso .card footer {
+		right: 15px !important;
 	}
 }
