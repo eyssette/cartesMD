@@ -26,9 +26,6 @@ On peut écrire son texte directement dans l'interface.
 - Sources sur [LaForgeÉdu](https://forge.apps.education.fr/cartesmd/cartesMD.forge.apps.education.fr)
 - Inspiré par [CréaCarte](https://lmdbt.forge.apps.education.fr/creacarte/) de [Cyril Iaconelli](https://lmdbt.forge.apps.education.fr/)
 
-<!-- On sépare chaque carte par trois tirets du milieu qui se suivent  -->
-
----
 
 ## Modifier les cartes
 
@@ -42,15 +39,15 @@ On peut utiliser ++toute++ la syntaxe _Markdown_.
 
 CartesMD calcule automatiquement la taille de police optimale pour rester dans le cadre !
 
----
+
 nombreZones: 2
 ## Nombre de Zones
 
 On peut changer le nombre de zones (4 par défaut et 4 au maximum) avec le paramètre `nombreZones`.
 
-Soit on applique ce paramètre avant le titre d'une carte, soit on le définit dans l'en-tête pour qu'il s'applique à toutes les cartes
+Soit on applique ce paramètre sur la ligne juste avant le titre d'une carte, soit on le définit dans l'en-tête pour qu'il s'applique à toutes les cartes
 
----
+
 
 ## Balises HTML
 
@@ -70,7 +67,7 @@ maths: true
 
 #### :mag:
 
----
+
 
 ## Thème <br>& image de fond
 
@@ -84,7 +81,7 @@ On peut changer l'image de fond en mettant l'URL d'une autre image.
 
 #### 1
 
----
+
 
 ## Dos de la carte
 
@@ -107,7 +104,7 @@ Si on veut supprimer les dos de cartes, on ajoute dans l'en-tête :
 
 </aside>
 
----
+
 
 ## 🖨️ &nbsp;Imprimer
 
@@ -121,7 +118,7 @@ On lance simplement l'impression de cette page pour imprimer les cartes
 
 On peut utiliser `rectoVerso: true` dans l'en-tête YAML pour pouvoir imprimer en recto-verso en utilisant ensuite l'outil [pdfimpose.it](https://www.pdfimpose.it/) pour imprimer les cartes.
 
----
+
 
 ## Emojis & précisions<aside> :+1:</aside>
 
@@ -140,7 +137,7 @@ On peut utiliser ou non le dernier titre, de niveau 4, pour mettre le numéro de
 
 #### :books:
 
----
+
 
 ## Platon <aside>428-348</aside>
 
@@ -154,7 +151,7 @@ On peut ajouter une image dans le cadre du haut et la repositionner en CSS en ut
 
 #### Term.
 
----
+
 
 ## Utiliser CodiMD
 
@@ -174,7 +171,7 @@ https://cartesmd.forge.apps.education.fr/#URLduFICHIER
 D'autres éditeurs sont pris en charge :
 [Hedgedoc](https://demo.hedgedoc.org/), [Digipage](https://digipage.app/). Les élèves peuvent les utiliser sans créer de comptes.
 
----
+
 
 ## Usages plus avancés
 
@@ -192,7 +189,7 @@ z1: height:300px
 -​-​-
 ```
 
----
+
 
 ## Des exemples !
 
@@ -207,7 +204,7 @@ Voici quelques exemples de cartes créées avec cartesMD !
 
 <span style="font-size:0.8em">Ajoutez `?e=0` dans l'URL pour cacher l'éditeur <br>`?m=0` pour cacher le menu</span>
 
----
+
 
 ## Les thèmes
 
@@ -227,7 +224,7 @@ Les thèmes disponibles sont présents dans le [dossier “thème”](https://fo
 
 N'hésitez pas à m'envoyer vos propositions de thèmes !
 
----
+
 
 ## Faire des flashcards
 
@@ -241,7 +238,7 @@ On peut aussi utiliser le thème `flashcard-simple` pour utiliser seulement le t
 
 Voici un exemple de [flashcards en <br>Histoire-Géographie](https://cartesmd.forge.apps.education.fr/#https://codimd.apps.education.fr/eW4UTUncQ3ue56D9ThaZUg) avec ce thème (cartes créées par Françoise Vaillant).
 
----
+
 
 ## Contribuer
 

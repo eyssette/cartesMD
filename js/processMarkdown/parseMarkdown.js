@@ -1,27 +1,46 @@
 import { loadCSS } from "../utils/urls";
 import { processYAML } from "./yaml";
 
-function splitMarkdownIgnoringCodeBlocks(markdownContent) {
-	// Expression régulière pour diviser en fonction de `---` uniquement en dehors des blocs de code.
-	const regex = /(?:^|\n)---(?!.*```)/;
+function isCardConfiguration(line) {
+	return line.indexOf("nombreZones:") === 0;
+}
 
-	// On recherche et remplace temporairement les blocs de code avec un token pour les restaurer après
-	const codeBlockRegex = /```[\s\S]*?```/g;
-	let codeBlocks = [];
-	markdownContent = markdownContent.replace(codeBlockRegex, (match) => {
-		codeBlocks.push(match);
-		return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
-	});
+function startNewCard(line) {
+	return line.indexOf("## ") === 0;
+}
 
-	// On split le markdown en fonction des séparateurs "---" en dehors des blocs de code
-	let parts = markdownContent.split(regex);
+function splitMarkdownByCards(md) {
+	md = md.replace(/\r\n|\r/g, "\n");
+	const lines = md.split("\n");
+	let sections = [];
+	let currentSection = [];
+	let newCardStarted = false;
+	let firstCardStarted = false;
 
-	// On restaure les blocs de code
-	parts = parts.map((part) =>
-		part.replace(/__CODE_BLOCK_(\d+)__/g, (_, index) => codeBlocks[index]),
-	);
+	for (let i = 0; i < lines.length; i++) {
+		const line = lines[i];
 
-	return parts;
+		if (
+			(startNewCard(line) || isCardConfiguration(line)) &&
+			newCardStarted == false
+		) {
+			firstCardStarted = true;
+			newCardStarted = true;
+			if (currentSection.length > 0) {
+				sections.push(currentSection.join("\n").trim());
+				currentSection = [];
+			}
+		} else {
+			newCardStarted = false;
+		}
+		if (firstCardStarted) {
+			currentSection.push(line);
+		}
+	}
+	if (currentSection.length > 0) {
+		sections.push(currentSection.join("\n").trim());
+	}
+	return sections;
 }
 
 export function parseMarkdown(markdownContent) {
@@ -35,16 +54,10 @@ export function parseMarkdown(markdownContent) {
 		/<div.*?>/g,
 		'<div markdown="1">',
 	);
-	// On supprime le titre de niveau 1 (qui n'a pas d'équivalent dans les cartes elles-mêmes)
-	markdownContent = markdownContent.replace(/^# (.*)/, "");
 
-	let markdownContentSplitted =
-		splitMarkdownIgnoringCodeBlocks(markdownContent);
-	markdownContentSplitted = processYAML(
-		markdownContent,
-		markdownContentSplitted,
-	);
-	const markdownCards = markdownContentSplitted;
+	markdownContent = processYAML(markdownContent);
+
+	const markdownCards = splitMarkdownByCards(markdownContent);
 	let cardsArray = [];
 
 	markdownCards.forEach((markdownCard) => {

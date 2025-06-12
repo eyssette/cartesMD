@@ -18,10 +18,36 @@ const styleMapping = {
 	style: "",
 };
 
-export function processYAML(markdownContent, markdownContentSplitted) {
+function splitMarkdownByHRIgnoringCodeBlocks(markdownContent) {
+	// Expression régulière pour diviser en fonction de `---` uniquement en dehors des blocs de code.
+	const regex = /(?:^|\n)---(?!.*```)/;
+
+	// On recherche et remplace temporairement les blocs de code avec un token pour les restaurer après
+	const codeBlockRegex = /```[\s\S]*?```/g;
+	let codeBlocks = [];
+	markdownContent = markdownContent.replace(codeBlockRegex, (match) => {
+		codeBlocks.push(match);
+		return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+	});
+
+	// On split le markdown en fonction des séparateurs "---" en dehors des blocs de code
+	let parts = markdownContent.split(regex);
+
+	// On restaure les blocs de code
+	parts = parts.map((part) =>
+		part.replace(/__CODE_BLOCK_(\d+)__/g, (_, index) => codeBlocks[index]),
+	);
+
+	return parts;
+}
+
+export function processYAML(markdownContent) {
 	const styleThemeElement = document.getElementById("styleTheme");
 	const customStylesElement = document.getElementById("customStyles");
 	const styleRectoVersoElement = document.getElementById("rectoVerso");
+
+	let markdownContentSplitted =
+		splitMarkdownByHRIgnoringCodeBlocks(markdownContent);
 
 	let customStylesCSS = "";
 	if (markdownContent.startsWith("---") && markdownContentSplitted.length > 2) {
@@ -145,11 +171,12 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 					}
 				}
 			}
-			markdownContentSplitted.shift();
-			markdownContentSplitted.shift();
 		} catch (e) {
 			console.log("erreur processYAML : " + e);
 		}
+		markdownContentSplitted.shift();
+		markdownContentSplitted.shift();
+		return markdownContentSplitted.join("\n");
 	} else {
 		document.body.className = document.body.className.replace(/theme-\S*/g, "");
 		if (styleThemeElement) {
@@ -159,5 +186,5 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 			customStylesElement.textContent = "";
 		}
 	}
-	return markdownContentSplitted;
+	return markdownContent;
 }
