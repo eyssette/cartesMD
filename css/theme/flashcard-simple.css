@@ -32,6 +32,9 @@ h3 {
 	height: 196px !important;
 	align-items: center !important;
 }
+.cardContentUp p {
+	margin: 5px;
+}
 .cardContentUp ul {
 	margin-left: -10px !important;
 	margin-right: 10px;
