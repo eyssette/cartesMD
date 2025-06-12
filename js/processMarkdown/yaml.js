@@ -22,7 +22,6 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 	const styleThemeElement = document.getElementById("styleTheme");
 	const customStylesElement = document.getElementById("customStyles");
 	const styleRectoVersoElement = document.getElementById("rectoVerso");
-	const styleVersoElement = document.getElementById("verso");
 
 	let customStylesCSS = "";
 	if (markdownContent.startsWith("---") && markdownContentSplitted.length > 2) {
@@ -51,10 +50,9 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 				]);
 			}
 			if (yaml.verso === false) {
-				styleVersoElement.textContent =
-					".cardBack{display:none!important}#content {column-count:4!important}";
+				document.body.classList.add("noVerso");
 			} else {
-				styleVersoElement.textContent = "";
+				document.body.classList.remove("noVerso");
 			}
 			if (yaml.rectoVerso) {
 				const cssRectoVerso = "css/printRectoVerso.min.css";
@@ -86,7 +84,7 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 						.then((data) => {
 							styleThemeElement.textContent = data;
 							document.body.className = document.body.className.replace(
-								/theme-.*/g,
+								/theme-\S*/g,
 								"",
 							);
 							document.body.classList.add(CSSthemeName);
@@ -94,7 +92,7 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 						.catch((error) => {
 							styleThemeElement.textContent = "";
 							document.body.className = document.body.className.replace(
-								/theme-.*/g,
+								/theme-\S*/g,
 								"",
 							);
 							console.error(error);
@@ -102,14 +100,14 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 				} else {
 					styleThemeElement.textContent = "";
 					document.body.className = document.body.className.replace(
-						/theme-.*/g,
+						/theme-\S*/g,
 						"",
 					);
 				}
 			} else {
 				styleThemeElement.textContent = "";
 				document.body.className = document.body.className.replace(
-					/theme-.*/g,
+					/theme-\S*/g,
 					"",
 				);
 			}
@@ -153,7 +151,7 @@ export function processYAML(markdownContent, markdownContentSplitted) {
 			console.log("erreur processYAML : " + e);
 		}
 	} else {
-		document.body.className = document.body.className.replace(/theme-.*/g, "");
+		document.body.className = document.body.className.replace(/theme-\S*/g, "");
 		if (styleThemeElement) {
 			styleThemeElement.textContent = "";
 		}

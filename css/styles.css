@@ -196,7 +196,7 @@ nav ul li {
 	padding: 0 10px;
 }
 
-img{
+img {
 	max-width: 100%;
 }
 
@@ -279,12 +279,12 @@ mark {
 	justify-content: center !important;
 }
 
-.zCount1 .cardTitle span{
+.zCount1 .cardTitle span {
 	visibility: hidden;
 }
 .zCount1 .cardContentUp {
 	height: 320px;
-	margin-top:-28px!important;
+	margin-top: -28px !important;
 }
 .zCount1 .cardSubtitle {
 	visibility: hidden;
@@ -311,5 +311,12 @@ mark {
 }
 .zCount3 .cardContentDown {
 	height: 170px;
-	margin-top:-25px!important
+	margin-top: -25px !important;
+}
+
+.noVerso .cardBack {
+	display: none !important;
+}
+.noVerso #content {
+	column-count: 4 !important;
 }
