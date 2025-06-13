@@ -59,7 +59,11 @@ export function processYAML(markdownContent) {
 	let customStylesCSS = "";
 	if (hasYaml || isFlashMd) {
 		try {
-			yaml = loadYAML(markdownContentSplitted[1]);
+			if (!isFlashMd) {
+				yaml = loadYAML(markdownContentSplitted[1]);
+			} else {
+				yaml = { maths: true, theme: "flashcard-simple" };
+			}
 			for (const [key, selector] of Object.entries(styleMapping)) {
 				if (yaml[key]) {
 					const styleContent = yaml[key].replaceAll("\\", "");
@@ -103,7 +107,7 @@ export function processYAML(markdownContent) {
 			// Gestion des styles personnalisés
 			if (yaml.theme || isFlashMd) {
 				// Possibilité d'utiliser un thème pour les cartes
-				const themeName = isFlashMd ? "flashcard-simple" : yaml.theme.trim();
+				const themeName = yaml.theme.trim();
 				const CSSfile = themeName.endsWith(".css")
 					? themeName
 					: themeName + ".css";
