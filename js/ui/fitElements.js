@@ -34,11 +34,13 @@ function fitElementsMainLogic() {
 		maxFontSize: baseMaxFontSize,
 	});
 	textFit(z3Elements, { multiLine: true, maxFontSize: baseMaxFontSize + 6 });
-	textFit(z4Elements, {
-		multiLine: true,
-		minFontSize: 7.75,
-		maxFontSize: baseMaxFontSize,
-	});
+	if (!(yaml && yaml.theme && yaml.theme == "flashcard-simple")) {
+		textFit(z4Elements, {
+			multiLine: true,
+			minFontSize: 7.75,
+			maxFontSize: baseMaxFontSize,
+		});
+	}
 	textFit(backElements, {
 		multiLine: true,
 		minFontSize: 7.75,
