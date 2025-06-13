@@ -40,12 +40,12 @@ export function getDataAndStartCreatingCards() {
 				if (!isSmallScreen) {
 					updateEditorContent(md);
 				}
+				options = params(editorElement, options);
 				initializeMenu(editorElement, isSmallScreen, options);
 				const cardsData = parseMarkdown(md, options);
 				createCards(cardsData);
 				changeImageFormatIfError();
 				handleEvents(editorElement, options);
-				params(editorElement);
 				if (isSmallScreen) {
 					updateEditorContent(md);
 				}
@@ -55,12 +55,12 @@ export function getDataAndStartCreatingCards() {
 				if (!isSmallScreen) {
 					updateEditorContent(md);
 				}
+				options = params(editorElement, options);
 				initializeMenu(editorElement, isSmallScreen, options);
 				const cardsData = parseMarkdown(md, options);
 				createCards(cardsData);
 				changeImageFormatIfError();
 				handleEvents(editorElement, options);
-				params(editorElement);
 				if (isSmallScreen) {
 					updateEditorContent(md);
 				}
@@ -74,12 +74,12 @@ export function getDataAndStartCreatingCards() {
 		if (!isSmallScreen) {
 			updateEditorContent(md);
 		}
+		options = params(editorElement, options);
 		initializeMenu(editorElement, isSmallScreen, options);
 		const cardsData = parseMarkdown(md, options);
 		createCards(cardsData);
 		changeImageFormatIfError();
 		handleEvents(editorElement, options);
-		params(editorElement);
 		if (isSmallScreen) {
 			updateEditorContent(md);
 		}

@@ -47,13 +47,13 @@ export function changeOrientationButton(editorElement, options) {
 					splittedContent.shift();
 				}
 				updateEditorContent(splittedContent.join("---").trim());
-				const parsedMD = parseMarkdown(editorElement.textContent);
+				const parsedMD = parseMarkdown(editorElement.textContent, options);
 				createCards(parsedMD);
 			} else {
 				updateEditorContent(
 					"---\ntheme: flashcard\n---\n\n" + editorElement.textContent,
 				);
-				const parsedMD = parseMarkdown(editorElement.textContent);
+				const parsedMD = parseMarkdown(editorElement.textContent, options);
 				createCards(parsedMD);
 			}
 		});

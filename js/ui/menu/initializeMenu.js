@@ -9,7 +9,7 @@ import { launchTestMode } from "./menuTestMode";
 
 export function initializeMenu(editorElement, isSmallScreen, options) {
 	showOrHideEditorButton(editorElement, options);
-	if (isSmallScreen) {
+	if (isSmallScreen || options.hideEditorByDefault || options.isTestMode) {
 		hideEditor(editorElement, options);
 	} else {
 		showEditor(editorElement, options);

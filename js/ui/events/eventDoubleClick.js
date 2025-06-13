@@ -3,7 +3,10 @@ import { showEditor } from "../menu/menuShowOrHideEditor";
 export function eventDoubleClick(editorElement, options) {
 	// Double clic pour focaliser l'éditeur sur la carte sur laquelle on a cliqué
 	document.body.addEventListener("dblclick", (event) => {
-		if (!document.body.classList.contains("isTestMode")) {
+		if (
+			!document.body.classList.contains("isTestMode") &&
+			!(options && options.isTestMode)
+		) {
 			const markdownTitles = document.querySelectorAll(".markdownTitles.h2");
 			let currentElement = event.target;
 			let selectedCard = currentElement.closest(".cardBackAndFront");

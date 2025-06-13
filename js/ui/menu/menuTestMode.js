@@ -13,24 +13,34 @@ function toggleVerso(isTestMode) {
 }
 let isTestMode = false;
 
+function handleTestMode(editorElement, options) {
+	setTimeout(() => {
+		eventClick({ isTestMode: options.isTestMode });
+	}, 2000);
+	toggleVerso(options.isTestMode);
+	if (
+		options.isTestMode ||
+		options.isSmallScreen ||
+		options.hideEditorByDefault
+	) {
+		hideEditor(editorElement, options);
+	} else {
+		showEditor(editorElement, options);
+	}
+}
+
 export function launchTestMode(editorElement, options) {
 	const testModeButton = document.getElementById("testModeButton");
 	testModeButton.style.display = "block";
+	if (options.isTestMode) {
+		setTimeout(() => {
+			handleTestMode(editorElement, options);
+			isTestMode = true;
+		}, 1000);
+	}
 	testModeButton.addEventListener("click", () => {
 		isTestMode = !isTestMode;
-		setTimeout(() => {
-			eventClick({ isTestMode: true });
-		}, 2000);
-		toggleVerso(isTestMode);
 		options.isTestMode = isTestMode;
-		if (isTestMode) {
-			hideEditor(editorElement, options);
-		} else {
-			if (options.isSmallScreen) {
-				hideEditor(editorElement, options);
-			} else {
-				showEditor(editorElement, options);
-			}
-		}
+		handleTestMode(editorElement, options);
 	});
 }
