@@ -87,7 +87,7 @@ h3 {
 .cardBackAndFront {
 	perspective: 1000px;
 }
-.cardFront {
+.noVerso .cardFront {
 	transform-style: preserve-3d;
 	transition:
 		transform 0.8s,
@@ -95,22 +95,22 @@ h3 {
 		border 0s 0.25s;
 	transform: rotateY(0deg);
 }
-.showVerso .cardFront {
+.noVerso .showVerso .cardFront {
 	transform: rotateY(180deg);
 	background-color: transparent;
 	border: 1px solid grey;
 }
-.z1 {
+.noVerso .z1 {
 	backface-visibility: hidden;
 }
-.z2 {
+.noVerso .z2 {
 	transform: rotateY(0deg);
 	transition:
 		transform 0s 0.25s,
 		margin-left 0s 0.25s;
 	margin-left: 360px !important;
 }
-.showVerso .z2 {
+.noVerso .showVerso .z2 {
 	margin-left: 10px !important;
 	transform: rotateY(180deg);
 }
