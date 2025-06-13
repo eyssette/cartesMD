@@ -1,3 +1,12 @@
+## 2.1.2 (2025-06-13)
+
+### Fix
+
+- update du contenu de l'éditeur avec debounce qui prend en compte les options
+- raccourci clavier pour le mode révision dans flashMD
+- gestion des paramètres dans l'URL, notamment pour le mode révision avec flashMD
+- prise en compte petit écran pour le retour du mode de révision vers le mode ordinaire (il faut cacher la fenêtre d'édition par défaut)
+
 ## 2.1.1 (2025-06-13)
 
 ### Fix
