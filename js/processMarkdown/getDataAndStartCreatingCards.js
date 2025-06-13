@@ -27,7 +27,7 @@ export function getDataAndStartCreatingCards() {
 		h1Element.textContent = "FlashMD";
 		document.title = "FlashMD";
 	}
-	let options = { isFlashMd: isFlashMd };
+	let options = { isFlashMd: isFlashMd, isSmallScreen: isSmallScreen };
 	let sourceMarkdown = handleURL(url);
 	sourceMarkdown =
 		sourceMarkdown == "" && isFlashMd ? "index-flashmd.md" : sourceMarkdown;

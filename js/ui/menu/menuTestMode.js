@@ -22,10 +22,15 @@ export function launchTestMode(editorElement, options) {
 			eventClick({ isTestMode: true });
 		}, 2000);
 		toggleVerso(isTestMode);
+		options.isTestMode = isTestMode;
 		if (isTestMode) {
 			hideEditor(editorElement, options);
 		} else {
-			showEditor(editorElement, options);
+			if (options.isSmallScreen) {
+				hideEditor(editorElement, options);
+			} else {
+				showEditor(editorElement, options);
+			}
 		}
 	});
 }

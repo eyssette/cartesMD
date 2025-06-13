@@ -17,6 +17,7 @@ export function showEditor(editorElement, options) {
 	if (options && options.isFlashMd) {
 		contentElement.style.setProperty("width", "70vw", "important");
 		contentElement.style.gap = "20px";
+		contentElement.style.justifyContent = "start";
 	}
 }
 
@@ -27,12 +28,15 @@ export function hideEditor(editorElement, options) {
 	contentElement.style.marginLeft = "10px";
 	contentElement.style.paddingTop = "60px";
 	headerElement.style.cssText =
-		"background-color: white;;border: 2px solid black;";
+		"background-color: white;border: 2px solid black;";
 	shouldShowEditor = false;
 	if (options && options.isFlashMd) {
-		contentElement.style.setProperty("width", "80vw", "important");
+		const contentElementWidth =
+			options.isSmallScreen && options.isTestMode ? "100vw" : "80vw";
+		contentElement.style.setProperty("width", contentElementWidth, "important");
 		contentElement.style.gap = "30px 40px";
-		contentElement.style.justifyContent = "start";
+		contentElement.style.justifyContent =
+			options.isSmallScreen && options.isTestMode ? "center" : "start";
 		contentElement.style.margin = "auto";
 	}
 }
