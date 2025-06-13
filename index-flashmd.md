@@ -1,6 +1,6 @@
 ## Qu'est-ce que FlashMD ?
 
-C'est un outil libre et gratuit pour créer des flashcards, créé par [Cédric Eyssette](https://eyssette.forge.apps.education.fr/).
+C'est un outil libre et gratuit qui permet de créer des flashcards.
 
 Si vous voulez faire des cartes plus complexes, vous pouvez utiliser [CartesMD](https://cartesmd.forge.apps.education.fr/)
 
@@ -26,7 +26,9 @@ https://flashmd.forge.apps.education.fr/#URL_du_Fichier_Markdown
 
 
 
-## Faire évoluer l'outil !
+## Faire évoluer l'outil !
+
+FlashMD a été créé par [Cédric Eyssette](https://eyssette.forge.apps.education.fr/)
 
 Vous pouvez m'envoyer vos demandes d'évolution de l'outil, n'hésitez pas !
 
