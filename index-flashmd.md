@@ -17,7 +17,7 @@ fond: rouge
 ## Changer la couleur des cartes ?
 Oui c'est possible !
 
-Sur la ligne juste avant le titre, on met `fond: couleur`.
+Sur la ligne juste avant le titre de la carte, on écrit `fond: couleur`.
 
 ## Comment enregistrer ses cartes et les partager ?
 
