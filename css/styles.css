@@ -321,7 +321,8 @@ mark {
 	column-count: 4 !important;
 }
 
-#orientationButton {
+#orientationButton,
+#testModeButton {
 	display: none;
 }
 

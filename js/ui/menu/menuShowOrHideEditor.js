@@ -5,7 +5,7 @@ const contentElement = document.getElementById("content");
 const toggleEditorElement = document.getElementById("toggleEditor");
 export let shouldShowEditor = window.innerWidth > 500 ? true : false;
 
-export function showEditor(editorElement, isFlashMd) {
+export function showEditor(editorElement, options) {
 	loadCSS("css/editorHighlight.min.css", "editorHighlight");
 	toggleEditorElement.textContent = "👓";
 	editorElement.style.display = "block";
@@ -14,13 +14,13 @@ export function showEditor(editorElement, isFlashMd) {
 	contentElement.style.paddingTop = "0px";
 	headerElement.style.cssText = "";
 	shouldShowEditor = true;
-	if (isFlashMd) {
+	if (options && options.isFlashMd) {
 		contentElement.style.setProperty("width", "70vw", "important");
 		contentElement.style.gap = "20px";
 	}
 }
 
-export function hideEditor(editorElement, isFlashMd) {
+export function hideEditor(editorElement, options) {
 	toggleEditorElement.textContent = "✒️";
 	editorElement.style.display = "none";
 	contentElement.style.width = window.innerWidth > 1500 ? "100%" : "120%";
@@ -29,7 +29,7 @@ export function hideEditor(editorElement, isFlashMd) {
 	headerElement.style.cssText =
 		"background-color: white;;border: 2px solid black;";
 	shouldShowEditor = false;
-	if (isFlashMd) {
+	if (options && options.isFlashMd) {
 		contentElement.style.setProperty("width", "80vw", "important");
 		contentElement.style.gap = "30px 40px";
 		contentElement.style.justifyContent = "start";
@@ -37,18 +37,18 @@ export function hideEditor(editorElement, isFlashMd) {
 	}
 }
 
-export function showOrHideEditor(editorElement, isFlashMd) {
+export function showOrHideEditor(editorElement, options) {
 	if (shouldShowEditor) {
-		showEditor(editorElement, isFlashMd);
+		showEditor(editorElement, options);
 	} else {
-		hideEditor(editorElement, isFlashMd);
+		hideEditor(editorElement, options);
 	}
 }
 
-export function showOrHideEditorButton(editorElement, isFlashMd) {
+export function showOrHideEditorButton(editorElement, options) {
 	toggleEditorElement.addEventListener("click", (event) => {
 		event.preventDefault();
 		shouldShowEditor = shouldShowEditor ? false : true;
-		showOrHideEditor(editorElement, isFlashMd);
+		showOrHideEditor(editorElement, options);
 	});
 }

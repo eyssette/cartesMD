@@ -27,6 +27,7 @@ export function getDataAndStartCreatingCards() {
 		h1Element.textContent = "FlashMD";
 		document.title = "FlashMD";
 	}
+	let options = { isFlashMd: isFlashMd };
 	let sourceMarkdown = handleURL(url);
 	sourceMarkdown =
 		sourceMarkdown == "" && isFlashMd ? "index-flashmd.md" : sourceMarkdown;
@@ -39,11 +40,11 @@ export function getDataAndStartCreatingCards() {
 				if (!isSmallScreen) {
 					updateEditorContent(md);
 				}
-				initializeMenu(editorElement, isSmallScreen, isFlashMd);
-				const cardsData = parseMarkdown(md);
+				initializeMenu(editorElement, isSmallScreen, options);
+				const cardsData = parseMarkdown(md, options);
 				createCards(cardsData);
 				changeImageFormatIfError();
-				handleEvents(editorElement, isFlashMd);
+				handleEvents(editorElement, options);
 				params(editorElement);
 				if (isSmallScreen) {
 					updateEditorContent(md);
@@ -54,11 +55,11 @@ export function getDataAndStartCreatingCards() {
 				if (!isSmallScreen) {
 					updateEditorContent(md);
 				}
-				initializeMenu(editorElement, isSmallScreen, isFlashMd);
-				const cardsData = parseMarkdown(md);
+				initializeMenu(editorElement, isSmallScreen, options);
+				const cardsData = parseMarkdown(md, options);
 				createCards(cardsData);
 				changeImageFormatIfError();
-				handleEvents(editorElement, isFlashMd);
+				handleEvents(editorElement, options);
 				params(editorElement);
 				if (isSmallScreen) {
 					updateEditorContent(md);
@@ -73,11 +74,11 @@ export function getDataAndStartCreatingCards() {
 		if (!isSmallScreen) {
 			updateEditorContent(md);
 		}
-		initializeMenu(editorElement, isSmallScreen, isFlashMd);
-		const cardsData = parseMarkdown(md);
+		initializeMenu(editorElement, isSmallScreen, options);
+		const cardsData = parseMarkdown(md, options);
 		createCards(cardsData);
 		changeImageFormatIfError();
-		handleEvents(editorElement, isFlashMd);
+		handleEvents(editorElement, options);
 		params(editorElement);
 		if (isSmallScreen) {
 			updateEditorContent(md);

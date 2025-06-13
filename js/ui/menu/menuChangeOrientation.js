@@ -8,8 +8,8 @@ export const orientationButtonElement =
 
 let lastTheme = "";
 
-export function changeOrientationButton(editorElement, isFlashMd) {
-	if (isFlashMd) {
+export function changeOrientationButton(editorElement, options) {
+	if (options && options.isFlashMd) {
 		orientationButtonElement.style.display = "none";
 	} else {
 		orientationButtonElement.style.display = "block";

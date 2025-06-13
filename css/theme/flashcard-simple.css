@@ -28,7 +28,7 @@ h3 {
 .cardBackAndFront {
 	flex-wrap: nowrap;
 }
-.cardContentUp {
+.z2 {
 	width: 310px !important;
 	border: none;
 	position: absolute !important;
@@ -84,8 +84,35 @@ h3 {
 	display: none;
 }
 
-.noVerso .z2 {
-	display: none !important;
+.cardBackAndFront {
+	perspective: 1000px;
+}
+.cardFront {
+	transform-style: preserve-3d;
+	transition:
+		transform 0.8s,
+		background-color 0s 0.25s,
+		border 0s 0.25s;
+	transform: rotateY(0deg);
+}
+.showVerso .cardFront {
+	transform: rotateY(180deg);
+	background-color: transparent;
+	border: 1px solid grey;
+}
+.z1 {
+	backface-visibility: hidden;
+}
+.z2 {
+	transform: rotateY(0deg);
+	transition:
+		transform 0s 0.25s,
+		margin-left 0s 0.25s;
+	margin-left: 360px !important;
+}
+.showVerso .z2 {
+	margin-left: 10px !important;
+	transform: rotateY(180deg);
 }
 
 .noVerso .card footer {

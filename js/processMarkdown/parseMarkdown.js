@@ -43,7 +43,7 @@ function splitMarkdownByCards(md) {
 	return sections;
 }
 
-export function parseMarkdown(markdownContent) {
+export function parseMarkdown(markdownContent, options) {
 	// Chargement des fichiers CSS nécessaires si besoin
 	if (markdownContent.includes(":::")) {
 		loadCSS("css/admonitions.min.css", "admonitions");
@@ -55,7 +55,7 @@ export function parseMarkdown(markdownContent) {
 		'<div markdown="1">',
 	);
 
-	markdownContent = processYAML(markdownContent);
+	markdownContent = processYAML(markdownContent, options);
 
 	const markdownCards = splitMarkdownByCards(markdownContent);
 	let cardsArray = [];

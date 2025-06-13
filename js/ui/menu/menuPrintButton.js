@@ -1,6 +1,6 @@
-export function printButton(isFlashMd) {
+export function printButton(options) {
 	const printButtonElement = document.getElementById("printButton");
-	if (isFlashMd) {
+	if (options && options.isFlashMd) {
 		let contentWidth = "";
 		const contentElement = document.getElementById("content");
 		window.addEventListener("beforeprint", () => {

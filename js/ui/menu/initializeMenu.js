@@ -5,14 +5,18 @@ import {
 } from "./menuShowOrHideEditor";
 import { printButton } from "./menuPrintButton";
 import { changeOrientationButton } from "./menuChangeOrientation";
+import { launchTestMode } from "./menuTestMode";
 
-export function initializeMenu(editorElement, isSmallScreen, isFlashMd) {
-	showOrHideEditorButton(editorElement, isFlashMd);
+export function initializeMenu(editorElement, isSmallScreen, options) {
+	showOrHideEditorButton(editorElement, options);
 	if (isSmallScreen) {
-		hideEditor(editorElement, isFlashMd);
+		hideEditor(editorElement, options);
 	} else {
-		showEditor(editorElement, isFlashMd);
+		showEditor(editorElement, options);
 	}
-	printButton(isFlashMd);
-	changeOrientationButton(editorElement, isFlashMd);
+	printButton(options);
+	changeOrientationButton(editorElement, options);
+	if (options && options.isFlashMd) {
+		launchTestMode(editorElement, options);
+	}
 }

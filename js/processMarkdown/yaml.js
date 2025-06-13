@@ -41,10 +41,8 @@ function splitMarkdownByHRIgnoringCodeBlocks(markdownContent) {
 	return parts;
 }
 
-export function processYAML(markdownContent) {
-	const isFlashMd =
-		window.location.href.includes("https://flashmd.forge.apps.education.fr") ||
-		window.location.href.includes("?flashmd");
+export function processYAML(markdownContent, options) {
+	const isFlashMd = options && options.isFlashMd;
 
 	const styleThemeElement = document.getElementById("styleTheme");
 	const customStylesElement = document.getElementById("customStyles");
