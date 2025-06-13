@@ -24,7 +24,11 @@ Sur la ligne juste avant le titre de la carte, on écrit `fond: couleur`.
 On peut utiliser [CodiMD](https://codimd.apps.education.fr/) sur le portail AppsEdu ou un outil équivalent (Digipage, Framapad…)
 
 Vous pourrez alors afficher et partager vos cartes ainsi :
-https://flashmd.forge.apps.education.fr/#URL_du_Fichier_Markdown
+```
+https://flashmd.forge.apps.
+education.fr/#URL_du_fichier
+_Markdown
+```
 
 
 ## Des exemples !

@@ -324,3 +324,7 @@ mark {
 #orientationButton {
 	display: none;
 }
+
+code {
+	word-break: break-word;
+}
