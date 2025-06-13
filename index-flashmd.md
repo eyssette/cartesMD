@@ -26,9 +26,13 @@ On peut utiliser [CodiMD](https://codimd.apps.education.fr/) sur le portail Apps
 Vous pourrez alors afficher et partager vos cartes ainsi :
 ```
 https://flashmd.forge.apps.
-education.fr/#URL_du_fichier
+education.fr/?t=0&e=0#URL_du_fichier
 _Markdown
 ```
+
+Si vous mettez le paramètre `?t=` à 1, vous partagerez directement vos flashcards en mode “révision”.
+
+Le paramètre `e=0` cache par défaut l'éditeur.
 
 
 ## Des exemples !
