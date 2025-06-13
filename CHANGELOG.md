@@ -1,3 +1,9 @@
+## 2.1.1 (2025-06-13)
+
+### Fix
+
+- CSS pour le mode test dépend de .noVerso
+
 ## 2.1.0 (2025-06-13)
 
 ### Feat
