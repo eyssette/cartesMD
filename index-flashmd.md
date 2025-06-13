@@ -32,7 +32,9 @@ _Markdown
 
 
 ## Des exemples !
-- Des [flashcards en <br>Histoire-Géographie](https://flashmd.forge.apps.education.fr/#https://codimd.apps.education.fr/eW4UTUncQ3ue56D9ThaZUg) créées par Françoise Vaillant.
+Des [flashcards en <br>Histoire-Géographie](https://flashmd.forge.apps.education.fr/#https://codimd.apps.education.fr/eW4UTUncQ3ue56D9ThaZUg) créées par Françoise Vaillant.
+
+Des [flashcards en philosophie](https://flashmd.forge.apps.education.fr/#https://codimd.apps.education.fr/08ZtYO6hS9WmhQGMV576cA) (cours sur l'épistémologie)
 
 
 ## Un&nbsp;exemple <aside>plus&nbsp;complexe</aside>
