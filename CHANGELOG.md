@@ -1,3 +1,57 @@
+## 2.0.0 (2025-06-13)
+
+### Feat
+
+- gestion de "fond: couleur" pour définir une couleur de fond sur une carte
+- détection de flashMD => thème = flashcard-simple
+- Plus besoin du séparateur "---" entre chaque carte : simplifie l'édition, mais reste compatible avec l'ancienne syntaxe
+
+### Fix
+
+- raccourcis clavier et double click prennent en compte isFlashMD pour gérer correctement le CSS quand on cache ou affiche l'éditeur
+- exemple flashcards philosophie
+- ajout d'un exemple plus complexe dans le texte par défaut pour flashMD
+- CSS pour h2 aside dans theme flashcard-simple
+- CSS éléments code et pre
+- explication plus clair pour fond: couleur
+- titre "FlashMd" quand on est sur flashMD
+- pas de textFit sur la zone 4 (inexistante) dans le thème flashcard-simple
+- texte par défaut pour flashMD
+- taille de l'élément #content pour l'impression si o nutilise FlashMd
+- CSS pour l'affichage des flashcards quand l'éditeur est caché, sur flashmd
+- erreur sur sourceMarkdown !
+- pas de bouton de changement de l'orientation des cartes pour flashMD
+- contenu différent par défaut pour flashMD
+- gestion des paramètres par défaut pour flashMD dans le YAML
+- simplification du contenu par défaut
+- CSS pour pouvoir imprimer la zone 5 dans le thème flashcard-simple
+- CSS pour les éléments ol/ul dans les thèmes de type flashcard
+- ajustement position zone 5 dans thème flashcard-simple
+- plus de place pour le contenu dans le verso dans le thème flashcard-simple
+- taille des zones principales dans le thème flashcard-simple
+- possibilité d'utiliser la zone 5 dans le thème flashcard-simple
+- possibilité d'utiliser la zone 3 dans le thème flashcard-simple (pour ajouter une étiquette à la carte)
+- gestion recto:false pour les thèmes flashcard et flashcard-simple
+- meilleure gestion propriété recto dans le YAML
+- meilleure gestion de l'ajout et de la suppression d'un thème
+- **CSS**: css pour le thème flashcard-simple si nombre de zones = 1
+- **css**: CSS pour le thème flashcard avec des nombres de zones <4
+- source par défaut dans index.md
+
+### CI
+
+- ajout de index-flashmd.md dans le déploiement
+
+### Chore
+
+- fix pre bump hook
+- mise en place de commitizen
+- formatage automatique du CSS
+
+### Docs
+
+- update CHANGELOG
+
 ## 1.62.2 (2025-03-10)
 
 ### Fix
