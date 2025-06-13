@@ -1,5 +1,7 @@
 ## 2.0.0 (2025-06-13)
 
+Changement de version majeure : mise en place de FlashMD
+
 ### Feat
 
 - gestion de "fond: couleur" pour définir une couleur de fond sur une carte
@@ -47,10 +49,6 @@
 - fix pre bump hook
 - mise en place de commitizen
 - formatage automatique du CSS
-
-### Docs
-
-- update CHANGELOG
 
 ## 1.62.2 (2025-03-10)
 
