@@ -13,6 +13,6 @@ export function initializeMenu(editorElement, isSmallScreen, isFlashMd) {
 	} else {
 		showEditor(editorElement, isFlashMd);
 	}
-	printButton();
+	printButton(isFlashMd);
 	changeOrientationButton(editorElement, isFlashMd);
 }
