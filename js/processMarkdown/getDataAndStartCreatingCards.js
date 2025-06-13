@@ -19,7 +19,11 @@ export function getDataAndStartCreatingCards() {
 	}
 	// Récupération du markdown externe
 	const url = window.location.hash.substring(1); // Récupère l'URL du hashtag sans le #
-	const sourceMarkdown = handleURL(url);
+	const isFlashMd =
+		window.location.href.includes("https://flashmd.forge.apps.education.fr") ||
+		window.location.href.includes("?flashmd");
+	let sourceMarkdown = handleURL(url);
+	sourceMarkdown = sourceMarkdown == "" && isFlashMd ? "index-flashmd.md" : "";
 	if (sourceMarkdown !== "") {
 		fetch(sourceMarkdown)
 			.then((response) => response.text())
@@ -29,7 +33,7 @@ export function getDataAndStartCreatingCards() {
 				if (!isSmallScreen) {
 					updateEditorContent(md);
 				}
-				initializeMenu(editorElement, isSmallScreen);
+				initializeMenu(editorElement, isSmallScreen, isFlashMd);
 				const cardsData = parseMarkdown(md);
 				createCards(cardsData);
 				changeImageFormatIfError();
@@ -44,7 +48,7 @@ export function getDataAndStartCreatingCards() {
 				if (!isSmallScreen) {
 					updateEditorContent(md);
 				}
-				initializeMenu(editorElement, isSmallScreen);
+				initializeMenu(editorElement, isSmallScreen, isFlashMd);
 				const cardsData = parseMarkdown(md);
 				createCards(cardsData);
 				changeImageFormatIfError();
@@ -63,7 +67,7 @@ export function getDataAndStartCreatingCards() {
 		if (!isSmallScreen) {
 			updateEditorContent(md);
 		}
-		initializeMenu(editorElement, isSmallScreen);
+		initializeMenu(editorElement, isSmallScreen, isFlashMd);
 		const cardsData = parseMarkdown(md);
 		createCards(cardsData);
 		changeImageFormatIfError();
