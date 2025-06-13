@@ -1,3 +1,9 @@
+## 2.1.0 (2025-06-13)
+
+### Feat
+
+- mode révision
+
 ## 2.0.0 (2025-06-13)
 
 Changement de version majeure : mise en place de FlashMD
