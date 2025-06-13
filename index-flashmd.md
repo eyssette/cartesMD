@@ -54,4 +54,6 @@ $$\large\textsf{Aire} = \dfrac{\textsf{base}\times\textsf{hauteur}}{2}$$
 
 ## Réviser les flashcards
 
-Pour rentrer dans le mode révision, on clique dans le menu en haut à droite sur l'icône “éprouvette”, afin de se tester : 🧪
+Pour rentrer dans le mode révision, on clique dans le menu en haut à gauche sur l'icône “éprouvette”, afin de se tester : 🧪
+
+On pourra alors cliquer sur le recto d'une carte pour vérifier si on a la bonne réponse.
