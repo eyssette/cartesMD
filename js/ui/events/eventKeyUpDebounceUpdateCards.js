@@ -16,16 +16,15 @@ function debounce(func, wait) {
 }
 
 const editorElement = document.getElementById("editor");
-
 // Fonction pour mettre à jour les cartes
-function updateCards() {
-	const parsedMD = parseMarkdown(editorElement.textContent);
-	createCards(parsedMD);
+function updateCards(options) {
+	const parsedMD = parseMarkdown(editorElement.textContent, options);
+	createCards(parsedMD, options);
 }
 
-export function eventKeyUpDebounceUpdateCards() {
+export function eventKeyUpDebounceUpdateCards(options) {
 	// Utiliser debounce pour appeler updateCards avec un délai afin d'éviter un lag dans le cas d'un document long
-	const debouncedUpdateCards = debounce(updateCards, 300);
+	const debouncedUpdateCards = debounce(() => updateCards(options), 300);
 	editorElement.addEventListener("keyup", () => {
 		if (shouldShowEditor) {
 			debouncedUpdateCards();
