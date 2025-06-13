@@ -41,7 +41,7 @@ Des [flashcards en philosophie](https://flashmd.forge.apps.education.fr/#https:/
 
 Ci-dessous, vous avez un exemple plus complexe avec une image, du $Latex$ et des ++labels++ sur le recto de la flashcard (en haut et en bas à droite).
 
-Les labels sont pratiques pour indiquer une classe, ou un numéro de chapitre
+Les labels sont pratiques pour indiquer une classe, un numéro de chapitre …
 
 fond: bleu
 ## ![](https://lmdbt.forge.apps.education.fr/nos-creacartes/modeles/perimetre_aire/triangle.svg)
