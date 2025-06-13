@@ -6,7 +6,7 @@ import {
 import { printButton } from "./menuPrintButton";
 import { changeOrientationButton } from "./menuChangeOrientation";
 
-export function initializeMenu(editorElement, isSmallScreen) {
+export function initializeMenu(editorElement, isSmallScreen, isFlashMd) {
 	showOrHideEditorButton(editorElement);
 	if (isSmallScreen) {
 		hideEditor(editorElement);
@@ -14,5 +14,5 @@ export function initializeMenu(editorElement, isSmallScreen) {
 		showEditor(editorElement);
 	}
 	printButton();
-	changeOrientationButton(editorElement);
+	changeOrientationButton(editorElement, isFlashMd);
 }

@@ -320,3 +320,7 @@ mark {
 .noVerso #content {
 	column-count: 4 !important;
 }
+
+#orientationButton {
+	display: none;
+}
