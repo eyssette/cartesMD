@@ -23,7 +23,8 @@ export function getDataAndStartCreatingCards() {
 		window.location.href.includes("https://flashmd.forge.apps.education.fr") ||
 		window.location.href.includes("?flashmd");
 	let sourceMarkdown = handleURL(url);
-	sourceMarkdown = sourceMarkdown == "" && isFlashMd ? "index-flashmd.md" : "";
+	sourceMarkdown =
+		sourceMarkdown == "" && isFlashMd ? "index-flashmd.md" : sourceMarkdown;
 	if (sourceMarkdown !== "") {
 		fetch(sourceMarkdown)
 			.then((response) => response.text())
