@@ -43,7 +43,7 @@ export function getDataAndStartCreatingCards() {
 				const cardsData = parseMarkdown(md);
 				createCards(cardsData);
 				changeImageFormatIfError();
-				handleEvents(editorElement);
+				handleEvents(editorElement, isFlashMd);
 				params(editorElement);
 				if (isSmallScreen) {
 					updateEditorContent(md);
@@ -58,7 +58,7 @@ export function getDataAndStartCreatingCards() {
 				const cardsData = parseMarkdown(md);
 				createCards(cardsData);
 				changeImageFormatIfError();
-				handleEvents(editorElement);
+				handleEvents(editorElement, isFlashMd);
 				params(editorElement);
 				if (isSmallScreen) {
 					updateEditorContent(md);
@@ -77,7 +77,7 @@ export function getDataAndStartCreatingCards() {
 		const cardsData = parseMarkdown(md);
 		createCards(cardsData);
 		changeImageFormatIfError();
-		handleEvents(editorElement);
+		handleEvents(editorElement, isFlashMd);
 		params(editorElement);
 		if (isSmallScreen) {
 			updateEditorContent(md);

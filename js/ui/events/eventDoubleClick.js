@@ -1,6 +1,6 @@
 import { showEditor } from "../menu/menuShowOrHideEditor";
 
-export function eventDoubleClick(editorElement) {
+export function eventDoubleClick(editorElement, isFlashMd) {
 	// Double clic pour focaliser l'éditeur sur la carte sur laquelle on a cliqué
 	document.body.addEventListener("dblclick", (event) => {
 		const markdownTitles = document.querySelectorAll(".markdownTitles.h2");
@@ -9,7 +9,7 @@ export function eventDoubleClick(editorElement) {
 		if (selectedCard) {
 			const selectedCardNumber = selectedCard.id.replace("card-", "");
 			const markdownSelectedCard = markdownTitles[selectedCardNumber - 1];
-			showEditor(editorElement);
+			showEditor(editorElement, isFlashMd);
 			document.body.classList.remove("hideMenu");
 			markdownSelectedCard.scrollIntoView();
 		}

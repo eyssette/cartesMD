@@ -5,7 +5,7 @@ import {
 } from "../menu/menuShowOrHideEditor";
 import { orientationButtonElement } from "../menu/menuChangeOrientation";
 
-export function eventKeyboardShortcuts(editorElement) {
+export function eventKeyboardShortcuts(editorElement, isFlashMd) {
 	// Gestion des raccourcis clavier
 	document.body.addEventListener("keydown", (event) => {
 		if ((event.ctrlKey || event.metaKey) && event.key === "p") {
@@ -18,11 +18,11 @@ export function eventKeyboardShortcuts(editorElement) {
 		} else {
 			document.body.classList.remove("hideMenu");
 			if (shouldShowEditor && event.key === "Escape") {
-				hideEditor(editorElement);
+				hideEditor(editorElement, isFlashMd);
 			} else {
 				if (!shouldShowEditor && event.key === "e") {
 					event.preventDefault();
-					showEditor(editorElement);
+					showEditor(editorElement, isFlashMd);
 					editorElement.focus();
 				} else {
 					if (!shouldShowEditor && event.key === "m") {
