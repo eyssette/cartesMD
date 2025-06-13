@@ -22,6 +22,11 @@ export function getDataAndStartCreatingCards() {
 	const isFlashMd =
 		window.location.href.includes("https://flashmd.forge.apps.education.fr") ||
 		window.location.href.includes("?flashmd");
+	if (isFlashMd) {
+		const h1Element = document.querySelector("h1");
+		h1Element.textContent = "FlashMD";
+		document.title = "FlashMD";
+	}
 	let sourceMarkdown = handleURL(url);
 	sourceMarkdown =
 		sourceMarkdown == "" && isFlashMd ? "index-flashmd.md" : sourceMarkdown;
