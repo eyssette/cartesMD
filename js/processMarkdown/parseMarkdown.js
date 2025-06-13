@@ -2,7 +2,7 @@ import { loadCSS } from "../utils/urls";
 import { processYAML } from "./yaml";
 
 function isCardConfiguration(line) {
-	return line.indexOf("nombreZones:") === 0;
+	return line.indexOf("nombreZones:") === 0 || line.indexOf("fond:") === 0;
 }
 
 function startNewCard(line) {

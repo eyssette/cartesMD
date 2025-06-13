@@ -68,6 +68,12 @@ export function createCards(cardsArray) {
 		const backContentHTML = markdownToHTML(
 			card.backContent.replaceAll("<aside", "<aside markdown"),
 		);
+		if (card.beforeTitle.length > 0) {
+			const matchBackgroundColor = card.beforeTitle.match(/fond: (\S*)/);
+			if (matchBackgroundColor && matchBackgroundColor[1]) {
+				card.backImageAlt = matchBackgroundColor[1];
+			}
+		}
 		const color = card.backImageAlt
 			.split(" ")
 			.filter((word) => colorWords.includes(word) || isValidColorNameCSS(word))
