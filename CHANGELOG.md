@@ -1,3 +1,13 @@
+## 2.1.3 (2025-06-15)
+
+### Fix
+
+- meilleure gestion de handleTestMode (pas besoin de ToggleVerso si on a testMode en paramètre dans l'URL)
+- classe noVerso ajoutée plus rapidement pour le testMode
+- paramètre testmode dans l'URL : t=1 ou r=1
+- meilleure gestion du Latex et des promises pour textFit
+- meilleure gestion de l'eventClick pour retourner les cartes avec flashMD : suppression du listener quand on sort du mode révision
+
 ## 2.1.2 (2025-06-13)
 
 ### Fix
