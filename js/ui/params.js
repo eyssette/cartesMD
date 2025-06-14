@@ -5,7 +5,8 @@ export function params(editorElement, options) {
 	const viewParam = parseInt(params.get("v")) ? parseInt(params.get("v")) : 0;
 	const editorParam = params.get("e") == "0" ? 0 : 1;
 	const menuParam = params.get("m") == "0" ? 0 : 1;
-	const testModeParam = params.get("t") == "1" ? 1 : 0;
+	const testModeParam =
+		params.get("t") == "1" || params.get("r") == "1" ? 1 : 0;
 	if (testModeParam == 1) {
 		options.isTestMode = true;
 		options.isTestModeFromParams = true;
