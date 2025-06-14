@@ -5,6 +5,8 @@ import {
 } from "../menu/menuShowOrHideEditor";
 import { orientationButtonElement } from "../menu/menuChangeOrientation";
 
+const testModeButton = document.querySelector("#testModeButton");
+
 export function eventKeyboardShortcuts(editorElement, options) {
 	// Gestion des raccourcis clavier
 	document.body.addEventListener("keydown", (event) => {
@@ -15,7 +17,6 @@ export function eventKeyboardShortcuts(editorElement, options) {
 			}
 			if (event.altKey && (event.key === "®" || event.key === "r")) {
 				event.preventDefault();
-				const testModeButton = document.querySelector("#testModeButton");
 				testModeButton.click();
 			}
 
@@ -29,6 +30,7 @@ export function eventKeyboardShortcuts(editorElement, options) {
 				} else {
 					if (!shouldShowEditor && event.key === "e") {
 						event.preventDefault();
+						testModeButton.click();
 						showEditor(editorElement, options);
 						editorElement.focus();
 					} else {
