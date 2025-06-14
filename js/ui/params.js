@@ -10,6 +10,7 @@ export function params(editorElement, options) {
 	if (testModeParam == 1) {
 		options.isTestMode = true;
 		options.isTestModeFromParams = true;
+		document.body.classList.add("noVerso", "isTestMode");
 	}
 
 	if (viewParam == 1 || editorParam == 0) {

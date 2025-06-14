@@ -83,7 +83,7 @@ export function processYAML(markdownContent, options) {
 					),
 				]);
 			}
-			if (yaml.verso === false) {
+			if (yaml.verso === false || options.isTestMode) {
 				document.body.classList.add("noVerso");
 			} else {
 				document.body.classList.remove("noVerso");
