@@ -14,10 +14,7 @@ function toggleVerso(isTestMode) {
 let isTestMode = false;
 
 function handleTestMode(editorElement, options) {
-	setTimeout(() => {
-		eventClick({ isTestMode: options.isTestMode });
-	}, 2000);
-	toggleVerso(options.isTestMode);
+	eventClick({ isTestMode: options.isTestMode });
 	if (
 		options.isTestMode ||
 		options.isSmallScreen ||
@@ -30,17 +27,17 @@ function handleTestMode(editorElement, options) {
 }
 
 export function launchTestMode(editorElement, options) {
-	const testModeButton = document.getElementById("testModeButton");
-	testModeButton.style.display = "block";
-	if (options.isTestMode) {
-		setTimeout(() => {
-			handleTestMode(editorElement, options);
-			isTestMode = true;
-		}, 1000);
-	}
-	testModeButton.addEventListener("click", () => {
-		isTestMode = !isTestMode;
-		options.isTestMode = isTestMode;
+	if (options.isTestModeFromParams) {
 		handleTestMode(editorElement, options);
-	});
+		isTestMode = true;
+	} else {
+		const testModeButton = document.getElementById("testModeButton");
+		testModeButton.style.display = "block";
+		testModeButton.addEventListener("click", () => {
+			isTestMode = !isTestMode;
+			options.isTestMode = isTestMode;
+			toggleVerso(options.isTestMode);
+			handleTestMode(editorElement, options);
+		});
+	}
 }
