@@ -50,7 +50,7 @@ function fitElementsMainLogic() {
 }
 
 export function fitElements() {
-	new Promise((resolve) => {
+	return new Promise((resolve) => {
 		const done = fitElementsMainLogic();
 		resolve(done);
 	});
@@ -63,7 +63,7 @@ function fitMathElementsMainLogic() {
 }
 
 export function fitMathElements() {
-	new Promise((resolve) => {
+	return new Promise((resolve) => {
 		const done = fitMathElementsMainLogic();
 		resolve(done);
 	});

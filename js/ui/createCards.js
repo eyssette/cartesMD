@@ -17,30 +17,30 @@ function handleMathsAndThemes(cardsHTML) {
 		).then(() => {
 			setTimeout(() => {
 				contentElement.innerHTML = convertLatexExpressions(cardsHTML);
-				fitElements();
-				fitMathElements();
+				fitElements().then(() => {
+					if (isFirstPageLoad) {
+						isFirstPageLoad = false;
+						setTimeout(() => {
+							contentElement.innerHTML = convertLatexExpressions(cardsHTML);
+							fitElements().then(() => {
+								fitMathElements();
+							});
+						}, 10);
+					}
+				});
 			}, 100);
 		});
-		if (isFirstPageLoad) {
-			setTimeout(() => {
-				contentElement.innerHTML = convertLatexExpressions(cardsHTML);
-				fitElements();
-				fitMathElements();
-			}, 3000);
-			isFirstPageLoad = false;
-		}
 	} else {
-		setTimeout(() => {
-			contentElement.innerHTML = cardsHTML;
-			fitElements();
-		}, 100);
-		if (isFirstPageLoad) {
-			setTimeout(() => {
-				contentElement.innerHTML = cardsHTML;
-				fitElements();
-			}, 3000);
-			isFirstPageLoad = false;
-		}
+		contentElement.innerHTML = cardsHTML;
+		fitElements().then(() => {
+			if (isFirstPageLoad) {
+				isFirstPageLoad = false;
+				setTimeout(() => {
+					contentElement.innerHTML = cardsHTML;
+					fitElements();
+				}, 100);
+			}
+		});
 	}
 }
 
