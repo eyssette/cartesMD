@@ -6,7 +6,7 @@
 		{
 			"label": "Build",
 			"type": "shell",
-			"command": "npm run build",
+			"command": "task build",
 			"group": {
 				"kind": "build",
 				"isDefault": true
