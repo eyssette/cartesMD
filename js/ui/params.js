@@ -1,12 +1,13 @@
 import { hideEditor } from "./menu/menuShowOrHideEditor";
 
-export function params(editorElement, options) {
-	const params = new URLSearchParams(document.location.search);
-	const viewParam = parseInt(params.get("v")) ? parseInt(params.get("v")) : 0;
-	const editorParam = params.get("e") == "0" ? 0 : 1;
-	const menuParam = params.get("m") == "0" ? 0 : 1;
+export function params(urlParams, editorElement, options) {
+	const viewParam = parseInt(urlParams.get("v"))
+		? parseInt(urlParams.get("v"))
+		: 0;
+	const editorParam = urlParams.get("e") == "0" ? 0 : 1;
+	const menuParam = urlParams.get("m") == "0" ? 0 : 1;
 	const testModeParam =
-		params.get("t") == "1" || params.get("r") == "1" ? 1 : 0;
+		urlParams.get("t") == "1" || urlParams.get("r") == "1" ? 1 : 0;
 	if (testModeParam == 1) {
 		options.isTestMode = true;
 		options.isTestModeFromParams = true;

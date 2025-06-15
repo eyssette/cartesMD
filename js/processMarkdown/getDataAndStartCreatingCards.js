@@ -18,7 +18,7 @@ export function getDataAndStartCreatingCards() {
 		editorElement.style.display = "none";
 	}
 	// Récupération du markdown externe
-	const url = window.location.hash.substring(1); // Récupère l'URL du hashtag sans le #
+	const hash = window.location.hash.substring(1); // Récupère l'URL du hashtag sans le #
 	const isFlashMd =
 		window.location.href.includes("https://flashmd.forge.apps.education.fr") ||
 		window.location.href.includes("?flashmd");
@@ -27,11 +27,18 @@ export function getDataAndStartCreatingCards() {
 		h1Element.textContent = "FlashMD";
 		document.title = "FlashMD";
 	}
+	let sourceMarkdown;
+	const urlParams = new URLSearchParams(document.location.search);
 	let options = { isFlashMd: isFlashMd, isSmallScreen: isSmallScreen };
-	let sourceMarkdown = handleURL(url);
-	sourceMarkdown =
-		sourceMarkdown == "" && isFlashMd ? "index-flashmd.md" : sourceMarkdown;
-	if (sourceMarkdown !== "") {
+	const useRawSource = urlParams.get("raw");
+	if (useRawSource) {
+		md = decodeURIComponent(window.atob(hash));
+	} else {
+		sourceMarkdown = handleURL(hash);
+		sourceMarkdown =
+			sourceMarkdown == "" && isFlashMd ? "index-flashmd.md" : sourceMarkdown;
+	}
+	if (sourceMarkdown !== "" && !useRawSource) {
 		fetch(sourceMarkdown)
 			.then((response) => response.text())
 			.then((data) => {
@@ -40,7 +47,7 @@ export function getDataAndStartCreatingCards() {
 				if (!isSmallScreen) {
 					updateEditorContent(md);
 				}
-				options = params(editorElement, options);
+				options = params(urlParams, editorElement, options);
 				initializeMenu(editorElement, isSmallScreen, options);
 				const cardsData = parseMarkdown(md, options);
 				createCards(cardsData);
@@ -55,7 +62,7 @@ export function getDataAndStartCreatingCards() {
 				if (!isSmallScreen) {
 					updateEditorContent(md);
 				}
-				options = params(editorElement, options);
+				options = params(urlParams, editorElement, options);
 				initializeMenu(editorElement, isSmallScreen, options);
 				const cardsData = parseMarkdown(md, options);
 				createCards(cardsData);
@@ -74,7 +81,7 @@ export function getDataAndStartCreatingCards() {
 		if (!isSmallScreen) {
 			updateEditorContent(md);
 		}
-		options = params(editorElement, options);
+		options = params(urlParams, editorElement, options);
 		initializeMenu(editorElement, isSmallScreen, options);
 		const cardsData = parseMarkdown(md, options);
 		createCards(cardsData);
