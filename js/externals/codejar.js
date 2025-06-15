@@ -247,14 +247,18 @@ export function CodeJar(editor, highlight, opt = {}) {
 			const startEl = uneditable(startNode);
 			if (startEl) {
 				const node = document.createTextNode("");
-				startEl.parentNode?.insertBefore(node, startEl);
+				if (startEl.parentNode) {
+					startEl.parentNode.insertBefore(node, startEl);
+				}
 				startNode = node;
 				startOffset = 0;
 			}
 			const endEl = uneditable(endNode);
 			if (endEl) {
 				const node = document.createTextNode("");
-				endEl.parentNode?.insertBefore(node, endEl);
+				if (endEl.parentNode) {
+					endEl.parentNode.insertBefore(node, endEl);
+				}
 				endNode = node;
 				endOffset = 0;
 			}
@@ -432,7 +436,10 @@ export function CodeJar(editor, highlight, opt = {}) {
 	function handlePaste(event) {
 		if (event.defaultPrevented) return;
 		preventDefault(event);
-		const originalEvent = event.originalEvent ?? event;
+		const originalEvent =
+			event.originalEvent !== null && event.originalEvent !== undefined
+				? event.originalEvent
+				: event;
 		const text = originalEvent.clipboardData
 			.getData("text/plain")
 			.replace(/\r\n?/g, "\n");
@@ -449,7 +456,10 @@ export function CodeJar(editor, highlight, opt = {}) {
 	function handleCut(event) {
 		const pos = save();
 		const selection = getSelection();
-		const originalEvent = event.originalEvent ?? event;
+		const originalEvent =
+			event.originalEvent !== null && event.originalEvent !== undefined
+				? event.originalEvent
+				: event;
 		originalEvent.clipboardData.setData("text/plain", selection.toString());
 		document.execCommand("delete");
 		doHighlight(editor);
