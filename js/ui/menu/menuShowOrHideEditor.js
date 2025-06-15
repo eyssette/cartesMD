@@ -35,7 +35,8 @@ export function hideEditor(editorElement, options) {
 			options.isSmallScreen && options.isTestMode ? "100vw" : "80vw";
 		contentElement.style.setProperty("width", contentElementWidth, "important");
 		contentElement.style.gap = "30px 40px";
-		contentElement.style.justifyContent = "center";
+		contentElement.style.justifyContent =
+			options.isSmallScreen && !options.isTestMode ? "start" : "center";
 		contentElement.style.margin = "auto";
 	}
 }
