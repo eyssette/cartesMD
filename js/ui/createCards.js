@@ -15,19 +15,22 @@ function handleMathsAndThemes(cardsHTML) {
 			"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",
 			"katex",
 		).then(() => {
-			setTimeout(() => {
-				contentElement.innerHTML = convertLatexExpressions(cardsHTML);
-				fitElements().then(() => {
-					if (isFirstPageLoad) {
-						isFirstPageLoad = false;
-						setTimeout(() => {
-							contentElement.innerHTML = convertLatexExpressions(cardsHTML);
-							fitElements().then(() => {
-								fitMathElements();
-							});
-						}, 10);
-					}
-				});
+			const interval = setInterval(() => {
+				if (window.katex) {
+					clearInterval(interval);
+					contentElement.innerHTML = convertLatexExpressions(cardsHTML);
+					fitElements().then(() => {
+						if (isFirstPageLoad) {
+							isFirstPageLoad = false;
+							setTimeout(() => {
+								contentElement.innerHTML = convertLatexExpressions(cardsHTML);
+								fitElements().then(() => {
+									fitMathElements();
+								});
+							}, 10);
+						}
+					});
+				}
 			}, 100);
 		});
 	} else {
