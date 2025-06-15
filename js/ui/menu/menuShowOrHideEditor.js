@@ -42,8 +42,8 @@ export function hideEditor(editorElement, options) {
 
 export function showOrHideEditor(editorElement, options) {
 	if (shouldShowEditor) {
-		const testModeButton = document.querySelector("#testModeButton");
-		testModeButton.click();
+		document.body.classList.remove("noVerso", "isTestMode");
+		options.isTestMode = false;
 		showEditor(editorElement, options);
 	} else {
 		hideEditor(editorElement, options);

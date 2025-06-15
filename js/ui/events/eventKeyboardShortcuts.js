@@ -4,7 +4,6 @@ import {
 	hideEditor,
 } from "../menu/menuShowOrHideEditor";
 import { orientationButtonElement } from "../menu/menuChangeOrientation";
-
 const testModeButton = document.querySelector("#testModeButton");
 
 export function eventKeyboardShortcuts(editorElement, options) {
@@ -17,7 +16,9 @@ export function eventKeyboardShortcuts(editorElement, options) {
 			}
 			if (event.altKey && (event.key === "®" || event.key === "r")) {
 				event.preventDefault();
-				testModeButton.click();
+				if (testModeButton) {
+					testModeButton.click();
+				}
 			}
 
 			if (event.ctrlKey && event.shiftKey && event.key === "O") {
@@ -30,7 +31,8 @@ export function eventKeyboardShortcuts(editorElement, options) {
 				} else {
 					if (!shouldShowEditor && event.key === "e") {
 						event.preventDefault();
-						testModeButton.click();
+						document.body.classList.remove("noVerso", "isTestMode");
+						options.isTestMode = false;
 						showEditor(editorElement, options);
 						editorElement.focus();
 					} else {

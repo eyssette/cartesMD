@@ -34,7 +34,7 @@ export function launchTestMode(editorElement, options) {
 		const testModeButton = document.getElementById("testModeButton");
 		testModeButton.style.display = "block";
 		testModeButton.addEventListener("click", () => {
-			isTestMode = !isTestMode;
+			isTestMode = !document.body.classList.contains("isTestMode");
 			options.isTestMode = isTestMode;
 			toggleVerso(options.isTestMode);
 			handleTestMode(editorElement, options);
