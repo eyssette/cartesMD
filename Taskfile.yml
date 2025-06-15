@@ -13,8 +13,8 @@ tasks:
     deps: [npm:install]
     sources:
       - index.md
-      - css/**/*.css"
-      - js/**/*.js"
+      - css/**/*.css
+      - js/**/*.js
       - rollup.config.mjs
     generates:
       - css/**/*.styles.min.css
