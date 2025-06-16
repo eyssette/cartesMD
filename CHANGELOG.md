@@ -1,3 +1,24 @@
+## 2.2.0 (2025-06-16)
+
+### Feat
+
+- paramètre "raw" dans l'URL => contenu des flashcards encodé dans le hash
+
+### Fix
+
+- clic sur le bouton de changement d'orientation => on force le rafraîchissement de textFit
+- justifyContent à start pour FlashMD quand l'éditeur est caché et qu'on est sur petit écran
+- setInterval pour vérifier la présence de Katex
+- meilleure gestion bouton/raccourcis (pour sortir correctement du testMode)
+- sortie de testMode si on fait réapparaître l'éditeur (raccourci clavier ou bouton)
+- justifyContent center pour isFlashMD quand l'éditeur est caché (ce qui inclut le testMode)
+
+### Chore
+
+- typo dans le fichier taskfile
+- configuration rollup et taskfile
+- codeJar en ECMA2018
+
 ## 2.1.3 (2025-06-15)
 
 ### Fix
