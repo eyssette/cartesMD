@@ -9,7 +9,11 @@ import { isValidColorNameCSS } from "../utils/css";
 const contentElement = document.getElementById("content");
 let isFirstPageLoad = true;
 
-function handleMathsAndThemes(cardsHTML) {
+function handleMathsAndThemes(cardsHTML, options) {
+	const forceRefresh = options && options.forceRefresh;
+	if (forceRefresh) {
+		isFirstPageLoad = true;
+	}
 	if (yaml && yaml.maths) {
 		loadScript(
 			"https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",
@@ -47,7 +51,7 @@ function handleMathsAndThemes(cardsHTML) {
 	}
 }
 
-export function createCards(cardsArray) {
+export function createCards(cardsArray, options) {
 	let cardsHTML = "";
 	let cardNumber = 1;
 	cardsArray.forEach((card) => {
@@ -127,7 +131,7 @@ export function createCards(cardsArray) {
 	});
 
 	if (yaml && (yaml.maths || yaml.theme)) {
-		handleMathsAndThemes(cardsHTML);
+		handleMathsAndThemes(cardsHTML, options);
 	} else {
 		contentElement.innerHTML = cardsHTML;
 		fitElements();
