@@ -133,3 +133,7 @@ h3 {
 		right: 15px !important;
 	}
 }
+
+.hasAdditionnalContent > span {
+	padding: 25px 0;
+}
