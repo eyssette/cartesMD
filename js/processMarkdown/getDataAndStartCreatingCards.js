@@ -50,7 +50,7 @@ export function getDataAndStartCreatingCards() {
 				options = params(urlParams, editorElement, options);
 				initializeMenu(editorElement, isSmallScreen, options);
 				const cardsData = parseMarkdown(md, options);
-				createCards(cardsData);
+				createCards(cardsData, options);
 				changeImageFormatIfError();
 				handleEvents(editorElement, options);
 				if (isSmallScreen) {
@@ -65,7 +65,7 @@ export function getDataAndStartCreatingCards() {
 				options = params(urlParams, editorElement, options);
 				initializeMenu(editorElement, isSmallScreen, options);
 				const cardsData = parseMarkdown(md, options);
-				createCards(cardsData);
+				createCards(cardsData, options);
 				changeImageFormatIfError();
 				handleEvents(editorElement, options);
 				if (isSmallScreen) {
@@ -84,7 +84,7 @@ export function getDataAndStartCreatingCards() {
 		options = params(urlParams, editorElement, options);
 		initializeMenu(editorElement, isSmallScreen, options);
 		const cardsData = parseMarkdown(md, options);
-		createCards(cardsData);
+		createCards(cardsData, options);
 		changeImageFormatIfError();
 		handleEvents(editorElement, options);
 		if (isSmallScreen) {
