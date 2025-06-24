@@ -1,6 +1,94 @@
 import Showdown from "../externals/showdown.js";
+import { getCSScolor } from "../utils/colors.js";
 
 // Extensions pour Showdown
+
+// Gestion des attributs génériques du type {.classe1 .classe2}
+function showdownExtensionGenericAttributes() {
+	return [
+		{
+			type: "output",
+			filter: (text) => {
+				// Regex pour détecter les attributs génériques en fin de ligne dans un élément
+				const genericAttributesRegexBlock = /<(\w+)(.*?)>(.*?) ({\.(.*?)})/g;
+
+				const easyGenericAttributesRegexInline = /--(.*?):(.*?)--/g;
+				let lastMatchPositionEasyGenericAttribute = 0;
+				text = text.replace(
+					easyGenericAttributesRegexInline,
+					(match, attributeString, textWithAttribute) => {
+						const isColor = getCSScolor(attributeString);
+						const sectionText = text.substring(
+							lastMatchPositionEasyGenericAttribute,
+						);
+						const matchPosition = sectionText.indexOf(match);
+						lastMatchPositionEasyGenericAttribute =
+							lastMatchPositionEasyGenericAttribute +
+							matchPosition +
+							match.length;
+						const before = text.substring(0, matchPosition);
+						const after = text.substring(lastMatchPositionEasyGenericAttribute);
+						const isInCode = /<code>|<pre>/.test(
+							before.slice(before.lastIndexOf("<")),
+						);
+						const isComment = after && after.startsWith(">");
+						if (!isInCode & !isComment) {
+							let replaceBy;
+							const isTag = attributeString.startsWith("tag");
+							if (!isTag) {
+								replaceBy = isColor
+									? `<span style="color:${isColor}">${textWithAttribute}</span>`
+									: `<span class="${attributeString}">${textWithAttribute}</span>`;
+							} else {
+								const contentAfterTag = attributeString
+									.replace("tag", "")
+									.trim();
+								const colourBackground = getCSScolor(contentAfterTag);
+								if (colourBackground) {
+									replaceBy = `<span class="tag" style="background-color:${colourBackground}">${textWithAttribute}</span>`;
+								} else {
+									replaceBy = `<span class="tag ${contentAfterTag}">${textWithAttribute}</span>`;
+								}
+							}
+							return replaceBy;
+						} else {
+							return match;
+						}
+					},
+				);
+
+				// Regex pour détecter l'utilisation d'attributs génériques à l'intérieur d'un élément (un passage mis en gras, en italiques, ou tout autre balise)
+				const genericAttributesRegexInline =
+					/<(\w+)(.*?)>(.*?)<\/\1>{(\.[^{}]+)}/g;
+
+				let modifiedText = text;
+
+				// Traitement des attributs génériques en fin de ligne
+				modifiedText = modifiedText.replace(
+					genericAttributesRegexBlock,
+					(match, tag, attrs, content, _, classes) => {
+						// Vérifier si l'élément est dans un <code>
+						if (match.includes("<code>")) return match;
+
+						const classAttribute = ` class="${classes.replace(/\./g, " ").trim()}"`;
+						return `<${tag}${attrs}${classAttribute}>${content}</${tag}>`;
+					},
+				);
+
+				// Traitement des attributs génériques pour un élément inline
+				modifiedText = modifiedText.replace(
+					genericAttributesRegexInline,
+					(match, tag, attrs, content, classes) => {
+						const classAttribute = ` class="${classes.replace(/\./g, " ").trim()}"`;
+						return `<${tag}${attrs}${classAttribute}>${content}</${tag}>`;
+					},
+				);
+
+				return modifiedText;
+			},
+		},
+	];
+}
 
 // Gestion des admonitions
 function showdownExtensionAdmonitions() {
@@ -74,6 +162,7 @@ const converter = new Showdown.Converter({
 		showdownExtensionAdmonitions,
 		showdownExtensionUnderline,
 		showdownExtensionHighlight,
+		showdownExtensionGenericAttributes,
 	],
 });
 
