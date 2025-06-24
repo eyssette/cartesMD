@@ -1,3 +1,15 @@
+## 2.3.0 (2025-06-24)
+
+### Feat
+
+- gestion des attributs génériques {.class} et des attributs inline --tag:text-- dans le Markdown
+- gestion des listes de tâches en Markdown
+
+### Fix
+
+- **processMarkdown**: prise en compte des options dès l'initialisation pour createCards()
+- **ui**: CSS automatique pour une flashcard dans FlashMD qui a du contenu additionnel (en haut ou en bas à droite dans le recto)
+
 ## 2.2.0 (2025-06-16)
 
 ### Feat

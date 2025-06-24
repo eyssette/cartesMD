@@ -2,14 +2,14 @@
 name = "cz_customize"
 tag_format = "$version"
 version_scheme = "semver"
-version = "2.2.0"
+version = "2.3.0"
 update_changelog_on_bump = true
 changelog_incremental = true
 version_files = [
 	"VERSION",
 	"package.json:version"
 ]
-pre_bump_hooks = "npx task build"
+pre_bump_hooks = "task build"
 use_shortcuts = true
 [tool.commitizen.customize]
 message_template = "{{change_type}}{% if scope %}({{scope}}){% endif %}{% if breaking %}!{% endif %}: {{message}}"
