@@ -134,6 +134,12 @@ h3 {
 	}
 }
 
-.hasAdditionnalContent > span {
-	padding: 25px 0;
+.hasAdditionnalContentBottom > span {
+	padding-bottom: 25px !important;
+	padding-top: 5px;
+}
+
+.hasAdditionnalContentTop > span {
+	padding-top: 25px !important;
+	padding-bottom: 5px;
 }

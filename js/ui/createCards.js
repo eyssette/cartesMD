@@ -119,7 +119,12 @@ export function createCards(cardsArray, options) {
 			options.isFlashMd &&
 			(card.subtitle.length > 0 || footer.length > 0)
 		) {
-			classIfAdditionalContent = " hasAdditionnalContent";
+			const classIfAdditionalSpaceTop =
+				card.subtitle.length > 0 ? " hasAdditionnalContentTop" : "";
+			const classIfAdditionalSpaceBottom =
+				footer.length > 0 ? " hasAdditionnalContentBottom" : "";
+			classIfAdditionalContent =
+				classIfAdditionalSpaceTop + classIfAdditionalSpaceBottom;
 		}
 
 		// TEMPLATE pour chaque carte
