@@ -69,6 +69,7 @@ const converter = new Showdown.Converter({
 	simplifiedAutoLink: true,
 	tables: true,
 	openLinksInNewWindow: true,
+	tasklists: true,
 	extensions: [
 		showdownExtensionAdmonitions,
 		showdownExtensionUnderline,
