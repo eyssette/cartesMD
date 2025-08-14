@@ -1,6 +1,6 @@
 {
 	"name": "cartesmd",
-	"version": "2.3.0",
+	"version": "2.3.1",
 	"description": "Un outil libre & gratuit pour créer des cartes à jouer à partir d'un texte en Markdown",
 	"devDependencies": {
 		"@eslint/js": "^9.8.0",

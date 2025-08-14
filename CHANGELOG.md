@@ -1,3 +1,10 @@
+## 2.3.1 (2025-08-14)
+
+### Fix
+
+- possibilité d'utiliser le yaml avec FlashMD
+- meilleure gestion dans flashMD du CSS et de l'espacement vertical sur le recto s'il y a des labels h3/h4
+
 ## 2.3.0 (2025-06-24)
 
 ### Feat
