@@ -15,6 +15,7 @@ const styleMapping = {
 	z5: ".z5",
 	back: ".cardBack",
 	backImage: ".cardBackImage",
+	front: ".cardFront",
 	style: "",
 };
 
