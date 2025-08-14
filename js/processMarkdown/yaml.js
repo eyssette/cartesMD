@@ -57,10 +57,10 @@ export function processYAML(markdownContent, options) {
 	let customStylesCSS = "";
 	if (hasYaml || isFlashMd) {
 		try {
-			if (!isFlashMd) {
-				yaml = loadYAML(markdownContentSplitted[1]);
-			} else {
-				yaml = { maths: true, theme: "flashcard-simple" };
+			yaml = hasYaml ? loadYAML(markdownContentSplitted[1]) : {};
+			if (isFlashMd) {
+				yaml.maths = true;
+				yaml.theme = "flashcard-simple";
 			}
 			for (const [key, selector] of Object.entries(styleMapping)) {
 				if (yaml[key]) {
