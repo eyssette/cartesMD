@@ -30,11 +30,22 @@ export function convertLatexExpressions(string) {
 			// Applique les remplacements spécifiques
 			math = convertSpecialExpressionsInLatex(math);
 
-			const rendered = window.katex.renderToString(math, {
-				displayMode: !inlineMaths,
-			});
-
-			string = string.replace(expressionLatex, rendered);
+			try {
+				const rendered = window.katex.renderToString(math, {
+					displayMode: !inlineMaths,
+				});
+				string = string.replace(expressionLatex, rendered);
+			} catch (error) {
+				if (error instanceof window.katex.ParseError) {
+					const rendered = `Error in LaTeX '${math}': ${error.message}`
+						.replace(/&/g, "&")
+						.replace(/</g, "<")
+						.replace(/>/g, ">");
+					string = string.replace(expressionLatex, rendered);
+				} else {
+					throw error;
+				}
+			}
 		}
 	}
 
