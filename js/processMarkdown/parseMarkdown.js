@@ -1,5 +1,6 @@
 import { loadCSS } from "../utils/urls";
 import { processYAML } from "./yaml";
+import { removeMultilineHtmlComments } from "../utils/strings";
 
 function isCardConfiguration(line) {
 	return line.indexOf("nombreZones:") === 0 || line.indexOf("fond:") === 0;
@@ -56,6 +57,8 @@ export function parseMarkdown(markdownContent, options) {
 	);
 
 	markdownContent = processYAML(markdownContent, options);
+
+	markdownContent = removeMultilineHtmlComments(markdownContent);
 
 	const markdownCards = splitMarkdownByCards(markdownContent);
 	let cardsArray = [];
