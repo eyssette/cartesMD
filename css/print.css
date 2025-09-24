@@ -42,3 +42,7 @@ p {
 .theme-flashcard-simple .cardBackAndFront {
 	margin: 20px;
 }
+
+.theme-flashcard-simple div#card-1 {
+	margin-top: -0.55em;
+}
