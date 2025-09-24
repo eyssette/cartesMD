@@ -1,3 +1,15 @@
+## 2.4.0 (2025-09-24)
+
+### Feat
+
+- propriété "front" dans le YAML pour customiser le CSS du recto
+
+### Fix
+
+- **flashMD**: résolution bug impression flashcards sur la première page (margin-top)
+- suppression automatique des commentaires multilignes
+- gestion des erreurs Katex
+
 ## 2.3.1 (2025-08-14)
 
 ### Fix
