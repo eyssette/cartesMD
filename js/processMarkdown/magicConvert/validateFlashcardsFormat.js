@@ -1,0 +1,56 @@
+// Fonction de validation du contenu
+export function validateFlashcardsFormat(content) {
+	if (!content || typeof content !== "string") {
+		return false;
+	}
+
+	// Diviser le contenu en blocs séparés par des doubles sauts de ligne
+	const blocks = content
+		.split(/\n\s*\n/)
+		.filter((block) => block.trim().length > 0);
+
+	if (blocks.length === 0) {
+		return false;
+	}
+
+	for (let index = 0; index < blocks.length; index++) {
+		const block = blocks[index];
+
+		const lines = block
+			.split("\n")
+			.map((line) => line.trim())
+			.filter((line) => line.length > 0);
+
+		if (lines.length === 0) {
+			return false;
+		}
+
+		// Vérifier que la première ligne commence par "## "
+		const firstLine = lines[0];
+		if (!firstLine.startsWith("## ")) {
+			return false;
+		}
+
+		// Vérifier que le titre n'est pas vide après "## "
+		const title = firstLine.substring(3).trim();
+		if (title.length === 0) {
+			return false;
+		}
+
+		// Vérifier qu'il y a du contenu après le titre
+		if (lines.length === 1) {
+			return false;
+		} else {
+			// Si il y a plusieurs lignes, vérifier que les lignes suivantes ne sont pas toutes vides
+			const contentLines = lines.slice(1);
+			const hasNonEmptyContent = contentLines.some(
+				(line) => line.trim().length > 0,
+			);
+
+			if (!hasNonEmptyContent) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
