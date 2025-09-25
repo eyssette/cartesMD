@@ -1,3 +1,11 @@
+## 2.5.1 (2025-09-25)
+
+### Fix
+
+- ajout de séparateurs et préfixes pour la conversion magique
+- on n'utilise pas la fonction de conversion magique si le titre produit de la FlashCard est trop long (>100 caractères)
+- refactorisation magicConvert dans le cas du format "Une carte = un paragraphe recto / un paragraphe verso", et ajout d'une condition (minimum de paires = 3), car sinon il s'agit probablement juste de texte à simplement copier-coller dans l'éditeur
+
 ## 2.5.0 (2025-09-25)
 
 ### Feat
