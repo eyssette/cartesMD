@@ -2,6 +2,7 @@ import { splitArrayIntoGroups } from "../../utils/arrays.js";
 import { detectAlternatingFormat } from "./detectAlternatingFormat.js";
 import { cleanPrefixes } from "./cleanPrefixes.js";
 import { validateFlashcardsFormat } from "./validateFlashcardsFormat.js";
+import { tryToConvertToOrderedList } from "./processOrderedList.js";
 
 export function magicConvertToFlashcardsFormat(text, options = {}) {
 	// Définition des séparateurs et préfixes courants
@@ -86,7 +87,12 @@ export function magicConvertToFlashcardsFormat(text, options = {}) {
 			// Format "Une carte = un paragraphe recto / un paragraphe verso"
 			// Le format suppose qu'on ait un nombre pair de paragraphes
 			if (paragraphs.length % 2 !== 0) {
-				return text;
+				// S'il n'y a pas de nombre pair de paragraphes, on essaie de voir s'il y a une liste ordonnée qui pourrait définir les titres des flashcards
+				// Si c'est le cas, on retourne le texte converti au bon format, sinon on renvoie le texte initial
+				const conversionToOrderedList = tryToConvertToOrderedList(text);
+				return conversionToOrderedList.valid
+					? conversionToOrderedList.result
+					: text;
 			}
 			// On n'utilise pas la conversion “magique” s'il y a moins de 3 paires
 			// S'il y a moins de 3 paires, il s'agit probablement juste de texte à simplement copier-coller dans l'éditeur
@@ -115,6 +121,10 @@ export function magicConvertToFlashcardsFormat(text, options = {}) {
 
 	// On vérifie le résultat
 	// S'il correspond au format attendu, on le renvoie
-	// Sinon on renvoie le texte initial
-	return validateFlashcardsFormat(result) ? result : text;
+	const isValidResult = validateFlashcardsFormat(result);
+	if (isValidResult) return result;
+	// Si le résultat ne correspond pas au format attendu, on essaie de voir s'il y a une liste ordonnée qui pourrait définir les titres des flashcards
+	// Si c'est le cas, on retourne le texte converti au bon format, sinon on renvoie le texte initial
+	const conversionToOrderedList = tryToConvertToOrderedList(result);
+	return conversionToOrderedList.valid ? conversionToOrderedList.result : text;
 }
