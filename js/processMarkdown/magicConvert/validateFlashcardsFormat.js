@@ -4,12 +4,9 @@ export function validateFlashcardsFormat(content) {
 		return false;
 	}
 
-	// Diviser le contenu en blocs séparés par des doubles sauts de ligne
-	const blocks = content
-		.split(/\n\s*\n/)
-		.filter((block) => block.trim().length > 0);
-
-	if (blocks.length === 0) {
+	// Extraire les blocs "## titre + contenu"
+	const blocks = content.match(/(## .+?)(?=(?:\n## |\n*$))/gs);
+	if (!blocks || blocks.length === 0) {
 		return false;
 	}
 
