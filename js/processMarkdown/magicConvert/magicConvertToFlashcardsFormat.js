@@ -70,17 +70,24 @@ export function magicConvertToFlashcardsFormat(text, options = {}) {
 				break;
 			}
 		}
-		if (isMultiLine && paragraphs.length % 2 === 0) {
+		if (isMultiLine) {
 			// Format "Une carte = un paragraphe recto / un paragraphe verso"
-			const hasPairOfCards = paragraphs.length % 2 === 0;
-			if (!hasPairOfCards) return text;
-			const cardsArray = splitArrayIntoGroups(
-				paragraphs,
-				paragraphs.length / 2,
-			);
-			cards = cardsArray.map((element) => ({
-				front: element[0].trim(),
-				back: cleanPrefixes(element[1], config.prefixes).trim(),
+			// Le format suppose qu'on ait un nombre pair de paragraphes
+			if (paragraphs.length % 2 !== 0) {
+				return text;
+			}
+			// On n'utilise pas la conversion “magique” s'il y a moins de 3 paires
+			// S'il y a moins de 3 paires, il s'agit probablement juste de texte à simplement copier-coller dans l'éditeur
+			const pairCount = paragraphs.length / 2;
+			const MIN_PAIR_COUNT = 3;
+			if (pairCount < MIN_PAIR_COUNT) {
+				return text;
+			}
+			// On regroupe les paires recto/verso entre elles, et on crée les cartes à partir de là
+			const cardsArray = splitArrayIntoGroups(paragraphs, pairCount);
+			cards = cardsArray.map(([frontParagraph, backParagraph]) => ({
+				front: frontParagraph.trim(),
+				back: cleanPrefixes(backParagraph, config.prefixes).trim(),
 			}));
 		}
 	}
