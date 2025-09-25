@@ -1,3 +1,10 @@
+## 2.5.2 (2025-09-26)
+
+### Fix
+
+- conversion magique - en dernier lieu, on essaie de voir s'il y a une liste ordonnée qui peut définir les titres des flashcards
+- conversion magique - extraction des blocs avec le format "titre h2+contenu " pour valider la conversion
+
 ## 2.5.1 (2025-09-25)
 
 ### Fix
