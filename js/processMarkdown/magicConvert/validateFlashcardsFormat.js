@@ -38,8 +38,6 @@ export function validateFlashcardsFormat(content) {
 		}
 
 		// Si le titre est très long, alors c'est que la conversion magique n'était probablement pas approprié
-		console.log(title);
-		console.log(title.length);
 		if (title.length > 100) {
 			return false;
 		}
