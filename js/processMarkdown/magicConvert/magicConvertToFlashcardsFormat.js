@@ -6,8 +6,20 @@ import { validateFlashcardsFormat } from "./validateFlashcardsFormat.js";
 export function magicConvertToFlashcardsFormat(text, options = {}) {
 	// Définition des séparateurs et préfixes courants
 	const config = {
-		separators: [" = ", " - ", " - ", " – ", " -> ", ": ", "|", " : "],
-		prefixes: ["-> ", "- ", "* ", "> ", "→"],
+		separators: [
+			" = ",
+			" - ",
+			" – ",
+			" -> ",
+			" => ",
+			" → ",
+			" ⇒ ",
+			": ",
+			" | ",
+			" : ",
+			"\t",
+		],
+		prefixes: ["-> ", "- ", "– ", "* ", "> ", "→", "• ", "⇒"],
 		rectoSyntax: "## ",
 		...options,
 	};
