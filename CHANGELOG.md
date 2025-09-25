@@ -1,3 +1,9 @@
+## 2.5.0 (2025-09-25)
+
+### Feat
+
+- détection avant de coller un contenu du format de ce contenu - si le format n'est pas celui d'une Flashcard, on essaie de le convertir au bon format (magicConvertToFlashcardsFormat)
+
 ## 2.4.0 (2025-09-24)
 
 ### Feat
