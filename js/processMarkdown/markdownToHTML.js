@@ -110,7 +110,7 @@ function showdownExtensionAdmonitions() {
 							text.substring(indexMatch - 6, indexMatch) == "<code>"
 								? true
 								: false;
-						if (!isInCode) {
+						if (!isInCode && matchInformations) {
 							let type = matchInformations[1];
 							let title = matchInformations[2];
 							if (type.includes("<br")) {
