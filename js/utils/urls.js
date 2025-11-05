@@ -1,8 +1,9 @@
 import { corsProxy, shortcuts } from "../config";
 
-export function handleURL(url) {
+// Pour gérer l'URL de la source en Markdown
+export function handleURL(url, options) {
 	if (url !== "") {
-		let addCorsProxy = true;
+		let addCorsProxy = options && options.useCorsProxy ? true : false;
 		// Vérification de la présence d'un raccourci
 		const shortcut = shortcuts.find((element) => element[0] == url);
 		if (shortcut) {
