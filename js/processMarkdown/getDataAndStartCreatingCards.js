@@ -2,7 +2,7 @@ import defaultMD from "../../index.md";
 import { handleURL } from "../utils/urls";
 import { initializeApp } from "./initializeApp";
 
-let md = "";
+let md = defaultMD;
 
 async function fetchMarkdown(source) {
 	const response = await fetch(source);
