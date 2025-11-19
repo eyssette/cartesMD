@@ -166,7 +166,14 @@ const converter = new Showdown.Converter({
 	],
 });
 
+function fixImageDimensionsCodiMD(md) {
+	md = md.replaceAll(/=x([0-9]*)\)/g, "=*x$1)");
+	md = md.replaceAll(/=([0-9]*)x\)/g, "=$1x*)");
+	return md;
+}
+
 export function markdownToHTML(text, inline = false) {
+	text = fixImageDimensionsCodiMD(text);
 	let html = converter.makeHtml(text);
 	if (inline) {
 		html = html.replace("<p>", "").replace("</p>", "").trim();
