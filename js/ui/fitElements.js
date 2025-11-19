@@ -46,6 +46,28 @@ function fitElementsMainLogic() {
 		minFontSize: 7.75,
 		maxFontSize: baseMaxFontSize,
 	});
+	// On ajuste les éléments contenant des images avec un délai pour être sûr que les images soient chargées
+	setTimeout(() => {
+		const elementsWithImagesAndText = new Set();
+		// On cherche les images dans les zones où il peut y en avoir avec du texte.
+		document
+			.querySelectorAll(".z2 img, .z4 img, .cardBack aside img")
+			.forEach((img) => {
+				const parent = img.closest(".z2, .z4, .cardBack");
+				if (parent) {
+					// On vérifie que ce parent contient aussi du texte
+					const hasText = parent.textContent.trim().length > 0;
+					if (hasText) elementsWithImagesAndText.add(parent);
+				}
+			});
+		elementsWithImagesAndText.forEach((element) => {
+			textFit(element, {
+				multiLine: true,
+				minFontSize: 7.75,
+				maxFontSize: baseMaxFontSize,
+			});
+		});
+	}, 1000);
 	return true;
 }
 
