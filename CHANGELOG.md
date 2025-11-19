@@ -1,3 +1,17 @@
+## 2.5.3 (2025-11-19)
+
+### Fix
+
+- fix pour l'utilisation des dimensions des images dans le Markdown (syntaxe codiMD)
+- utilisation de defaultMD si pas de hash
+- refactorisation de l'initialisation de l'application.
+- gestion erreur possible pour les admonitions
+- URL plus directe pour l'outil PDF-impose-it en mode "cartes"
+
+### CI
+
+- ajout d'un modèle de déploiement
+
 ## 2.5.2 (2025-09-26)
 
 ### Fix
