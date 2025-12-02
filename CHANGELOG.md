@@ -1,3 +1,10 @@
+## 2.5.4 (2025-12-02)
+
+### Fix
+
+- **css**: meilleure gestion de l'impression recto-verso
+- gestion de l'ajustement du texte dans les zones où il y a du texte et des images
+
 ## 2.5.3 (2025-11-19)
 
 ### Fix
