@@ -47,7 +47,7 @@ export function processYAML(markdownContent, options) {
 
 	const styleThemeElement = document.getElementById("styleTheme");
 	const customStylesElement = document.getElementById("customStyles");
-	const styleRectoVersoElement = document.getElementById("rectoVerso");
+	const printPageSize = document.getElementById("printPageSize");
 
 	let markdownContentSplitted =
 		splitMarkdownByHRIgnoringCodeBlocks(markdownContent);
@@ -88,20 +88,6 @@ export function processYAML(markdownContent, options) {
 				document.body.classList.add("noVerso");
 			} else {
 				document.body.classList.remove("noVerso");
-			}
-			if (yaml.rectoVerso) {
-				const cssRectoVerso = "css/printRectoVerso.min.css";
-				fetch(cssRectoVerso)
-					.then((response) => response.text())
-					.then((data) => {
-						styleRectoVersoElement.textContent = data;
-					})
-					.catch((error) => {
-						styleRectoVersoElement.textContent = "";
-						console.error(error);
-					});
-			} else {
-				styleRectoVersoElement.textContent = "";
 			}
 			// Gestion des styles personnalisés
 			if (yaml.theme || isFlashMd) {
@@ -144,6 +130,23 @@ export function processYAML(markdownContent, options) {
 					/theme-\S*/g,
 					"",
 				);
+			}
+			if (yaml.rectoVerso) {
+				document.body.classList.add("printRectoVerso");
+				const printPageSizeCSS =
+					yaml.theme && yaml.theme.includes("flashcard")
+						? "@media print {@page {size: 344px 224px !important;margin: 0px !important;padding: 0px !important;}}"
+						: "@media print {@page {size: 224px 344px !important;margin: 0px !important;padding: 0px !important;}}";
+				printPageSize.textContent = printPageSizeCSS;
+			} else {
+				document.body.classList.remove("printRectoVerso");
+				if (yaml.theme && yaml.theme.includes("flashcard")) {
+					const printPageSizeCSS =
+						"@media print {@page {size: A4 portrait !important;}}";
+					printPageSize.textContent = printPageSizeCSS;
+				} else {
+					printPageSize.textContent = "";
+				}
 			}
 			customStylesElement.textContent = scopedStyles(
 				customStylesCSS,
@@ -196,6 +199,9 @@ export function processYAML(markdownContent, options) {
 		}
 		if (customStylesElement) {
 			customStylesElement.textContent = "";
+		}
+		if (printPageSize) {
+			printPageSize.textContent = "";
 		}
 	}
 	return markdownContent;

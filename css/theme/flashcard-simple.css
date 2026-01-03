@@ -67,14 +67,6 @@ h3 {
 #content {
 	width: 70vw !important;
 }
-@media print {
-	@page {
-		size: A4 portrait !important;
-	}
-	#content {
-		width: 100% !important;
-	}
-}
 
 .zCount1 .cardTitle span {
 	visibility: visible !important;
@@ -120,17 +112,69 @@ h3 {
 }
 
 @media print {
+	div#card-1 {
+		margin-top: -0.55em;
+	}
+
+	#content {
+		columns: 1 !important;
+		column-count: 1 !important;
+		width: 100% !important;
+	}
 	.noVerso #content {
-		column-count: 2 !important;
+		columns: 2 !important;
+	}
+	.printRectoVerso #content {
+		columns: 1 !important;
+		margin: 0px !important;
+		padding: 0px !important;
 	}
 	.noVerso .cardBackAndFront {
 		margin: 0 0 30px 0 !important;
 	}
+	.printRectoVerso .cardBackAndFront {
+		flex-wrap: wrap !important;
+	}
+
+	.printRectoVerso .card {
+		margin: 0px !important;
+		margin-top: 5px !important;
+		margin-left: -5px !important;
+		padding: 0px !important;
+	}
+	.printRectoVerso .cardFront {
+		margin-top: 2px !important;
+	}
+	.printRectoVerso .cardBack {
+		margin-top: 4px !important;
+	}
+
+	.printRectoVerso .cardBackAndFront:first-of-type .cardFront {
+		margin-top: 4px !important;
+	}
+
+	.printRectoVerso.noVerso .cardBackAndFront:first-of-type .cardFront {
+		margin-top: -6px !important;
+	}
+
 	.card footer {
-		right: 50.5% !important;
+		right: 430px !important;
+		z-index: 99999 !important;
 	}
 	.noVerso .card footer {
-		right: 15px !important;
+		right: -40px !important;
+	}
+
+	.printRectoVerso .z2 {
+		margin-left: 15px !important;
+		margin-top: 25px !important;
+	}
+
+	.printRectoVerso .card footer {
+		right: -25px !important;
+	}
+	.printRectoVerso.noVerso .card footer {
+		right: -40px !important;
 	}
 }
 

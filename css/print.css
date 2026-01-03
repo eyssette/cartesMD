@@ -34,15 +34,24 @@ p {
 .cardBackAndFront {
 	margin-bottom: 20px !important;
 }
-.theme-flashcard #content,
-.theme-flashcard-simple #content {
-	columns: 1;
-}
-.theme-flashcard .cardBackAndFront,
-.theme-flashcard-simple .cardBackAndFront {
-	margin: 20px;
-}
 
-.theme-flashcard-simple div#card-1 {
-	margin-top: -0.55em;
+.printRectoVerso #content {
+	margin: 0px !important;
+	padding: 0px !important;
+}
+.printRectoVerso #content,
+.printRectoVerso.noVerso #content {
+	columns: 1 !important;
+}
+.printRectoVerso .card {
+	margin: 0px !important;
+	margin-top: 5px !important;
+	margin-left: -5px !important;
+	padding: 0px !important;
+}
+.printRectoVerso .cardBack {
+	margin-top: 10px !important;
+}
+.printRectoVerso .cardBackAndFront:nth-of-type(1) .cardFront {
+	margin-top: -2px !important;
 }
