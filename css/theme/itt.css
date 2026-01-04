@@ -2,7 +2,7 @@
 	display: none !important;
 }
 .z2 {
-	height: 125px !important;
+	height: 115px !important;
 	width: 210px !important;
 	margin: 0 !important;
 	border-radius: 5px 0 !important;
@@ -25,7 +25,7 @@
 	padding: 0 !important;
 }
 .card:has(.special) .z2 {
-	height: 250px !important;
+	height: 245px !important;
 }
 .card:has(.special) .z4 {
 	height: 86px !important;
