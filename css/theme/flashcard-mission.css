@@ -1,0 +1,44 @@
+@import "./css/theme/flashcard.css";
+
+.z1 {
+	height: 2em !important;
+	width: 310px !important;
+	margin-left: 0 !important;
+	background: transparent !important;
+	color: black !important;
+	padding: 5px 15px 0px 15px !important;
+	margin-top: 0px !important;
+}
+h2 aside {
+	float: none !important;
+	text-align: center !important;
+	margin: 0 !important;
+	padding-top: 5px !important;
+}
+.z2 {
+	height: 160px !important;
+	margin-top: -5px !important;
+	width: 340px !important;
+	border-radius: 0 !important;
+	padding: 0px !important;
+}
+.z3 {
+	display: inline-block !important;
+	visibility: visible !important;
+	text-align: right !important;
+	margin-left: 16px !important;
+	font-weight: normal !important;
+	margin-top: -45px !important;
+	height: 10px !important;
+}
+.cardBackImage {
+	display: block !important;
+	object-fit: contain !important;
+	width: 300px !important;
+	height: 220px !important;
+	margin: 0 !important;
+	padding: 0 20px !important;
+}
+.z4 {
+	display: none !important;
+}
