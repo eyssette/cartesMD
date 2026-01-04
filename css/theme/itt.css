@@ -2,11 +2,11 @@
 	display: none !important;
 }
 .z2 {
-	height: 115px !important;
-	width: 210px !important;
+	height: 125px !important;
+	width: 220px !important;
 	margin: 0 !important;
 	border-radius: 5px 0 !important;
-	padding: 5px !important;
+	padding: 0px !important;
 }
 .z3 {
 	height: 3em !important;
@@ -18,14 +18,21 @@
 	height: 145px !important;
 	padding-bottom: 5px !important;
 	border-radius: 0 5px !important;
+	padding-right: 5px !important;
 }
+.z4 p,
+.z4 ul,
+.z4 ol {
+	padding-right: 10px !important;
+}
+
 .card:has(.special) .z3 {
 	height: 0.01em !important;
 	margin: 0 !important;
 	padding: 0 !important;
 }
 .card:has(.special) .z2 {
-	height: 245px !important;
+	height: 250px !important;
 }
 .card:has(.special) .z4 {
 	height: 86px !important;
