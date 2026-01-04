@@ -1,0 +1,35 @@
+.z1 {
+	display: none !important;
+}
+.z2 {
+	height: 125px !important;
+	width: 210px !important;
+	margin: 0 !important;
+	border-radius: 5px 0 !important;
+	padding: 5px !important;
+}
+.z3 {
+	height: 3em !important;
+	margin-top: 5px !important;
+}
+.z4 {
+	margin: 0 !important;
+	width: 220px !important;
+	height: 145px !important;
+	padding-bottom: 5px !important;
+	border-radius: 0 5px !important;
+}
+.card:has(.special) .z3 {
+	height: 0.01em !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.card:has(.special) .z2 {
+	height: 250px !important;
+}
+.card:has(.special) .z4 {
+	height: 86px !important;
+}
+.cardBackAndFront:has(.special) .z4 {
+	background: #eee !important;
+}
