@@ -55,3 +55,9 @@ p {
 .printRectoVerso .cardBackAndFront:nth-of-type(1) .cardFront {
 	margin-top: -2px !important;
 }
+
+.printRectoVerso #content .cardBack aside {
+	margin-left: -227px;
+	margin-top: -363px;
+	position: relative;
+}
