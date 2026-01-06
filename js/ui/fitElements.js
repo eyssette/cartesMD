@@ -26,7 +26,7 @@ function fitElementsMainLogic() {
 	const backElements = document.querySelectorAll(".cardBack aside");
 
 	const baseMaxFontSize =
-		yaml && yaml.theme && yaml.theme.includes("flashcard") ? 40 : 22;
+		yaml && yaml.theme && yaml.theme.includes("flashcard") ? 40 : 36;
 	textFit(z1Elements, { multiLine: true, maxFontSize: 60 });
 	textFit(z2Elements, {
 		multiLine: true,
