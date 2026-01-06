@@ -53,7 +53,7 @@ function fitElementsMainLogic() {
 		document
 			.querySelectorAll(".z2 img, .z4 img, .cardBack aside img")
 			.forEach((img) => {
-				const parent = img.closest(".z2, .z4, .cardBack");
+				const parent = img.closest(".z2, .z4, .cardBack, aside");
 				if (parent) {
 					// On vérifie que ce parent contient aussi du texte
 					const hasText = parent.textContent.trim().length > 0;
