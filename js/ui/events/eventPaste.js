@@ -1,7 +1,26 @@
 import { magicConvertToFlashcardsFormat } from "../../processMarkdown/magicConvert/magicConvertToFlashcardsFormat";
 
+let shiftPressed = false;
+
 // Gestionnaire d'événement paste pour l'éditeur CodeJar
 export function eventPaste(editorElement) {
+	// On suit l'état de la touche Shift pour savoir si elle est maintenue lors du collage
+	editorElement.addEventListener(
+		"keydown",
+		function (e) {
+			shiftPressed = !!e.shiftKey;
+		},
+		true,
+	);
+
+	editorElement.addEventListener(
+		"keyup",
+		function (e) {
+			shiftPressed = !!e.shiftKey;
+		},
+		true,
+	);
+
 	editorElement.addEventListener(
 		"paste",
 		function (event) {
@@ -14,15 +33,20 @@ export function eventPaste(editorElement) {
 			const clipboardData = event.clipboardData || window.clipboardData;
 			const pastedText = clipboardData.getData("text/plain");
 
-			// Vérifier si le contenu ne contient pas "## "
-			if (!pastedText.includes("## ") && pastedText.split("\n").length > 1) {
-				// Transformer le contenu avec magicConvertToFlashcardsFormat
+			// Si l'utilisateur a collé en maintenant Shift, et que le texte
+			// semble être un bloc multi-lignes sans titres "## ", on essaie
+			// de le transformer en format de flashcards
+			if (
+				shiftPressed &&
+				!pastedText.includes("## ") &&
+				pastedText.split("\n").length > 1
+			) {
 				const transformedContent = magicConvertToFlashcardsFormat(pastedText);
 
 				// Insérer le contenu transformé dans l'éditeur
 				insertTextAtCursor(editorElement, transformedContent);
 			} else {
-				// Si le contenu contient déjà "## ", l'insérer tel quel
+				// Sinon, insérer le texte tel quel
 				insertTextAtCursor(editorElement, pastedText);
 			}
 		},
