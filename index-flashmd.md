@@ -19,31 +19,39 @@ Oui c'est possible !
 
 Sur la ligne juste avant le titre de la carte, on écrit `fond: couleur`.
 
-## Comment enregistrer ses cartes et les partager ?
-
-On peut utiliser [CodiMD](https://codimd.apps.education.fr/) sur le portail AppsEdu ou un outil équivalent (Digipage, Framapad…)
-
-Vous pourrez alors afficher et partager vos cartes ainsi :
-```
-https://flashmd.forge.apps.
-education.fr/?t=0&e=0#URL_du_fichier
-_Markdown
-```
-
-Si vous mettez le paramètre `?t=` à 1, vous partagerez directement vos flashcards en mode “révision”.
-
-Le paramètre `e=0` cache par défaut l'éditeur.
-
-
+fond: bleu
 ## Des exemples !
 Des [flashcards en <br>Histoire-Géographie](https://flashmd.forge.apps.education.fr/#https://codimd.apps.education.fr/oT-mEExZS0GyJlRo7tPnUw) créées par Françoise Vaillant.
 
 Des [flashcards en philosophie](https://flashmd.forge.apps.education.fr/#https://codimd.apps.education.fr/08ZtYO6hS9WmhQGMV576cA) (cours sur l'épistémologie)
 
 
-## Un&nbsp;exemple <aside>plus&nbsp;complexe</aside>
+## Réviser les flashcards
 
-Ci-dessous, vous avez un exemple plus complexe avec une image, du $Latex$ et des ++labels++ sur le recto de la flashcard (en haut et en bas à droite).
+Pour rentrer dans le mode révision, on clique dans le menu en haut à gauche sur l'icône “éprouvette”, afin de se tester : 🧪
+
+On pourra alors cliquer sur le recto d'une carte pour vérifier si on a la bonne réponse.
+
+## Comment enregistrer ses cartes et les partager ?
+
+On peut utiliser [CodiMD](https://codimd.apps.education.fr/) sur le portail AppsEdu ou un outil équivalent (Digipage, Framapad…)
+
+Vous pourrez alors afficher et partager vos cartes ainsi :
+
+`https://flashmd.forge.apps.
+education.fr/?t=0&e=0#URLsource`
+
+Le paramètre `e=0` cache par défaut l'éditeur.
+
+## Partage en&nbsp;mode révision
+
+Si vous mettez dans l'URL le paramètre `?t=1`, vous partagerez directement vos flashcards en mode “révision”.
+
+
+
+## Images, Latex, labels …
+
+On peut aussi insérer une image, du $Latex$ et des ++labels++ sur le recto de la flashcard (en haut et en bas à droite) : voir l'exemple suivant !
 
 Les labels sont pratiques pour indiquer une classe, un numéro de chapitre …
 
@@ -56,8 +64,13 @@ $$\large\textsf{Aire} = \dfrac{\textsf{base}\times\textsf{hauteur}}{2}$$
 ### **Triangle**
 #### 6<sup>e</sup>
 
-## Réviser les flashcards
 
-Pour rentrer dans le mode révision, on clique dans le menu en haut à gauche sur l'icône “éprouvette”, afin de se tester : 🧪
 
-On pourra alors cliquer sur le recto d'une carte pour vérifier si on a la bonne réponse.
+fond: orange
+## Contribuer
+
+Vous pouvez m'envoyer vos demandes d'évolution de l'outil, n'hésitez pas !
+
+Vous pouvez me contacter sur les [réseaux sociaux](https://eyssette.forge.apps.education.fr).
+
+De préférence, merci <br>d'utiliser les [“tickets”](https://forge.apps.education.fr/cartesmd/cartesMD.forge.apps.education.fr/-/issues) sur LaForgeEdu (vous pouvez aussi [envoyer un mail](mailto:forge-apps+guichet+flashmd-flashmd-forge-apps-education-fr-5732-issue-@phm.education.gouv.fr))
