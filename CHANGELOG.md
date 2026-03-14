@@ -1,3 +1,21 @@
+## 2.6.0 (2026-03-15)
+
+### Feat
+
+- **css**: thème "flashcard-mission" avec un titre et un contenu principal sur le recto, une image ou un fond vide derrière
+- thème "itt" (une image, puis 2 zones de texte)
+
+### Fix
+
+- documentation plus claire sur la page d'accueil de flashmd
+- conversion "magique" au format flashcards seulement si on copie-colle en maintenant la touche shift
+- augmentation de la taille maximum pour la police dans l'élément "z2"
+- textFit - prise en compte des images dans un élément aside
+- **css**: impression recto/verso - prise en compte élément "aside" dans le verso
+- **css**: amélioration z2 et z4 pour le thème itt
+- **css**: petites améliorations du thème "itt"
+- meilleure gestion de l'impression (cas rectoVerso + différences selon les thèmes)
+
 ## 2.5.4 (2025-12-02)
 
 ### Fix
