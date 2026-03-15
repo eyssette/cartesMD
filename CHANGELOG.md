@@ -1,3 +1,13 @@
+## 2.7.0 (2026-03-15)
+
+### Feat
+
+- affichage possible en "aléatoire" et/ou en "séquentiel" (une carte par une carte) dans le mode test / révision
+
+### Fix
+
+- paramètre dans l'URL pour le mode révision - possibilité d'utiliser "révision", "revision" ou "test"
+
 ## 2.6.0 (2026-03-15)
 
 ### Feat
