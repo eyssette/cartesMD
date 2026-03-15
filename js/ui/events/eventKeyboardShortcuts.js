@@ -42,6 +42,36 @@ export function eventKeyboardShortcuts(editorElement, options) {
 					}
 				}
 			}
+		} else {
+			if (options.isTestModeFromParams) {
+				const sequentialButtonsContainer =
+					document.getElementById("sequentialButtons");
+				if (
+					sequentialButtonsContainer &&
+					sequentialButtonsContainer.style.display !== "none"
+				) {
+					const sequentialButtons =
+						sequentialButtonsContainer.querySelectorAll("button");
+					// Si on clique sur la flèche gauche, on clique sur le bouton "Facile", sinon si on clique sur la flèche droite, on clique sur le bouton "Difficile"
+					if (event.key === "ArrowLeft") {
+						event.preventDefault();
+						sequentialButtons[0].click();
+					} else if (event.key === "ArrowRight") {
+						event.preventDefault();
+						sequentialButtons[1].click();
+					}
+					// Si on clique sur "espace", on clique sur la carte affichée
+					if (event.key === " ") {
+						event.preventDefault();
+						const visibleCard = document.querySelector(
+							".cardBackAndFront[style*='display: flex']",
+						);
+						if (visibleCard) {
+							visibleCard.click();
+						}
+					}
+				}
+			}
 		}
 	});
 }
