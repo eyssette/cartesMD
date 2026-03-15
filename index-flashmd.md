@@ -39,14 +39,18 @@ On peut utiliser [CodiMD](https://codimd.apps.education.fr/) sur le portail Apps
 Vous pourrez alors afficher et partager vos cartes ainsi :
 
 `https://flashmd.forge.apps.
-education.fr/?t=0&e=0#URLsource`
+education.fr/?e=0#URLsource`
 
 Le paramètre `e=0` cache par défaut l'éditeur.
 
 ## Partage en&nbsp;mode révision
 
-Si vous mettez dans l'URL le paramètre `?t=1`, vous partagerez directement vos flashcards en mode “révision”.
+Si vous mettez dans l'URL le paramètre <br>`?révision`, vous partagerez directement vos flashcards en mode “révision”.
 
+Vous pouvez ajouter : `&aléatoire` pour afficher les cartes de manière aléatoire et `&uneparune` pour afficher seulement une carte à la fois.
+
+Exemple : `https://flashmd.forge.apps.
+education.fr/?révision&aléatoire&uneparune#URL`
 
 
 ## Images, Latex, labels …
