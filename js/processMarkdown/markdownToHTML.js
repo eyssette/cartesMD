@@ -149,6 +149,18 @@ const showdownExtensionHighlight = {
 	replace: "<mark>$1</mark>",
 };
 
+// Gestion des indices et des exposants
+const showdownExtensionSubscript = {
+	type: "lang",
+	regex: /~(.*?)~/g,
+	replace: "<sub>$1</sub>",
+};
+const showdownExtensionSuperscript = {
+	type: "lang",
+	regex: /\^(.*?)\^/g,
+	replace: "<sup>$1</sup>",
+};
+
 // Gestion du markdown
 const converter = new Showdown.Converter({
 	emoji: true,
@@ -163,6 +175,8 @@ const converter = new Showdown.Converter({
 		showdownExtensionUnderline,
 		showdownExtensionHighlight,
 		showdownExtensionGenericAttributes,
+		showdownExtensionSubscript,
+		showdownExtensionSuperscript,
 	],
 });
 
