@@ -1,7 +1,7 @@
 // Raccourcis vers des cartes particulières
 export const shortcuts = [["shortcut", "URL"]];
 
-export const corsProxy = "https://corsproxy.io/?url=";
+export const corsProxy = "https://api.codetabs.com/v1/proxy/?quest=";
 
 export const CSSthemes = [
 	"iaconelli.css",
