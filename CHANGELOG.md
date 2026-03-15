@@ -1,3 +1,11 @@
+## 2.7.2 (2026-03-15)
+
+### Fix
+
+- CSS pour centrer l'élément HTML en mode "révision" pour que l'affichage soit correct en iframe
+- bouton "recommencer" quand on a fini de réviser les cartes en mode séquentiel (affichage des cartes une par une)
+- **markdown**: gestion des indices et exposants en markdown
+
 ## 2.7.1 (2026-03-15)
 
 ### Fix
