@@ -113,7 +113,7 @@ function toggleSequentialMode() {
 		const easyButton = document.createElement("button");
 		easyButton.textContent = "Facile";
 		easyButton.style.fontSize = "1.5em";
-		easyButton.style.marginRight = "1em";
+		easyButton.style.marginLeft = "1em";
 		const hardButton = document.createElement("button");
 		hardButton.textContent = "Difficile";
 		hardButton.style.fontSize = "1.5em";
@@ -194,8 +194,8 @@ function toggleSequentialMode() {
 		buttonContainer.style.display = "flex";
 		buttonContainer.style.justifyContent = "center";
 		buttonContainer.style.marginTop = "1em";
-		buttonContainer.appendChild(easyButton);
 		buttonContainer.appendChild(hardButton);
+		buttonContainer.appendChild(easyButton);
 
 		contentElement.parentNode.insertBefore(
 			buttonContainer,
