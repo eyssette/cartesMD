@@ -1,3 +1,16 @@
+## 2.8.0 (2026-03-15)
+
+### Feat
+
+- ajout d'une modale d'aide et de documentation
+- **processMarkdown**: gestion des fichiers hébergés sur Docs / La suite numérique
+- raccourcis claviers pour le mode révision avec affichage des cartes une par une
+
+### Fix
+
+- changement du proxy Cors
+- en mode révision avec affichage des cartes une par une, si une carte réapparaît, elle doit toujours être affichée en mode recto, même si elle a été auparavant retournée
+
 ## 2.7.2 (2026-03-15)
 
 ### Fix
