@@ -177,7 +177,9 @@ function createTestModeMenu() {
 		const intervalId = setInterval(() => {
 			const cards = document.querySelectorAll(".cardBackAndFront");
 			if (cards.length > 0) {
-				toggleRandomMode();
+				setTimeout(() => {
+					toggleRandomMode();
+				}, 100);
 				clearInterval(intervalId);
 			}
 		}, 100);
@@ -189,7 +191,9 @@ function createTestModeMenu() {
 		const intervalId = setInterval(() => {
 			const cards = document.querySelectorAll(".cardBackAndFront");
 			if (cards.length > 0) {
-				toggleSequentialMode();
+				setTimeout(() => {
+					toggleSequentialMode();
+				}, 100);
 				clearInterval(intervalId);
 			}
 		}, 100);
