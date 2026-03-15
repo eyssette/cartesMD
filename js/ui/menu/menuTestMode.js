@@ -16,6 +16,11 @@ let isTestMode = false;
 let isRandomMode = false;
 function toggleRandomMode() {
 	isRandomMode = !isRandomMode;
+	// On supprime l'attribut dataset.removed de toutes les cartes s'il existe
+	const cards = document.querySelectorAll(".cardBackAndFront");
+	cards.forEach((card) => {
+		delete card.dataset.removed;
+	});
 	const randomButton = document.getElementById("randomButton");
 	// Si on est en mode aléatoire, on va mettre les cartes dans un ordre aléatoire
 	// Sinon, on les remet dans l'ordre normal
@@ -52,9 +57,17 @@ function goToNextCard(currentIndex) {
 	if (currentIndex < cards.length - 1) {
 		// On passe à la carte suivante
 		currentIndex += 1;
+		// Si la carte suivante a été marquée comme "facile" (dataset.removed = "true") on passe à la suivante
+		if (cards[currentIndex].dataset.removed === "true") {
+			currentIndex = goToNextCard(currentIndex);
+		}
 	} else {
 		// Si on est à la dernière carte, on revient à la première
 		currentIndex = 0;
+		// Si la carte a été marquée comme "facile" (dataset.removed = "true") on passe à la suivante
+		if (cards[currentIndex].dataset.removed === "true") {
+			currentIndex = goToNextCard(currentIndex);
+		}
 	}
 	// On affiche la carte courante et on cache les autres
 	cards.forEach((card, index) => {
@@ -70,9 +83,13 @@ function goToNextCard(currentIndex) {
 let isSequentialMode = false;
 function toggleSequentialMode() {
 	isSequentialMode = !isSequentialMode;
+	// On supprime l'attribut dataset.removed de toutes les cartes s'il existe
+	const cards = document.querySelectorAll(".cardBackAndFront");
+	cards.forEach((card) => {
+		delete card.dataset.removed;
+	});
 	// Si on est en mode séquentiel, on affiche une carte à la fois
 	// Sinon, on affiche toutes les cartes
-	const cards = document.querySelectorAll(".cardBackAndFront");
 	if (isSequentialMode) {
 		// On affiche une carte à la fois, en commençant par la première
 		cards.forEach((card, index) => {
@@ -82,25 +99,68 @@ function toggleSequentialMode() {
 				card.style.display = "none";
 			}
 		});
-		// On ajoute en dessous de la carte un bouton "Suivant" pour passer à la carte suivante
+		// On ajoute en dessous de la carte deux boutons : "Facile" et "Difficile". Si l'utilisateur clique sur "Facile", on passe à la carte suivante et on supprime la carte. Si l'utilisateur clique sur "Difficile", on passe à la carte suivante.
 		const contentElement = document.getElementById("content");
-		const nextButton = document.createElement("button");
-		nextButton.id = "nextButton";
-		nextButton.textContent = "Suivant";
-		nextButton.style.display = "block";
-		nextButton.style.margin = "1em auto";
-		// On insère ce bouton dans un div après #content
-		const nextButtonContainer = document.createElement("div");
-		nextButtonContainer.style.textAlign = "center";
-		nextButtonContainer.appendChild(nextButton);
-		contentElement.parentNode.insertBefore(
-			nextButtonContainer,
-			contentElement.nextSibling,
-		);
+		const easyButton = document.createElement("button");
+		easyButton.textContent = "Facile";
+		easyButton.style.fontSize = "1.5em";
+		easyButton.style.marginRight = "1em";
+		const hardButton = document.createElement("button");
+		hardButton.textContent = "Difficile";
+		hardButton.style.fontSize = "1.5em";
 		let currentIndex = 0;
-		nextButton.addEventListener("click", () => {
+		easyButton.addEventListener("click", () => {
+			const cards = document.querySelectorAll(".cardBackAndFront");
+			// On supprime la carte courante
+			cards[currentIndex].dataset.removed = "true";
+			// On passe à la carte suivante, s'il reste des cartes (non marquées comme "faciles")
+			const remainingCards = Array.from(cards).filter(
+				(card) => card.dataset.removed !== "true",
+			);
+			if (remainingCards.length > 0) {
+				currentIndex = goToNextCard(currentIndex);
+			} else {
+				// Si il n'y a plus de cartes, on affiche un message "Félicitations, vous avez terminé toutes les cartes !"
+				// On cache d'abord la carte courante
+				cards[currentIndex].style.display = "none";
+				// On ajoute le message en dessous de la carte
+				const messageElement = document.createElement("div");
+				messageElement.id = "congratulationsMessage";
+				messageElement.textContent =
+					"Félicitations, vous avez terminé toutes les cartes !";
+				messageElement.style.fontSize = "1.5em";
+				messageElement.style.marginTop = "1em";
+				messageElement.style.marginBottom = "1em";
+				messageElement.style.textAlign = "center";
+				contentElement.parentNode.insertBefore(
+					messageElement,
+					contentElement.nextSibling,
+				);
+				// On supprime les boutons "Facile" et "Difficile"
+				const buttonContainer = document.getElementById("sequentialButtons");
+				if (buttonContainer) {
+					buttonContainer.remove();
+				}
+			}
+		});
+		hardButton.addEventListener("click", () => {
+			// On passe à la carte suivante
 			currentIndex = goToNextCard(currentIndex);
 		});
+
+		// On insère ces deux boutons en dessous de la carte
+		const buttonContainer = document.createElement("div");
+		buttonContainer.id = "sequentialButtons";
+		buttonContainer.style.display = "flex";
+		buttonContainer.style.justifyContent = "center";
+		buttonContainer.style.marginTop = "1em";
+		buttonContainer.appendChild(easyButton);
+		buttonContainer.appendChild(hardButton);
+
+		contentElement.parentNode.insertBefore(
+			buttonContainer,
+			contentElement.nextSibling,
+		);
 		// On change le texte du bouton pour qu'il affiche l'action d'afficher toutes les cartes
 		const sequentialButton = document.getElementById("sequentialButton");
 		sequentialButton.textContent = "📚";
@@ -109,10 +169,15 @@ function toggleSequentialMode() {
 		cards.forEach((card) => {
 			card.style.display = "flex";
 		});
-		// On supprime le bouton "Suivant"
-		const nextButton = document.getElementById("nextButton");
-		if (nextButton) {
-			nextButton.parentNode.remove();
+		// On supprime le container des boutons "Facile" et "Difficile"
+		const buttonContainer = document.getElementById("sequentialButtons");
+		if (buttonContainer) {
+			buttonContainer.remove();
+		}
+		// On supprime le message de félicitations s'il existe
+		const messageElement = document.getElementById("congratulationsMessage");
+		if (messageElement) {
+			messageElement.remove();
 		}
 		// On change le texte du bouton pour qu'il affiche l'action d'afficher une carte à la fois
 		const sequentialButton = document.getElementById("sequentialButton");
@@ -210,11 +275,21 @@ function handleTestMode(editorElement, options) {
 		if (menuBar) {
 			menuBar.remove();
 		}
-		// On supprime le bouton "Suivant" s'il existe
-		const nextButton = document.getElementById("nextButton");
-		if (nextButton) {
-			nextButton.parentNode.remove();
+		// On supprime le container des boutons "Facile" et "Difficile" s'il existe
+		const buttonContainer = document.getElementById("sequentialButtons");
+		if (buttonContainer) {
+			buttonContainer.remove();
 		}
+		// On supprime le message de félicitations s'il existe
+		const messageElement = document.getElementById("congratulationsMessage");
+		if (messageElement) {
+			messageElement.remove();
+		}
+		// On supprime l'attribut dataset.removed de toutes les cartes s'il existe
+		const cards = document.querySelectorAll(".cardBackAndFront");
+		cards.forEach((card) => {
+			delete card.dataset.removed;
+		});
 	}
 	eventClick({ isTestMode: options.isTestMode });
 	if (
