@@ -1,7 +1,7 @@
-h2 {
+.card h2 {
 	height: 45px !important;
 }
-h2 img {
+.card h2 img {
 	border-radius: 50%;
 	height: 0.85em;
 	width: 0.85em;
@@ -17,7 +17,7 @@ h2 img {
 .cardContentUp p {
 	margin: 2px 0px !important;
 }
-h3 {
+.card h3 {
 	margin-top: 5px !important;
 }
 .cardContentDown {

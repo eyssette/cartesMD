@@ -5,7 +5,7 @@ h2 {
 	height: 90px;
 	margin-top: 2px !important;
 }
-h3 {
+.card h3 {
 	margin-top: -3px !important;
 	margin-bottom: 6px !important;
 }

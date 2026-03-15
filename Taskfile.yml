@@ -15,6 +15,7 @@ tasks:
       - index.md
       - css/**/*.css
       - js/**/*.js
+      - js/**/*.md
       - rollup.config.mjs
     generates:
       - css/**/*.styles.min.css

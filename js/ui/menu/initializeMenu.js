@@ -6,6 +6,7 @@ import {
 import { printButton } from "./menuPrintButton";
 import { changeOrientationButton } from "./menuChangeOrientation";
 import { launchTestMode } from "./menuTestMode";
+import { helpButton } from "./menuHelpButton";
 
 export function initializeMenu(editorElement, isSmallScreen, options) {
 	showOrHideEditorButton(editorElement, options);
@@ -19,4 +20,5 @@ export function initializeMenu(editorElement, isSmallScreen, options) {
 	if (options && options.isFlashMd) {
 		launchTestMode(editorElement, options);
 	}
+	helpButton(options);
 }

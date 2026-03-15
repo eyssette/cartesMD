@@ -156,7 +156,6 @@ function toggleSequentialMode() {
 					// On affiche à nouveau les boutons "Facile" et "Difficile"
 					buttonContainer.style.display = "flex";
 					// Si le mode random est activé, on mélange les cartes
-					console.log(isRandomMode);
 					if (isRandomMode) {
 						shuffleCards();
 					}

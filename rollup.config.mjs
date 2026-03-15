@@ -26,7 +26,7 @@ export default {
 	},
 	plugins: [
 		string({
-			include: "*.md",
+			include: ["**/*.md"],
 		}),
 		postcss({
 			extensions: [".css"],

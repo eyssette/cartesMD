@@ -23,7 +23,7 @@ h2 {
 	margin-left: -10px !important;
 	margin-right: 10px;
 }
-h3 {
+.card h3 {
 	position: absolute;
 	width: 310px;
 	margin-left: 350px !important;

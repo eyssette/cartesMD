@@ -2,7 +2,7 @@
 	width: 340px;
 	height: 220px;
 }
-h2 {
+.card h2 {
 	height: 190px !important;
 	text-align: center;
 	background: white;
@@ -11,13 +11,13 @@ h2 {
 	margin: 10px auto !important;
 	font-weight: normal !important;
 }
-h2 aside {
+.card h2 aside {
 	float: none !important;
 	margin-left: 0 !important;
 	text-align: center !important;
 	font-size: 0.7em !important;
 }
-h3 {
+.card h3 {
 	height: 18px !important;
 	visibility: visible !important;
 	margin-top: -195px !important;
