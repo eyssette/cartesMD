@@ -26,14 +26,7 @@ function toggleRandomMode() {
 	// Sinon, on les remet dans l'ordre normal
 	if (isRandomMode) {
 		// On mélange les cartes qui sont dans l'élément #content
-		const cards = Array.from(document.querySelectorAll(".cardBackAndFront"));
-		cards.sort(() => Math.random() - 0.5);
-		const contentElement = document.getElementById("content");
-		// On les réinsère dans le DOM dans l'ordre mélangé
-		cards.forEach((card) => contentElement.appendChild(card));
-		// On change l'emoji du bouton pour qu'il affiche l'action de remettre les cartes dans l'ordre normal
-		randomButton.textContent = "🔢";
-		randomButton.title = "Afficher les cartes dans l'ordre normal";
+		shuffleCards();
 	} else {
 		// On remet les cartes dans l'ordre normal
 		const cards = Array.from(document.querySelectorAll(".cardBackAndFront"));
@@ -50,6 +43,18 @@ function toggleRandomMode() {
 		randomButton.textContent = "🔀";
 		randomButton.title = "Afficher les cartes dans un ordre aléatoire";
 	}
+}
+
+function shuffleCards() {
+	const cards = Array.from(document.querySelectorAll(".cardBackAndFront"));
+	cards.sort(() => Math.random() - 0.5);
+	const contentElement = document.getElementById("content");
+	// On les réinsère dans le DOM dans l'ordre mélangé
+	cards.forEach((card) => contentElement.appendChild(card));
+	// On change l'emoji du bouton pour qu'il affiche l'action de remettre les cartes dans l'ordre normal
+	const randomButton = document.getElementById("randomButton");
+	randomButton.textContent = "🔢";
+	randomButton.title = "Afficher les cartes dans l'ordre normal";
 }
 
 function goToNextCard(currentIndex) {
@@ -132,6 +137,38 @@ function toggleSequentialMode() {
 				messageElement.style.marginTop = "1em";
 				messageElement.style.marginBottom = "1em";
 				messageElement.style.textAlign = "center";
+				// On ajoute en dessous du message un bouton "Recommencer" qui remet toutes les cartes à zéro et affiche la première carte
+				const restartButton = document.createElement("button");
+				restartButton.textContent = "🔄";
+				restartButton.title = "Recommencer";
+				restartButton.style.display = "block";
+				restartButton.style.margin = "1em auto";
+				restartButton.style.fontSize = "1.5em";
+				restartButton.style.border = "none";
+				restartButton.style.background = "transparent";
+				restartButton.addEventListener("click", () => {
+					// On supprime le message de félicitations et le bouton "Recommencer"
+					messageElement.remove();
+					// On affiche à nouveau les boutons "Facile" et "Difficile"
+					buttonContainer.style.display = "flex";
+					// Si le mode random est activé, on mélange les cartes
+					console.log(isRandomMode);
+					if (isRandomMode) {
+						shuffleCards();
+					}
+					// On supprime l'attribut dataset.removed de toutes les cartes s'il existe
+					const cards = document.querySelectorAll(".cardBackAndFront");
+					cards.forEach((card) => {
+						delete card.dataset.removed;
+						card.style.display = "none";
+					});
+					// On affiche la première carte
+					cards[0].style.display = "flex";
+					currentIndex = 0;
+				});
+				// On insère le bouton "Recommencer" dans le message à la fin
+				messageElement.appendChild(restartButton);
+				// On insère le message en dessous de la carte
 				contentElement.parentNode.insertBefore(
 					messageElement,
 					contentElement.nextSibling,
@@ -139,7 +176,7 @@ function toggleSequentialMode() {
 				// On supprime les boutons "Facile" et "Difficile"
 				const buttonContainer = document.getElementById("sequentialButtons");
 				if (buttonContainer) {
-					buttonContainer.remove();
+					buttonContainer.style.display = "none";
 				}
 			}
 		});
