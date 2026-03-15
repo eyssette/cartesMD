@@ -306,6 +306,11 @@ function createTestModeMenu() {
 function handleTestMode(editorElement, options) {
 	if (options.isTestMode || options.isTestModeFromParams) {
 		createTestModeMenu();
+		if (options.isTestModeFromParams) {
+			// Si le mode test est activé depuis les paramètres de l'URL, on centre le contenu pour qu'il s'affiche correctement en iframe
+			document.documentElement.style.display = "flex";
+			document.documentElement.style.justifyContent = "center";
+		}
 	} else {
 		// On supprime la barre de menu si elle existe
 		const menuBar = document.getElementById("testModeMenu");
