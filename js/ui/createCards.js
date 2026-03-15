@@ -9,6 +9,40 @@ import { isValidColorNameCSS } from "../utils/css";
 const contentElement = document.getElementById("content");
 let isFirstPageLoad = true;
 
+function waitForRenderedFrame() {
+	// On attend que le navigateur ait eu le temps de rendre les éléments à l'écran, sinon le calcul automatique de la taille de la police optimale ne se fera pas correctement
+	return new Promise((resolve) =>
+		requestAnimationFrame(() => requestAnimationFrame(resolve)),
+	);
+}
+
+function waitForImagesToLoad(root) {
+	// On attend que toutes les images soient chargées avant de continuer, sinon le calcul automatique de la taille de la police optimale ne se fera pas correctement
+	const images = root.querySelectorAll("img");
+	const promises = Array.from(images).map((img) => {
+		if (img.complete) {
+			return Promise.resolve();
+		} else {
+			return new Promise((resolve) => {
+				img.onload = () => resolve();
+				img.onerror = () => resolve(); // On résout même en cas d'erreur pour ne pas bloquer le processus
+			});
+		}
+	});
+	return Promise.all(promises);
+}
+
+async function renderAndFit(html, { useLatex = false } = {}) {
+	const contentHTML = useLatex ? convertLatexExpressions(html) : html;
+	contentElement.innerHTML = contentHTML;
+	await waitForImagesToLoad(contentElement);
+	if (document.fonts && document.fonts.ready) {
+		await document.fonts.ready;
+	}
+	await waitForRenderedFrame();
+	await fitElements();
+}
+
 function handleMathsAndThemes(cardsHTML, options) {
 	const forceRefresh = options && options.forceRefresh;
 	if (forceRefresh) {
@@ -22,32 +56,25 @@ function handleMathsAndThemes(cardsHTML, options) {
 			const interval = setInterval(() => {
 				if (window.katex) {
 					clearInterval(interval);
-					contentElement.innerHTML = convertLatexExpressions(cardsHTML);
-					fitElements().then(() => {
+					(async () => {
+						await renderAndFit(cardsHTML, { useLatex: true });
 						if (isFirstPageLoad) {
 							isFirstPageLoad = false;
-							setTimeout(() => {
-								contentElement.innerHTML = convertLatexExpressions(cardsHTML);
-								fitElements().then(() => {
-									fitMathElements();
-								});
-							}, 10);
+							await renderAndFit(cardsHTML, { useLatex: true });
 						}
-					});
+						fitMathElements();
+					})();
 				}
 			}, 100);
 		});
 	} else {
-		contentElement.innerHTML = cardsHTML;
-		fitElements().then(() => {
+		(async () => {
+			await renderAndFit(cardsHTML, { useLatex: false });
 			if (isFirstPageLoad) {
 				isFirstPageLoad = false;
-				setTimeout(() => {
-					contentElement.innerHTML = cardsHTML;
-					fitElements();
-				}, 100);
+				await renderAndFit(cardsHTML, { useLatex: false });
 			}
-		});
+		})();
 	}
 }
 
@@ -148,8 +175,9 @@ export function createCards(cardsArray, options) {
 	if (yaml && (yaml.maths || yaml.theme)) {
 		handleMathsAndThemes(cardsHTML, options);
 	} else {
-		contentElement.innerHTML = cardsHTML;
-		fitElements();
+		(async () => {
+			await renderAndFit(cardsHTML, { useLatex: false });
+		})();
 	}
 	// Gestion des add-ons
 	if (yaml && yaml.addOns && yaml.addOns.includes("kroki")) {
