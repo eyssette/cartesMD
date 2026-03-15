@@ -77,4 +77,4 @@ Vous pouvez m'envoyer vos demandes d'évolution de l'outil, n'hésitez pas !
 
 Vous pouvez me contacter sur les [réseaux sociaux](https://eyssette.forge.apps.education.fr).
 
-De préférence, merci <br>d'utiliser les [“tickets”](https://forge.apps.education.fr/cartesmd/cartesMD.forge.apps.education.fr/-/issues) sur LaForgeEdu (vous pouvez aussi [envoyer un mail](mailto:forge-apps+guichet+flashmd-flashmd-forge-apps-education-fr-5732-issue-@phm.education.gouv.fr))
+De préférence, merci <br>d'utiliser les [“tickets”](https://forge.apps.education.fr/flashmd/flashmd.forge.apps.education.fr/-/issues) sur LaForgeEdu (vous pouvez aussi [envoyer un mail](mailto:forge-apps+guichet+flashmd-flashmd-forge-apps-education-fr-5732-issue-@phm.education.gouv.fr))

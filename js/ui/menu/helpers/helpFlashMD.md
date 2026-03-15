@@ -22,7 +22,7 @@ Vous pouvez m'envoyer vos demandes d'évolution de l'outil, n'hésitez pas !
 
 Vous pouvez me contacter sur les [réseaux sociaux](https://eyssette.forge.apps.education.fr).
 
-De préférence, merci d'utiliser les [“tickets”](https://forge.apps.education.fr/cartesmd/cartesMD.forge.apps.education.fr/-/issues) sur LaForgeEdu (vous pouvez aussi [envoyer un mail](mailto:forge-apps+guichet+flashmd-flashmd-forge-apps-education-fr-5732-issue-@phm.education.gouv.fr))
+De préférence, merci d'utiliser les [“tickets”](https://forge.apps.education.fr/flashmd/flashmd.forge.apps.education.fr/-/issues) sur LaForgeEdu (vous pouvez aussi [envoyer un mail](mailto:forge-apps+guichet+flashmd-flashmd-forge-apps-education-fr-5732-issue-@phm.education.gouv.fr))
 
 
 ### Des exemples !
@@ -39,7 +39,7 @@ Double-cliquez sur une carte pour la modifier dans l'éditeur à gauche.
 
 On peut utiliser ++toute++ la _syntaxe_ ==Markdown== et même du <span style="color: darkred;">HTML</span> si on veut, ou encore du $Latex$.
 
-CartesMD calcule automatiquement la taille de police optimale pour rester dans le cadre !
+FlashMD calcule automatiquement la taille de police optimale pour rester dans le cadre !
 
 
 ### Changer la couleur des cartes ?
