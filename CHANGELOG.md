@@ -1,3 +1,11 @@
+## 2.7.1 (2026-03-15)
+
+### Fix
+
+- utilisation des boutons "Facile" / "Difficile" plutôt que simplement "Suivant" pour le mode révision avec l'affichage des cartes une par une
+- explications pour les paramètres dans l'URL pour le mode révision
+- timeout nécessaire pour déclencher les modes random et séquentiel dès le départ en raison des paramètres dans l'URL
+
 ## 2.7.0 (2026-03-15)
 
 ### Feat
