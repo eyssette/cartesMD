@@ -76,6 +76,8 @@ function goToNextCard(currentIndex) {
 	}
 	// On affiche la carte courante et on cache les autres
 	cards.forEach((card, index) => {
+		// On remet chaque carte au recto
+		card.classList.remove("showVerso");
 		if (index === currentIndex) {
 			card.style.display = "flex";
 		} else {
@@ -98,6 +100,8 @@ function toggleSequentialMode() {
 	if (isSequentialMode) {
 		// On affiche une carte à la fois, en commençant par la première
 		cards.forEach((card, index) => {
+			// On remet chaque carte au recto
+			card.classList.remove("showVerso");
 			if (index === 0) {
 				card.style.display = "flex";
 			} else {
