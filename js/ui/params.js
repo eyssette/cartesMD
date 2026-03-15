@@ -7,7 +7,13 @@ export function params(urlParams, editorElement, options) {
 	const editorParam = urlParams.get("e") == "0" ? 0 : 1;
 	const menuParam = urlParams.get("m") == "0" ? 0 : 1;
 	const testModeParam =
-		urlParams.get("t") == "1" || urlParams.get("r") == "1" ? 1 : 0;
+		urlParams.get("t") == "1" ||
+		urlParams.get("r") == "1" ||
+		urlParams.has("revision") ||
+		urlParams.has("révision") ||
+		urlParams.has("test")
+			? 1
+			: 0;
 	if (testModeParam == 1) {
 		options.isTestMode = true;
 		options.isTestModeFromParams = true;
