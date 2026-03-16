@@ -83,5 +83,16 @@ export default {
 				}),
 			],
 		}),
+		postcss({
+			extensions: [".css"],
+			include: ["css/helpModal.css"],
+			extract: "css/helpModal.min.css",
+			minimize: true,
+			plugins: [
+				cssnano({
+					preset: "default",
+				}),
+			],
+		}),
 	],
 };
