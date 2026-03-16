@@ -1,4 +1,4 @@
-## Qu'est-ce que cartesMD ?
+## CartesMD
 
 ### Un outil libre et gratuit !
 
@@ -33,27 +33,88 @@ Voici quelques exemples de cartes créées avec cartesMD !
 
 ### Éditeur intégré
 
-==Double-cliquez== sur une carte pour la modifier dans l'éditeur à gauche.
+Double-cliquez sur une carte pour la modifier dans l'éditeur à gauche.
 
-On peut utiliser ++toute++ la syntaxe _Markdown_.
+On peut utiliser toute la syntaxe _Markdown_.
 
 CartesMD calcule automatiquement la taille de police optimale pour rester dans le cadre !
 
 
-### Changer le nombre de zones
+### Les zones d'écritures
 
-On peut changer le nombre de zones (4 par défaut et 4 au maximum) avec le paramètre `nombreZones`.
+#### 4 zones par défaut
+
+Par défaut, les cartes sont organisées en 4 zones d'écriture, avec la structure suivante :
+
+```
+## Zone 1 : titre de la carte
+Zone 2 : contenu dans l'encart en haut
+### Zone 3 : sous-titre
+Zone 4 : contenu dans l'encart en bas
+```
+
+On utilise donc chaque élément de syntaxe Markdown pour différencier les zones d'écriture : 
+- titre de niveau 2 pour la zone 1
+- texte en dessous de ce titre pour la zone 2
+- titre de niveau 3 pour la zone 3
+- texte en dessous de ce titre pour la zone 4
+
+
+#### Changer le nombre de zones
+
+On peut changer le nombre de zones (entre 1 et 4) avec le paramètre `nombreZones`.
 
 Soit on applique ce paramètre sur la ligne juste avant le titre d'une carte, soit on le définit dans l'en-tête pour qu'il s'applique à toutes les cartes
 
+#### Écrire au dos de la carte
 
-### Balises HTML
+Pour ajouter une zone d'écriture et écrire au dos de la carte, on utilise la balise `aside` dans la zone 4 (texte en dessous du titre de niveau 3).
 
-On peut aussi utiliser du <span style="color: darkred;">HTML</span> si on veut un contrôle plus fin de l'affichage !
+```
+## Titre de la carte
+Contenu sous le titre
+### Sous-titre
+Contenu sous le sous-titre
+<aside>
+Ce contenu apparaît au dos de la carte
+</aside>
+```
 
-### Latex
+#### Supprimer les dos de carte
 
-Pour le $Latex$, on ajoute un en-tête _yaml_ au tout début du document, avec :
+Si on veut supprimer les dos de cartes et n'avoir que des rectos, on ajoute dans l'en-tête YAML :  `verso: false`
+
+#### Ajouter des labels
+
+On peut ajouter des labels pour insérer des informations complémentaires courtes (comme une classe, un numéro de chapitre, un emoji …).
+
+Pour cela, on peut utiliser la balise `aside` dans la zone 1 (titre de la carte) ou dans la zone 3 (sous-titre).
+
+On peut aussi ajouter un titre de niveau 4 dans la zone 4 pour avoir un label en bas à droite.
+
+```
+## Titre de la carte <aside>Label à droite du titre</aside>
+Contenu sous le titre
+### Sous-titre <aside>Label à droite du sous-titre</aside>
+Contenu sous le sous-titre
+#### Label en bas à droite dans un encadré
+```
+
+On peut utiliser les styles CSS pour personnaliser l'apparence de ces labels (couleur, taille de police, position …).
+
+### Contenus possibles
+
+#### Markdown
+
+On utilise la syntaxe Markdown classique pour écrire le contenu de ses cartes : listes à puces, texte en gras ou en italique, souligné ou surligné, liens, images …
+
+#### Balises HTML
+
+On peut aussi utiliser du _HTML_ si on veut un contrôle plus fin de l'affichage !
+
+#### Latex
+
+Pour pouvoir utiliser le $Latex$, il faut ajouter un en-tête _yaml_ au tout début du document, avec :
 
 ```
 -​-​-
@@ -61,40 +122,21 @@ maths: true
 -​-​-
 ```
 
-### Emojis
+#### Emojis
 
 On peut copier-coller un emoji ou bien mettre le code texte. Par exemple : `:+1:`
 
 [Voir la liste des emojis disponibles](https://dataview.forge.apps.education.fr/?url=https://eyssette.forge.apps.education.fr/emojis/list.tsv)
 
-### Utilisations de la balise `aside`
-
-#### Précisions dans les titres
-
-On peut ajouter des précisions dans les titres avec la balise `aside`.
-
-On peut utiliser ou non le dernier titre, de niveau 4, pour mettre le numéro de carte, la classe, un emoji …
-
-#### Dos de la carte
-
-On peut écrire du contenu au dos de la carte avec la balise `aside`.
-Pour cela, il faut utiliser cette balise dans le dernier bloc d'écriture.
-On peut écrire du **Markdown** également.
 
 
-```
-<aside>
-Ce contenu apparaît au dos de la carte
-</aside>
-```
+### Configuration plus avancée avec l'en-tête YAML
 
-Si on veut supprimer les dos de cartes, on ajoute dans l'en-tête YAML :  `verso: false`
+Un en-tête _YAML_ peut être ajouté au tout début du document pour configurer les cartes de manière plus avancée.
 
-### Usages plus avancés
+#### Styles CSS
 
-On peut aussi utiliser l'en-tête _YAML_ pour ajouter des styles en CSS
-
-Tout peut être changé !
+On peut ajouter des styles en CSS. Tout peut être changé !
 
 _card_ pour chaque carte ; _z1_ … _z4_ pour les zones d'écriture ; _front_ pour le recto, _back_ pour le verso et _backImage_ pour l'image de fond ; _style_ pour tout le reste. 
 
@@ -103,18 +145,22 @@ Par exemple :
 ```
 -​-​-
 z1: height:300px
+style: a{color:darkred}
 -​-​-
 ```
+
+
 
 ## Thème & image de fond
 
 ### Changer la couleur et le fond des cartes
 
-On peut choisir la couleur de la carte en l'indiquant dans le texte “_alt_” de l'image de fond.
-On peut changer l'image de fond en mettant l'URL d'une autre image.
+Sous le titre de niveau 2, qui définit le titre de la carte, on peut définir la couleur et l'image du fond de la carte ainsi :
 
-
-
+```
+## Titre de la carte
+- ![couleur de fond](URL de l'image de fond)
+```
 
 ### Les thèmes
 
@@ -135,10 +181,11 @@ N'hésitez pas à m'envoyer vos propositions de thèmes !
 
 Il suffit de cliquer sur le bouton 🔄 pour activer le thème `flashcard`.
 
-On peut aussi utiliser le thème `flashcard-simple` pour utiliser seulement le titre 2 pour la question et la suite pour le contenu.
+Pour faire des flashcards simples, mais avec un mode de révision en ligne, il vaut mieux utiliser [FlashMD](https://flashmd.forge.apps.education.fr/).
 
-Voici un exemple de [flashcards en Histoire-Géographie](https://cartesmd.forge.apps.education.fr/#https://codimd.apps.education.fr/eW4UTUncQ3ue56D9ThaZUg) avec ce thème (cartes créées par Françoise Vaillant).
+CartesMD permet de faire des cartes plus complexes, destinées à être imprimées.
 
+Plusieurs thèmes sont disponibles : `flashcard`, `flashcard-simple`, `flashcard-mission`.
 
 
 
@@ -150,21 +197,20 @@ Voici un exemple de [flashcards en Histoire-Géographie](https://cartesmd.forge.
 
 ### Enregistrer
 
-[CodiMD](https://codimd.apps.education.fr/) sur le portail AppsEdu permet de conserver la source de ses cartes et de les partager.
+CartesMD n'enregistre pas les cartes, il faut donc copier-coller le texte de ses cartes dans un éditeur de texte pour les conserver.
 
-On peut alors modifier la source sans modifier le lien de partage.
+[CodiMD](https://codimd.apps.education.fr/) sur le portail AppsEdu permet de sauvegarder des documents en Markdown et de les partager. On peut aussi utiliser : [Digipage](https://digipage.app/) ou [Hedgedoc](https://demo.hedgedoc.org/). L'intérêt est que les élèves peuvent y avoir accès sans créer de comptes.
+
+Cela permet non seulement d'avoir une sauvegarde de ses cartes, mais aussi de les partager facilement en ligne, et de les modifier à tout moment sans avoir à changer l'URL de partage.
 
 ### Partager
 
 On copie l'URL de son fichier et les cartes seront visibles à l'adresse suivante :
 `https://cartesmd.forge.apps.education.fr/#URL_source_CodiMD`
 
-Ajoutez `?e=0` dans l'URL pour cacher l'éditeur `?m=0` pour cacher le menu.
-
 Par exemple : `https://cartesmd.forge.apps.education.fr/?e=0#URL_source_CodiMD`
 
-D'autres éditeurs sont pris en charge :
-[Hedgedoc](https://demo.hedgedoc.org/), [Digipage](https://digipage.app/). Les élèves peuvent les utiliser sans créer de comptes.
+Le paramètre `?e=0` dans l'URL cache par défaut l'éditeur, afin d'afficher par défaut les cartes en mode visualisation, on peut aussi utiliser `?e=0&m=0` pour cacher l'éditeur et le menu qui permet de modifier les cartes.
 
 
 ### 🖨️ &nbsp;Imprimer

@@ -1,4 +1,4 @@
-## Qu'est-ce que FlashMD ?
+## FlashMD
 
 ### Un outil libre et gratuit !
 
@@ -37,7 +37,7 @@ Des [flashcards en philosophie](https://flashmd.forge.apps.education.fr/#https:/
 
 Double-cliquez sur une carte pour la modifier dans l'éditeur à gauche.
 
-On peut utiliser ++toute++ la _syntaxe_ ==Markdown== et même du <span style="color: darkred;">HTML</span> si on veut, ou encore du $Latex$.
+On peut utiliser toute la syntaxe _Markdown_ et même du _HTML_ si on veut, ou encore du $Latex$.
 
 FlashMD calcule automatiquement la taille de police optimale pour rester dans le cadre !
 
@@ -65,9 +65,15 @@ Pour cela, on utilise un titre de niveau 3 pour un label en haut à droite et un
 
 ### Enregistrer ses cartes
 
-On peut utiliser [CodiMD](https://codimd.apps.education.fr/) sur le portail AppsEdu ou un outil équivalent (Digipage, Framapad…)
+FlashMD n'enregistre pas les cartes, il faut donc copier-coller le texte de ses cartes dans un éditeur de texte pour les conserver.
 
-Vous pourrez alors afficher et partager vos cartes ainsi :
+[CodiMD](https://codimd.apps.education.fr/) sur le portail AppsEdu permet de sauvegarder des documents en Markdown et de les partager. On peut aussi utiliser : [Digipage](https://digipage.app/) ou [Hedgedoc](https://demo.hedgedoc.org/). L'intérêt est que les élèves peuvent y avoir accès sans créer de comptes.
+
+Cela permet non seulement d'avoir une sauvegarde de ses cartes, mais aussi de les partager facilement en ligne, et de les modifier à tout moment sans avoir à changer l'URL de partage.
+
+### Partager ses cartes
+
+On copie l'URL de son fichier et les cartes seront visibles à l'adresse suivante :
 
 `https://flashmd.forge.apps.education.fr/?e=0#URLsource`
 
