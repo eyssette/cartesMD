@@ -11,7 +11,8 @@ nombreZones: 4
 
 - ![](img/back.svg)
 
-CartesMD permet de créer des cartes à jouer en Markdown !
+[CartesMD](https://cartesmd.forge.apps.education.fr/) permet de créer des cartes à jouer en Markdown !
+Pour faire des flashcards, utilisez plutôt [FlashMD](https://flashmd.forge.apps.education.fr/)
 
 ### Un outil libre & gratuit !
 
@@ -197,7 +198,7 @@ Voici quelques exemples de cartes créées avec cartesMD !
 - Des cartes à utiliser en formation sur la méthode [ABC Learning Design](https://cartesmd.forge.apps.education.fr/?e=0#https://codimd.apps.education.fr/i2r_yoH8R_aLcEJhCNAYow)  
 - Des cartes pour réviser les [périmètres & aires](https://cartesmd.forge.apps.education.fr/?e=0#https://codimd.apps.education.fr/l-ZZhrUlTMCHpJpm2kJ_AA) en collège (créées par Cyril Iaconelli)
 
-<span style="font-size:0.8em">Ajoutez `?e=0` dans l'URL pour cacher l'éditeur <br>`?m=0` pour cacher le menu</span>
+<span style="font-size:0.9em">Ajoutez `?e=0` dans l'URL pour cacher l'éditeur, `?m=0` pour cacher le menu</span>
 
 
 
@@ -227,11 +228,15 @@ N'hésitez pas à m'envoyer vos propositions de thèmes !
 
 Il suffit de cliquer sur le bouton 🔄 pour activer le thème `flashcard`.
 
-### Un modèle encore plus simple
+### Utiliser plutôt FlashMD !
 
-On peut aussi utiliser le thème `flashcard-simple` pour utiliser seulement le titre 2 pour la question et la suite pour le contenu.
+Pour faire des flashcards simples, mais avec un mode de révision en ligne, utilisez plutôt [FlashMD](https://flashmd.forge.apps.education.fr/).
 
-Voici un exemple de [flashcards en <br>Histoire-Géographie](https://cartesmd.forge.apps.education.fr/#https://codimd.apps.education.fr/eW4UTUncQ3ue56D9ThaZUg) avec ce thème (cartes créées par Françoise Vaillant).
+CartesMD permet de faire des cartes plus complexes, destinées à être imprimées.
+
+Plusieurs thèmes sont disponibles :
+`flashcard`, `flashcard-simple`,
+`flashcard-mission`.
 
 
 
