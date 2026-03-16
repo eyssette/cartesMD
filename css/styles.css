@@ -220,7 +220,7 @@ img[alt~="contain"] {
 }
 
 .cardContentDown pre {
-	font-size: 0.8em;
+	font-size: 0.95em;
 	margin-top: 0;
 	margin-left: 10px;
 	white-space: pre-line;
@@ -228,9 +228,10 @@ img[alt~="contain"] {
 
 .cardContentDown ul,
 .cardContentDown ol {
-	margin-top: 0.45em;
-	padding-left: 30px;
 	margin-bottom: 0.25em;
+	margin-top: 0.45em;
+	padding-left: 1.5em;
+	padding-right: 5px;
 }
 
 .card footer {
@@ -327,5 +328,6 @@ mark {
 }
 
 code {
-	word-break: break-word;
+	word-break: break-all;
+	font-size: 0.95em;
 }
