@@ -2,9 +2,12 @@
 
 ### Un outil libre et gratuit !
 
-
 CartesMD est un outil libre et gratuit qui permet de créer des cartes à jouer en Markdown !
 On peut écrire son texte directement dans l'interface.
+
+Pour faire des flashcards, utilisez plutôt [FlashMD](https://flashmd.forge.apps.education.fr/) : il est plus simple et propose un mode de révision en ligne.
+
+CartesMD est plus adapté pour faire des cartes plus complexes, destinées à être imprimées.
 
 - Créé par [Cédric Eyssette](https://eyssette.forge.apps.education.fr/)
 - Sources sur [LaForgeÉdu](https://forge.apps.education.fr/cartesmd/cartesMD.forge.apps.education.fr)
