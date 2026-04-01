@@ -7,6 +7,8 @@ function convertSpecialExpressionsInLatex(math) {
 		.replaceAll("<em>", "_")
 		.replaceAll("</em>", "_")
 		.replaceAll("&amp;", "&")
+		.replaceAll("<sup>", "^")
+		.replaceAll("</sup>", "^")
 		.replace(/€/g, "\\textrm{€}")
 		.replace(/\\?%/g, "\\%")
 		.replaceAll(" ", "\\ ");
