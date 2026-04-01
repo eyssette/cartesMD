@@ -1,3 +1,14 @@
+## 2.8.1 (2026-04-01)
+
+### Fix
+
+- résolution conflit Latex / markdown pour la conversion du caractère "^"
+- styles CSS pour la modale dans un fichier CSS à part
+- amélioration de la documentation
+- affichage amélioré (blocs codes + listes)
+- amélioration de la gestion du calcul automatique de la taille de police optimale
+- inversion de la place des boutons "facile" et "difficile" en mode révision avec affichage des cartes une par une
+
 ## 2.8.0 (2026-03-15)
 
 ### Feat
