@@ -192,7 +192,8 @@ nav ul li {
 	object-fit: cover;
 }
 
-.cardContentUp p {
+.cardContentUp p,
+.cardContentUp pre {
 	padding: 0 10px;
 }
 
