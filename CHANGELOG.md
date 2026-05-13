@@ -1,3 +1,16 @@
+## 2.8.2 (2026-05-13)
+
+### Fix
+
+- amélioration de fitElements (notamment au premier lancement)
+- suppression du séparateur "---" s'il est utilisé pour séparer des cartes (pour la compatibilité avec l'ancienne syntaxe)
+- possibilité d'utiliser des images en data-URI
+- **css**: padding pour les élément "pre" dans ".cardContentUp"
+
+### Chore
+
+- précisions dans le README et le CONTRIBUTING sur déploiement de CartesMD et FlashMD à partir du même code source
+
 ## 2.8.1 (2026-04-01)
 
 ### Fix
