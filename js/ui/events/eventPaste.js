@@ -1,4 +1,5 @@
 import { magicConvertToFlashcardsFormat } from "../../processMarkdown/magicConvert/magicConvertToFlashcardsFormat";
+import { editor } from "../editor/initializeEditor";
 
 let shiftPressed = false;
 
@@ -59,7 +60,6 @@ export function eventPaste(editorElement) {
 				pastedText.split("\n").length > 1
 			) {
 				const transformedContent = magicConvertToFlashcardsFormat(pastedText);
-
 				// Insérer le contenu transformé dans l'éditeur
 				insertTextAtCursor(editorElement, transformedContent);
 			} else {
@@ -68,36 +68,31 @@ export function eventPaste(editorElement) {
 			}
 		},
 		true,
-	); // Utiliser la capture pour intercepter l'événement plus tôt
+	);
 }
 
 // Fonction utilitaire pour insérer du texte à la position du curseur
-function insertTextAtCursor(element, text) {
-	const selection = window.getSelection();
-
-	if (selection.rangeCount > 0) {
-		const range = selection.getRangeAt(0);
-
-		// Supprimer le contenu sélectionné s'il y en a
-		range.deleteContents();
-
-		// Créer un nœud de texte avec le nouveau contenu
-		const textNode = document.createTextNode(text);
-
-		// Insérer le texte à la position du curseur
-		range.insertNode(textNode);
-
-		// Déplacer le curseur à la fin du texte inséré
-		range.setStartAfter(textNode);
-		range.setEndAfter(textNode);
-		selection.removeAllRanges();
-		selection.addRange(range);
-	} else {
-		// Si aucune sélection, ajouter à la fin du contenu
-		element.textContent += text;
+function insertTextAtCursor(_element, text) {
+	let pos;
+	try {
+		pos = editor.save();
+		/* eslint-disable no-unused-vars */
+	} catch (error) {
+		// Pas de sélection valide : on insère à la fin
+		const currentText = editor.toString();
+		editor.updateCode(currentText + text);
+		const newLen = (currentText + text).length;
+		editor.restore({ start: newLen, end: newLen, dir: "->" });
+		return;
 	}
 
-	// Déclencher un événement input pour notifier CodeJar du changement
-	const inputEvent = new Event("input", { bubbles: true });
-	element.dispatchEvent(inputEvent);
+	const currentText = editor.toString();
+	// Remplace la sélection (ou insère au curseur si start === end)
+	const before = currentText.slice(0, pos.start);
+	const after = currentText.slice(pos.end);
+	const newText = before + text + after;
+	const newCursor = pos.start + text.length;
+
+	editor.updateCode(newText);
+	editor.restore({ start: newCursor, end: newCursor, dir: "->" });
 }
