@@ -33,6 +33,23 @@ export function eventPaste(editorElement) {
 			const clipboardData = event.clipboardData || window.clipboardData;
 			const pastedText = clipboardData.getData("text/plain");
 
+			// Si le contenu est une image, on insère une balise Markdown avec l'image encodée en base64
+			const pastedFiles = clipboardData.files;
+			if (pastedFiles && pastedFiles.length > 0) {
+				Array.from(pastedFiles).forEach((file) => {
+					if (file.type.startsWith("image/")) {
+						const reader = new FileReader();
+						reader.onload = function (e) {
+							const base64Image = e.target.result;
+							const markdownImage = `![](${base64Image})`;
+							insertTextAtCursor(editorElement, markdownImage);
+						};
+						reader.readAsDataURL(file);
+					}
+				});
+				return; // Ne pas continuer avec le texte si on a déjà traité des fichiers
+			}
+
 			// Si l'utilisateur a collé en maintenant Shift, et que le texte
 			// semble être un bloc multi-lignes sans titres "## ", on essaie
 			// de le transformer en format de flashcards
