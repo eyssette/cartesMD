@@ -107,7 +107,10 @@ export function parseMarkdown(markdownContent, options) {
 						.trim()
 				: "";
 		// On supprime le dos de carte dans le contenu du dessus
-		cardObject.contentUp = contentUp.replace(backContentInContentUpString, "");
+		cardObject.contentUp = contentUp
+			.replace(backContentInContentUpString, "")
+			.trim()
+			.replace(/\n---$/, "");
 		// Ajout du sous-titre
 		const subtitleMatch = markdownCard.match(/\n### (.*)/);
 		const subtitleLength = subtitleMatch ? subtitleMatch[0].length : 0;
