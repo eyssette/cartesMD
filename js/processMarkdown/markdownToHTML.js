@@ -186,9 +186,35 @@ function fixImageDimensionsCodiMD(md) {
 	return md;
 }
 
+function protectDataImageBase64(md) {
+	const protectedDataUrls = [];
+	const dataImageRegex = /data:image\/[a-zA-Z0-9.+-]+;base64,[A-Za-z0-9+/=]+/g;
+
+	const protectedMarkdown = md.replaceAll(dataImageRegex, (match) => {
+		const placeholder = `__DATA_IMAGE_BASE64_${protectedDataUrls.length}__`;
+		protectedDataUrls.push(match);
+		return placeholder;
+	});
+
+	return { protectedMarkdown, protectedDataUrls };
+}
+
+function restoreDataImageBase64(html, protectedDataUrls) {
+	let restoredHtml = html;
+	for (let i = 0; i < protectedDataUrls.length; i++) {
+		restoredHtml = restoredHtml.replaceAll(
+			`__DATA_IMAGE_BASE64_${i}__`,
+			protectedDataUrls[i],
+		);
+	}
+	return restoredHtml;
+}
+
 export function markdownToHTML(text, inline = false) {
 	text = fixImageDimensionsCodiMD(text);
-	let html = converter.makeHtml(text);
+	const { protectedMarkdown, protectedDataUrls } = protectDataImageBase64(text);
+	let html = converter.makeHtml(protectedMarkdown);
+	html = restoreDataImageBase64(html, protectedDataUrls);
 	if (inline) {
 		html = html.replace("<p>", "").replace("</p>", "").trim();
 	}
