@@ -87,11 +87,13 @@ function insertTextAtCursor(_element, text) {
 	}
 
 	const currentText = editor.toString();
+	const selectionStart = Math.min(pos.start, pos.end);
+	const selectionEnd = Math.max(pos.start, pos.end);
 	// Remplace la sélection (ou insère au curseur si start === end)
-	const before = currentText.slice(0, pos.start);
-	const after = currentText.slice(pos.end);
+	const before = currentText.slice(0, selectionStart);
+	const after = currentText.slice(selectionEnd);
 	const newText = before + text + after;
-	const newCursor = pos.start + text.length;
+	const newCursor = selectionStart + text.length;
 
 	editor.updateCode(newText);
 	editor.restore({ start: newCursor, end: newCursor, dir: "->" });
