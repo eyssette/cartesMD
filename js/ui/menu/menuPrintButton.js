@@ -1,3 +1,5 @@
+import { printCards } from "../events/eventPrint";
+
 export function printButton(options) {
 	const printButtonElement = document.getElementById("printButton");
 	if (options && options.isFlashMd) {
@@ -13,6 +15,6 @@ export function printButton(options) {
 	}
 	printButtonElement.addEventListener("click", (event) => {
 		event.preventDefault();
-		window.print();
+		printCards();
 	});
 }

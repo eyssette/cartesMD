@@ -4,6 +4,7 @@ import {
 	hideEditor,
 } from "../menu/menuShowOrHideEditor";
 import { orientationButtonElement } from "../menu/menuChangeOrientation";
+import { printCards } from "./eventPrint";
 const testModeButton = document.querySelector("#testModeButton");
 
 export function eventKeyboardShortcuts(editorElement, options) {
@@ -12,7 +13,7 @@ export function eventKeyboardShortcuts(editorElement, options) {
 		if (!(options && options.isTestModeFromParams)) {
 			if ((event.ctrlKey || event.metaKey) && event.key === "p") {
 				event.preventDefault();
-				window.print();
+				printCards();
 			}
 			if (event.altKey && (event.key === "®" || event.key === "r")) {
 				event.preventDefault();
