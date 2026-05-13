@@ -6,7 +6,7 @@ const frenchToEnglishColorName = {
 	bleu: "Blue",
 	bordeaux: "Maroon",
 	cyan: "Cyan",
-	gris: "Gray",
+	gris: "LightGrey",
 	jaune: "Yellow",
 	magenta: "Magenta",
 	marine: "Navy",
@@ -19,7 +19,6 @@ const frenchToEnglishColorName = {
 	rouge: "Red",
 	sarcelle: "Teal",
 	vert: "Green",
-	violet: "MediumVioletRed",
 	indigo: "Indigo",
 	// Couleur plus claire ou plus foncée
 	bleuclair: "lightblue",
@@ -53,10 +52,11 @@ function isValidColorNameCSS(string) {
 }
 
 export function getCSScolor(string) {
+	if (!string) return "";
 	string = string.toLowerCase();
 	if (isValidColorNameCSS(string)) {
 		return string;
 	} else {
-		return frenchToEnglishColorName[string];
+		return frenchToEnglishColorName[string] || "";
 	}
 }

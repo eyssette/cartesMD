@@ -116,6 +116,7 @@
 	border-top-color: #d1b9a3;
 }
 
-.gris .card {
+.gris .card,
+.lightgrey .card {
 	background-color: lightgrey;
 }

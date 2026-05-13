@@ -9,6 +9,7 @@ import {
 } from "./fitElements";
 import { loadScript } from "../utils/urls";
 import { isValidColorNameCSS } from "../utils/css";
+import { getCSScolor } from "../utils/colors";
 
 const contentElement = document.getElementById("content");
 let isFirstPageLoad = true;
@@ -74,17 +75,19 @@ export function createCards(cardsArray, options) {
 		const backContentHTML = markdownToHTML(
 			card.backContent.replaceAll("<aside", "<aside markdown"),
 		);
+		let color = card.backImageAlt
+			.split(" ")
+			.filter((word) => colorWords.includes(word) || isValidColorNameCSS(word))
+			.join(" ");
 		if (card.beforeTitle.length > 0) {
 			const matchBackgroundColor = card.beforeTitle.match(/fond: (\S*)/);
 			if (matchBackgroundColor && matchBackgroundColor[1]) {
 				card.backImageAlt = matchBackgroundColor[1];
+				color = matchBackgroundColor[1];
 			}
 		}
-		const color = card.backImageAlt
-			.split(" ")
-			.filter((word) => colorWords.includes(word) || isValidColorNameCSS(word))
-			.join(" ");
 		let backgroundColorCSS = "";
+		color = getCSScolor(color).toLowerCase();
 		if (!colorWords.includes(color) && isValidColorNameCSS(color)) {
 			backgroundColorCSS = ` style="background: ${color}"`;
 		}
@@ -132,11 +135,18 @@ export function createCards(cardsArray, options) {
 				classIfAdditionalSpaceTop + classIfAdditionalSpaceBottom;
 		}
 
+		const isStringColorName =
+			color &&
+			color.length > 0 &&
+			!color.includes("(") &&
+			color.charAt(0) !== "#";
+		const colorCSSname = isStringColorName ? color : "";
+
 		// TEMPLATE pour chaque carte
 		cardsHTML =
 			cardsHTML +
 			`
-		<div class="cardBackAndFront${color.length > 0 ? " " + color : ""}${classZcount}" id="card-${cardNumber}">
+		<div class="cardBackAndFront ${colorCSSname}${classZcount}" id="card-${cardNumber}">
 			<section class="card cardFront"${backgroundColorCSS}>
 				<h2 class="cardTitle z1${classIfAdditionalContent}"><span>${title}</span></h2>
 				<div class="cardContentUp z2">${contentUp}</div>
