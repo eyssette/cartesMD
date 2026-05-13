@@ -16,35 +16,46 @@ function startNewCard(line) {
 
 function splitMarkdownByCards(md) {
 	md = md.replace(/\r\n|\r/g, "\n");
-	const lines = md.split("\n");
-	let sections = [];
+	const sections = [];
 	let currentSection = [];
-	let newCardStarted = false;
-	let firstCardStarted = false;
+	let wasInPreamble = false;
 
-	for (let i = 0; i < lines.length; i++) {
-		const line = lines[i];
-
-		if (
-			(startNewCard(line) || isCardConfiguration(line)) &&
-			newCardStarted == false
-		) {
-			firstCardStarted = true;
-			newCardStarted = true;
-			if (currentSection.length > 0) {
-				sections.push(currentSection.join("\n").trim());
+	for (const line of md.split("\n")) {
+		if (isCardConfiguration(line)) {
+			if (!wasInPreamble) {
+				// Si on n'était pas dans le préambule juste avant, on considère que c'est le début d'une nouvelle carte
+				// On ajoute la section précédente (si elle existe) à la liste des sections
+				if (currentSection.length > 0)
+					sections.push(currentSection.join("\n").trim());
+				// On réinitialise la section en cours pour la nouvelle carte
+				currentSection = [];
+				wasInPreamble = true;
+			}
+			// On ajoute la ligne de configuration à la section en cours
+			currentSection.push(line);
+		} else if (startNewCard(line)) {
+			if (!wasInPreamble) {
+				// Si on rencontre un titre de carte et qu'on n'était pas dans le préambule, c'est le début d'une nouvelle carte
+				// On ajoute la section précédente (si elle existe) à la liste des sections
+				if (currentSection.length > 0)
+					sections.push(currentSection.join("\n").trim());
+				// On réinitialise la section en cours pour la nouvelle carte
 				currentSection = [];
 			}
-		} else {
-			newCardStarted = false;
-		}
-		if (firstCardStarted) {
+			// Avec le début du titre de carte, le préambule est terminé
+			wasInPreamble = false;
+			// On ajoute la ligne du titre de la carte à la section en cours
 			currentSection.push(line);
+		} else {
+			// Si on rencontre une ligne qui n'est ni une configuration de carte ni un titre de carte, on l'ajoute à la section en cours
+			wasInPreamble = false;
+			if (currentSection.length > 0) currentSection.push(line);
 		}
 	}
-	if (currentSection.length > 0) {
+	// On ajoute la dernière section en cours à la liste des sections
+	if (currentSection.length > 0)
 		sections.push(currentSection.join("\n").trim());
-	}
+	console.log(sections);
 	return sections;
 }
 
