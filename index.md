@@ -2,7 +2,7 @@
 maths: false
 theme: default
 verso: true
-nombreZones: 4
+zones: 4
 ---
 
 <!-- Les cartes commencent à partir du premier titre de niveau 2 : tout ce qui est écrit avant ne compte pas. Éditez ce contenu, en respectant la syntaxe ci-dessous, pour créer vos cartes et les imprimer. -->
@@ -36,10 +36,10 @@ On peut utiliser ++toute++ la syntaxe _Markdown_.
 CartesMD calcule automatiquement la taille de police optimale pour rester dans le cadre !
 
 
-nombreZones: 2
+zones: 2
 ## Nombre de Zones
 
-On peut changer le nombre de zones (4 par défaut et 4 au maximum) avec le paramètre `nombreZones`.
+On peut changer le nombre de zones (4 par défaut et 4 au maximum) avec le paramètre `zones`.
 
 Soit on applique ce paramètre sur la ligne juste avant le titre d'une carte, soit on le définit dans l'en-tête pour qu'il s'applique à toutes les cartes
 

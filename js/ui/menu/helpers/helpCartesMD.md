@@ -62,7 +62,7 @@ On utilise donc chaque élément de syntaxe Markdown pour différencier les zone
 
 #### Changer le nombre de zones
 
-On peut changer le nombre de zones (entre 1 et 4) avec le paramètre `nombreZones`.
+On peut changer le nombre de zones (entre 1 et 4) avec le paramètre `zones: `.
 
 Soit on applique ce paramètre sur la ligne juste avant le titre d'une carte, soit on le définit dans l'en-tête pour qu'il s'applique à toutes les cartes
 

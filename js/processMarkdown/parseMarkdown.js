@@ -3,7 +3,11 @@ import { processYAML } from "./yaml";
 import { removeMultilineHtmlComments } from "../utils/strings";
 
 function isCardConfiguration(line) {
-	return line.indexOf("nombreZones:") === 0 || line.indexOf("fond:") === 0;
+	return (
+		line.indexOf("nombreZones:") === 0 ||
+		line.indexOf("zones:") === 0 ||
+		line.indexOf("fond:") === 0
+	);
 }
 
 function startNewCard(line) {
