@@ -70,7 +70,7 @@ const highlightCode = (editor) => {
 };
 
 const options = {
-	addClosing: false,
+	addClosing: true,
 	spellCheck: true,
 	preserveIdent: false,
 	tab: "\t",
