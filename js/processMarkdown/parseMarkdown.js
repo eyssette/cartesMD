@@ -55,7 +55,6 @@ function splitMarkdownByCards(md) {
 	// On ajoute la dernière section en cours à la liste des sections
 	if (currentSection.length > 0)
 		sections.push(currentSection.join("\n").trim());
-	console.log(sections);
 	return sections;
 }
 
