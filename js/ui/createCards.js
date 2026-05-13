@@ -97,22 +97,23 @@ export function createCards(cardsArray, options) {
 		let classZcount = "";
 		// Si on utilise le paramètre nombreZones dans le YAML : on utilise ce nombre
 		// On peut aussi utiliser le paramètre "zones"
-		if (yaml.zones) {
+		if (yaml && yaml.zones) {
 			yaml.nombreZones = yaml.zones;
 		}
 		if (
 			yaml &&
 			yaml.nombreZones &&
 			yaml.nombreZones >= 1 &&
-			yaml.nombreZones <= 3
+			yaml.nombreZones <= 4
 		) {
 			classZcount = ` zCount${yaml.nombreZones}`;
 		}
-		// Sinon on utilise un paramètre pour une carte spécifique : on utilise ce nombre
+		// Si on utilise un paramètre pour une carte spécifique : on utilise ce nombre
 		if (card.beforeTitle.length > 0) {
 			const match =
 				card.beforeTitle.match(/nombreZones: (\d)/) ||
 				card.beforeTitle.match(/zones: (\d)/);
+			if (match && match[1] >= 1 && match[1] <= 4) {
 				classZcount = ` zCount${match[1]}`;
 			}
 		}
