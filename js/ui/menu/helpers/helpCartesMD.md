@@ -108,6 +108,8 @@ On peut utiliser les styles CSS pour personnaliser l'apparence de ces labels (co
 
 On utilise la syntaxe Markdown classique pour écrire le contenu de ses cartes : listes à puces, texte en gras ou en italique, souligné ou surligné, liens, images …
 
+Pour les images, il est préférable d'utiliser des images hébergées en ligne, mais on peut aussi coller une image directement dans l'éditeur, elle sera alors convertie en _base64_ et intégrée dans le Markdown. Attention cependant à la longueur du fichier qui peut vite devenir importante.
+
 #### Balises HTML
 
 On peut aussi utiliser du _HTML_ si on veut un contrôle plus fin de l'affichage !

@@ -39,7 +39,9 @@ Double-cliquez sur une carte pour la modifier dans l'éditeur à gauche.
 
 On peut utiliser toute la syntaxe _Markdown_ et même du _HTML_ si on veut, ou encore du $Latex$.
 
-FlashMD calcule automatiquement la taille de police optimale pour rester dans le cadre !
+FlashMD calcule automatiquement la taille de police optimale pour que le texte reste dans le cadre !
+
+On peut insérer des images hébergées en ligne avec la syntaxe Markdown classique : `![](URL_de_l_image)`. Mais on peut aussi coller une image directement dans l'éditeur, elle sera alors convertie en _base64_ et intégrée dans le Markdown. Attention cependant à la longueur du fichier qui peut vite devenir importante.
 
 
 ### Changer la couleur des cartes ?
