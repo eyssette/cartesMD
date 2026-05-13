@@ -4,6 +4,17 @@ import { scopedStyles } from "../utils/css.js";
 import { CSSthemes, addOnsDependencies, allowedAddOns } from "../config.js";
 
 export let yaml = {};
+// On définit des une Promise pour attendre que le thème soit appliqué avant de faire le fit des éléments, et éviter les problèmes de timing
+// Par défaut, cette Promise est résolue, ce qui correspond au cas où il n'y a pas de thème à charger
+let themeReadyPromise = Promise.resolve();
+
+export function waitForThemeReady() {
+	return themeReadyPromise;
+}
+
+function setThemeReadyPromise(promise) {
+	themeReadyPromise = promise.catch(() => undefined);
+}
 
 // On définit des propriétés utilisables dans le yaml pour customiser les styles CSS
 const styleMapping = {
@@ -99,7 +110,7 @@ export function processYAML(markdownContent, options) {
 				if (CSSthemes.includes(CSSfile)) {
 					let themeURL = "css/theme/" + CSSfile;
 					const CSSthemeName = "theme-" + CSSfile.replace(".css", "");
-					fetch(themeURL)
+					const applyThemePromise = fetch(themeURL)
 						.then((response) => response.text())
 						.then((data) => {
 							styleThemeElement.textContent = data;
@@ -117,12 +128,16 @@ export function processYAML(markdownContent, options) {
 							);
 							console.error(error);
 						});
+					// On a trouvé un thème à appliquer, on met à jour la Promise pour attendre que le thème soit appliqué avant de faire le fit des éléments
+					setThemeReadyPromise(applyThemePromise);
 				} else {
 					styleThemeElement.textContent = "";
 					document.body.className = document.body.className.replace(
 						/theme-\S*/g,
 						"",
 					);
+					// Pas de thème trouvé, la Promise est résolue immédiatement
+					setThemeReadyPromise(Promise.resolve());
 				}
 			} else {
 				styleThemeElement.textContent = "";
@@ -130,6 +145,8 @@ export function processYAML(markdownContent, options) {
 					/theme-\S*/g,
 					"",
 				);
+				// Pas de thème à appliquer, la Promise est résolue immédiatement
+				setThemeReadyPromise(Promise.resolve());
 			}
 			if (yaml.rectoVerso) {
 				document.body.classList.add("printRectoVerso");
@@ -197,6 +214,8 @@ export function processYAML(markdownContent, options) {
 		if (styleThemeElement) {
 			styleThemeElement.textContent = "";
 		}
+		// Pas de YAML, donc pas de thème à appliquer, la Promise est résolue immédiatement
+		setThemeReadyPromise(Promise.resolve());
 		if (customStylesElement) {
 			customStylesElement.textContent = "";
 		}

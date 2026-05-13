@@ -2,7 +2,11 @@ import { markdownToHTML } from "../processMarkdown/markdownToHTML";
 import { colorWords } from "../config";
 import { yaml } from "../processMarkdown/yaml";
 import { convertLatexExpressions } from "../processMarkdown/convertLatex";
-import { fitElements, fitMathElements } from "./fitElements";
+import {
+	fitElements,
+	fitElementsWhenReady,
+	fitMathElements,
+} from "./fitElements";
 import { loadScript } from "../utils/urls";
 import { isValidColorNameCSS } from "../utils/css";
 
@@ -23,15 +27,13 @@ function handleMathsAndThemes(cardsHTML, options) {
 				if (window.katex) {
 					clearInterval(interval);
 					contentElement.innerHTML = convertLatexExpressions(cardsHTML);
-					fitElements().then(() => {
+					fitElementsWhenReady().then(() => {
+						fitMathElements();
 						if (isFirstPageLoad) {
 							isFirstPageLoad = false;
-							setTimeout(() => {
-								contentElement.innerHTML = convertLatexExpressions(cardsHTML);
-								fitElements().then(() => {
-									fitMathElements();
-								});
-							}, 10);
+							fitElementsWhenReady().then(() => {
+								fitMathElements();
+							});
 						}
 					});
 				}
@@ -39,17 +41,10 @@ function handleMathsAndThemes(cardsHTML, options) {
 		});
 	} else {
 		contentElement.innerHTML = cardsHTML;
-		fitElements().then(() => {
+		fitElementsWhenReady().then(() => {
 			if (isFirstPageLoad) {
 				isFirstPageLoad = false;
-				setTimeout(() => {
-					contentElement.innerHTML = cardsHTML;
-					fitElements();
-				}, 100);
-				setTimeout(() => {
-					contentElement.innerHTML = cardsHTML;
-					fitElements();
-				}, 1000);
+				fitElementsWhenReady();
 			}
 		});
 	}
