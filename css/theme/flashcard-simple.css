@@ -25,6 +25,9 @@
 	justify-content: right !important;
 	width: 300px !important;
 }
+.z1 > span {
+	margin-top: -12px;
+}
 .cardBackAndFront {
 	flex-wrap: nowrap;
 }
