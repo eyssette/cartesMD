@@ -147,10 +147,10 @@ export function processYAML(markdownContent, options) {
 				// Pas de thème à appliquer, la Promise est résolue immédiatement
 				setThemeReadyPromise(Promise.resolve());
 			}
-			customStylesElement.textContent = scopedStyles(
-				customStylesCSS,
-				"#content",
-			);
+			customStylesElement.textContent =
+				scopedStyles(customStylesCSS, "#content") +
+				"\n" +
+				scopedStyles(customStylesCSS, "#printContainer");
 			// Gestion des add-ons (scripts et css en plus)
 			if (yaml.addOns) {
 				yaml.addOns = yaml.addOns.replace(" ", "").split(",");
