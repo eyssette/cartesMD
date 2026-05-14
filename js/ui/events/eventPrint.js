@@ -165,6 +165,9 @@ function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 					face.className = "cardFront";
 					face.classList.add("card");
 					face._sourceCard = el;
+					// On applique les styles du recto à la face reconstituée, pour éviter les problèmes de styles liés au fait que les éléments sont déplacés dans un autre conteneur pour l'impression
+					const frontEl = el.querySelector(".cardFront");
+					face.setAttribute("style", frontEl.getAttribute("style") || "");
 					// Les éléments à prendre pour le recto et le verso dépendent du thème flashcard utilisé
 					const frontElements = isFlashCardSimpleTheme
 						? [".cardTitle.z1", ".cardSubtitle.z3", "footer.z5"]
@@ -180,6 +183,9 @@ function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 					face.className = "cardBack";
 					face.classList.add("card");
 					face._sourceCard = el;
+					// On applique les styles du verso à la face reconstituée, pour éviter les problèmes de styles liés au fait que les éléments sont déplacés dans un autre conteneur pour l'impression
+					const backEl = el.querySelector(".cardBack");
+					face.setAttribute("style", backEl.getAttribute("style") || "");
 					// Les éléments à prendre pour le recto et le verso dépendent du thème flashcard utilisé
 					const backElements = isFlashCardSimpleTheme
 						? [".cardContentUp.z2"]
