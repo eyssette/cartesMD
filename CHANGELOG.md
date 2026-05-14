@@ -1,3 +1,28 @@
+## 3.0.0 (2026-05-14)
+
+### Feat
+
+- gestion de l'impression avec boîte modale et algorithme pour une disposition optimale des cartes
+- possibilité de coller une image en data-URI (base64) dans l'éditeur
+
+### Fix
+
+- au démarrage de l'application, on utilise textFit avec reProcess:true (pour prendre en compte le chargement des styles personnalisés), mais ensuite on utilise textFit avec reProcess:false (nécessaire pour ne pas changer les tailles de police au moment de l'impression)
+- "Escape" ferme la boîte modale d'impression mais pas l'éditeur
+- addClosing pour l'éditeur Codejar
+- le copier-coller fonctionne aussi pour remplacer une sélection
+- meilleure gestion de l'utilisation des couleurs et noms de couleurs, notamment pour le fond de l'image
+- possibilité d'utiliser "zones: " et "fond: " en même temps pour une carte
+- on peut aller de 1 à 4 zones
+- on peut utiliser "zones" plutôt que "nombreZones"
+- amélioration du copier-coller à la position du curseur
+
+### Chore
+
+- base pour la modularisation de la fonction d'impression
+- update codejar
+- documentation pour copier-coller une image dans l'éditeur en base64
+
 ## 2.8.2 (2026-05-13)
 
 ### Fix
