@@ -148,11 +148,9 @@ function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 			}
 			pages.push([back]);
 		});
-	} else if (
-		rectoVerso ||
-		(isFlashCardTheme && !rectoVerso && !format === "card") ||
-		(isFlashCardTheme && format === "card")
-	) {
+	} else if (rectoVerso || (format === "card" && isFlashCardTheme)) {
+		// condition pour remixer les éléments HTML des cartes = soit rectoVerso (pour remixer l'ordre), soit sortie au format de la carte, mais pour les flashcards (pour sélectionner les éléments recto et les éléments verso)
+
 		// A4 rectoVerso : N rectos sur une page, puis N versos sur la suivante
 		N = isFlashCardTheme && !rectoVerso ? N : N / 2; // diviser par 2 car recto et verso sont séparés
 		if (isFlashCardTheme && format === "card") N = 1;
