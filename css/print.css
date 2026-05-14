@@ -56,6 +56,16 @@
 		zoom: 0.96;
 	}
 
+	.theme-flashcard-simple .printPage--flashcard .z5 {
+		position: relative;
+		margin-top: 0px;
+		margin-right: -290px;
+	}
+	.theme-flashcard-simple .printPage--flashcard.printPage--rectoVerso .z5,
+	.theme-flashcard-simple .printPage--flashcard.printPage--card .z5 {
+		margin-top: -69px !important;
+	}
+
 	.printPage--flashcard .cardBackAndFront {
 		perspective: none;
 	}
