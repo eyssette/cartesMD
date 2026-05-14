@@ -74,7 +74,8 @@ async function waitForLayoutToStabilize() {
 	await waitForNextPaint();
 }
 
-function fitElementsMainLogic() {
+function fitElementsMainLogic(options) {
+	reProcess = options && options.reProcess;
 	let elementsToStyle = document.querySelectorAll("[alt]");
 	for (const elementToStyle of elementsToStyle) {
 		const newStyle = elementToStyle.getAttribute("alt")
@@ -134,10 +135,11 @@ export function fitElements() {
 	});
 }
 
-export async function fitElementsWhenReady() {
-	fitElementsMainLogic();
+export async function fitElementsWhenReady(options) {
+	const reProcess = options && options.reProcess;
+	fitElementsMainLogic({ reProcess: reProcess });
 	await waitForLayoutToStabilize();
-	return fitElementsMainLogic();
+	return fitElementsMainLogic({ reProcess: reProcess });
 }
 
 function fitMathElementsMainLogic() {

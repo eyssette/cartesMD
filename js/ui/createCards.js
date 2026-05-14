@@ -32,7 +32,7 @@ function handleMathsAndThemes(cardsHTML, options) {
 						fitMathElements();
 						if (isFirstPageLoad) {
 							isFirstPageLoad = false;
-							fitElementsWhenReady().then(() => {
+							fitElementsWhenReady({ reProcess: true }).then(() => {
 								fitMathElements();
 							});
 						}
@@ -45,7 +45,7 @@ function handleMathsAndThemes(cardsHTML, options) {
 		fitElementsWhenReady().then(() => {
 			if (isFirstPageLoad) {
 				isFirstPageLoad = false;
-				fitElementsWhenReady();
+				fitElementsWhenReady({ reProcess: true });
 			}
 		});
 	}
