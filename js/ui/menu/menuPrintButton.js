@@ -53,14 +53,12 @@ export function openPrintModal() {
 	const form = overlay.querySelector("#printForm");
 	const a4Options = overlay.querySelector("#a4Options");
 	const rectoVersoCheckbox = overlay.querySelector("#rectoVersoCheckbox");
-	const rectoVersoInfo = overlay.querySelector("#rectoVersoInfo");
 
 	// Si le YAML indique que les cartes n'ont pas de verso, on masque d'emblée les options A4 et recto-verso
 	if (yaml && yaml.verso === false) {
 		a4Options.hidden = true;
 		rectoVersoCheckbox.checked = false;
 		rectoVersoCheckbox.disabled = true;
-		rectoVersoInfo.hidden = true;
 	}
 
 	// Masquer les options A4 quand "taille de la carte" est sélectionné
