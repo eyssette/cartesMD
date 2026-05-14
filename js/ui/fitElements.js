@@ -2,7 +2,9 @@ import { colorWords } from "../config";
 import { textFit } from "../externals/textfit";
 import { waitForThemeReady, yaml } from "../processMarkdown/yaml";
 
-const mainElement = document.querySelector("main");
+// On utilise une variable reProcess pour indiquer à textFit qu'il doit au démarrage de l'application faire un premier fit avec reProcess=true, qui est nécessaire pour prendre en compte les changements de styles liées au chargement du thème et des styles personnalisés.
+// Ensuite, on mettra reProcess à false pour les appels suivants de textFit, ce qui est nécessaire pour éviter un recalcul au moment de l'impression.
+let reProcess = true;
 
 function removeWords(string, wordsToRemove) {
 	return string
@@ -14,7 +16,7 @@ function removeWords(string, wordsToRemove) {
 function fitElementsWithImages(baseMaxFontSize) {
 	const elementsWithImagesAndText = new Set();
 	// On cherche les images dans les zones où il peut y en avoir avec du texte.
-	mainElement
+	document
 		.querySelectorAll(".z2 img, .z4 img, .cardBack aside img")
 		.forEach((img) => {
 			const parent = img.closest(".z2, .z4, .cardBack, aside");
@@ -29,7 +31,7 @@ function fitElementsWithImages(baseMaxFontSize) {
 			multiLine: true,
 			minFontSize: 7.75,
 			maxFontSize: baseMaxFontSize,
-			reProcess: false,
+			reProcess: reProcess,
 		});
 	});
 }
@@ -41,7 +43,7 @@ function waitForNextPaint() {
 }
 
 function waitForImagesReady(timeoutMs = 3000) {
-	const container = mainElement.getElementById("content");
+	const container = document.getElementById("content");
 	if (!container) {
 		return Promise.resolve();
 	}
@@ -73,7 +75,7 @@ async function waitForLayoutToStabilize() {
 }
 
 function fitElementsMainLogic() {
-	let elementsToStyle = mainElement.querySelectorAll("[alt]");
+	let elementsToStyle = document.querySelectorAll("[alt]");
 	for (const elementToStyle of elementsToStyle) {
 		const newStyle = elementToStyle.getAttribute("alt")
 			? removeWords(elementToStyle.getAttribute("alt"), colorWords)
@@ -82,41 +84,46 @@ function fitElementsMainLogic() {
 			? elementToStyle.style.cssText + newStyle
 			: newStyle;
 	}
-	const z1Elements = mainElement.querySelectorAll(".z1");
-	const z2Elements = mainElement.querySelectorAll(".z2");
-	const z3Elements = mainElement.querySelectorAll(".z3");
-	const z4Elements = mainElement.querySelectorAll(".z4");
-	const backElements = mainElement.querySelectorAll(".cardBack aside");
+	const z1Elements = document.querySelectorAll(".z1");
+	const z2Elements = document.querySelectorAll(".z2");
+	const z3Elements = document.querySelectorAll(".z3");
+	const z4Elements = document.querySelectorAll(".z4");
+	const backElements = document.querySelectorAll(".cardBack aside");
 
 	const baseMaxFontSize =
 		yaml && yaml.theme && yaml.theme.includes("flashcard") ? 40 : 36;
-	textFit(z1Elements, { multiLine: true, maxFontSize: 60, reProcess: false });
+	textFit(z1Elements, {
+		multiLine: true,
+		maxFontSize: 60,
+		reProcess: reProcess,
+	});
 	textFit(z2Elements, {
 		multiLine: true,
 		minFontSize: 7.75,
 		maxFontSize: baseMaxFontSize,
-		reProcess: false,
+		reProcess: reProcess,
 	});
 	textFit(z3Elements, {
 		multiLine: true,
 		maxFontSize: baseMaxFontSize + 6,
-		reProcess: false,
+		reProcess: reProcess,
 	});
 	if (!(yaml && yaml.theme && yaml.theme == "flashcard-simple")) {
 		textFit(z4Elements, {
 			multiLine: true,
 			minFontSize: 7.75,
 			maxFontSize: baseMaxFontSize,
-			reProcess: false,
+			reProcess: reProcess,
 		});
 	}
 	textFit(backElements, {
 		multiLine: true,
 		minFontSize: 7.75,
 		maxFontSize: baseMaxFontSize,
-		reProcess: false,
+		reProcess: reProcess,
 	});
 	fitElementsWithImages(baseMaxFontSize);
+	reProcess = false;
 	return true;
 }
 
@@ -134,8 +141,8 @@ export async function fitElementsWhenReady() {
 }
 
 function fitMathElementsMainLogic() {
-	const mathsElements = mainElement.querySelectorAll(".katex-display");
-	textFit(mathsElements, { multiLine: true, reProcess: false });
+	const mathsElements = document.querySelectorAll(".katex-display");
+	textFit(mathsElements, { multiLine: true, reProcess: reProcess });
 	return true;
 }
 
