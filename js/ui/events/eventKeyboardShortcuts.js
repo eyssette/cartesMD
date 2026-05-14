@@ -28,6 +28,12 @@ export function eventKeyboardShortcuts(editorElement, options) {
 			} else {
 				document.body.classList.remove("hideMenu");
 				if (shouldShowEditor && event.key === "Escape") {
+					// On doit vérifier que la modale d'impression n'est pas ouverte, sinon le Escape doit fermer la modale d'impression et pas l'éditeur
+					const isPrintModalOpen = document.querySelector("#printModalOverlay");
+					if (isPrintModalOpen) {
+						isPrintModalOpen.remove();
+						return;
+					}
 					hideEditor(editorElement, options);
 				} else {
 					if (!shouldShowEditor && event.key === "e") {
