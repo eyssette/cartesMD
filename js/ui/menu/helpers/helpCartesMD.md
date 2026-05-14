@@ -217,9 +217,12 @@ Le paramètre `?e=0` dans l'URL cache par défaut l'éditeur, afin d'afficher pa
 
 ### 🖨️ &nbsp;Imprimer
 
-On lance simplement l'impression de cette page pour imprimer les cartes
+Vous pouvez imprimer vos cartes, en cliquant sur l'icône “imprimante” dans le menu en haut à gauche : 🖨️.
 
-<span style="font-size:0.9em">Il faut penser à activer l'impression des arrières-plan et à désactiver les en-têtes et pieds de page.</span>
+Trois options d'impression sont proposées :
+- A4 ordinaire : 4 cartes par page (pliage en 2 à faire soi-même pour former le recto et le verso)
+- A4 recto-verso : 9 cartes par page, avec le recto sur une page, le verso sur la page suivante (à imprimer en recto-verso)
+- Sortie au format de la carte : permet d'envoyer un fichier PDF adapté pour un service de reprographie. Permet aussi de choisir la taille des flashcards lors de l'impression (en déterminant le nombre de cartes à imprimer sur une page A4).
 
 
 

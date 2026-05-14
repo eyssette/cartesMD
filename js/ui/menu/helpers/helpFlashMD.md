@@ -4,7 +4,7 @@
 
 FlashMD est un outil libre et gratuit, créé par [Cédric Eyssette](https://eyssette.forge.apps.education.fr/), qui permet de faire des flashcards et de les réviser en ligne !
 
-Si vous voulez faire des cartes plus complexes, destinées à être imprimées, vous pouvez utiliser [CartesMD](https://cartesmd.forge.apps.education.fr/).
+Si vous voulez faire des cartes plus complexes, vous pouvez utiliser [CartesMD](https://cartesmd.forge.apps.education.fr/).
 
 ### Mode révision
 
@@ -15,6 +15,15 @@ Pour rentrer dans le mode révision, on clique dans le menu en haut à gauche su
 On pourra alors cliquer sur le recto d'une carte pour vérifier si on a la bonne réponse.
 
 On peut aussi ajouter des paramètres à l'URL pour partager directement en mode révision des cartes (voir l'onglet “Enregistrer et partager ses cartes”).
+
+### Imprimer ses cartes
+
+Vous pouvez aussi imprimer vos cartes, en cliquant sur l'icône “imprimante” dans le menu en haut à gauche : 🖨️.
+
+Trois options d'impression sont proposées :
+- A4 ordinaire : 4 cartes par page (pliage en 2 à faire soi-même pour former le recto et le verso)
+- A4 recto-verso : 9 cartes par page, avec le recto sur une page, le verso sur la page suivante (à imprimer en recto-verso)
+- Sortie au format de la carte : permet d'envoyer un fichier PDF adapté pour un service de reprographie. Permet aussi de choisir la taille des flashcards lors de l'impression (en déterminant le nombre de cartes à imprimer sur une page A4).
 
 ### Contribuer
 
