@@ -1,5 +1,6 @@
 :root {
 	--cardFrontBackgroundColor: rgba(107, 123, 146, 0.4);
+	--defaultFont: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -79,8 +80,12 @@ nav ul li {
 	height: 75vh;
 	position: fixed;
 }
+
 #content {
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	font-family: var(--defaultFont);
+}
+
+#content {
 	width: 50vw;
 	margin-left: 42vw;
 	display: flex;

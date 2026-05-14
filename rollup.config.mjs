@@ -94,5 +94,16 @@ export default {
 				}),
 			],
 		}),
+		postcss({
+			extensions: [".css"],
+			include: ["css/printModal.css"],
+			extract: "css/printModal.min.css",
+			minimize: true,
+			plugins: [
+				cssnano({
+					preset: "default",
+				}),
+			],
+		}),
 	],
 };

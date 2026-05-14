@@ -58,7 +58,6 @@ export function processYAML(markdownContent, options) {
 
 	const styleThemeElement = document.getElementById("styleTheme");
 	const customStylesElement = document.getElementById("customStyles");
-	const printPageSize = document.getElementById("printPageSize");
 
 	let markdownContentSplitted =
 		splitMarkdownByHRIgnoringCodeBlocks(markdownContent);
@@ -148,23 +147,6 @@ export function processYAML(markdownContent, options) {
 				// Pas de thème à appliquer, la Promise est résolue immédiatement
 				setThemeReadyPromise(Promise.resolve());
 			}
-			if (yaml.rectoVerso) {
-				document.body.classList.add("printRectoVerso");
-				const printPageSizeCSS =
-					yaml.theme && yaml.theme.includes("flashcard")
-						? "@media print {@page {size: 344px 224px !important;margin: 0px !important;padding: 0px !important;}}"
-						: "@media print {@page {size: 224px 344px !important;margin: 0px !important;padding: 0px !important;}}";
-				printPageSize.textContent = printPageSizeCSS;
-			} else {
-				document.body.classList.remove("printRectoVerso");
-				if (yaml.theme && yaml.theme.includes("flashcard")) {
-					const printPageSizeCSS =
-						"@media print {@page {size: A4 portrait !important;}}";
-					printPageSize.textContent = printPageSizeCSS;
-				} else {
-					printPageSize.textContent = "";
-				}
-			}
 			customStylesElement.textContent = scopedStyles(
 				customStylesCSS,
 				"#content",
@@ -218,9 +200,6 @@ export function processYAML(markdownContent, options) {
 		setThemeReadyPromise(Promise.resolve());
 		if (customStylesElement) {
 			customStylesElement.textContent = "";
-		}
-		if (printPageSize) {
-			printPageSize.textContent = "";
 		}
 	}
 	return markdownContent;

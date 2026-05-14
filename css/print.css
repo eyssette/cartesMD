@@ -1,63 +1,111 @@
-@page {
-	size: A4 landscape;
-	margin: 20px !important;
-}
-body {
-	width: 100% !important;
-	height: 100% !important;
-	-webkit-print-color-adjust: exact !important;
-	print-color-adjust: exact !important;
-}
-#content {
-	margin: 10px !important;
-	width: 100% !important;
-	padding-top: 0 !important;
-}
-h1,
-#editor,
-header,
-nav {
-	display: none !important;
-}
-.cardBackAndFront,
-.card,
-div,
-span,
-p {
-	page-break-inside: avoid !important;
-	break-inside: avoid !important;
-}
-#content {
-	display: block !important;
-	columns: 2;
-}
-.cardBackAndFront {
-	margin-bottom: 20px !important;
-}
+@media print {
+	/* Masquer tout sauf le conteneur d'impression */
+	body > *:not(#printContainer) {
+		display: none !important;
+	}
 
-.printRectoVerso #content {
-	margin: 0px !important;
-	padding: 0px !important;
-}
-.printRectoVerso #content,
-.printRectoVerso.noVerso #content {
-	columns: 1 !important;
-}
-.printRectoVerso .card {
-	margin: 0px !important;
-	margin-top: 5px !important;
-	margin-left: -5px !important;
-	padding: 0px !important;
-}
-.printRectoVerso .cardBack {
-	margin-top: 10px !important;
-}
-.printRectoVerso .cardBackAndFront:nth-of-type(1) .cardFront {
-	margin-top: -2px !important;
-}
+	#printContainer {
+		display: block !important;
+		font-family: var(--defaultFont);
+	}
 
-.printRectoVerso #content .cardBack aside {
-	margin-left: -227px;
-	margin-top: -363px;
-	position: relative;
+	body {
+		-webkit-print-color-adjust: exact !important;
+		print-color-adjust: exact !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	/* Chaque page d'impression */
+	.printPage {
+		page-break-after: always;
+		break-after: page;
+		display: flex;
+		flex-wrap: wrap;
+		align-content: flex-start;
+	}
+
+	.printPage:last-child {
+		page-break-after: avoid;
+		break-after: avoid;
+	}
+
+	/* Mode A4 : cartes disposées en grille avec espacement */
+	.printPage--a4 {
+		gap: 2.5mm;
+		padding-top: 2.5mm;
+		padding-left: 2.5mm;
+	}
+
+	/* Mode A4 simple : gap entre cartes, mais pas entre recto et verso */
+	.printPage--a4-simple {
+		gap: 2.5mm;
+		padding-top: 2.5mm;
+		padding-left: 2.5mm;
+	}
+
+	.printCardPair {
+		display: flex;
+		gap: 0;
+	}
+
+	/* Mode taille de la carte : une face centrée sur la page */
+	.printPage--card {
+		justify-content: center;
+		align-items: center;
+		zoom: 0.96;
+	}
+	.printPage--flashcard.printPage--card {
+		zoom: 0.94;
+	}
+	.printPage--card .card:first-child {
+		margin-top: 1mm;
+	}
+	.printPage--card .card:not(:first-child) {
+		margin-top: 2mm;
+	}
+
+	.printPage--flashcard.printPage--card .card {
+		page-break-inside: avoid;
+		break-inside: avoid;
+	}
+
+	.printPage--flashcard.printPage--rectoVerso .card h3 {
+		position: relative;
+		margin-left: 7px !important;
+		margin-top: 5px !important;
+		margin-bottom: 15px !important;
+	}
+
+	.printPage--flashcard.printPage--rectoVerso .cardContentDown {
+		position: relative;
+		margin-left: 10px !important;
+		margin-top: -6px !important;
+	}
+
+	.printPage--flashcard.printPage--card .card h3 {
+		position: relative;
+		margin-left: 7px !important;
+		margin-top: 5px !important;
+		margin-bottom: 15px !important;
+		z-index: 9999 !important;
+	}
+
+	.printPage--flashcard.printPage--card .cardContentDown {
+		position: relative;
+		margin-left: 10px !important;
+		margin-top: -8px !important;
+		z-index: 9999 !important;
+	}
+
+	/* Éviter les coupures à l'intérieur d'une carte */
+	.printCardWrapper .card {
+		page-break-inside: avoid;
+		break-inside: avoid;
+	}
+	.printCardWrapper .cardBack aside {
+		margin-left: -227px;
+		margin-top: -363px;
+		position: relative;
+	}
 }
