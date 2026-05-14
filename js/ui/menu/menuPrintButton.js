@@ -35,12 +35,9 @@ export function openPrintModal() {
 					<div class="printModal-row">
 						<label>
 							<input type="checkbox" name="rectoVerso" id="rectoVersoCheckbox">
-							Impression recto-verso (recto-verso)
+							Impression recto-verso
 						</label>
 					</div>
-					<p id="rectoVersoInfo" class="printModal-info" hidden>
-						Les cartes sont regroupées&nbsp;: N rectos sur une page, puis N versos sur la suivante.
-					</p>
 				</fieldset>
 				<div class="printModal-actions">
 					<button type="button" class="printModal-cancel">Annuler</button>
@@ -71,11 +68,6 @@ export function openPrintModal() {
 		radio.addEventListener("change", () => {
 			a4Options.hidden = radio.value === "card";
 		});
-	});
-
-	// Afficher/masquer l'info rectoVerso
-	rectoVersoCheckbox.addEventListener("change", () => {
-		rectoVersoInfo.hidden = !rectoVersoCheckbox.checked;
 	});
 
 	const close = () => {
