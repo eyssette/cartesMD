@@ -1,3 +1,13 @@
+## 3.0.1 (2026-05-14)
+
+### Fix
+
+- impression correcte pour les thèmes flashcard-simple et flashcard-mission
+- inversion sur une page verso de l'ordre des cartes sur chaque ligne
+- CSS pour "Options d'impression" (ne doit pas changer en fonction du thème des cartes)
+- reProcess de textFit si on clique sur le bouton de changement d'orientation pour passer en mode flashcard
+- suppression informations inutiles sur l'impression recto-verso
+
 ## 3.0.0 (2026-05-14)
 
 ### Feat
