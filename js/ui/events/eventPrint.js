@@ -158,17 +158,18 @@ function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 		for (let i = 0; i < cardElements.length; i += N) {
 			const group = cardElements.slice(i, i + N);
 			if (isFlashCardTheme) {
+				const isFlashCardSimpleTheme =
+					yaml && yaml.theme && yaml.theme.includes("flashcard-simple");
 				// Reconstituer le recto et le verso à partir des éléments spécifiques au thème flashcard
 				const fronts = group.map((el) => {
 					const face = document.createElement("div");
 					face.className = "cardFront";
 					face.classList.add("card");
 					face._sourceCard = el;
-					for (const sel of [
-						".cardTitle.z1",
-						".cardContentUp.z2",
-						"footer.z5",
-					]) {
+					const frontElements = isFlashCardSimpleTheme
+						? [".cardTitle.z1", ".cardSubtitle.z3", "footer.z5"]
+						: [".cardTitle.z1", ".cardContentUp.z2", "footer.z5"];
+					for (const sel of frontElements) {
 						const part = el.querySelector(sel);
 						if (part) face.appendChild(part.cloneNode(true));
 					}
@@ -179,7 +180,10 @@ function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 					face.className = "cardBack";
 					face.classList.add("card");
 					face._sourceCard = el;
-					for (const sel of [".cardSubtitle.z3", ".cardContentDown.z4"]) {
+					const backElements = isFlashCardSimpleTheme
+						? [".cardContentUp.z2"]
+						: [".cardSubtitle.z3", ".cardContentDown.z4", ".cardBack"];
+					for (const sel of backElements) {
 						const part = el.querySelector(sel);
 						if (part) face.appendChild(part.cloneNode(true));
 					}

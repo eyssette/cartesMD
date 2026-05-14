@@ -55,6 +55,31 @@
 		align-items: center;
 		zoom: 0.96;
 	}
+
+	.printPage--flashcard .cardBackAndFront {
+		perspective: none;
+	}
+
+	.theme-flashcard-simple .printPage--flashcard.printPage--card .z2,
+	.theme-flashcard-simple
+		.printPage--flashcard.printPage--flashcard.printPage--rectoVerso
+		.z2 {
+		position: relative !important;
+		margin: 12px 15px !important;
+	}
+
+	.theme-flashcard-mission .printCardWrapper.cardBack {
+		margin-top: 0px;
+	}
+
+	.theme-flashcard-mission .printCardWrapper.cardBack .cardBack {
+		margin-top: -33px;
+	}
+
+	.printPage--flashcard .cardBack {
+		margin-left: -3px;
+	}
+
 	.printPage--flashcard.printPage--card {
 		zoom: 0.94;
 	}
