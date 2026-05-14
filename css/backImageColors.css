@@ -4,8 +4,10 @@
 
 .red .card,
 .rouge .card,
-.red.printCardWrapper,
-.rouge.printCardWrapper {
+.printPage--card.printPage--flashcard .red.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .red.printCardWrapper,
+.printPage--card.printPage--flashcard .rouge.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .rouge.printCardWrapper {
 	background-color: #ca98989e;
 	border-color: #834b4b;
 }
@@ -20,7 +22,8 @@
 }
 
 .orange .card,
-.orange.printCardWrapper {
+.printPage--card.printPage--flashcard .orange.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .orange.printCardWrapper {
 	background-color: #ffd68a;
 	border-color: #d09a38;
 }
@@ -33,7 +36,8 @@
 }
 
 .violet .card,
-.violet.printCardWrapper {
+.printPage--card.printPage--flashcard .violet.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .violet.printCardWrapper {
 	background-color: #cfb6e7;
 	border-color: #8565a4;
 }
@@ -47,8 +51,10 @@
 
 .green .card,
 .vert .card,
-.green.printCardWrapper,
-.vert.printCardWrapper {
+.printPage--card.printPage--flashcard .green.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .green.printCardWrapper,
+.printPage--card.printPage--flashcard .vert.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .vert.printCardWrapper {
 	background-color: #bad0ba;
 	border-color: #4b7d4b;
 }
@@ -64,8 +70,10 @@
 
 .blue .card,
 .bleu .card,
-.blue.printCardWrapper,
-.bleu.printCardWrapper {
+.printPage--card.printPage--flashcard .blue.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .blue.printCardWrapper,
+.printPage--card.printPage--flashcard .bleu.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .bleu.printCardWrapper {
 	background-color: #cce1f3;
 	border-color: #88a2b8;
 }
@@ -81,8 +89,10 @@
 
 .yellow .card,
 .jaune .card,
-.yellow.printCardWrapper,
-.jaune.printCardWrapper {
+.printPage--card.printPage--flashcard .yellow.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .yellow.printCardWrapper,
+.printPage--card.printPage--flashcard .jaune.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .jaune.printCardWrapper {
 	background-color: #f7f1b3;
 	border-color: #e6c300;
 }
@@ -98,8 +108,10 @@
 
 .pink .card,
 .rose .card,
-.pink.printCardWrapper,
-.rose.printCardWrapper {
+.printPage--card.printPage--flashcard .pink.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .pink.printCardWrapper,
+.printPage--card.printPage--flashcard .rose.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .rose.printCardWrapper {
 	background-color: #f8c5cf;
 	border-color: #d18998;
 }
@@ -115,8 +127,10 @@
 
 .brown .card,
 .marron .card,
-.brown.printCardWrapper,
-.marron.printCardWrapper {
+.printPage--card.printPage--flashcard .brown.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .brown.printCardWrapper,
+.printPage--card.printPage--flashcard .marron.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .marron.printCardWrapper {
 	background-color: #d1b9a3;
 	border-color: #a3856e;
 }
@@ -132,7 +146,9 @@
 
 .gris .card,
 .lightgrey .card,
-.gris.printCardWrapper,
-.lightgrey.printCardWrapper {
+.printPage--card.printPage--flashcard .gris.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .gris.printCardWrapper,
+.printPage--card.printPage--flashcard .lightgrey.printCardWrapper,
+.printPage--rectoVerso.printPage--flashcard .lightgrey.printCardWrapper {
 	background-color: lightgrey;
 }
