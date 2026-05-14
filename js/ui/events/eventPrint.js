@@ -121,6 +121,14 @@ export async function printCards(options) {
 	);
 }
 
+function reverseRowsForVerso(arr, cols) {
+	const result = [];
+	for (let i = 0; i < arr.length; i += cols) {
+		result.push(...arr.slice(i, i + cols).reverse());
+	}
+	return result;
+}
+
 function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 	let N = parseInt(cardsPerPage) || 4;
 	const pages = [];
@@ -182,7 +190,8 @@ function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 					// Si le yaml indique que les cartes n'ont pas de verso, on n'ajoute pas les versos
 					continue;
 				}
-				if (backs.length > 0) pages.push(backs);
+				if (backs.length > 0)
+					pages.push(rectoVerso ? reverseRowsForVerso(backs, 3) : backs);
 			} else {
 				const fronts = group
 					.map((el) => el.querySelector(".cardFront"))
@@ -191,7 +200,8 @@ function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 					.map((el) => el.querySelector(".cardBack"))
 					.filter(Boolean);
 				if (fronts.length > 0) pages.push(fronts);
-				if (backs.length > 0) pages.push(backs);
+				if (backs.length > 0)
+					pages.push(rectoVerso ? reverseRowsForVerso(backs, 3) : backs);
 			}
 		}
 	} else {
