@@ -147,6 +147,7 @@ export function processYAML(markdownContent, options) {
 				// Pas de thème à appliquer, la Promise est résolue immédiatement
 				setThemeReadyPromise(Promise.resolve());
 			}
+			// On applique les styles personnalisés en les préfixant pour qu'ils ne s'appliquent que pour les cartes affichées à l'écran et lors de l'impression
 			customStylesElement.textContent =
 				scopedStyles(customStylesCSS, "#content") +
 				"\n" +

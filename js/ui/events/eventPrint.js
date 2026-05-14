@@ -121,6 +121,7 @@ export async function printCards(options) {
 	);
 }
 
+// Fonction pour inverser les lignes d'un tableau d'éléments, en gardant l'ordre des éléments dans chaque ligne, utilisée pour le mode rectoVerso
 function reverseRowsForVerso(arr, cols) {
 	const result = [];
 	for (let i = 0; i < arr.length; i += cols) {
@@ -166,6 +167,7 @@ function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 					face.className = "cardFront";
 					face.classList.add("card");
 					face._sourceCard = el;
+					// Les éléments à prendre pour le recto et le verso dépendent du thème flashcard utilisé
 					const frontElements = isFlashCardSimpleTheme
 						? [".cardTitle.z1", ".cardSubtitle.z3", "footer.z5"]
 						: [".cardTitle.z1", ".cardContentUp.z2", "footer.z5"];
@@ -180,6 +182,7 @@ function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 					face.className = "cardBack";
 					face.classList.add("card");
 					face._sourceCard = el;
+					// Les éléments à prendre pour le recto et le verso dépendent du thème flashcard utilisé
 					const backElements = isFlashCardSimpleTheme
 						? [".cardContentUp.z2"]
 						: [".cardSubtitle.z3", ".cardContentDown.z4", ".cardBack"];
