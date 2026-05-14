@@ -1,3 +1,16 @@
+## 3.0.2 (2026-05-14)
+
+### Fix
+
+- correction erreur textFit (en mode révision notamment)
+- bouton de partage de l'URL pour le mode révision
+- CSS pour la zone 5 ("footer") pour l'impression de cartes avec le thème flashcard-simple
+- suppression appel à un élément supprimé (rectoVersoInfo)
+
+### Chore
+
+- documentation plus précise sur les options d'impression
+
 ## 3.0.1 (2026-05-14)
 
 ### Fix
