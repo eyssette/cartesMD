@@ -238,19 +238,27 @@ function createTestModeMenu() {
 	menuBar.style.display = "flex";
 	menuBar.style.justifyContent = "center";
 	menuBar.style.gap = "2em";
-	// Contenu de la barre : un bouton pour afficher de manière alétoire les cartes, un bouton pour afficher seulement une carte à la fois (avec passage automatique à la suivante)
+	// Contenu de la barre
+	// 1/ un bouton pour afficher de manière alétoire les cartes
 	const randomButton = document.createElement("button");
 	randomButton.id = "randomButton";
 	randomButton.textContent = "🔀";
 	randomButton.title = "Afficher les cartes dans un ordre aléatoire";
 	menuBar.appendChild(randomButton);
+	// 2/ un bouton pour afficher seulement une carte à la fois (avec passage automatique à la suivante)
 	const sequentialButton = document.createElement("button");
 	sequentialButton.id = "sequentialButton";
 	sequentialButton.textContent = "1️⃣";
 	sequentialButton.title = "Afficher une carte à la fois";
 	menuBar.appendChild(sequentialButton);
+	// 3/ un bouton pour récupérer un lien de partage avec le mode test activé et les options de mode aléatoire ou séquentiel activées
+	const shareButton = document.createElement("button");
+	shareButton.id = "shareButton";
+	shareButton.textContent = "🔗";
+	shareButton.title = "Partager le lien avec le mode test activé";
+	menuBar.appendChild(shareButton);
 	// Styles CSS pour les boutons
-	[randomButton, sequentialButton].forEach((button) => {
+	[randomButton, sequentialButton, shareButton].forEach((button) => {
 		button.style.fontSize = "3em";
 		button.style.border = "none";
 		button.style.background = "transparent";
@@ -264,6 +272,45 @@ function createTestModeMenu() {
 	// Si on clique sur le bouton sequential, on toggle l'affichage séquentiel des cartes une par une
 	sequentialButton.addEventListener("click", () => {
 		toggleSequentialMode();
+	});
+
+	// Si on clique sur le bouton de partage, on récupère dans le presse-papier un lien de partage avec le mode test activé et les options de mode aléatoire ou séquentiel activées selon les modes actuellement activés
+	shareButton.addEventListener("click", () => {
+		// On récupère l'URL actuelle, avec le hash
+		const url = new URL(window.location.href);
+		// On ajoute dans les paramètres de l'URL le mode de révision (?révision) et les modes aléatoire (&aléatoire) et/ou séquentiel (&uneparune) s'ils sont activés
+		// On écrit juste le paramètre sans signe égal et sans valeur, pour que ce soit plus lisible
+		url.searchParams.set("révision", "");
+		if (isRandomMode) {
+			url.searchParams.set("aléatoire", "");
+		}
+		if (isSequentialMode) {
+			url.searchParams.set("uneparune", "");
+		}
+		navigator.clipboard
+			.writeText(url.toString())
+			.then(() => {
+				// Plutôt qu'une alert, on va afficher un message temporaire "Lien de partage copié !" qui disparaît après 2 secondes
+				const messageElement = document.createElement("div");
+				messageElement.textContent = "Lien de partage copié !";
+				messageElement.style.position = "fixed";
+				messageElement.style.top = "1em";
+				messageElement.style.left = "50%";
+				messageElement.style.transform = "translateX(-50%)";
+				messageElement.style.marginTop = "4em";
+				messageElement.style.background = "rgba(0, 0, 0, 0.8)";
+				messageElement.style.color = "white";
+				messageElement.style.padding = "1em 2em";
+				messageElement.style.borderRadius = "5px";
+				messageElement.style.zIndex = "1000";
+				document.body.appendChild(messageElement);
+				setTimeout(() => {
+					messageElement.remove();
+				}, 2000);
+			})
+			.catch((err) => {
+				console.error("Erreur lors de la copie du lien de partage : ", err);
+			});
 	});
 
 	// On insère cette barre de menu entre #editor et #content
