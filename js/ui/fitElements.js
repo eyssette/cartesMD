@@ -13,6 +13,10 @@ function removeWords(string, wordsToRemove) {
 		.join(" ");
 }
 
+function filterVisibleElements(nodeList) {
+	return Array.from(nodeList).filter((el) => el.offsetHeight > 0);
+}
+
 function fitElementsWithImages(baseMaxFontSize) {
 	const elementsWithImagesAndText = new Set();
 	// On cherche les images dans les zones où il peut y en avoir avec du texte.
@@ -27,12 +31,14 @@ function fitElementsWithImages(baseMaxFontSize) {
 			}
 		});
 	elementsWithImagesAndText.forEach((element) => {
-		textFit(element, {
-			multiLine: true,
-			minFontSize: 7.75,
-			maxFontSize: baseMaxFontSize,
-			reProcess: reProcess,
-		});
+		if (element.offsetHeight > 0) {
+			textFit(element, {
+				multiLine: true,
+				minFontSize: 7.75,
+				maxFontSize: baseMaxFontSize,
+				reProcess: reProcess,
+			});
+		}
 	});
 }
 
@@ -93,31 +99,31 @@ function fitElementsMainLogic(options) {
 
 	const baseMaxFontSize =
 		yaml && yaml.theme && yaml.theme.includes("flashcard") ? 40 : 36;
-	textFit(z1Elements, {
+	textFit(filterVisibleElements(z1Elements), {
 		multiLine: true,
 		maxFontSize: 60,
 		reProcess: reProcess,
 	});
-	textFit(z2Elements, {
+	textFit(filterVisibleElements(z2Elements), {
 		multiLine: true,
 		minFontSize: 7.75,
 		maxFontSize: baseMaxFontSize,
 		reProcess: reProcess,
 	});
-	textFit(z3Elements, {
+	textFit(filterVisibleElements(z3Elements), {
 		multiLine: true,
 		maxFontSize: baseMaxFontSize + 6,
 		reProcess: reProcess,
 	});
 	if (!(yaml && yaml.theme && yaml.theme == "flashcard-simple")) {
-		textFit(z4Elements, {
+		textFit(filterVisibleElements(z4Elements), {
 			multiLine: true,
 			minFontSize: 7.75,
 			maxFontSize: baseMaxFontSize,
 			reProcess: reProcess,
 		});
 	}
-	textFit(backElements, {
+	textFit(filterVisibleElements(backElements), {
 		multiLine: true,
 		minFontSize: 7.75,
 		maxFontSize: baseMaxFontSize,
@@ -144,7 +150,10 @@ export async function fitElementsWhenReady(options) {
 
 function fitMathElementsMainLogic() {
 	const mathsElements = document.querySelectorAll(".katex-display");
-	textFit(mathsElements, { multiLine: true, reProcess: reProcess });
+	textFit(filterVisibleElements(mathsElements), {
+		multiLine: true,
+		reProcess: reProcess,
+	});
 	return true;
 }
 
