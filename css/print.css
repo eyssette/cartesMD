@@ -69,6 +69,7 @@
 		margin-top: 2mm;
 	}
 
+	.printCardWrapper,
 	.printCardWrapper .card {
 		/* Éviter les coupures à l'intérieur d'une carte */
 		page-break-inside: avoid;
