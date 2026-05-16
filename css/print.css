@@ -24,6 +24,9 @@
 		flex-wrap: wrap;
 		align-content: flex-start;
 	}
+	.printPage--rectoVerso {
+		justify-content: center;
+	}
 
 	.printPage:last-child {
 		page-break-after: avoid;
