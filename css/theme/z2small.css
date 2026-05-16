@@ -15,3 +15,11 @@ h2 {
 .cardContentDown ul span {
 	font-size: 0.7em;
 }
+
+.card:has(footer) .z4 {
+	height: 145px !important;
+	padding-bottom: 25px !important;
+}
+footer {
+	margin-right: 5px;
+}
