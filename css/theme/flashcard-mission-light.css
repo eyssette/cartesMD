@@ -37,11 +37,11 @@
 	height: 162px !important;
 }
 .z2 > span {
-	font-size: 16px !important;
+	font-size: 17px !important;
 	align-self: flex-start !important;
-	margin-left: 8px;
+	margin-left: 5px;
 }
-footer {
+.card footer {
 	margin-top: -237px !important;
 	margin-left: -5px;
 	color: white;
@@ -59,22 +59,23 @@ p {
 	height: 100px;
 }
 aside {
-	display: block;
+	display: block !important;
 	margin-left: 124px;
 	margin-top: 1px;
-	height: 185px;
-	width: 290px;
-	border-radius: 6px;
+	height: 185px !important;
+	width: 290px !important;
+	border-radius: 6px !important;
 }
 .cardBack {
 	border-color: transparent;
 }
+
 img[alt*="fond"] {
 	position: absolute;
 	margin-left: -10px;
 	margin-top: -26px;
 	height: 210px;
 	border-radius: 6px;
-	width: 335px;
+	width: 336px;
 	object-fit: cover;
 }
