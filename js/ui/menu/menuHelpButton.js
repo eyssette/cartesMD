@@ -17,6 +17,7 @@ export function helpButton(options) {
 					loadCSS("css/helpModal.min.css", "helpModal");
 					modal = document.createElement("div");
 					modal.classList.add("modal");
+					modal.id = "helpModal";
 					const modalContent = document.createElement("div");
 					modalContent.classList.add("modal-content");
 					modal.appendChild(modalContent);

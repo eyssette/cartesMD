@@ -34,6 +34,12 @@ export function eventKeyboardShortcuts(editorElement, options) {
 						isPrintModalOpen.remove();
 						return;
 					}
+					// On vérifie aussi que la modale d'aide n'est pas ouverte, sinon le Escape doit fermer la modale d'aide et pas l'éditeur
+					const isHelpModalOpen = document.querySelector("#helpModal");
+					if (isHelpModalOpen) {
+						isHelpModalOpen.remove();
+						return;
+					}
 					hideEditor(editorElement, options);
 				} else {
 					if (!shouldShowEditor && event.key === "e") {
