@@ -174,24 +174,39 @@ Pour utiliser un thème, il faut indiquer son nom dans le _yaml_. Par exemple :
 theme: iaconelli.css
 ```
 
-Les thèmes disponibles sont présents dans le [dossier “thème”](https://forge.apps.education.fr/cartesmd/cartesMD.forge.apps.education.fr/-/tree/main/css/theme) de CartesMD.
+Les thèmes disponibles sont présentés ci-dessous. Si avez une idée ou une proposition de thème, n'hésitez pas à me contacter pour que je puisse l'ajouter à la liste !
 
-N'hésitez pas à m'envoyer vos propositions de thèmes !
-
-
-### Des thèmes pour faire des flashcards
+### Les thèmes pour faire des _flashcards_
 
 Il suffit de cliquer sur le bouton 🔄 pour activer le thème `flashcard`.
 
 Pour faire des flashcards simples, mais avec un mode de révision en ligne, il vaut mieux utiliser [FlashMD](https://flashmd.forge.apps.education.fr/).
 
-CartesMD permet de faire des cartes plus complexes, destinées à être imprimées.
+Voici les thèmes disponibles pour faire des flashcards
 
-Plusieurs thèmes sont disponibles : `flashcard`, `flashcard-simple`, `flashcard-mission`.
+#### flashcard
+![](./img/theme/flashcard.png)
+
+#### flashcard-simple
+![](./img/theme/flashcard-simple.png)
+
+#### flashcard-mission
+![](./img/theme/flashcard-mission.png)
 
 
+### Les thèmes pour des cartes au format standard
 
+#### itt
+![](./img/theme/itt.png)
 
+#### persona
+![](./img/theme/persona.png)
+
+#### z2small
+![](./img/theme/z2small.png)
+
+#### iaconelli
+![](./img/theme/iaconelli.png)
 
 
 
