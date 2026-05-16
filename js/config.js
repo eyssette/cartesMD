@@ -12,6 +12,7 @@ export const CSSthemes = [
 	"persona.css",
 	"itt.css",
 	"flashcard-mission.css",
+	"flashcard-mission-light.css",
 ];
 
 export const colorWords = [

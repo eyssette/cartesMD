@@ -1,0 +1,80 @@
+@import "./css/theme/flashcard.css";
+@import "./css/theme/flashcard-mission.css";
+
+:root {
+	--cardFrontBackgroundColor: #444;
+	--rouge: #834b4b;
+	--rouge-light: darkred;
+	--orange: #d09a38;
+	--orange-light: darkorange;
+	--violet: #8565a4;
+	--violet-light: darkviolet;
+	--vert: #4b7d4b;
+	--vert-light: darkgreen;
+	--bleu: #88a2b8;
+	--bleu-light: darkblue;
+	--jaune: #e6c300;
+	--jaune-light: darkgoldenrod;
+	--rose: #d18998;
+	--rose-light: darkmagenta;
+	--marron: #a3856e;
+	--marron-light: #8b4513;
+}
+
+.card {
+	border-width: 1px;
+	border-color: #777;
+}
+.z1 {
+	color: white !important;
+	padding: 5px 0px !important;
+	width: 290px !important;
+}
+.z1 > span {
+	margin-left: 10px;
+}
+.z2 {
+	height: 162px !important;
+}
+.z2 > span {
+	font-size: 16px !important;
+	align-self: flex-start !important;
+	margin-left: 8px;
+}
+footer {
+	margin-top: -237px !important;
+	margin-left: -5px;
+	color: white;
+	font-size: 1.25em !important;
+}
+p {
+	margin: 2px 0;
+}
+.z3 {
+	display: block !important;
+	margin-left: 0px !important;
+	margin-top: -150px !important;
+}
+.z3 img {
+	height: 100px;
+}
+aside {
+	display: block;
+	margin-left: 124px;
+	margin-top: 1px;
+	height: 185px;
+	width: 290px;
+	border-radius: 6px;
+}
+.cardBack {
+	border-color: transparent;
+}
+img[alt*="fond"] {
+	position: absolute;
+	margin-left: -10px;
+	margin-top: -26px;
+	height: 210px;
+	border-radius: 6px;
+	width: 335px;
+	object-fit: cover;
+}
