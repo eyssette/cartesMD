@@ -25,6 +25,13 @@
 .z4 ol {
 	padding-right: 10px !important;
 }
+footer {
+	margin-right: 0px !important;
+}
+.card:has(footer) .z4 {
+	height: 130px !important;
+	padding-bottom: 17px !important;
+}
 
 .card:has(.special) .z3 {
 	height: 0.01em !important;
