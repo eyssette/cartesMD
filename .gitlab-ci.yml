@@ -8,7 +8,7 @@ pages:
   script:
     - mkdir -p .public .public/css/theme .public/img
     - cp favicon.svg index.html index-flashmd.md script.min.js script.min.js.map .public/
-    - cp img/* .public/img
+    - cp -r img/. .public/img
     - cp css/*.min.css .public/css/
     - cp css/theme/* .public/css/theme/
     - mv .public public
