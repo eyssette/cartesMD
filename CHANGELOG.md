@@ -1,3 +1,21 @@
+## 3.0.3 (2026-05-16)
+
+### Fix
+
+- URL images dans la modale d'aide + CSS
+- ajout d'images pour les thèmes disponibles
+- touche "Esc" ne ferme pas l'éditeur quand la modale d'aide est ouverte
+- ajustements CSS pour le thème z2small
+- ajustements CSS pour le thème itt
+- alignement au centre des cartes en mode rectoVerso
+- pas de coupure à l'intérieur d'une carte à l'impression dans le mode flashcard + rectoVerso
+- gestion des styles de fond (notamment : couleurs rgb ou hexadécimale) pour les flaschards en mode impression rectoVerso ou sortie au format de la carte
+- condition pour remixer les éléments HTML des cartes = soit rectoVerso (pour remixer l'ordre), soit sortie au format de la carte, mais pour les flashcards (pour sélectionner les éléments recto et les éléments verso)
+- css plus précis les couleurs de la carte en mode impression pour le cas des flaschards rectoVerso + impression au format de la carte
+- css thème flashcard-simple pour le titre du recto (petit décalage vers le haut)
+- css pour les éléments z2 et z5 pour le thème flashcard-simple en mode impression
+- les customStyles fonctionnent maintenant aussi à l'impression
+
 ## 3.0.2 (2026-05-14)
 
 ### Fix
