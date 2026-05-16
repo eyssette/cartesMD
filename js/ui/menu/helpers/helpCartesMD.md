@@ -185,28 +185,28 @@ Pour faire des flashcards simples, mais avec un mode de révision en ligne, il v
 Voici les thèmes disponibles pour faire des flashcards
 
 #### flashcard
-![](./img/theme/flashcard.png)
+![](./img/themes/theme-flashcard.png)
 
 #### flashcard-simple
-![](./img/theme/flashcard-simple.png)
+![](./img/themes/theme-flashcard-simple.png)
 
 #### flashcard-mission
-![](./img/theme/flashcard-mission.png)
+![](./img/themes/theme-flashcard-mission.png)
 
 
 ### Les thèmes pour des cartes au format standard
 
 #### itt
-![](./img/theme/itt.png)
+![](./img/themes/theme-itt.png)
 
 #### persona
-![](./img/theme/persona.png)
+![](./img/themes/theme-persona.png)
 
 #### z2small
-![](./img/theme/z2small.png)
+![](./img/themes/theme-z2small.png)
 
 #### iaconelli
-![](./img/theme/iaconelli.png)
+![](./img/themes/theme-iaconelli.png)
 
 
 

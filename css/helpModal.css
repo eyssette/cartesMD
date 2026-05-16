@@ -90,3 +90,7 @@
 .modal code {
 	font-size: 0.85em;
 }
+
+.modal img {
+	max-height: 300px;
+}
