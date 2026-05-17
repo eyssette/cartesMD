@@ -130,6 +130,20 @@ function reverseRowsForVerso(arr, cols) {
 	return result;
 }
 
+// Inverse l'ordre des lignes (ex: 1,2,3,4,5,6,7,8,9 avec cols=3 -> 7,8,9,4,5,6,1,2,3)
+function reverseRowOrder(arr, cols) {
+	if (!cols || cols <= 0) return arr.slice();
+	const rows = [];
+	for (let i = 0; i < arr.length; i += cols) {
+		rows.push(arr.slice(i, i + cols));
+	}
+	const result = [];
+	for (let i = rows.length - 1; i >= 0; i--) {
+		result.push(...rows[i]);
+	}
+	return result;
+}
+
 function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 	let N = parseInt(cardsPerPage) || 4;
 	const pages = [];
@@ -202,7 +216,7 @@ function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 					continue;
 				}
 				if (backs.length > 0)
-					pages.push(rectoVerso ? reverseRowsForVerso(backs, 3) : backs);
+					pages.push(rectoVerso ? reverseRowOrder(backs, 3) : backs);
 			} else {
 				const fronts = group
 					.map((el) => el.querySelector(".cardFront"))
