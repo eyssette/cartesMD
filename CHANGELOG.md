@@ -1,3 +1,24 @@
+## 3.1.0 (2026-05-17)
+
+### Feat
+
+- possibilité de choisir l'option pour le recto-verso : gestion manuelle (réorganisation des cartes) ou gestion par l'imprimante (pas de réorganisation des cartes)
+- thème "flashcard-mission-light"
+
+### Fix
+
+- ajout des explications sur la fonction de "conversion magique"
+- ajustements CSS pour les flashcards dans certaines combinaisons thème+mode impression
+- inversion de la disposition des cartes pour l'impression des cartes type flaschards en mode recto verso
+- correction de la permutation des cartes pour les flashcards en mode rectoVerso
+- alignement vertical nécessaire des cartes en mode rectoVerso
+- ajustements CSS pourle thème flascard-mission-light
+- utilisation de variables CSS pour les couleurs de base
+
+### CI
+
+- copie récusive des fichiers et dossiers de "img"
+
 ## 3.0.3 (2026-05-16)
 
 ### Fix
