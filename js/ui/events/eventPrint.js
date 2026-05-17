@@ -6,6 +6,7 @@ export async function printCards(options) {
 		landscape = true,
 		cardsPerPage = 4,
 		rectoVerso = false,
+		manualFlip = true,
 	} = options || {};
 
 	const cardElements = [
@@ -18,6 +19,7 @@ export async function printCards(options) {
 		format,
 		cardsPerPage,
 		rectoVerso,
+		manualFlip,
 	});
 
 	if (pages.length === 0) return;
@@ -144,7 +146,10 @@ function reverseRowOrder(arr, cols) {
 	return result;
 }
 
-function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
+function buildPages(
+	cardElements,
+	{ format, cardsPerPage, rectoVerso, manualFlip = true },
+) {
 	let N = parseInt(cardsPerPage) || 4;
 	const pages = [];
 	const isFlashCardTheme =
@@ -199,12 +204,14 @@ function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 					face._sourceCard = el;
 					// On applique les styles du verso à la face reconstituée, pour éviter les problèmes de styles liés au fait que les éléments sont déplacés dans un autre conteneur pour l'impression
 					const backEl = el.querySelector(".cardBack");
-					face.setAttribute("style", backEl.getAttribute("style") || "");
-					// Pour l'impression des flashcards, on doit retourner la face verso (rotation 180°) pour que l'alignement recto-verso soit correct
-					face.style.transform =
-						(face.style.transform ? face.style.transform + " " : "") +
-						"scaleY(-1) scaleX(-1)";
-					face.style.transformOrigin = "center";
+					if (rectoVerso && manualFlip) {
+						face.setAttribute("style", backEl.getAttribute("style") || "");
+						// Pour l'impression des flashcards, on doit retourner la face verso (rotation 180°) pour que l'alignement recto-verso soit correct
+						face.style.transform =
+							(face.style.transform ? face.style.transform + " " : "") +
+							"scaleY(-1) scaleX(-1)";
+						face.style.transformOrigin = "center";
+					}
 					// Les éléments à prendre pour le recto et le verso dépendent du thème flashcard utilisé
 					const backElements = isFlashCardSimpleTheme
 						? [".cardContentUp.z2"]
@@ -221,7 +228,9 @@ function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 					continue;
 				}
 				if (backs.length > 0)
-					pages.push(rectoVerso ? reverseRowOrder(backs, 3) : backs);
+					pages.push(
+						rectoVerso && manualFlip ? reverseRowOrder(backs, 3) : backs,
+					);
 			} else {
 				const fronts = group
 					.map((el) => el.querySelector(".cardFront"))
@@ -231,7 +240,9 @@ function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 					.filter(Boolean);
 				if (fronts.length > 0) pages.push(fronts);
 				if (backs.length > 0)
-					pages.push(rectoVerso ? reverseRowsForVerso(backs, 3) : backs);
+					pages.push(
+						rectoVerso && manualFlip ? reverseRowsForVerso(backs, 3) : backs,
+					);
 			}
 		}
 	} else {

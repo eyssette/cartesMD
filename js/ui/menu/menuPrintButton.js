@@ -38,6 +38,10 @@ export function openPrintModal() {
 							Impression recto-verso
 						</label>
 					</div>
+					<div class="printModal-row" id="duplexChoice" style="display:none;margin-top:8px; margin-left:20px;">
+						<label><input type="radio" name="manualFlip" value="true" checked> Gérée manuellement : les cartes sont réorganisées pour que l'impression pages impaires puis pages paires fonctionne correctement</label>
+						<label><input type="radio" name="manualFlip" value="false">Gérée par l'imprimante : les cartes ne sont pas réorganisées</label>
+					</div>
 				</fieldset>
 				<div class="printModal-actions">
 					<button type="button" class="printModal-cancel">Annuler</button>
@@ -53,6 +57,7 @@ export function openPrintModal() {
 	const form = overlay.querySelector("#printForm");
 	const a4Options = overlay.querySelector("#a4Options");
 	const rectoVersoCheckbox = overlay.querySelector("#rectoVersoCheckbox");
+	const duplexChoice = overlay.querySelector("#duplexChoice");
 
 	// Si le YAML indique que les cartes n'ont pas de verso, on masque d'emblée les options A4 et recto-verso
 	if (yaml && yaml.verso === false) {
@@ -66,6 +71,11 @@ export function openPrintModal() {
 		radio.addEventListener("change", () => {
 			a4Options.hidden = radio.value === "card";
 		});
+	});
+
+	// Afficher le choix de type de retournement uniquement si recto-verso activé
+	rectoVersoCheckbox.addEventListener("change", () => {
+		duplexChoice.style.display = rectoVersoCheckbox.checked ? "block" : "none";
 	});
 
 	const close = () => {
@@ -93,6 +103,7 @@ export function openPrintModal() {
 
 		const rectoVerso =
 			(yaml && yaml.rectoVerso === true) || rectoVersoCheckbox.checked;
+		const manualFlip = (data.get("manualFlip") || "true") === "true";
 		let cardsPerPage = parseInt(data.get("cardsPerPage")) || 4;
 		let landscape = true;
 		const format = data.get("format");
@@ -117,6 +128,7 @@ export function openPrintModal() {
 			format: format,
 			cardsPerPage: cardsPerPage,
 			rectoVerso: rectoVerso,
+			manualFlip: manualFlip,
 			landscape: landscape,
 		};
 		document.removeEventListener("keydown", onKeydown);
