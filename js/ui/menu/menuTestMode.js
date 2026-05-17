@@ -2,6 +2,8 @@ import { yaml } from "../../processMarkdown/yaml";
 import { showEditor, hideEditor } from "./menuShowOrHideEditor";
 import { eventClick } from "../events/eventClick";
 import { createShareLinkModal } from "./helpers/shareLinkHelper";
+import { editor } from "../editor/initializeEditor";
+import { handleURL } from "../../utils/urls";
 
 export function toggleVerso(isTestMode) {
 	if (isTestMode) {
@@ -300,26 +302,49 @@ function createTestModeMenu(options) {
 			// Si l'utilisateur choisir de créer un lien de partage, on ajoute le paramètre "raw" au lien de partage, et on encode le contenu actuel avec : window.btoa(encodeURIComponent(content))
 			createShareLinkModal(url);
 		} else {
-			navigator.clipboard
-				.writeText(url.toString())
+			// Si l'URL contient déjà un hash qui renvoie à une URL de flashcards, on vérifie que le contenu texte de cette URL correspond au contenu de l'éditeur, et si ce n'est pas le cas, on indique que le fichier a été modifié dans l'éditeur et que le lien de partage ne permettra pas de partager ces modifications, et on propose à l'utilisateur soit d'annuler la création du lien de partage (le temps de faire les modifications dans le fichier original), soit de créer le lien de partage quand même en utilisant le hash déjà présent dans l'URL.
+			const urlToFetch = handleURL(url.hash.substring(1));
+			let linkCreated = false;
+			fetch(urlToFetch)
+				.then((response) => response.text())
+				.then((text) => {
+					const currentContent = editor.toString();
+					console.log(currentContent);
+					console.log(text);
+					if (text.trim() !== currentContent.trim()) {
+						if (
+							confirm(
+								"Le contenu de l'éditeur a été modifié par rapport au fichier original. Le lien de partage ne permettra pas de partager ces modifications. Voulez-vous créer le lien de partage quand même ?",
+							)
+						) {
+							navigator.clipboard.writeText(url.toString());
+							linkCreated = true;
+						}
+					} else {
+						navigator.clipboard.writeText(url.toString());
+						linkCreated = true;
+					}
+				})
 				.then(() => {
-					// Plutôt qu'une alert, on va afficher un message temporaire "Lien de partage copié !" qui disparaît après 2 secondes
-					const messageElement = document.createElement("div");
-					messageElement.textContent = "Lien de partage copié !";
-					messageElement.style.position = "fixed";
-					messageElement.style.top = "1em";
-					messageElement.style.left = "50%";
-					messageElement.style.transform = "translateX(-50%)";
-					messageElement.style.marginTop = "4em";
-					messageElement.style.background = "rgba(0, 0, 0, 0.8)";
-					messageElement.style.color = "white";
-					messageElement.style.padding = "1em 2em";
-					messageElement.style.borderRadius = "5px";
-					messageElement.style.zIndex = "1000";
-					document.body.appendChild(messageElement);
-					setTimeout(() => {
-						messageElement.remove();
-					}, 2000);
+					if (linkCreated) {
+						// Plutôt qu'une alert, on va afficher un message temporaire "Lien de partage copié !" qui disparaît après 2 secondes
+						const messageElement = document.createElement("div");
+						messageElement.textContent = "Lien de partage copié !";
+						messageElement.style.position = "fixed";
+						messageElement.style.top = "1em";
+						messageElement.style.left = "50%";
+						messageElement.style.transform = "translateX(-50%)";
+						messageElement.style.marginTop = "4em";
+						messageElement.style.background = "rgba(0, 0, 0, 0.8)";
+						messageElement.style.color = "white";
+						messageElement.style.padding = "1em 2em";
+						messageElement.style.borderRadius = "5px";
+						messageElement.style.zIndex = "1000";
+						document.body.appendChild(messageElement);
+						setTimeout(() => {
+							messageElement.remove();
+						}, 2000);
+					}
 				})
 				.catch((err) => {
 					console.error("Erreur lors de la copie du lien de partage : ", err);
