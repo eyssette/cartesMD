@@ -226,7 +226,8 @@ function toggleSequentialMode() {
 	}
 }
 
-function createTestModeMenu() {
+function createTestModeMenu(options) {
+	const isTestModeFromParams = options && options.isTestModeFromParams;
 	// Si la barre de menu existe déjà, on ne la recrée pas
 	if (document.getElementById("testModeMenu")) {
 		return;
@@ -263,6 +264,10 @@ function createTestModeMenu() {
 		button.style.border = "none";
 		button.style.background = "transparent";
 	});
+	// Si le mode de révision est activé depuis les paramètres de l'URL, on cache le bouton de partage car c'est lui qui a servi à activer ce mode
+	if (isTestModeFromParams) {
+		shareButton.style.display = "none";
+	}
 
 	// Si on clique sur le bouton random, on toggle l'affichage aléatoire des cartes
 	randomButton.addEventListener("click", () => {
@@ -355,7 +360,9 @@ function createTestModeMenu() {
 
 function handleTestMode(editorElement, options) {
 	if (options.isTestMode || options.isTestModeFromParams) {
-		createTestModeMenu();
+		createTestModeMenu({
+			isTestModeFromParams: options.isTestModeFromParams,
+		});
 		if (options.isTestModeFromParams) {
 			// Si le mode test est activé depuis les paramètres de l'URL, on centre le contenu pour qu'il s'affiche correctement en iframe
 			document.documentElement.style.display = "flex";
