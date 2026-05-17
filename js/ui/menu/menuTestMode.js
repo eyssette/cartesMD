@@ -2,7 +2,7 @@ import { yaml } from "../../processMarkdown/yaml";
 import { showEditor, hideEditor } from "./menuShowOrHideEditor";
 import { eventClick } from "../events/eventClick";
 
-function toggleVerso(isTestMode) {
+export function toggleVerso(isTestMode) {
 	if (isTestMode) {
 		document.body.classList.add("noVerso", "isTestMode");
 		yaml.verso = false;
@@ -13,8 +13,8 @@ function toggleVerso(isTestMode) {
 }
 let isTestMode = false;
 
-let isRandomMode = false;
-function toggleRandomMode() {
+export let isRandomMode = false;
+export function toggleRandomMode() {
 	isRandomMode = !isRandomMode;
 	// On supprime l'attribut dataset.removed de toutes les cartes s'il existe
 	const cards = document.querySelectorAll(".cardBackAndFront");
@@ -87,8 +87,8 @@ function goToNextCard(currentIndex) {
 	return currentIndex;
 }
 
-let isSequentialMode = false;
-function toggleSequentialMode() {
+export let isSequentialMode = false;
+export function toggleSequentialMode() {
 	isSequentialMode = !isSequentialMode;
 	// On supprime l'attribut dataset.removed de toutes les cartes s'il existe
 	const cards = document.querySelectorAll(".cardBackAndFront");
@@ -358,7 +358,7 @@ function createTestModeMenu(options) {
 	}
 }
 
-function handleTestMode(editorElement, options) {
+export function handleTestMode(editorElement, options) {
 	if (options.isTestMode || options.isTestModeFromParams) {
 		createTestModeMenu({
 			isTestModeFromParams: options.isTestModeFromParams,

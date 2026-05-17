@@ -1,4 +1,12 @@
 import { loadCSS } from "../../utils/urls";
+import {
+	handleTestMode,
+	isRandomMode,
+	isSequentialMode,
+	toggleRandomMode,
+	toggleSequentialMode,
+	toggleVerso,
+} from "./menuTestMode";
 
 const headerElement = document.getElementById("header");
 const contentElement = document.getElementById("content");
@@ -56,5 +64,12 @@ export function showOrHideEditorButton(editorElement, options) {
 		event.preventDefault();
 		shouldShowEditor = shouldShowEditor ? false : true;
 		showOrHideEditor(editorElement, options);
+		if (shouldShowEditor) {
+			// Si on affiche l'éditeur, on remet les cartes à l'état normal en supprimant toutes les actions liées au mode révision
+			toggleVerso(options.isTestMode);
+			if (isSequentialMode) toggleSequentialMode();
+			if (isRandomMode) toggleRandomMode();
+			handleTestMode(editorElement, options);
+		}
 	});
 }
