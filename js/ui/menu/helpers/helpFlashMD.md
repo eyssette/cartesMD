@@ -52,6 +52,16 @@ FlashMD calcule automatiquement la taille de police optimale pour que le texte r
 
 On peut insérer des images hébergées en ligne avec la syntaxe Markdown classique : `![](URL_de_l_image)`. Mais on peut aussi coller une image directement dans l'éditeur, elle sera alors convertie en _base64_ et intégrée dans le Markdown. Attention cependant à la longueur du fichier qui peut vite devenir importante.
 
+### Conversion magique
+
+Vous pouvez essayer de créer automatiquement des flashcards à partir d'un document à vous ou d'un site web, même si le texte n'est pas structuré en Markdown au format de FlashMD.
+
+Si le texte a une structure reconnaissable, FlashMD pourra le convertir automatiquement en flashcards.
+
+Pour cela, il faut copier votre texte, puis le coller dans l'éditeur de FlashMD en utilisant le raccourci clavier `Ctrl + Maj + V` (ou `Cmd + Maj + V` sur Mac).
+
+Cela ne fonctionne pas toujours, mais cela peut être pratique dans certains cas !
+
 
 ### Changer la couleur des cartes ?
 Sur la ligne juste avant le titre de la carte, on écrit `fond: couleur`.
