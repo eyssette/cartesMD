@@ -28,6 +28,13 @@
 		justify-content: center;
 	}
 
+	.printPage--flashcard.printPage--rectoVerso {
+		align-content: center;
+		align-items: center;
+		height: 210mm;
+		padding: 0 !important;
+	}
+
 	.printPage:last-child {
 		page-break-after: avoid;
 		break-after: avoid;
