@@ -409,7 +409,9 @@ export function launchTestMode(editorElement, options) {
 	} else {
 		const testModeButton = document.getElementById("testModeButton");
 		testModeButton.style.display = "block";
-		testModeButton.addEventListener("click", () => {
+		testModeButton.addEventListener("click", (event) => {
+			// Empêcher le comportement par défaut du lien `href="#"` qui remplace le hash
+			event.preventDefault();
 			isTestMode = !document.body.classList.contains("isTestMode");
 			options.isTestMode = isTestMode;
 			toggleVerso(options.isTestMode);
