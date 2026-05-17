@@ -200,6 +200,11 @@ function buildPages(cardElements, { format, cardsPerPage, rectoVerso }) {
 					// On applique les styles du verso à la face reconstituée, pour éviter les problèmes de styles liés au fait que les éléments sont déplacés dans un autre conteneur pour l'impression
 					const backEl = el.querySelector(".cardBack");
 					face.setAttribute("style", backEl.getAttribute("style") || "");
+					// Pour l'impression des flashcards, on doit retourner la face verso (rotation 180°) pour que l'alignement recto-verso soit correct
+					face.style.transform =
+						(face.style.transform ? face.style.transform + " " : "") +
+						"scaleY(-1) scaleX(-1)";
+					face.style.transformOrigin = "center";
 					// Les éléments à prendre pour le recto et le verso dépendent du thème flashcard utilisé
 					const backElements = isFlashCardSimpleTheme
 						? [".cardContentUp.z2"]
