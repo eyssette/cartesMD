@@ -1,0 +1,53 @@
+.shareLinkModalOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+.shareLinkModalOverlay.show {
+	opacity: 1;
+}
+.shareLinkModal {
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	max-width: 400px;
+	width: 100%;
+}
+.shareLinkModal-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+.shareLinkModal-close {
+	background: none;
+	border: none;
+	font-size: 20px;
+	cursor: pointer;
+}
+.shareLinkModal-form fieldset {
+	border: none;
+	padding: 0;
+	margin-bottom: 20px;
+}
+.shareLinkModal-form label {
+	display: block;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+.shareLinkModal-actions {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 10px;
+}

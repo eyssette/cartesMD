@@ -1,6 +1,7 @@
 import { yaml } from "../../processMarkdown/yaml";
 import { showEditor, hideEditor } from "./menuShowOrHideEditor";
 import { eventClick } from "../events/eventClick";
+import { createShareLinkModal } from "./helpers/shareLinkHelper";
 
 export function toggleVerso(isTestMode) {
 	if (isTestMode) {
@@ -292,30 +293,38 @@ function createTestModeMenu(options) {
 		if (isSequentialMode) {
 			url.searchParams.set("uneparune", "");
 		}
-		navigator.clipboard
-			.writeText(url.toString())
-			.then(() => {
-				// Plutôt qu'une alert, on va afficher un message temporaire "Lien de partage copié !" qui disparaît après 2 secondes
-				const messageElement = document.createElement("div");
-				messageElement.textContent = "Lien de partage copié !";
-				messageElement.style.position = "fixed";
-				messageElement.style.top = "1em";
-				messageElement.style.left = "50%";
-				messageElement.style.transform = "translateX(-50%)";
-				messageElement.style.marginTop = "4em";
-				messageElement.style.background = "rgba(0, 0, 0, 0.8)";
-				messageElement.style.color = "white";
-				messageElement.style.padding = "1em 2em";
-				messageElement.style.borderRadius = "5px";
-				messageElement.style.zIndex = "1000";
-				document.body.appendChild(messageElement);
-				setTimeout(() => {
-					messageElement.remove();
-				}, 2000);
-			})
-			.catch((err) => {
-				console.error("Erreur lors de la copie du lien de partage : ", err);
-			});
+		// On teste si l'URL contient un hash
+		if (!url.hash) {
+			// S'il n'y a pas de hash, on ouvre une modale pour proposer à l'utilisateur, soit d'indiquer l'URL de ses flashcards (option par défaut déjà cochée), soit de créer un lien de partage pour le contenu actuel (avec un avertissement pour indiquer que ce lien ne permettra pas de changer le contenu des flashcards).
+			// Si l'utilisateur choisit d'indiquer l'URL de ses flaschards, on utilise ce hash pour la suite de la création du lien de partage
+			// Si l'utilisateur choisir de créer un lien de partage, on ajoute le paramètre "raw" au lien de partage, et on encode le contenu actuel avec : window.btoa(encodeURIComponent(content))
+			createShareLinkModal(url);
+		} else {
+			navigator.clipboard
+				.writeText(url.toString())
+				.then(() => {
+					// Plutôt qu'une alert, on va afficher un message temporaire "Lien de partage copié !" qui disparaît après 2 secondes
+					const messageElement = document.createElement("div");
+					messageElement.textContent = "Lien de partage copié !";
+					messageElement.style.position = "fixed";
+					messageElement.style.top = "1em";
+					messageElement.style.left = "50%";
+					messageElement.style.transform = "translateX(-50%)";
+					messageElement.style.marginTop = "4em";
+					messageElement.style.background = "rgba(0, 0, 0, 0.8)";
+					messageElement.style.color = "white";
+					messageElement.style.padding = "1em 2em";
+					messageElement.style.borderRadius = "5px";
+					messageElement.style.zIndex = "1000";
+					document.body.appendChild(messageElement);
+					setTimeout(() => {
+						messageElement.remove();
+					}, 2000);
+				})
+				.catch((err) => {
+					console.error("Erreur lors de la copie du lien de partage : ", err);
+				});
+		}
 	});
 
 	// On insère cette barre de menu entre #editor et #content

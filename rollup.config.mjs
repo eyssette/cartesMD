@@ -105,5 +105,16 @@ export default {
 				}),
 			],
 		}),
+		postcss({
+			extensions: [".css"],
+			include: ["css/shareLinkModal.css"],
+			extract: "css/shareLinkModal.min.css",
+			minimize: true,
+			plugins: [
+				cssnano({
+					preset: "default",
+				}),
+			],
+		}),
 	],
 };

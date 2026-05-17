@@ -5,6 +5,7 @@ import "../css/print.css";
 import "../css/backImageColors.css";
 import "../css/helpModal.css";
 import "../css/printModal.css";
+import "../css/shareLinkModal.css";
 import { getDataAndStartCreatingCards } from "./processMarkdown/getDataAndStartCreatingCards";
 
 getDataAndStartCreatingCards();
