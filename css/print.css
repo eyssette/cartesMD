@@ -109,8 +109,12 @@
 		margin: 12px 15px !important;
 	}
 
-	.theme-flashcard-mission .printCardWrapper.cardBack {
+	.theme-flashcard-mission :not(.printPage--card) .printCardWrapper.cardBack {
 		margin-top: 0px;
+	}
+
+	.theme-flashcard-mission .printPage--card .printCardWrapper.cardBack {
+		margin-top: 4px;
 	}
 
 	.theme-flashcard-mission .printCardWrapper.cardBack .cardBack {
@@ -119,6 +123,10 @@
 
 	.printPage--flashcard .cardBack {
 		margin-left: -3px;
+	}
+
+	.printPage--flashcard.printPage--rectoVerso .cardBack {
+		margin-top: 8px;
 	}
 
 	.printPage--flashcard.printPage--card {
