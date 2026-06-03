@@ -51,6 +51,9 @@
 	margin-left: -10px !important;
 	margin-right: 10px;
 }
+.cardContentUp img {
+	width: revert-layer;
+}
 .cardContentDown {
 	display: none !important;
 }
