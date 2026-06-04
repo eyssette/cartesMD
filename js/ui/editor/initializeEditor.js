@@ -74,6 +74,8 @@ const options = {
 	spellCheck: true,
 	preserveIdent: false,
 	tab: "\t",
+	// eslint-disable-next-line quotes
+	autoclose: { open: `(["`, close: `)]"` },
 };
 
 export let editor;
