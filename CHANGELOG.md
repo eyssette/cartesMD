@@ -1,3 +1,18 @@
+## 3.1.1 (2026-06-04)
+
+### Fix
+
+- augmentation de la taille maximale de la police
+- pas d'autoclose pour l'apostrophe
+- CSS pour améliorer l'affichage sur petit écran d'ordinateur
+- définition possible de la taille d'une image dans le verso d'une carte FlashMD
+- changement d'URL de l'API de Docs de LaSuite
+- si on crée un lien de partage pour une URL dans le hash, on vérifie d'abord que le contenu du fichier n'a pas été modifié dans l'éditeur
+- gestion du lien de partage en cas d'absence de hash dans l'URL (soit on indique une URL, soit on crée un lien de partage avec le contenu actuel de l'éditeur)
+- le hash reste quand on clique sur le bouton de déclenchement du mode révision
+- retour à l'éditeur après le mode révision remet à l'état initial les cartes
+- si le mode révision est activé, on n'affiche pas le bouton de partage des flashcards
+
 ## 3.1.0 (2026-05-17)
 
 ### Feat
