@@ -97,8 +97,7 @@ function fitElementsMainLogic(options) {
 	const z4Elements = document.querySelectorAll(".z4");
 	const backElements = document.querySelectorAll(".cardBack aside");
 
-	const baseMaxFontSize =
-		yaml && yaml.theme && yaml.theme.includes("flashcard") ? 40 : 36;
+	const baseMaxFontSize = 80;
 	textFit(filterVisibleElements(z1Elements), {
 		multiLine: true,
 		maxFontSize: 60,
