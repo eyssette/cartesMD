@@ -178,6 +178,7 @@ const converter = new Showdown.Converter({
 		showdownExtensionSubscript,
 		showdownExtensionSuperscript,
 	],
+	disableForced4SpacesIndentedSublists: true,
 });
 
 function fixImageDimensionsCodiMD(md) {
